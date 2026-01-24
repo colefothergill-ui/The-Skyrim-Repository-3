@@ -1,0 +1,72 @@
+{
+  "campaign_id": "skyrim_fate_core_001",
+  "campaign_name": "The Elder Scrolls: Skyrim - Fate Core Campaign",
+  "started_date": "4E 201, 17th of Last Seed",
+  "current_act": 1,
+  "civil_war_state": {
+    "player_alliance": "neutral",
+    "battle_of_whiterun_status": "not_started",
+    "imperial_victories": 0,
+    "stormcloak_victories": 0,
+    "key_battles_completed": [],
+    "faction_relationship": {
+      "imperial_legion": 0,
+      "stormcloaks": 0
+    }
+  },
+  "main_quest_state": {
+    "post_alduin_timeline": true,
+    "dragon_crisis_resolved": true,
+    "blades_status": "reformed",
+    "greybeards_relations": "respectful",
+    "timeline_notes": "Campaign occurs after Alduin's defeat. Dragon crisis has ended, focus is on civil war and Thalmor conspiracy."
+  },
+  "thalmor_arc": {
+    "thalmor_awareness_of_party": "none",
+    "embassy_infiltrated": false,
+    "elenwen_disposition": "neutral",
+    "thalmor_schemes_discovered": [],
+    "active_plots": [
+      {
+        "plot_id": "undermine_empire",
+        "description": "Thalmor seeks to prolong civil war to weaken both sides",
+        "progress": 0,
+        "clock_segments": 8
+      },
+      {
+        "plot_id": "eliminate_talos_worship",
+        "description": "Continue persecution of Talos worshippers",
+        "progress": 2,
+        "clock_segments": 10
+      }
+    ]
+  },
+  "branching_decisions": {
+    "civil_war_stance": null,
+    "jarl_balgruuf_support": null,
+    "thalmor_embassy_approach": null,
+    "talos_worship_stance": null
+  },
+  "world_consequences": {
+    "towns_affected": [],
+    "npcs_killed": [],
+    "npcs_befriended": [],
+    "major_choices": []
+  },
+  "active_story_arcs": [
+    {
+      "arc_name": "Civil War",
+      "status": "brewing",
+      "progress": 0,
+      "next_milestone": "Player must choose a side"
+    },
+    {
+      "arc_name": "Thalmor Conspiracy",
+      "status": "hidden",
+      "progress": 0,
+      "next_milestone": "Discover Thalmor manipulation"
+    }
+  ],
+  "session_count": 0,
+  "last_updated": "2026-01-23 13:16:59"
+}
