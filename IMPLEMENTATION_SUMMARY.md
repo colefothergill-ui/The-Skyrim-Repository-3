@@ -307,7 +307,7 @@ The export package includes:
 ```bash
 # 1. Clone and navigate
 git clone <repo>
-cd The-Skyrim-TTRPG-Repository
+cd The-Skyrim-Repository-3
 
 # 2. Explore example data
 cat data/npcs/jarl_balgruuf.json

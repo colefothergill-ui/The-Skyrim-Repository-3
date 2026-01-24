@@ -101,8 +101,8 @@ Export your entire campaign as a structured .zip file designed to work seamlessl
 
 1. Clone this repository:
 ```bash
-git clone https://github.com/colefothergill-ui/The-Skyrim-TTRPG-Repository.git
-cd The-Skyrim-TTRPG-Repository
+git clone https://github.com/colefothergill-ui/The-Skyrim-Repository-3.git
+cd The-Skyrim-Repository-3
 ```
 
 2. No additional dependencies required! All scripts use Python standard library.
