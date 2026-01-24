@@ -1,6 +1,6 @@
 # Skyrim TTRPG Repository - Comprehensive Audit Report
 **Date:** January 24, 2026  
-**Repository:** colefothergill-ui/The-Skyrim-TTRPG-Repository  
+**Repository:** colefothergill-ui/The-Skyrim-Repository-3  
 **Audit Scope:** Post-Alduin Timeline Alignment & Content Validation
 
 ---
