@@ -140,11 +140,13 @@
     "Echoing WULD",
     "Suspicious Wall Patrol"
   ],
-  "current_objective": "Prepare for the Battle of Whiterun; be seen fighting alongside Hadvar; use Olfrid's sealed note to make contact.",
+  "current_objective": "Prepare for the Battle of Whiterun; be seen fighting alongside Hadvar; use Olfrid's sealed note; lock in Battle-Born patronage; pursue Thu'um instructor lead (Olfrid addendum).",
   "quest_flags": {
     "battleborn_strongbox_delivered": true,
     "battle_of_whiterun_pending": true,
     "olfrid_note_acquired": true,
-    "hadvar_contact_pending": true
+    "hadvar_contact_pending": true,
+    "thuum_instructor_requested": true,
+    "battleborn_patronage_contract": true
   }
 }

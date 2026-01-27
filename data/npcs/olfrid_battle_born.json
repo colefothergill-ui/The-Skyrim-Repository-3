@@ -1,0 +1,16 @@
+{
+  "id": "olfrid_battle_born",
+  "name": "Olfrid Battle-Born",
+  "type": "npc",
+  "faction": "battle-born",
+  "location": "Whiterun",
+  "aspects": [
+    "Battle-Born Patriarch",
+    "Quiet Power, Loud Friends",
+    "Deniability Above All"
+  ],
+  "notes": [
+    "Contracted Aldric for Battle of Whiterun outcome: payment 1,500 septims upon visible support of Hadvar + Hadvar survives.",
+    "Binding addendum: must use connections to secure a credible Thu'um instructor lead + introduction."
+  ]
+}
