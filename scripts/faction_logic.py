@@ -327,6 +327,287 @@ class FactionManager:
             'f1_strength': str1,
             'f2_strength': str2
         }
+    
+    def add_faction_allegation(self, faction_id, allegation_type, accuser, details):
+        """
+        Add a faction allegation (Side Plot C mechanics - Thalmor plots, Civil War strategies)
+        
+        Args:
+            faction_id: ID of the faction being accused
+            allegation_type: Type of allegation ('thalmor_conspiracy', 'war_crime', 
+                           'betrayal', 'corruption', 'espionage')
+            accuser: Who is making the allegation
+            details: Details of the allegation
+        
+        Returns:
+            Allegation ID
+        """
+        data = self.load_factions_data()
+        if not data:
+            return None
+        
+        if faction_id not in data.get('major_factions', {}):
+            print(f"Faction '{faction_id}' not found")
+            return None
+        
+        faction = data['major_factions'][faction_id]
+        
+        # Initialize allegations list if needed
+        if 'allegations' not in faction:
+            faction['allegations'] = []
+        
+        # Create allegation
+        allegation = {
+            'id': f"allegation_{len(faction['allegations']) + 1}",
+            'type': allegation_type,
+            'accuser': accuser,
+            'details': details,
+            'status': 'pending',  # pending, proven, disproven, ignored
+            'evidence_level': 0,  # 0-10 scale
+            'created': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            'consequences': []
+        }
+        
+        faction['allegations'].append(allegation)
+        self.save_factions_data(data)
+        
+        print(f"\n⚠️  NEW ALLEGATION against {faction['name']} ⚠️")
+        print(f"Type: {allegation_type}")
+        print(f"Accuser: {accuser}")
+        print(f"Details: {details}")
+        print(f"Allegation ID: {allegation['id']}")
+        
+        return allegation['id']
+    
+    def update_allegation_evidence(self, faction_id, allegation_id, evidence_change, evidence_description=None):
+        """
+        Update evidence level for a faction allegation
+        
+        Args:
+            faction_id: ID of the faction
+            allegation_id: ID of the allegation
+            evidence_change: Amount to change evidence level (+/-)
+            evidence_description: Optional description of new evidence
+        """
+        data = self.load_factions_data()
+        if not data:
+            return False
+        
+        if faction_id not in data.get('major_factions', {}):
+            return False
+        
+        faction = data['major_factions'][faction_id]
+        
+        for allegation in faction.get('allegations', []):
+            if allegation['id'] == allegation_id:
+                old_evidence = allegation['evidence_level']
+                allegation['evidence_level'] = max(0, min(10, old_evidence + evidence_change))
+                
+                print(f"\n{faction['name']} - {allegation['type']}")
+                print(f"Evidence: {old_evidence}/10 -> {allegation['evidence_level']}/10")
+                
+                if evidence_description:
+                    if 'evidence_trail' not in allegation:
+                        allegation['evidence_trail'] = []
+                    allegation['evidence_trail'].append({
+                        'description': evidence_description,
+                        'change': evidence_change,
+                        'timestamp': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                    })
+                
+                # Auto-update status based on evidence
+                if allegation['evidence_level'] >= 8:
+                    allegation['status'] = 'proven'
+                    print("⚖️  Status: PROVEN")
+                elif allegation['evidence_level'] <= 2 and allegation['status'] == 'pending':
+                    allegation['status'] = 'disproven'
+                    print("⚖️  Status: DISPROVEN")
+                
+                self.save_factions_data(data)
+                return True
+        
+        print(f"Allegation '{allegation_id}' not found")
+        return False
+    
+    def resolve_allegation(self, faction_id, allegation_id, resolution, consequences=None):
+        """
+        Resolve a faction allegation with consequences
+        
+        Args:
+            faction_id: ID of the faction
+            allegation_id: ID of the allegation
+            resolution: Resolution status ('proven', 'disproven', 'ignored')
+            consequences: List of consequence strings
+        """
+        data = self.load_factions_data()
+        if not data:
+            return False
+        
+        if faction_id not in data.get('major_factions', {}):
+            return False
+        
+        faction = data['major_factions'][faction_id]
+        
+        for allegation in faction.get('allegations', []):
+            if allegation['id'] == allegation_id:
+                allegation['status'] = resolution
+                allegation['resolved_at'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                
+                if consequences:
+                    allegation['consequences'] = consequences
+                
+                print(f"\n⚖️  ALLEGATION RESOLVED ⚖️")
+                print(f"Faction: {faction['name']}")
+                print(f"Allegation: {allegation['type']}")
+                print(f"Resolution: {resolution}")
+                
+                if consequences:
+                    print("Consequences:")
+                    for cons in consequences:
+                        print(f"  - {cons}")
+                
+                # Apply faction relationship impacts
+                if resolution == 'proven':
+                    # Negative impact on faction reputation
+                    if 'reputation' not in faction:
+                        faction['reputation'] = 50
+                    faction['reputation'] = max(0, faction['reputation'] - 10)
+                    print(f"\nFaction reputation decreased to: {faction['reputation']}")
+                
+                self.save_factions_data(data)
+                return True
+        
+        print(f"Allegation '{allegation_id}' not found")
+        return False
+    
+    def get_faction_allegations(self, faction_id, status_filter=None):
+        """
+        Get all allegations for a faction
+        
+        Args:
+            faction_id: ID of the faction
+            status_filter: Optional filter by status ('pending', 'proven', 'disproven', 'ignored')
+        """
+        data = self.load_factions_data()
+        if not data:
+            return []
+        
+        if faction_id not in data.get('major_factions', {}):
+            return []
+        
+        faction = data['major_factions'][faction_id]
+        allegations = faction.get('allegations', [])
+        
+        if status_filter:
+            allegations = [a for a in allegations if a['status'] == status_filter]
+        
+        if allegations:
+            print(f"\n=== Allegations against {faction['name']} ===")
+            for allegation in allegations:
+                print(f"\n{allegation['id']}: {allegation['type']}")
+                print(f"  Accuser: {allegation['accuser']}")
+                print(f"  Status: {allegation['status']}")
+                print(f"  Evidence: {allegation['evidence_level']}/10")
+                print(f"  Details: {allegation['details']}")
+                if allegation.get('consequences'):
+                    print(f"  Consequences: {', '.join(allegation['consequences'])}")
+        else:
+            print(f"No allegations found for {faction_id}")
+        
+        return allegations
+    
+    def track_thalmor_plot(self, plot_name, target_faction, plot_details, clock_segments=8):
+        """
+        Track a Thalmor plot as part of Side Plot C mechanics
+        
+        Args:
+            plot_name: Name of the Thalmor plot
+            target_faction: Faction being targeted
+            plot_details: Details of the plot
+            clock_segments: Number of segments for the plot clock
+        """
+        data = self.load_factions_data()
+        if not data:
+            return None
+        
+        # Find or create Thalmor faction
+        thalmor = data['major_factions'].get('thalmor_dominion')
+        if not thalmor:
+            print("Warning: Thalmor faction not found")
+            return None
+        
+        # Initialize plots list if needed
+        if 'active_plots' not in thalmor:
+            thalmor['active_plots'] = []
+        
+        # Create plot clock
+        plot = {
+            'id': f"thalmor_plot_{len(thalmor['active_plots']) + 1}",
+            'name': plot_name,
+            'target': target_faction,
+            'details': plot_details,
+            'clock': {
+                'progress': 0,
+                'segments': clock_segments
+            },
+            'status': 'active',  # active, exposed, thwarted, succeeded
+            'created': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            'discoveries': []
+        }
+        
+        thalmor['active_plots'].append(plot)
+        self.save_factions_data(data)
+        
+        print(f"\n🕵️  NEW THALMOR PLOT INITIATED 🕵️")
+        print(f"Plot: {plot_name}")
+        print(f"Target: {target_faction}")
+        print(f"Plot ID: {plot['id']}")
+        
+        return plot['id']
+    
+    def advance_thalmor_plot(self, plot_id, progress_change, discovery=None):
+        """
+        Advance a Thalmor plot clock
+        
+        Args:
+            plot_id: ID of the plot
+            progress_change: Amount to advance (+/-) 
+            discovery: Optional discovery made by players
+        """
+        data = self.load_factions_data()
+        if not data:
+            return False
+        
+        thalmor = data['major_factions'].get('thalmor_dominion')
+        if not thalmor:
+            return False
+        
+        for plot in thalmor.get('active_plots', []):
+            if plot['id'] == plot_id:
+                old_progress = plot['clock']['progress']
+                plot['clock']['progress'] = max(0, min(plot['clock']['segments'], 
+                                                       old_progress + progress_change))
+                
+                print(f"\n🕵️  Thalmor Plot: {plot['name']}")
+                print(f"Progress: {old_progress}/{plot['clock']['segments']} -> {plot['clock']['progress']}/{plot['clock']['segments']}")
+                
+                if discovery:
+                    plot['discoveries'].append({
+                        'discovery': discovery,
+                        'timestamp': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                    })
+                    print(f"Discovery: {discovery}")
+                
+                # Check if plot completed
+                if plot['clock']['progress'] >= plot['clock']['segments']:
+                    plot['status'] = 'succeeded'
+                    print("⚠️  THALMOR PLOT SUCCEEDED!")
+                
+                self.save_factions_data(data)
+                return True
+        
+        print(f"Plot '{plot_id}' not found")
+        return False
 
 
 def main():

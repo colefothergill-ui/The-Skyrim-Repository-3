@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document provides comprehensive instructions for running the **Elder Scrolls: Skyrim - Fate Core Campaign Module**, the foundational narrative framework for your Skyrim TTRPG campaign. This module integrates the main Dragonborn questline with the civil war and Thalmor conspiracy into a cohesive, Act-based epic.
+This document provides comprehensive instructions for running the **Elder Scrolls: Skyrim - Fate Core Campaign Module**, the foundational narrative framework for your Skyrim TTRPG campaign. This module integrates the Civil War and Thalmor conspiracy into a cohesive, Act-based epic focusing on neutral factions navigating a fractured Skyrim.
 
 ## Campaign Structure
 
@@ -10,26 +10,26 @@ This document provides comprehensive instructions for running the **Elder Scroll
 
 The campaign is structured in three acts, each with distinct themes and story focus:
 
-#### **Act I: The Dragon Crisis Begins** (Sessions 1-6)
-- **Theme**: Discovery, survival, and choice
-- **Focus**: Dragons return, Dragonborn revealed, civil war pressures mount
+#### **Act I: The Civil War Begins** (Sessions 1-6)
+- **Theme**: Allegiance, survival, and choice
+- **Focus**: Civil War erupts, neutral factions face pressure, Thalmor influence grows
 - **Climax**: Battle of Whiterun (typically session 4-6)
-- **Key NPCs**: Jarl Balgruuf, Irileth, Greybeards, Delphine
+- **Key NPCs**: Jarl Balgruuf, Irileth, Ulfric Stormcloak, General Tullius
 - **Player Agency**: Party's choice of sides (or neutrality) shapes future story
 
 #### **Act II: Shadows and Secrets** (Sessions 7-14)
-- **Theme**: Conspiracy, ancient knowledge, divided loyalties
-- **Focus**: Thalmor manipulation revealed, Elder Scrolls sought, civil war escalates
+- **Theme**: Conspiracy, political intrigue, divided loyalties
+- **Focus**: Thalmor manipulation revealed, civil war escalates, faction conflicts intensify
 - **Climax**: Season Unending (if civil war unresolved) or continued war
-- **Key NPCs**: Elenwen, Delphine, Esbern, Paarthurnax, Legate Rikke or Galmar Stone-Fist
-- **Player Agency**: Blades vs. Greybeards choice, civil war commitment or peace
+- **Key NPCs**: Elenwen, Delphine, Esbern, Legate Rikke or Galmar Stone-Fist
+- **Player Agency**: Civil war commitment or peace negotiations, exposing Thalmor plots
 
-#### **Act III: The World-Eater's Return** (Sessions 15-20)
-- **Theme**: Sacrifice, unity, destiny
-- **Focus**: Final push to defeat Alduin, civil war resolution
-- **Climax**: Sovngarde and battle with Alduin
-- **Key NPCs**: Odahviing, ancient heroes, faction leaders
-- **Player Agency**: How to unite Skyrim (or not), final stand against Alduin
+#### **Act III: Skyrim's Fate** (Sessions 15-20)
+- **Theme**: Unity, sacrifice, destiny
+- **Focus**: Final push for civil war resolution, confronting Thalmor endgame
+- **Climax**: Decisive battle for Windhelm or Solitude
+- **Key NPCs**: Ulfric Stormcloak, General Tullius, Elenwen, faction leaders
+- **Player Agency**: How to unite (or divide) Skyrim, final confrontation with Thalmor
 
 ---
 
@@ -37,28 +37,28 @@ The campaign is structured in three acts, each with distinct themes and story fo
 
 ### Quest Progression Overview
 
-The main questline consists of 15 quests divided across three acts:
+The main questline consists of Civil War and Thalmor conspiracy quests divided across three acts:
 
 **Act I Quests**:
 1. Unbound
 2. Before the Storm
-3. Bleak Falls Barrow
-4. Dragon Rising
-5. The Way of the Voice
-6. The Horn of Jurgen Windcaller
-7. A Blade in the Dark
+3. Message to Whiterun
+4. Battle for Whiterun
+5. Liberation of the Rift (or other holds)
+6. Diplomatic Tensions
 
 **Act II Quests**:
-8. Diplomatic Immunity
-9. A Cornered Rat
-10. Alduin's Wall
-11. The Throat of the World
-12. Elder Knowledge
-13. The Fallen
+7. Diplomatic Immunity
+8. A Cornered Rat (Thalmor Investigation)
+9. Uncovering Allegiances
+10. Season Unending (Optional Peace)
+11. Strategic Holds Campaign
+12. Thalmor Network Infiltration
 
 **Act III Quests**:
-14. The World-Eater's Eyrie
-15. Sovngarde
+13. The Final Battle (Windhelm or Solitude)
+14. Thalmor Confrontation
+15. Skyrim's Future
 
 ### Key Story Hooks by Quest
 
@@ -69,27 +69,15 @@ Each quest includes story hooks in `/data/quests/main_quests.json`. Here are the
 - **GM Guidance**: Show the political tension. Both sides want Whiterun's allegiance. Balgruuf tries to stay neutral but knows he can't forever.
 - **Foreshadowing**: The Battle of Whiterun is coming
 
-#### **Dragon Rising**
-- **Hook**: Dragonborn revealed, all factions want party's allegiance
-- **GM Guidance**: This is the "I am Dragonborn" moment. Make it epic. The Greybeards' summons should shake the world.
-- **Thalmor Connection**: Thalmor spies begin tracking the Dragonborn
-
-#### **A Blade in the Dark**
-- **Hook**: Alduin's true power revealed - he's resurrecting dragons
-- **GM Guidance**: The sight of Alduin should be terrifying. This ends Act I and transitions to the conspiracy focus of Act II.
+#### **Battle for Whiterun**
+- **Hook**: Civil war erupts in Whiterun, neutral stance no longer viable
+- **GM Guidance**: This is a pivotal moment. Make it epic. The choice of sides (or neutrality) will resonate throughout the campaign.
+- **Thalmor Connection**: Thalmor observers document everything
 
 #### **Diplomatic Immunity**
 - **Hook**: Thalmor manipulation of the civil war is exposed
 - **GM Guidance**: This is the conspiracy reveal. The Thalmor want neither side to win decisively. They're playing both sides.
 - **Documents**: Ulfric's dossier should be shocking - he's an unwitting asset
-
-#### **The Throat of the World**
-- **Hook**: Paarthurnax revealed, Blades vs. Greybeards conflict begins
-- **GM Guidance**: Major moral choice. Paarthurnax represents redemption. The Blades represent justice. Neither is wrong.
-
-#### **The Fallen**
-- **Hook**: Civil war and dragon crisis intersect - must pause war if unresolved
-- **GM Guidance**: If civil war is still raging, trigger Season Unending. This is where both plot threads collide.
 
 ---
 
@@ -179,14 +167,14 @@ See `/data/clocks/thalmor_influence_clocks.json` for detailed tracking.
 #### **Blades Elimination**
 - **Goal**: Exterminate remaining Blades members
 - **Methods**: Active hunting, interrogation, informant networks
-- **Connection**: Main quest (Delphine, Esbern, Sky Haven Temple)
+- **Connection**: Blades actively work against Thalmor interests
 - **Party Impact**: Protecting Blades makes party Thalmor enemies
 
-#### **Dragon Crisis Investigation**
-- **Goal**: Understand and potentially exploit dragon return
-- **Methods**: Intelligence gathering, interrogation, ancient text research
-- **Key Question**: Can Dragonborn be controlled or must be eliminated?
-- **Party Impact**: Thalmor assess Dragonborn as asset or threat
+#### **Political Infiltration**
+- **Goal**: Place Thalmor agents in positions of power
+- **Methods**: Bribery, blackmail, strategic marriages
+- **Key Question**: Which faction leaders are compromised?
+- **Party Impact**: Uncovering compromised leaders affects faction trust
 
 ### Key Thalmor NPCs
 
@@ -251,9 +239,9 @@ See `/data/clocks/thalmor_influence_clocks.json` for detailed tracking.
 - **Philosophy**: Peace through the Voice, protect Paarthurnax
 
 #### **Delphine** (Blade Agent)
-- **Role**: Last Blade operative, dragon hunter
-- **Key Scenes**: The Horn of Jurgen Windcaller, A Blade in the Dark, all of Act II
-- **Conflict**: Wants Paarthurnax dead
+- **Role**: Last Blade operative, intelligence gatherer
+- **Key Scenes**: Diplomatic Immunity, exposing Thalmor plots
+- **Conflict**: Wants to eliminate Thalmor influence
 
 ### Act II Key NPCs
 
@@ -264,14 +252,9 @@ See `/data/clocks/thalmor_influence_clocks.json` for detailed tracking.
 - **Tactics**: Political pressure, intelligence networks
 
 #### **Esbern** (Blades Historian)
-- **Role**: Knowledge of dragon lore and prophecy
-- **Key Scenes**: A Cornered Rat, Alduin's Wall
-- **Value**: Interprets Alduin's Wall, reveals Dragonrend
-
-#### **Paarthurnax** (Dragon Mentor)
-- **Role**: Teaches Dragonborn, reformed dragon
-- **Key Scenes**: The Throat of the World
-- **Conflict**: Blades want him dead, Greybeards defend him
+- **Role**: Knowledge of historical lore and Thalmor tactics
+- **Key Scenes**: A Cornered Rat, strategic planning
+- **Value**: Interprets historical patterns, reveals Thalmor weaknesses
 
 #### **Legate Rikke** (Imperial Commander)
 - **Stat Sheet**: `/data/npc_stat_sheets/legate_rikke.json`
@@ -287,15 +270,15 @@ See `/data/clocks/thalmor_influence_clocks.json` for detailed tracking.
 
 ### Act III Key NPCs
 
-#### **Odahviing** (Dragon Ally)
-- **Role**: Captured dragon who becomes ally
-- **Key Scenes**: The Fallen, The World-Eater's Eyrie
-- **Relationship**: Respects strength, provides transport to Skuldafn
+#### **Ulfric Stormcloak** (Stormcloak Leader)
+- **Role**: Leader of the rebellion, unwitting Thalmor asset
+- **Key Scenes**: Civil war resolution, confronting Thalmor manipulation
+- **Relationship**: Complex - hero to some, traitor to others
 
-#### **Ancient Heroes** (Sovngarde)
-- **Role**: Aid in final battle with Alduin
-- **Key Scenes**: Sovngarde
-- **Inspiration**: Legendary Nord heroes join the fight
+#### **General Tullius** (Imperial Commander)
+- **Role**: Imperial military leader in Skyrim
+- **Key Scenes**: Civil war quests, final battle
+- **Personality**: Pragmatic, strategic, focused on Imperial victory
 
 ---
 
@@ -315,7 +298,7 @@ Track party standing with each faction using `/data/clocks/faction_trust_clocks.
 
 Some factions cannot both be at high trust:
 - **Imperial Legion** vs **Stormcloaks**: Joining one makes the other hostile
-- **Blades** vs **Greybeards**: Killing Paarthurnax destroys Greybeard trust
+- **Blades** vs **Thalmor**: Sworn enemies
 - **Dark Brotherhood**: Destroying them ends that faction path
 
 ### Neutral Factions
@@ -355,7 +338,7 @@ See `/data/clocks/thalmor_influence_clocks.json` for full details.
 2. **Talos Persecution Campaign** (5/10)
 3. **Intelligence Network** (4/8)
 4. **Blades Elimination** (7/10)
-5. **Dragon Crisis Investigation** (2/8)
+5. **Political Infiltration** (2/8)
 6. **Ulfric Manipulation** (6/8)
 
 **Advancement Guidance**:
@@ -408,22 +391,22 @@ Track individual faction relationships:
 ### Pacing Recommendations
 
 **Act I** (4-6 sessions):
-- Focus on establishing the world and threats
-- Introduce civil war tension but don't force commitment
-- Culminate in Dragon Rising (Dragonborn reveal)
-- Optional: Battle of Whiterun near end of Act I
+- Focus on establishing the world and civil war tensions
+- Introduce competing factions and force difficult choices
+- Culminate in Battle of Whiterun
+- Optional: Early Thalmor encounters
 
 **Act II** (6-8 sessions):
 - Slower pace for investigation and conspiracy
 - Diplomatic Immunity should feel like a heist
 - Multiple side quests and faction work
-- Build toward The Fallen and potential Season Unending
+- Build toward Season Unending or continued warfare
 
 **Act III** (4-6 sessions):
 - Accelerate pace for climax
-- Focus on main quest completion
-- Resolve civil war (either through victory or peace)
-- Epic finale in Sovngarde
+- Focus on civil war resolution
+- Confront Thalmor endgame
+- Epic finale with the fate of Skyrim at stake
 
 ### Player Agency
 
@@ -433,9 +416,9 @@ Track individual faction relationships:
 - Support creative solutions to problems
 
 **Branching Paths**:
-- Paarthurnax: Kill or spare (both valid)
 - Civil War: Imperial, Stormcloak, or peace
 - Thalmor: Expose, ignore, or work with (reluctantly)
+- Neutral Factions: Which to support
 
 **Consequences Matter**:
 - Choices should have lasting impact
@@ -448,7 +431,7 @@ Track individual faction relationships:
 
 **Daedric Quests**: Provide moral complexity and powerful rewards. See `/data/daedric_quests.json`.
 
-**Random Encounters**: Use Thalmor Justiciars, civil war patrols, dragon attacks to keep world feeling alive.
+**Random Encounters**: Use Thalmor Justiciars, civil war patrols to keep world feeling alive.
 
 ---
 
@@ -462,12 +445,12 @@ Track individual faction relationships:
 - Season Unending becomes mandatory
 - NPCs question their commitment
 
-### "Civil War Is Overshadowing Main Quest"
+### "Civil War Is Overshadowing Other Content"
 
-**Solution**: Use dragons to remind everyone of the real threat:
-- Dragon attacks during civil war battles
-- NPCs beg party to focus on dragons
-- Season Unending: Both sides realize dragons are more important
+**Solution**: Use Thalmor threats to remind everyone of the real enemy:
+- Thalmor attacks during civil war battles
+- NPCs beg party to focus on the true threat
+- Season Unending: Both sides realize Thalmor manipulation is more important
 
 ### "Party Killed Elenwen/Major NPC"
 
@@ -476,12 +459,12 @@ Track individual faction relationships:
 - Killing Delphine: Lose Blades questline, but creative players might rebuild
 - Killing Jarl Balgruuf: Whiterun gets new leader, major story shift
 
-### "Players Want to Skip Main Quest"
+### "Players Want to Skip Civil War"
 
 **Solution**: That's their choice!
-- Dragons continue attacking
-- Alduin remains a threat
-- World deteriorates without Dragonborn intervention
+- Civil war continues in background
+- Thalmor manipulation grows unchecked
+- World deteriorates without intervention
 - Show consequences through NPC suffering
 
 ---
@@ -511,11 +494,11 @@ Track individual faction relationships:
 
 ## Conclusion
 
-The Elder Scrolls TTRPG Campaign Module provides a rich, branching narrative that respects player agency while delivering an epic story. The three-act structure, integrated civil war and Thalmor conspiracy, and dynamic clock system create a living world that responds to player choices.
+The Elder Scrolls TTRPG Campaign Module provides a rich, branching narrative that respects player agency while delivering an epic story. The three-act structure, integrated civil war and Thalmor conspiracy, and dynamic clock system create a living world that responds to player choices. The Dragonbreak system allows for parallel timelines and divergent story paths.
 
 Remember: The best campaigns emerge from the intersection of your preparation and your players' creativity. Use this module as a framework, not a script. Adapt, improvise, and most importantly, have fun!
 
-**May your road lead you to warm sands, and may the Dragonborn's legend be worthy of song.**
+**May your road lead you to warm sands, and may Skyrim's fate be worthy of song.**
 
 ---
 
@@ -523,3 +506,4 @@ Remember: The best campaigns emerge from the intersection of your preparation an
 - `/docs/how_to_gm.md` - Comprehensive GM protocols
 - `/CAMPAIGN_INTEGRATION.md` - Technical integration details
 - `/README.md` - Repository overview
+- `/scripts/dragonbreak_manager.py` - Dragonbreak timeline system

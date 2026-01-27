@@ -69,3 +69,23 @@ When a Dragonbreak occurs, add an entry using this template:
 ---
 
 *This log should be updated after each session where major divergences from canon occur.*
+
+## Dragonbreak: Test Civil War Split
+
+**Date**: 2026-01-27 00:50:34  
+**Timeline Branch**: branch_3  
+**Trigger Event**: Test battle outcome
+
+**Description**: Test timeline divergence
+
+---
+
+## Dragonbreak: Test Story Branch
+
+**Date**: 2026-01-27 00:50:34  
+**Timeline Branch**: branch_4  
+**Trigger Event**: Test story event
+
+**Description**: Test story divergence
+
+---
