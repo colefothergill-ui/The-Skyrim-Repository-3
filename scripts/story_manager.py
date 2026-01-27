@@ -471,8 +471,8 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
                     if impression:
                         npc.setdefault("gm_barks", [])
                         npc["gm_barks"].append(impression)
-                except Exception:
-                    # Silently skip if state doesn't exist or other errors
+                except (FileNotFoundError, json.JSONDecodeError, KeyError, ValueError):
+                    # Silently skip if state doesn't exist or has invalid data
                     pass
         
         # Build scene response
