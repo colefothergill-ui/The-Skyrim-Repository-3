@@ -42,7 +42,7 @@
       "battle_of_whiterun_countdown": {
         "name": "Battle of Whiterun Countdown",
         "description": "Tension builds as both sides prepare for the pivotal Battle of Whiterun",
-        "current_progress": 2,
+        "current_progress": 3,
         "total_segments": 8,
         "completion_effect": "Battle of Whiterun occurs - Whiterun must choose a side or fall",
         "advancement_triggers": [

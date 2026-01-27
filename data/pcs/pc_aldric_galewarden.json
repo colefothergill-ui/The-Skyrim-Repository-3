@@ -86,6 +86,18 @@
         "name": "Guard Key Ring (unlabeled)",
         "type": "misc",
         "notes": "Lifted off a rooftop guard after a scuffle. Unknown doors; might fit guard-access locks."
+      },
+      {
+        "id": "consumable_smoke_pot",
+        "name": "Signal-Smoke Pot x2",
+        "type": "consumable",
+        "notes": "1/action Create Advantage: SMOKE SCREEN (1 free invoke). Consumed on use."
+      },
+      {
+        "id": "weapon_throwing_axes",
+        "name": "Throwing Axes x2",
+        "type": "weapon",
+        "notes": "Attack at range (1 zone) using Fight at -1. Recover after exchange if possible."
       }
     ]
   },
@@ -109,7 +121,8 @@
     "WHT-06: Committed to the rooftop route across the west wall, pressing the advantage from 'Gale-Runner' to stay ahead of patrol lantern sweeps.",
     "WHT-07: Doubled back through a risky rooftop gap, using WULD a second time this session to slip a tightening patrol at the cost of a mild consequence. Left behind the illusionary trail 'Backtracked Mirage' (2 free invokes) to mislead pursuers. Whirlwind Sprint mastery ticked +1 (now 4/8).",
     "SESSION 1 END: Delivered Battle-Born strongbox to Olfrid; obtained sealed note for Hadvar; gold now 645; Ragged Voice recovered; FP set to refresh for next session.",
-    "SESSION 1 END: Delivered Battle-Born strongbox to Olfrid; gold now 645; gained sealed note for Hadvar + guard key ring; Ragged Voice cleared; fate points refreshed; Minor Milestone spent to buy stunt 'The Art of the Deal' (refresh 2→1)."
+    "SESSION 1 END: Delivered Battle-Born strongbox to Olfrid; gold now 645; gained sealed note for Hadvar + guard key ring; Ragged Voice cleared; fate points refreshed; Minor Milestone spent to buy stunt 'The Art of the Deal' (refresh 2→1).",
+    "SESSION 2: Met Hadvar and Legate Rikke at the west wall muster, presented Olfrid's sealed note to Hadvar (seal opened by Hadvar), assigned to Hadvar's section, requisitioned signal-smoke pots x2 and throwing axes x2 from Imperial quartermaster."
   ],
   "last_known_location": "Whiterun — inner parapet (west wall)",
   "faction_alignment": "neutral",
