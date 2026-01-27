@@ -15,10 +15,24 @@
     ]
   },
   "skills": {
-    "Great (+4)": ["Fight"],
-    "Good (+3)": ["Athletics", "Physique"],
-    "Fair (+2)": ["Will", "Notice", "Rapport"],
-    "Average (+1)": ["Shoot", "Stealth", "Lore", "Empathy"]
+    "Great (+4)": [
+      "Fight"
+    ],
+    "Good (+3)": [
+      "Athletics",
+      "Physique"
+    ],
+    "Fair (+2)": [
+      "Will",
+      "Notice",
+      "Rapport"
+    ],
+    "Average (+1)": [
+      "Shoot",
+      "Stealth",
+      "Lore",
+      "Empathy"
+    ]
   },
   "stunts": [
     "Whirlwind Attack: Once per scene, attack all enemies in your zone",
@@ -26,8 +40,17 @@
     "Unbreakable: Gain +2 to defend against physical attacks when you invoke an aspect"
   ],
   "stress": {
-    "physical": [false, false, false, false],
-    "mental": [false, false, false]
+    "physical": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "mental": [
+      false,
+      false,
+      false
+    ]
   },
   "consequences": {
     "mild": null,

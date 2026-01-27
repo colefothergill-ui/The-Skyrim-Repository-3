@@ -100,13 +100,13 @@ class RepositoryExporter:
         # Create context file
         context = self.create_context_file()
         context_file = self.repo_dir / "_chatgpt_context.json"
-        with open(context_file, 'w') as f:
+        with open(context_file, 'w', encoding='utf-8') as f:
             json.dump(context, f, indent=2)
         
         # Create statistics file
         stats = self.collect_statistics()
         stats_file = self.repo_dir / "_statistics.json"
-        with open(stats_file, 'w') as f:
+        with open(stats_file, 'w', encoding='utf-8') as f:
             json.dump(stats, f, indent=2)
         
         print(f"Creating export package: {output_file}")
@@ -156,7 +156,7 @@ class RepositoryExporter:
         # World State
         world_state_file = self.data_dir / "world_state" / "current_state.json"
         if world_state_file.exists():
-            with open(world_state_file, 'r') as f:
+            with open(world_state_file, 'r', encoding='utf-8') as f:
                 world_state = json.load(f)
             
             reference += "## Current World State\n"
@@ -174,7 +174,7 @@ class RepositoryExporter:
         quests_dir = self.data_dir / "quests"
         if quests_dir.exists():
             for quest_file in quests_dir.glob("*.json"):
-                with open(quest_file, 'r') as f:
+                with open(quest_file, 'r', encoding='utf-8') as f:
                     quest = json.load(f)
                 if quest.get('status') == 'Active':
                     reference += f"- **{quest['name']}** ({quest['type']})\n"
@@ -184,7 +184,7 @@ class RepositoryExporter:
         pcs_dir = self.data_dir / "pcs"
         if pcs_dir.exists():
             for pc_file in pcs_dir.glob("*.json"):
-                with open(pc_file, 'r') as f:
+                with open(pc_file, 'r', encoding='utf-8') as f:
                     pc = json.load(f)
                 reference += f"- **{pc['name']}** ({pc.get('race', 'Unknown')} {pc.get('class', 'Unknown')})\n"
                 reference += f"  High Concept: {pc['aspects']['high_concept']}\n"
@@ -203,7 +203,7 @@ def main():
     quick_ref = exporter.create_quick_reference()
     quick_ref_file = Path("docs") / "quick_reference.md"
     quick_ref_file.parent.mkdir(exist_ok=True)
-    with open(quick_ref_file, 'w') as f:
+    with open(quick_ref_file, 'w', encoding='utf-8') as f:
         f.write(quick_ref)
     print(f"Created: {quick_ref_file}\n")
     

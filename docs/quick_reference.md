@@ -3,13 +3,15 @@
 ## Current World State
 - **Date**: 17th of Last Seed, 4E 201
 - **Days Passed**: 6
-- **Dragon Crisis**: Beginning
+- **Dragon Status**: Dragons are largely inactive
 - **Civil War**: Civil War in progress
 
 ## Active Quests
 - **Before the Storm** (Main Quest)
-  The Jarl of Whiterun needs allies as the civil war tensions escalate into open conflict. Help gather support for Whiterun's defense.
+  Alvor has asked you to bring news of the civil war escalation to the Jarl of Whiterun. Tensions are rising and the neutral hold needs to be warned.
 
 ## Player Characters
 - **Erich Stormblade** (Nord Warrior)
   High Concept: Nord Warrior Seeking Redemption
+- **Aldric Galewarden** (Nord Unknown)
+  High Concept: Thieves Guild Ruffian - Last of Clan Galewarden
