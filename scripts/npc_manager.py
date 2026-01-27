@@ -14,6 +14,8 @@ import os
 from pathlib import Path
 from datetime import datetime
 
+from first_impression import auto_first_impression
+
 
 class NPCManager:
     def __init__(self, data_dir="../data", state_dir="../state"):
@@ -613,6 +615,13 @@ class NPCManager:
         npc = self.load_npc(npc_id)
         if not npc:
             return {'success': False, 'message': 'NPC not found'}
+
+        # Subtle first-impression trigger (prints once per NPC unless forced)
+        try:
+            repo_root = Path(__file__).resolve().parent.parent
+            auto_first_impression(repo_root, npc_id=npc_id, trigger="First Impression", force=False, quiet=False)
+        except Exception:
+            pass
         
         dialogue_trees = npc.get('dialogue_trees', {})
         if dialogue_key not in dialogue_trees:

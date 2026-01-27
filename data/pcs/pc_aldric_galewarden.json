@@ -78,7 +78,9 @@
   "gold": 100,
   "experience": 0,
   "backstory": "**Civil War Entry**: By Shor, I did everythin' in my power to stay out've it. When this damnable war started, Clan Galewarden was the first to heed Ulfric's call. As one of the Eldest families in the Rift, with a legacy cemented in war sullied by wealth and aristocracy! I warned them that none of us had the strength our Ancestor's did! Nor did any of us know a full three-word Thu'um, for we had not honed our birth right as Grandfather had in the Great War.. So when they decided to charge an Imperial battalion uphill, and out numbered, they paid the price. Only I remain now, sat upon crumblin' wealth, and a new family.\n\n**Civil War Stance**: I wouldn't exactly call being in the Thieves Guild a neutral cause. Hm, no. More like the self-interested cause', fact of the matter is, I like coin. Bein' wealthy will do that to ye'. When my family had left Riften to join the Stormcloaks. They abandoned the shippin' industry that was dependent on the Empire's commerce to turn profit! \"Victory or Sovrngarde\" They Chanted.. More like, \"Victory or Bankruptcy\" Pah! The only loyalty I owe now is to the Guild, and to me Kin; Brynjolf. The one Lad who never turned his back, even when things got rough..\n\n**Motivation**: Despite the dwindlin' wealth, sold shippin' business, and loss of respect as a man-of-standin'. I plan on gettin' it all back, no matter how many life-or-death situations Vex puts me in! Just because I refused to fight in a war I knew my family was woefully unprepared for, doesn't mean I'm a coward. Hell, I've been in more street-fights than any of em'!Even developed me own version of hand-to-hand combat, footpads in the Ratway have taken to callin' it the Rift Rat Fighting-Style. Can't lie, It's got a ring to it. Other than gettin' me families affairs in order, there's gettin' Brynjolf'sGuild back on it's feet, I owe him that much. Also, I kinda like it. It'd completely destroy what social standin' I have left if any in Mistveil Keep were to find out, but the life of a Thief suits me well. Bryn says I'm a natural. All charm that one. Lastly, as of late. I've been findin' solace in ole tales of the Galewarden's of the past. Me Grandfather was the last one in our family to know over three full words of power, I bet I could beat that. Already a quarter of the way there.\n\n**Connections**: As said, me closest friend is Brynjolf. Even before my families fall, Bryn and I use to run all sorts of mischief together! He was the brain, and the misdirect. I was the silver-tongue, and if it came to it, the brawn. When we weren't swindlin' snake oil, we were runnin' up a tab in the Bee and Barb, or sowin' seeds throughout Riften with some long-termplan Bryn had cooked up. Outside him, Jarl Laila Lawgiver still lends me her ear, she's the only reason I still hold authority. Vekel in the Ratway and I have a Rapport. Of course I'd like to think Sapphire and I are close, but the lass is more close off than the Shrine of Talos in Markarth! Then, there's Mjoll the Lioness. Hah, never has there been a more elegant, and more fierce shield-maiden than she! If she ever found out that I run with the Thieves Guild, well, my affections for her would certainly not be reciprocated, and her good-aligned heart would more than likely see me hung from Mistveil Keep.. Regarding Whiterun, Hm, I have met Vignar Greymane, and Olfrid Battleborn more than a few times, and done buisness with them both. However, it's never been much more than that.",
-  "relationships": {},
+  "relationships": {
+    "met_npcs": {}
+  },
   "quests": [],
   "session_history": [],
   "notes": "Created during Session Zero",
@@ -114,5 +116,7 @@
         }
       }
     }
-  ]
+  ],
+  "visual_profile_ref": "data/pcs/visual_profiles/pc_aldric_galewarden.visual.json",
+  "portrait_path": "assets/portraits/pc_aldric_galewarden.png"
 }
