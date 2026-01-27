@@ -61,7 +61,17 @@ def load_standing_stone_bonus(data_dir, stone_name):
     if not stones_path.exists() or not stone_name:
         return {}
 
-    stones = json.loads(stones_path.read_text(encoding="utf-8"))
+    # Use Unicode-safe loading
+    data = stones_path.read_bytes()
+    for enc in ("utf-8", "utf-8-sig", "cp1252", "latin-1"):
+        try:
+            stones = json.loads(data.decode(enc))
+            break
+        except Exception:
+            continue
+    else:
+        stones = json.loads(data.decode("latin-1", errors="replace"))
+    
     for s in stones.get("standing_stones", []):
         if s.get("name") == stone_name:
             gm = (s.get("effect") or {}).get("game_mechanic", "")
@@ -101,6 +111,16 @@ if __name__ == "__main__":
     args = ap.parse_args()
 
     p = Path(args.pc)
-    pc = json.loads(p.read_text(encoding="utf-8"))
+    # Use Unicode-safe loading (matches export_repo.py approach)
+    data = p.read_bytes()
+    for enc in ("utf-8", "utf-8-sig", "cp1252", "latin-1"):
+        try:
+            pc = json.loads(data.decode(enc))
+            break
+        except Exception:
+            continue
+    else:
+        pc = json.loads(data.decode("latin-1", errors="replace"))
+    
     out = compute_effective_skills(pc, data_dir=args.data_dir)
     print(json.dumps(out, indent=2, ensure_ascii=False))

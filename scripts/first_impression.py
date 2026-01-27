@@ -5,7 +5,18 @@ from pathlib import Path
 from datetime import datetime
 
 def load_json(path):
-    return json.loads(Path(path).read_text(encoding="utf-8"))
+    """
+    Unicode-safe JSON loader (matches export_repo.py approach).
+    Tries UTF-8 variants first, then common fallbacks.
+    """
+    path = Path(path)
+    data = path.read_bytes()
+    for enc in ("utf-8", "utf-8-sig", "cp1252", "latin-1"):
+        try:
+            return json.loads(data.decode(enc))
+        except Exception:
+            continue
+    return json.loads(data.decode("latin-1", errors="replace"))
 
 def save_json(path, data):
     Path(path).write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
