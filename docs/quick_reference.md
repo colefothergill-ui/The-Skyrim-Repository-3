@@ -11,7 +11,7 @@
   Alvor has asked you to bring news of the civil war escalation to the Jarl of Whiterun. Tensions are rising and the neutral hold needs to be warned.
 
 ## Player Characters
-- **Aldric Galewarden** (Nord Unknown)
-  High Concept: Thieves Guild Ruffian - Last of Clan Galewarden
 - **Erich Stormblade** (Nord Warrior)
   High Concept: Nord Warrior Seeking Redemption
+- **Aldric Galewarden** (Nord Unknown)
+  High Concept: Thieves Guild Ruffian - Last of Clan Galewarden
