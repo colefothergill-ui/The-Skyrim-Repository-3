@@ -123,7 +123,9 @@
     "SESSION 1 END: Delivered Battle-Born strongbox to Olfrid; obtained sealed note for Hadvar; gold now 645; Ragged Voice recovered; FP set to refresh for next session.",
     "SESSION 1 END: Delivered Battle-Born strongbox to Olfrid; gold now 645; gained sealed note for Hadvar + guard key ring; Ragged Voice cleared; fate points refreshed; Minor Milestone spent to buy stunt 'The Art of the Deal' (refresh 2→1).",
     "SESSION 2: Met Hadvar and Legate Rikke at the west wall muster, presented Olfrid's sealed note to Hadvar (seal opened by Hadvar), assigned to Hadvar's section, requisitioned signal-smoke pots x2 and throwing axes x2 from Imperial quartermaster.",
-    "WHT-09: Took compel (Hadvar's Guard Up). Used Art of the Deal to lock public unit claim: Under Hadvar's Banner. Negotiated wager terms with Hadvar."
+    "WHT-09: Took compel (Hadvar's Guard Up). Used Art of the Deal to lock public unit claim: Under Hadvar's Banner. Negotiated wager terms with Hadvar.",
+    "WHT-09: Used Battle Cry (racial, once/session) to create 'Frightened Enemies' (1 free invoke).",
+    "WHT-09: Succeeded with Style on Defend using Rift Rat Martial Artist; created 'Kicked Off the Ladder' (1 free invoke)."
   ],
   "last_known_location": "Whiterun — inner parapet (west wall)",
   "faction_alignment": "neutral",
@@ -183,7 +185,9 @@
   "portrait_path": "assets/portraits/pc_aldric_galewarden.png",
   "active_scene_aspects": [
     "Hadvar's Guard Up (GM: 1 free invoke)",
-    "Under Hadvar's Banner (PC: 1 free invoke)"
+    "Under Hadvar's Banner (PC: 1 free invoke)",
+    "Frightened Enemies (PC: 1 free invoke)",
+    "Kicked Off the Ladder (PC: 1 free invoke)"
   ],
   "temporary_boosts": []
 }
