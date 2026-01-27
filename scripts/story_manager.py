@@ -576,6 +576,138 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
         
         return state['faction_quests']
     
+    def get_starting_companion(self):
+        """
+        Get the starting companion (Hadvar or Ralof) based on Helgen escape decision
+        
+        Returns:
+            Dict with companion info or None
+        """
+        state = self.load_campaign_state()
+        if not state:
+            return None
+        
+        # Check branching decision for Helgen escape companion
+        helgen_companion = state.get('branching_decisions', {}).get('helgen_escape_companion')
+        
+        if not helgen_companion or helgen_companion == 'undecided':
+            return None
+        
+        # Find companion in active companions
+        if 'companions' in state:
+            for companion in state['companions'].get('active_companions', []):
+                if companion['name'] == helgen_companion:
+                    return companion
+        
+        return None
+    
+    def get_companion_dialogue_hooks(self, location, situation="general"):
+        """
+        Get dialogue hooks for active companions based on location and situation
+        
+        Args:
+            location: Current location (e.g., "Whiterun", "Riverwood")
+            situation: Current situation type (e.g., "arrival", "combat", "civil_war")
+        
+        Returns:
+            Dict with companion dialogue suggestions
+        """
+        state = self.load_campaign_state()
+        if not state or 'companions' not in state:
+            return {"companions": [], "suggestions": []}
+        
+        active_companions = state['companions'].get('active_companions', [])
+        helgen_companion = state.get('branching_decisions', {}).get('helgen_escape_companion')
+        
+        result = {
+            'companions': [],
+            'dialogue_hooks': []
+        }
+        
+        # Add Hadvar dialogue hooks
+        if helgen_companion == "Hadvar":
+            hadvar_hooks = {
+                'name': 'Hadvar',
+                'location': location,
+                'situation': situation,
+                'hooks': []
+            }
+            
+            if location.lower() == "riverwood":
+                hadvar_hooks['hooks'].append({
+                    'trigger': 'Arrival',
+                    'dialogue': "We should visit my uncle Alvor's forge. He'll help us, no questions asked. Family is family."
+                })
+                hadvar_hooks['hooks'].append({
+                    'trigger': 'At Alvor\'s forge',
+                    'dialogue': "Uncle! It's good to see you. These are the people I escaped Helgen with. Can you help us?"
+                })
+            
+            if location.lower() == "whiterun":
+                hadvar_hooks['hooks'].append({
+                    'trigger': 'Approaching gates',
+                    'dialogue': "Whiterun. The heart of Skyrim. We need to inform the Jarl about the dragon attack. My Imperial credentials should get us an audience."
+                })
+                if situation == "civil_war":
+                    hadvar_hooks['hooks'].append({
+                        'trigger': 'Civil war discussion',
+                        'dialogue': "The Battle of Whiterun is coming. I believe the Empire is necessary to keep Skyrim strong against the Thalmor, but... I hope we can end this with minimal bloodshed."
+                    })
+            
+            if situation == "combat" and "imperial" in location.lower():
+                hadvar_hooks['hooks'].append({
+                    'trigger': 'Fighting alongside Imperials',
+                    'dialogue': "Shield wall! Protect your brothers! For the Empire!"
+                })
+            
+            result['companions'].append(hadvar_hooks)
+        
+        # Add Ralof dialogue hooks
+        elif helgen_companion == "Ralof":
+            ralof_hooks = {
+                'name': 'Ralof',
+                'location': location,
+                'situation': situation,
+                'hooks': []
+            }
+            
+            if location.lower() == "riverwood":
+                ralof_hooks['hooks'].append({
+                    'trigger': 'Arrival',
+                    'dialogue': "My sister Gerdur runs the lumber mill here. She and her husband will shelter us. We Nords look after our own."
+                })
+                ralof_hooks['hooks'].append({
+                    'trigger': 'At the lumber mill',
+                    'dialogue': "Gerdur! By Talos, it's good to see you alive. These are friends - we escaped Helgen together when that dragon attacked."
+                })
+            
+            if location.lower() == "whiterun":
+                ralof_hooks['hooks'].append({
+                    'trigger': 'Approaching gates',
+                    'dialogue': "Whiterun. For now, Balgruuf sits the fence, but he's already made his choice - the Empire's lap dog. We need to be careful here."
+                })
+                if situation == "civil_war":
+                    ralof_hooks['hooks'].append({
+                        'trigger': 'Civil war discussion',
+                        'dialogue': "The Battle of Whiterun will decide Skyrim's future. We fight for our freedom, our right to worship Talos, and our children's future. That's worth any price."
+                    })
+            
+            if situation == "combat" and "stormcloak" in location.lower():
+                ralof_hooks['hooks'].append({
+                    'trigger': 'Fighting alongside Stormcloaks',
+                    'dialogue': "For Skyrim! For Talos! Show them the fury of true Nords!"
+                })
+            
+            result['companions'].append(ralof_hooks)
+        
+        # Add general suggestions
+        if active_companions:
+            result['dialogue_hooks'].append("Companions may comment on party decisions, especially those related to their faction")
+            result['dialogue_hooks'].append("Ask companions for their perspective on local NPCs or situations")
+            result['dialogue_hooks'].append("Companions may warn about dangers or suggest alternate approaches based on their knowledge")
+        
+        return result
+    
     def generate_wilderness_encounter(self, hold_name, act="Act 1", difficulty="moderate"):
         """
         Generate a wilderness encounter based on hold and act
