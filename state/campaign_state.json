@@ -131,5 +131,10 @@
     "thieves_guild": 30
   },
   "neutral_subfaction": "thieves_guild",
-  "starting_npc_contact": "brynjolf"
+  "starting_npc_contact": "brynjolf",
+  "current_scene_id": "WHT-04",
+  "current_location": "Whiterun \u2014 Battle-Born Manor (upper room, near wall safe)",
+  "current_threats": [
+    "Lantern Sweep on the Roofline"
+  ]
 }
