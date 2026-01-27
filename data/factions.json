@@ -53,7 +53,10 @@
         "Tribune",
         "Legate"
       ],
-      "common_npcs": ["npc_stat_whiterun_guard", "npc_stat_housecarl"]
+      "common_npcs": [
+        "npc_stat_whiterun_guard",
+        "npc_stat_housecarl"
+      ]
     },
     "stormcloaks": {
       "id": "stormcloaks",
@@ -108,7 +111,29 @@
         "Snow-Hammer",
         "Stormblade"
       ],
-      "common_npcs": ["npc_stat_housecarl", "npc_stat_forsworn_marauder"]
+      "common_npcs": [
+        "npc_stat_housecarl",
+        "npc_stat_forsworn_marauder"
+      ],
+      "allegations": [
+        {
+          "id": "allegation_1",
+          "type": "thalmor_conspiracy",
+          "accuser": "Test Accuser",
+          "details": "Test allegation details",
+          "status": "pending",
+          "evidence_level": 3,
+          "created": "2026-01-27 00:50:34",
+          "consequences": [],
+          "evidence_trail": [
+            {
+              "description": "Test evidence",
+              "change": 3,
+              "timestamp": "2026-01-27 00:50:34"
+            }
+          ]
+        }
+      ]
     },
     "thalmor": {
       "id": "thalmor",
@@ -164,7 +189,9 @@
         "Gather information on Dragonborn",
         "Maintain presence despite Nordic hostility"
       ],
-      "common_npcs": ["npc_stat_thalmor_agent"]
+      "common_npcs": [
+        "npc_stat_thalmor_agent"
+      ]
     },
     "companions": {
       "id": "companions",
@@ -214,7 +241,9 @@
         "Harbinger"
       ],
       "secret": "Inner Circle members are werewolves",
-      "common_npcs": ["npc_stat_companion_member"]
+      "common_npcs": [
+        "npc_stat_companion_member"
+      ]
     },
     "thieves_guild": {
       "id": "thieves_guild",
@@ -468,41 +497,82 @@
           "id": "companions_01",
           "name": "Take Up Arms",
           "description": "Prove yourself worthy to join the Companions",
-          "objectives": ["Complete a trial combat", "Impress Vilkas or Farkas", "Be accepted into Jorrvaskr"],
-          "rewards": ["Companions membership", "Access to training", "Companion NPC stat sheet for ally"],
+          "objectives": [
+            "Complete a trial combat",
+            "Impress Vilkas or Farkas",
+            "Be accepted into Jorrvaskr"
+          ],
+          "rewards": [
+            "Companions membership",
+            "Access to training",
+            "Companion NPC stat sheet for ally"
+          ],
           "trust_change": 2,
           "civil_war_tie": "Companions remain neutral but favor Whiterun's independence",
-          "act_context": ["Act 1"]
+          "act_context": [
+            "Act 1"
+          ]
         },
         {
           "id": "companions_02",
           "name": "The Silver Hand",
           "description": "Investigate the Silver Hand's attacks on the Companions",
-          "objectives": ["Track Silver Hand activity", "Discover their base", "Learn their secret"],
-          "rewards": ["Intel on Silver Hand", "Companions trust increases"],
+          "objectives": [
+            "Track Silver Hand activity",
+            "Discover their base",
+            "Learn their secret"
+          ],
+          "rewards": [
+            "Intel on Silver Hand",
+            "Companions trust increases"
+          ],
           "trust_change": 2,
           "civil_war_tie": "If civil war active, Silver Hand may be funded by one side to weaken Companions",
-          "act_context": ["Act 1", "Act 2"]
+          "act_context": [
+            "Act 1",
+            "Act 2"
+          ]
         },
         {
           "id": "companions_03",
           "name": "Blood's Honor",
           "description": "Discover the truth about the Companions' beast blood",
-          "objectives": ["Learn about werewolf curse", "Choose to accept or reject the blood", "Face consequences"],
-          "rewards": ["Optional lycanthropy", "Inner Circle membership", "Werewolf stat options"],
+          "objectives": [
+            "Learn about werewolf curse",
+            "Choose to accept or reject the blood",
+            "Face consequences"
+          ],
+          "rewards": [
+            "Optional lycanthropy",
+            "Inner Circle membership",
+            "Werewolf stat options"
+          ],
           "trust_change": 3,
           "branching": "Accept or reject beast blood affects future quests",
-          "act_context": ["Act 2"]
+          "act_context": [
+            "Act 2"
+          ]
         },
         {
           "id": "companions_04",
           "name": "Glory of the Dead",
           "description": "Cure Kodlak's spirit and decide the fate of the beast blood",
-          "objectives": ["Enter Ysgramor's Tomb", "Free Kodlak's spirit", "Confront your own curse"],
-          "rewards": ["Option to cure lycanthropy", "Leadership role", "Harbinger potential"],
+          "objectives": [
+            "Enter Ysgramor's Tomb",
+            "Free Kodlak's spirit",
+            "Confront your own curse"
+          ],
+          "rewards": [
+            "Option to cure lycanthropy",
+            "Leadership role",
+            "Harbinger potential"
+          ],
           "trust_change": 4,
           "civil_war_tie": "Companions may aid Whiterun defense if trust is high",
-          "act_context": ["Act 2", "Act 3"]
+          "act_context": [
+            "Act 2",
+            "Act 3"
+          ]
         }
       ],
       "side_quests": [
@@ -522,40 +592,82 @@
           "id": "thieves_01",
           "name": "Taking Care of Business",
           "description": "Prove yourself by shaking down merchants for the Guild",
-          "objectives": ["Intimidate or persuade three merchants", "Report to Brynjolf", "Join the Guild"],
-          "rewards": ["Guild membership", "Access to Ragged Flagon", "Fence contacts"],
+          "objectives": [
+            "Intimidate or persuade three merchants",
+            "Report to Brynjolf",
+            "Join the Guild"
+          ],
+          "rewards": [
+            "Guild membership",
+            "Access to Ragged Flagon",
+            "Fence contacts"
+          ],
           "trust_change": 2,
           "civil_war_tie": "Guild profits from civil war chaos, targets both sides' supply lines",
-          "act_context": ["Act 1", "Act 2"]
+          "act_context": [
+            "Act 1",
+            "Act 2"
+          ]
         },
         {
           "id": "thieves_02",
           "name": "Loud and Clear",
           "description": "First major heist - Goldenglow Estate",
-          "objectives": ["Infiltrate estate", "Burn beehives (optional)", "Steal Aringoth's safe"],
-          "rewards": ["Guild reputation increase", "Gold", "Special item"],
+          "objectives": [
+            "Infiltrate estate",
+            "Burn beehives (optional)",
+            "Steal Aringoth's safe"
+          ],
+          "rewards": [
+            "Guild reputation increase",
+            "Gold",
+            "Special item"
+          ],
           "trust_change": 2,
-          "act_context": ["Act 1", "Act 2"]
+          "act_context": [
+            "Act 1",
+            "Act 2"
+          ]
         },
         {
           "id": "thieves_03",
           "name": "The Pursuit",
           "description": "Uncover Mercer Frey's betrayal",
-          "objectives": ["Follow Mercer's trail", "Discover his theft", "Learn about Nocturnal"],
-          "rewards": ["Truth about Guild's decline", "Quest for Skeleton Key"],
+          "objectives": [
+            "Follow Mercer's trail",
+            "Discover his theft",
+            "Learn about Nocturnal"
+          ],
+          "rewards": [
+            "Truth about Guild's decline",
+            "Quest for Skeleton Key"
+          ],
           "trust_change": 3,
           "civil_war_tie": "Mercer may have sold information to Thalmor - connects to main plot",
-          "act_context": ["Act 2"]
+          "act_context": [
+            "Act 2"
+          ]
         },
         {
           "id": "thieves_04",
           "name": "Darkness Returns",
           "description": "Return the Skeleton Key and restore Nocturnal's favor",
-          "objectives": ["Enter Twilight Sepulcher", "Defeat Mercer", "Choose to return or keep Skeleton Key"],
-          "rewards": ["Guild Master position", "Nocturnal's blessing", "Guild restoration"],
+          "objectives": [
+            "Enter Twilight Sepulcher",
+            "Defeat Mercer",
+            "Choose to return or keep Skeleton Key"
+          ],
+          "rewards": [
+            "Guild Master position",
+            "Nocturnal's blessing",
+            "Guild restoration"
+          ],
           "trust_change": 4,
           "branching": "Keeping Skeleton Key provides benefits but angers Nocturnal",
-          "act_context": ["Act 2", "Act 3"]
+          "act_context": [
+            "Act 2",
+            "Act 3"
+          ]
         }
       ],
       "side_quests": [
@@ -575,41 +687,83 @@
           "id": "college_01",
           "name": "First Lessons",
           "description": "Pass the entry test and learn basic magic",
-          "objectives": ["Demonstrate magical ability", "Receive training", "Meet fellow students"],
-          "rewards": ["College membership", "Student robes", "Access to Arcanaeum"],
+          "objectives": [
+            "Demonstrate magical ability",
+            "Receive training",
+            "Meet fellow students"
+          ],
+          "rewards": [
+            "College membership",
+            "Student robes",
+            "Access to Arcanaeum"
+          ],
           "trust_change": 2,
           "civil_war_tie": "College remains neutral but Thalmor watch closely",
-          "act_context": ["Act 1", "Act 2"]
+          "act_context": [
+            "Act 1",
+            "Act 2"
+          ]
         },
         {
           "id": "college_02",
           "name": "Under Saarthal",
           "description": "Archaeological expedition reveals ancient magic",
-          "objectives": ["Explore Saarthal with Tolfdir", "Discover Eye of Magnus", "Encounter Psijic Order"],
-          "rewards": ["Discovery of major artifact", "Psijic Order contact", "Daedric quest hook"],
+          "objectives": [
+            "Explore Saarthal with Tolfdir",
+            "Discover Eye of Magnus",
+            "Encounter Psijic Order"
+          ],
+          "rewards": [
+            "Discovery of major artifact",
+            "Psijic Order contact",
+            "Daedric quest hook"
+          ],
           "trust_change": 2,
           "thalmor_tie": "Thalmor become interested in Eye of Magnus",
-          "act_context": ["Act 1", "Act 2"]
+          "act_context": [
+            "Act 1",
+            "Act 2"
+          ]
         },
         {
           "id": "college_03",
           "name": "Revealing the Unseen",
           "description": "Research the Staff of Magnus",
-          "objectives": ["Consult Augur of Dunlain", "Travel to Mzulft", "Retrieve focusing crystal"],
-          "rewards": ["Knowledge of Staff location", "Dwemer artifact"],
+          "objectives": [
+            "Consult Augur of Dunlain",
+            "Travel to Mzulft",
+            "Retrieve focusing crystal"
+          ],
+          "rewards": [
+            "Knowledge of Staff location",
+            "Dwemer artifact"
+          ],
           "trust_change": 2,
-          "act_context": ["Act 2"]
+          "act_context": [
+            "Act 2"
+          ]
         },
         {
           "id": "college_04",
           "name": "The Eye of Magnus",
           "description": "Stop Ancano from using the Eye's power",
-          "objectives": ["Retrieve Staff of Magnus", "Defeat Ancano", "Contain the Eye"],
-          "rewards": ["Arch-Mage position", "College saved", "Powerful magic items"],
+          "objectives": [
+            "Retrieve Staff of Magnus",
+            "Defeat Ancano",
+            "Contain the Eye"
+          ],
+          "rewards": [
+            "Arch-Mage position",
+            "College saved",
+            "Powerful magic items"
+          ],
           "trust_change": 4,
           "thalmor_tie": "Major blow to Thalmor plans - Ancano's death creates consequences",
           "civil_war_tie": "College's increased power affects regional politics",
-          "act_context": ["Act 2", "Act 3"]
+          "act_context": [
+            "Act 2",
+            "Act 3"
+          ]
         }
       ],
       "side_quests": [
@@ -629,40 +783,86 @@
           "id": "imperial_cw_01",
           "name": "Joining the Legion",
           "description": "Swear oath to General Tullius and the Empire",
-          "objectives": ["Travel to Solitude", "Meet General Tullius", "Complete oath ceremony"],
-          "rewards": ["Imperial Legion membership", "Imperial armor", "Access to Imperial quests"],
+          "objectives": [
+            "Travel to Solitude",
+            "Meet General Tullius",
+            "Complete oath ceremony"
+          ],
+          "rewards": [
+            "Imperial Legion membership",
+            "Imperial armor",
+            "Access to Imperial quests"
+          ],
           "trust_change": 3,
-          "npc_available": ["npc_stat_imperial_legionnaire"],
-          "act_context": ["Act 1", "Act 2"]
+          "npc_available": [
+            "npc_stat_imperial_legionnaire"
+          ],
+          "act_context": [
+            "Act 1",
+            "Act 2"
+          ]
         },
         {
           "id": "imperial_cw_02",
           "name": "The Jagged Crown",
           "description": "Race Stormcloaks to recover ancient Nord artifact",
-          "objectives": ["Enter Korvanjund", "Defeat Stormcloak forces", "Secure the Crown"],
-          "rewards": ["Imperial victories increase", "Legitimacy boost"],
+          "objectives": [
+            "Enter Korvanjund",
+            "Defeat Stormcloak forces",
+            "Secure the Crown"
+          ],
+          "rewards": [
+            "Imperial victories increase",
+            "Legitimacy boost"
+          ],
           "trust_change": 2,
-          "enemy_encounter": ["npc_stat_stormcloak_soldier"],
-          "act_context": ["Act 1", "Act 2"]
+          "enemy_encounter": [
+            "npc_stat_stormcloak_soldier"
+          ],
+          "act_context": [
+            "Act 1",
+            "Act 2"
+          ]
         },
         {
           "id": "imperial_cw_03",
           "name": "Battle for Whiterun",
           "description": "Defend or capture Whiterun for the Empire",
-          "objectives": ["Coordinate with Legate Rikke", "Siege or defend Whiterun", "Secure the city"],
-          "rewards": ["Major victory", "Whiterun becomes Imperial"],
+          "objectives": [
+            "Coordinate with Legate Rikke",
+            "Siege or defend Whiterun",
+            "Secure the city"
+          ],
+          "rewards": [
+            "Major victory",
+            "Whiterun becomes Imperial"
+          ],
           "trust_change": 3,
           "main_quest_tie": "Affects Dragonborn's access to both factions",
-          "act_context": ["Act 1", "Act 2"]
+          "act_context": [
+            "Act 1",
+            "Act 2"
+          ]
         },
         {
           "id": "imperial_cw_04",
           "name": "Battle for Windhelm",
           "description": "Final assault on Stormcloak capital",
-          "objectives": ["Siege Windhelm", "Defeat Ulfric Stormcloak", "End the rebellion"],
-          "rewards": ["Civil war ends - Imperial victory", "Land and title", "Major influence"],
+          "objectives": [
+            "Siege Windhelm",
+            "Defeat Ulfric Stormcloak",
+            "End the rebellion"
+          ],
+          "rewards": [
+            "Civil war ends - Imperial victory",
+            "Land and title",
+            "Major influence"
+          ],
           "trust_change": 5,
-          "act_context": ["Act 2", "Act 3"]
+          "act_context": [
+            "Act 2",
+            "Act 3"
+          ]
         }
       ]
     },
@@ -673,41 +873,87 @@
           "id": "stormcloak_cw_01",
           "name": "Joining the Stormcloaks",
           "description": "Prove your loyalty to Ulfric and free Skyrim",
-          "objectives": ["Travel to Windhelm", "Meet Ulfric Stormcloak", "Take the oath"],
-          "rewards": ["Stormcloak membership", "Stormcloak armor", "Access to rebellion quests"],
+          "objectives": [
+            "Travel to Windhelm",
+            "Meet Ulfric Stormcloak",
+            "Take the oath"
+          ],
+          "rewards": [
+            "Stormcloak membership",
+            "Stormcloak armor",
+            "Access to rebellion quests"
+          ],
           "trust_change": 3,
-          "npc_available": ["npc_stat_stormcloak_soldier"],
-          "act_context": ["Act 1", "Act 2"]
+          "npc_available": [
+            "npc_stat_stormcloak_soldier"
+          ],
+          "act_context": [
+            "Act 1",
+            "Act 2"
+          ]
         },
         {
           "id": "stormcloak_cw_02",
           "name": "The Jagged Crown",
           "description": "Claim the ancient crown for Ulfric",
-          "objectives": ["Enter Korvanjund", "Defeat Imperial forces", "Deliver crown to Ulfric"],
-          "rewards": ["Stormcloak victories increase", "Ulfric's favor"],
+          "objectives": [
+            "Enter Korvanjund",
+            "Defeat Imperial forces",
+            "Deliver crown to Ulfric"
+          ],
+          "rewards": [
+            "Stormcloak victories increase",
+            "Ulfric's favor"
+          ],
           "trust_change": 2,
-          "enemy_encounter": ["npc_stat_imperial_legionnaire"],
-          "act_context": ["Act 1", "Act 2"]
+          "enemy_encounter": [
+            "npc_stat_imperial_legionnaire"
+          ],
+          "act_context": [
+            "Act 1",
+            "Act 2"
+          ]
         },
         {
           "id": "stormcloak_cw_03",
           "name": "Battle for Whiterun",
           "description": "Capture Whiterun for the Stormcloaks",
-          "objectives": ["Assault Whiterun with Galmar", "Breach the walls", "Force Jarl's surrender"],
-          "rewards": ["Major victory", "Whiterun becomes Stormcloak territory"],
+          "objectives": [
+            "Assault Whiterun with Galmar",
+            "Breach the walls",
+            "Force Jarl's surrender"
+          ],
+          "rewards": [
+            "Major victory",
+            "Whiterun becomes Stormcloak territory"
+          ],
           "trust_change": 3,
           "main_quest_tie": "Affects Dragonborn's standing with all factions",
-          "act_context": ["Act 1", "Act 2"]
+          "act_context": [
+            "Act 1",
+            "Act 2"
+          ]
         },
         {
           "id": "stormcloak_cw_04",
           "name": "Battle for Solitude",
           "description": "Final assault on Imperial capital of Skyrim",
-          "objectives": ["Siege Solitude", "Defeat General Tullius", "Free Skyrim from Empire"],
-          "rewards": ["Civil war ends - Stormcloak victory", "Thane of Windhelm", "Major influence"],
+          "objectives": [
+            "Siege Solitude",
+            "Defeat General Tullius",
+            "Free Skyrim from Empire"
+          ],
+          "rewards": [
+            "Civil war ends - Stormcloak victory",
+            "Thane of Windhelm",
+            "Major influence"
+          ],
           "trust_change": 5,
           "thalmor_tie": "Thalmor are displeased with decisive outcome",
-          "act_context": ["Act 2", "Act 3"]
+          "act_context": [
+            "Act 2",
+            "Act 3"
+          ]
         }
       ]
     }
@@ -769,22 +1015,37 @@
     "key_interactions": [
       {
         "quest": "Diplomatic Immunity",
-        "factions_involved": ["Thieves Guild", "Blades"],
+        "factions_involved": [
+          "Thieves Guild",
+          "Blades"
+        ],
         "description": "Infiltrating Thalmor Embassy - Thieves Guild can provide intel and equipment"
       },
       {
         "quest": "Season Unending",
-        "factions_involved": ["Imperial Legion", "Stormcloaks", "Greybeards"],
+        "factions_involved": [
+          "Imperial Legion",
+          "Stormcloaks",
+          "Greybeards"
+        ],
         "description": "Peace negotiation - faction standing affects negotiating power"
       },
       {
         "quest": "Alduin's Bane",
-        "factions_involved": ["Greybeards", "Blades", "College of Winterhold"],
+        "factions_involved": [
+          "Greybeards",
+          "Blades",
+          "College of Winterhold"
+        ],
         "description": "Dragon combat - factions can provide unique aid based on trust level"
       },
       {
         "quest": "Dragonslayer",
-        "factions_involved": ["Blades", "Companions", "Any faction at high trust"],
+        "factions_involved": [
+          "Blades",
+          "Companions",
+          "Any faction at high trust"
+        ],
         "description": "Final confrontation - high-trust factions send champions to aid the Dragonborn"
       }
     ],
