@@ -13,7 +13,8 @@
           "Complete jobs for Battle-Born contacts (+1)",
           "Establish reliable fence relationship (+1)",
           "Secure safe house location (+1)",
-          "Build relationships with corrupt guards (+1)"
+          "Build relationships with corrupt guards (+1)",
+          "Earn Olfrid's endorsement by aiding Hadvar during the Battle of Whiterun (+1; unlock cap)"
         ],
         "setback_triggers": [
           "Jobs go wrong and attract attention (-1)",
@@ -23,8 +24,8 @@
         "gate": {
           "type": "conditional_progress_cap",
           "cap_until_condition_met": 3,
-          "condition": "state.civil_war_state.player_alliance == 'imperial'",
-          "note": "Olfrid can open access now, but permanent foothold requires Battle-Born influence to remain intact."
+          "condition": "state.branching_decisions.civil_war_entry_contact == 'hadvar' || state.civil_war_state.player_alliance == 'imperial'",
+          "note": "Olfrid will not fully open the Whiterun door until you prove your alignment during the Battle of Whiterun—specifically by fighting alongside Hadvar (or formally allying with the Empire)."
         }
       },
       "battleborn_strongbox": {
