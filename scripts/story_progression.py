@@ -77,13 +77,13 @@ class StoryProgressionManager:
         
         events = []
         
-        # Check dragon crisis status
-        if state['dragon_crisis']['status'] == 'Beginning':
-            events.append({
-                'type': 'dragon_sighting',
-                'description': 'Reports of dragon sightings increase across Skyrim',
-                'impact': 'Civilian morale decreases, guards on high alert'
-            })
+        # Check post-dragon status (post-Alduin timeline)
+        post_dragon = state.get('post_dragon_crisis', {})
+        dragon_status = post_dragon.get('status', '')
+        
+        # Generate events based on current timeline
+        # Note: In post-Alduin timeline, dragon crisis is resolved
+        # Focus on civil war and Thalmor plots instead
         
         # Check faction standings
         for faction_name, data in state['faction_standings'].items():
@@ -140,10 +140,8 @@ class StoryProgressionManager:
         
         rumors = []
         
-        # Dragon-related rumors
-        if len(state['dragon_crisis']['dragon_attacks']) > 0:
-            rumors.append("I heard the dragons are back. Just like in the old tales!")
-            rumors.append("They say someone who can speak the dragon language has appeared.")
+        # Post-Alduin timeline - dragons are largely inactive
+        # Generate civil war and Thalmor-focused rumors instead
         
         # Civil war rumors
         if state['political_situation']['skyrim_status'] == 'Civil War in progress':

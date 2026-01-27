@@ -162,7 +162,11 @@ class RepositoryExporter:
             reference += "## Current World State\n"
             reference += f"- **Date**: {world_state.get('game_date', 'Unknown')}\n"
             reference += f"- **Days Passed**: {world_state.get('in_game_days_passed', 0)}\n"
-            reference += f"- **Dragon Crisis**: {world_state.get('dragon_crisis', {}).get('status', 'Unknown')}\n"
+            
+            # Post-Alduin timeline - dragon crisis is resolved
+            post_dragon = world_state.get('post_dragon_crisis', {})
+            dragon_status = post_dragon.get('status', 'Unknown')
+            reference += f"- **Dragon Status**: {dragon_status}\n"
             reference += f"- **Civil War**: {world_state.get('political_situation', {}).get('skyrim_status', 'Unknown')}\n\n"
         
         # Active Quests

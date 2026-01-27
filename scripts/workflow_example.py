@@ -40,9 +40,13 @@ def main():
     
     world_state = query_manager.get_world_state()
     if world_state:
-        print(f"Campaign Date: {world_state['game_date']}")
-        print(f"Days Passed: {world_state['in_game_days_passed']}")
-        print(f"Dragon Crisis: {world_state['dragon_crisis']['status']}")
+        print(f"Campaign Date: {world_state.get('game_date', 'Unknown')}")
+        print(f"Days Passed: {world_state.get('in_game_days_passed', 0)}")
+        
+        # Post-Alduin timeline - show dragon status
+        post_dragon = world_state.get('post_dragon_crisis', {})
+        dragon_status = post_dragon.get('status', 'Unknown')
+        print(f"Dragon Status: {dragon_status}")
     else:
         print("No world state found. Run story_progression.py first.")
     print()
