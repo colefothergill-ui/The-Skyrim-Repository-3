@@ -578,7 +578,7 @@ class NPCManager:
             print(f"[Condition: {dialogue['condition']}]")
         
         # Handle responses
-        if 'responses' in dialogue and not response_option:
+        if 'responses' in dialogue and response_option is None:
             print("\nAvailable responses:")
             for i, response in enumerate(dialogue['responses'], 1):
                 print(f"{i}. {response['option']}")
@@ -598,6 +598,9 @@ class NPCManager:
                     if response['option'] == response_option:
                         chosen_response = response
                         break
+            
+            if not chosen_response:
+                return {'success': False, 'message': f'Invalid response option: {response_option}'}
             
             if chosen_response:
                 print(f"\nYou: {chosen_response['option']}")
