@@ -67,15 +67,10 @@
     "RIFT RAT MARTIAL ARTIST: Because I’ve developed a dirty, acrobatic unarmed style built for alley-fights, I get +2 when I Defend with Fight against physical attacks from a single foe in my zone, as long as I’m fighting unarmed or with improvised “street” weapons; additionally, once per scene, when I Succeed with Style on that Defend, I may forgo the boost to instead create a situation aspect on the attacker or the scene (your choice) with one free invoke (e.g., Blurred Movement, Cheap Shot, or Manacled).",
     "CLAN GALEWARDEN’S THU’UM: Because I come from a bloodline that trained the Voice, once per scene I get +2 when I use Will to Overcome or Create an Advantage by unleashing a Thu’um (a shout); also, I may use Will instead of Lore when studying, recalling, or learning Words of Power.",
     "RUNNING ON AIR: Because I move fast and silent like a bad omen with good cardio, once per scene I may Create an Advantage with Stealth to become Gale-Runner; if I succeed, I may immediately move up to two zones as part of the same action (instead of the usual one), as long as the route isn’t blocked by a locked-down obstacle or barrier; the Gale-Runner aspect gains free invokes as normal (1 on success, 2 on success with style).",
-    {
-      "name": "The Art of the Deal",
-      "description": "Because Aldric grew up within the courts of Mistveil Keep, ran merchant trade with Brynjolf, and learned shipping logistics from his family, drafting agreements is second nature. Once per scene, when Aldric is setting terms on an agreement/arrangement/contractual obligation with another person, he may Create an Advantage with Rapport at +2. On a Success with Style, he creates the scene aspect 'Good Business' with 2 free invokes OR may forgo those invokes to add one reasonable addendum the other party must concede.",
-      "bonus": "+2 Rapport (Create Advantage) when negotiating terms (1/scene)",
-      "frequency": "Once per scene"
-    }
+    "The Art of the Deal: Because Aldric grew up in the courts of Mistveil Keep, ran merchant trade with Brynjolf, and learned business through his family's shipping lines, drafting a deal is second nature. Once per scene, when creating an advantage to set terms on an agreement/arrangement/contract, gain +2 to Rapport. On a Success With Style, create the scene aspect 'Good Business' with 2 free invokes OR forgo those invokes to add one reasonable addendum the other party must concede."
   ],
   "refresh": 1,
-  "fate_points": 2,
+  "fate_points": 1,
   "equipment": {
     "weapons": [],
     "armor": [],
@@ -101,21 +96,9 @@
     "met_npcs": {}
   },
   "quests": [
-    {
-      "id": "contact_hadvar_battle_whiterun",
-      "name": "Make Contact: Hadvar (Battle of Whiterun)",
-      "status": "active",
-      "progress": "Pending",
-      "notes": "During the Battle of Whiterun, find Hadvar and fight alongside him publicly. Present Olfrid’s sealed note to secure coordination and unlock Whiterun-related gates."
-    },
-    {
-      "id": "battleborn_strongbox",
-      "name": "Deliver Battle-Born Strongbox",
-      "status": "completed",
-      "progress": "Delivered to Olfrid",
-      "notes": "Delivered the Battle-Born strongbox to Olfrid. Received payment and a sealed note meant for Hadvar (Battle of Whiterun contact).",
-      "completed_on": "2026-01-27"
-    }
+    "Completed: Delivered the Battle-Born strongbox to Olfrid.",
+    "Active: Make contact with Hadvar during the Battle of Whiterun (present Olfrid's sealed note; be seen fighting alongside Hadvar).",
+    "Active: Secure a Thu'um instructor lead via Olfrid's connections (binding addendum)."
   ],
   "session_history": [],
   "notes": "Created during Session Zero",
