@@ -19,7 +19,7 @@ During Session Zero, players choose their party's faction alignment:
 The system automatically:
 - Assigns the appropriate companion to `active_companions` in campaign state
 - Sets starting loyalty at 60/100
-- Records the Helgen escape decision in branching_decisions
+- Records the civil war choice decision in branching_decisions
 - Updates starting narrative to mention the companion
 
 ## Companion Mechanics
@@ -108,7 +108,7 @@ The system automatically:
 
 **Hadvar**:
 - "We should visit my uncle Alvor's forge. He'll help us, no questions asked."
-- At forge: "Uncle! It's good to see you. These are the people I escaped Helgen with."
+- At forge: "Uncle! It's good to see you. These are allies I've fought beside in Skyrim's troubled times."
 
 **Ralof**:
 - "My sister Gerdur runs the lumber mill here. She and her husband will shelter us."
@@ -117,7 +117,7 @@ The system automatically:
 ### Whiterun
 
 **Hadvar**:
-- Approaching: "Whiterun. The heart of Skyrim. We need to inform the Jarl about the dragon attack."
+- Approaching: "Whiterun. The heart of Skyrim. We need to inform the Jarl about the escalating civil war."
 - Civil war: "The Battle of Whiterun is coming. I believe the Empire is necessary, but... I hope we can end this with minimal bloodshed."
 
 **Ralof**:
@@ -267,9 +267,9 @@ After participating in 3+ major battles, companions can advance:
 ## Integration with Other Systems
 
 - **Thalmor Arc**: Both Hadvar and Ralof hate the Thalmor - use this as common ground
-- **Dragon Crisis**: Both witnessed the Helgen dragon attack - they can share their perspective
+- **Civil War Context**: Both witnessed early civil war conflicts - they can share their perspective
 - **Whiterun Politics**: Both have opinions on Jarl Balgruuf's neutrality
-- **Main Quest**: Companions provide faction-specific perspectives on prophecy and destiny
+- **Faction Narrative**: Companions provide faction-specific perspectives on loyalty, honor, and Skyrim's future
 
 ## Code References
 

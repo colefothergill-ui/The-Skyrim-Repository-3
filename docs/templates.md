@@ -249,17 +249,16 @@ Modify `data/world_state/current_state.json` as your campaign progresses:
     "stormcloak_control": ["Hold names"],
     "neutral": ["Hold names"]
   },
-  "dragon_crisis": {
+  "civil_war_status": {
     "status": "Status description",
-    "known_dragons": ["Dragon names"],
-    "dragon_attacks": [
+    "major_battles": [
       {
         "location": "Location",
         "date": "Date",
-        "casualties": "Description"
+        "outcome": "Imperial/Stormcloak/Stalemate"
       }
     ],
-    "dragonborn_status": "Status"
+    "hero_status": "Current status of player/leading military figures"
   },
   "faction_standings": {
     "Faction Name": {

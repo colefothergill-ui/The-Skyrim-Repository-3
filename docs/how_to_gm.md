@@ -76,10 +76,10 @@ When presenting meaningful choices to players, offer **five options** structured
 ### The Three Tiers of Canon
 
 **TIER 1 - Immutable Core** (Cannot Change Without Dragonbreak):
-- Dragons have returned to Skyrim
-- Civil war between Imperials and Stormcloaks is ongoing
+- Civil war between Imperials and Stormcloaks is raging
 - Major cities and their basic political structures exist
-- The Dragonborn prophecy is known
+- Political factions compete for control of Skyrim
+- Thalmor agents manipulate events from the shadows
 - Daedric Princes exist and interfere in mortal affairs
 
 **TIER 2 - Flexible Canon** (Can Change Through Player Action):
@@ -135,17 +135,18 @@ It's been [time passed] since we last played."
 
 ### Example Session Boot
 ```
-"Welcome back! Last session, you retrieved the Dragonstone from Bleak Falls Barrow 
-and defeated the draugr overlord. You're now in Whiterun, ready to deliver the stone 
-to Farengar Secret-Fire. It's been three days since Helgen was destroyed.
+"Welcome back! Last session, you helped the Companions deal with a bandit problem 
+and made allies at the Whiterun guard headquarters. You're now in Whiterun, preparing 
+for the escalating civil war. It's been three days since the Stormcloak forces were 
+spotted near the Rift.
 
 Everyone should have 3 Fate Points. Erich, you still have that Moderate consequence 
-'Twisted Ankle' from the dungeon fall.
+'Strained Shoulder' from the bandit fight.
 
-While you were in the barrow, the Whiterun Guard has progressed their 'Dragon Defense 
-Preparations' clock by 2 segments - they're taking the threat seriously.
+While you were away, the Stormcloaks have progressed their recruitment efforts by 2 segments 
+- tensions are rising on both sides.
 
-We open with you entering Dragonsreach..."
+We open with you entering Dragonsreach for a meeting with Jarl Balgruuf..."
 ```
 
 ---
@@ -749,12 +750,12 @@ After encounters, update world state:
 ```python
 # After combat
 consequences = manager.apply_combat_consequences(
-    enemy_type="dragon",
+    enemy_type="stormcloak_patrol",
     outcome="victory"
 )
 # This automatically updates:
-# - Dragon soul count (if Dragonborn present)
-# - Faction awareness
+# - Faction awareness (civil war progression)
+# - Casualty reports
 # - World state changes
 ```
 
@@ -1271,7 +1272,7 @@ available = manager.get_available_faction_quests(
 
 ### Main Story Integration
 
-Faction quests tie directly into the main Dragonborn questline:
+Faction quests tie directly into the civil war and Thalmor conspiracy:
 
 **Key Integration Points**:
 
@@ -1337,7 +1338,7 @@ Each faction quest includes specific ties to game elements:
 
 - **civil_war_tie**: How quest affects civil war
 - **thalmor_tie**: Thalmor involvement or interest
-- **main_quest_tie**: Connection to Dragonborn storyline
+- **faction_consequence**: Impact on faction standing and relations
 - **branching**: Major choice points affecting future quests
 - **npc_available**: Stat sheets that become available
 - **enemy_encounter**: Expected enemy types

@@ -25,14 +25,15 @@ IF player chooses Neutral → Both available (recruit later via RP)
 ## Example Session Zero Flow
 
 ```
-GM: "As you escape Helgen with the dragon bearing down, you see two soldiers 
-     beckoning you to follow - Hadvar in Imperial armor, and Ralof in Stormcloak 
-     gear. Who do you follow?"
+GM: "As the civil war tension reaches a breaking point in Skyrim, you witness 
+     the beginning of open conflict between Imperial and Stormcloak forces. 
+     You see two soldiers - one in Imperial armor (Hadvar), one in Stormcloak 
+     gear (Ralof) - both offering you a choice. Who do you follow?"
 
 Player: "We follow the Imperial soldier - Hadvar."
 
 GM: [Records in campaign state]
-    - helgen_escape_companion: "Hadvar"
+    - civil_war_choice: "Imperial"
     - active_companions: [Hadvar]
     - Hadvar loyalty: 60
 
@@ -46,17 +47,16 @@ Result: Hadvar is now in party, provides Imperial connections,
 
 ```
 GM: "As you approach Riverwood, Hadvar perks up. 'My uncle Alvor runs the 
-     forge here. Let's see if he can help us.'"
+     forge here. Let's see if he can help us with supplies and shelter.'"
 
 [At Alvor's Forge]
 
 Hadvar: "Uncle! It's good to see you alive."
 
-Alvor: "Hadvar! By the Eight... what happened? You look like you've been 
-        through Oblivion itself."
+Alvor: "Hadvar! By the Eight... what's happening? I've heard rumors of war."
 
-Hadvar: "A dragon attacked Helgen. These are the people I escaped with. 
-         Can you help us?"
+Hadvar: "The civil war is escalating. These are the allies I've found - 
+         worthy companions in a fractured Skyrim. Can you help us?"
 
 Alvor: [Looks at party] "Any friend of Hadvar's... Come inside. You need 
         food, rest, and likely some repairs to your gear."
@@ -69,16 +69,17 @@ Result: Party gains free rest, meal, and basic smithing services from Alvor.
 
 ```
 GM: "As you enter Riverwood, Ralof heads toward the lumber mill. 
-     'My sister Gerdur runs the mill. She'll shelter us.'"
+     'My sister Gerdur runs the mill. She'll shelter us and help us prepare 
+     for what's coming.'"
 
 [At the Lumber Mill]
 
 Ralof: "Gerdur! By Talos, it's good to see you."
 
-Gerdur: "Ralof! I'd heard reports about Helgen... I feared the worst."
+Gerdur: "Ralof! I've heard the war is beginning... I feared the worst."
 
-Ralof: "A dragon destroyed it. These friends helped me escape. 
-        Can you give us shelter?"
+Ralof: "The Empire and Stormcloaks are fighting for control. These friends 
+        helped me escape danger. Can you give us shelter?"
 
 Gerdur: [Nods firmly] "Of course. Hod and I have room. You all look 
          exhausted. Come, I'll prepare supper."
@@ -95,8 +96,8 @@ Result: Party gains free lodging, meal, and supplies from Gerdur's mill.
 GM: "You approach Whiterun's gates. The guards eye you warily until 
      they notice Hadvar's Imperial armor."
 
-Hadvar: "I need to speak with Jarl Balgruuf. It's urgent - dragons have 
-         returned to Skyrim."
+Hadvar: "I need to speak with Jarl Balgruuf. It's urgent - civil war is 
+         reaching Skyrim's heartland, and the Jarl must know."
 
 Guard: "Imperial Legion business? Right this way. The Jarl will want to 
         hear this."
@@ -116,7 +117,7 @@ Ralof: [Quietly to party] "Keep your weapons sheathed. Whiterun is
 
 Guard: "State your business, Stormcloak."
 
-Ralof: "We bring word of a dragon attack at Helgen. The Jarl needs to 
+Ralof: "We bring word of escalating civil war. The Jarl needs to 
         know - this affects all of Skyrim, Empire and free folk alike."
 
 GM: [Requires Rapport or Provoke roll from Ralof or party to convince guards]
@@ -308,26 +309,26 @@ Post-Battle:
 
 ```
 GM: "Before we begin the adventure proper, you need to decide where your 
-     party stands in Skyrim's civil war. The Battle of Whiterun approaches, 
-     and neutrality is no longer an option."
+     party stands in Skyrim's civil war. The conflict is escalating, and 
+     choosing sides will shape your entire campaign."
 
 [Present faction options]
 
 GM: "Your choice here determines your starting companion. If you side with 
-     the Empire, Hadvar - the soldier who saved you at Helgen - will join 
-     you. If you side with the Stormcloaks, it's Ralof who becomes your 
-     companion. If you choose to remain neutral initially, you'll meet both 
-     and decide later."
+     the Empire, Hadvar - an Imperial soldier you meet early in the war - 
+     will join you. If you side with the Stormcloaks, it's Ralof who becomes 
+     your companion. If you choose to remain neutral initially, you'll meet 
+     both and decide later."
 
 [Players discuss and choose Imperial]
 
 GM: "Excellent. Hadvar, the pragmatic Imperial soldier, accompanies you. 
-     He's grateful you escaped Helgen together and sees you as battle-forged 
-     brothers and sisters. His loyalty starts at 60 out of 100. Treat him 
-     well, defend the Empire, and visit his family in Riverwood, and he'll 
-     become a stalwart defender of your party."
+     He's grateful you've proven yourselves as allies and sees you as 
+     battle-brothers and sisters. His loyalty starts at 60 out of 100. 
+     Treat him well, fight for the Empire, and visit his family in Riverwood, 
+     and he'll become a stalwart defender of your party."
 
-[Record in campaign state: helgen_escape_companion = "Hadvar"]
+[Record in campaign state: civil_war_choice = "Imperial"]
 ```
 
 ## Quick Troubleshooting

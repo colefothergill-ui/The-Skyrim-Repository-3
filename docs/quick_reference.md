@@ -8,7 +8,7 @@
 
 ## Active Quests
 - **Before the Storm** (Main Quest)
-  Alvor has asked you to warn the Jarl of Whiterun about the dragon attack at Helgen. The threat is real and immediate.
+  The Jarl of Whiterun needs allies as the civil war tensions escalate into open conflict. Help gather support for Whiterun's defense.
 
 ## Player Characters
 - **Erich Stormblade** (Nord Warrior)
