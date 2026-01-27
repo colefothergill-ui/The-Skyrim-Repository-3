@@ -1,0 +1,87 @@
+{
+  "name": "Aldric Galewarden",
+  "id": "pc_aldric_galewarden",
+  "player": "Cole",
+  "race": "Nord",
+  "standing_stone": "The Steed Stone",
+  "level": 1,
+  "aspects": {
+    "high_concept": "Thieves Guild Ruffian - Last of Clan Galewarden",
+    "trouble": "Lord in the Keeps, Thief in the Streets.",
+    "other_aspects": [
+      "Unarmed Combatant - Founder of the Rift Rat Fighting-Style.",
+      "Honeyed Words, and Bellowing Thu'um!",
+      "Brynjolf is closest to Kin to me now."
+    ]
+  },
+  "skills": {
+    "Great (+4)": [
+      "Rapport"
+    ],
+    "Good (+3)": [
+      "Fight",
+      "Stealth"
+    ],
+    "Fair (+2)": [
+      "Athletics",
+      "Will",
+      "Physique"
+    ],
+    "Average (+1)": [
+      "Empathy",
+      "Notice",
+      "Lore",
+      "Deceive"
+    ]
+  },
+  "racial_bonuses": {
+    "ability": {
+      "name": "Resist Frost",
+      "effect": "+2 to Physique rolls to resist cold damage or freezing conditions"
+    },
+    "power": {
+      "name": "Battle Cry",
+      "effect": "Once per session, create advantage 'Frightened Enemies' with one free invoke (enemies within close range)"
+    },
+    "skill_bonuses": [
+      "Fight (+1)",
+      "Athletics (+1)"
+    ]
+  },
+  "stress": {
+    "physical": [
+      false,
+      false
+    ],
+    "mental": [
+      false,
+      false
+    ]
+  },
+  "consequences": {
+    "mild": null,
+    "moderate": null,
+    "severe": null
+  },
+  "stunts": [
+    "RIFT RAT MARTIAL ARTIST: Because I\u2019ve developed a dirty, acrobatic unarmed style built for alley-fights, I get +2 when I Defend with Fight against physical attacks from a single foe in my zone, as long as I\u2019m fighting unarmed or with improvised \u201cstreet\u201d weapons; additionally, once per scene, when I Succeed with Style on that Defend, I may forgo the boost to instead create a situation aspect on the attacker or the scene (your choice) with one free invoke (e.g., Blurred Movement, Cheap Shot, or Manacled).",
+    "CLAN GALEWARDEN\u2019S THU\u2019UM: Because I come from a bloodline that trained the Voice, once per scene I get +2 when I use Will to Overcome or Create an Advantage by unleashing a Thu\u2019um (a shout); also, I may use Will instead of Lore when studying, recalling, or learning Words of Power.",
+    "RUNNING ON AIR: Because I move fast and silent like a bad omen with good cardio, once per scene I may Create an Advantage with Stealth to become Gale-Runner; if I succeed, I may immediately move up to two zones as part of the same action (instead of the usual one), as long as the route isn\u2019t blocked by a locked-down obstacle or barrier; the Gale-Runner aspect gains free invokes as normal (1 on success, 2 on success with style)."
+  ],
+  "refresh": 3,
+  "fate_points": 3,
+  "equipment": {
+    "weapons": [],
+    "armor": [],
+    "items": []
+  },
+  "gold": 100,
+  "experience": 0,
+  "backstory": "**Civil War Entry**: By Shor, I did everythin' in my power to stay out've it. When this damnable war started, Clan Galewarden was the first to heed Ulfric's call. As one of the Eldest families in the Rift, with a legacy cemented in war sullied by wealth and aristocracy! I warned them that none of us had the strength our Ancestor's did! Nor did any of us know a full three-word Thu'um, for we had not honed our birth right as Grandfather had in the Great War.. So when they decided to charge an Imperial battalion uphill, and out numbered, they paid the price. Only I remain now, sat upon crumblin' wealth, and a new family.\n\n**Civil War Stance**: I wouldn't exactly call being in the Thieves Guild a neutral cause. Hm, no. More like the self-interested cause', fact of the matter is, I like coin. Bein' wealthy will do that to ye'. When my family had left Riften to join the Stormcloaks. They abandoned the shippin' industry that was dependent on the Empire's commerce to turn profit! \"Victory or Sovrngarde\" They Chanted.. More like, \"Victory or Bankruptcy\" Pah! The only loyalty I owe now is to the Guild, and to me Kin; Brynjolf. The one Lad who never turned his back, even when things got rough..\n\n**Motivation**: Despite the dwindlin' wealth, sold shippin' business, and loss of respect as a man-of-standin'. I plan on gettin' it all back, no matter how many life-or-death situations Vex puts me in! Just because I refused to fight in a war I knew my family was woefully unprepared for, doesn't mean I'm a coward. Hell, I've been in more street-fights than any of em'!Even developed me own version of hand-to-hand combat, footpads in the Ratway have taken to callin' it the Rift Rat Fighting-Style. Can't lie, It's got a ring to it. Other than gettin' me families affairs in order, there's gettin' Brynjolf'sGuild back on it's feet, I owe him that much. Also, I kinda like it. It'd completely destroy what social standin' I have left if any in Mistveil Keep were to find out, but the life of a Thief suits me well. Bryn says I'm a natural. All charm that one. Lastly, as of late. I've been findin' solace in ole tales of the Galewarden's of the past. Me Grandfather was the last one in our family to know over three full words of power, I bet I could beat that. Already a quarter of the way there.\n\n**Connections**: As said, me closest friend is Brynjolf. Even before my families fall, Bryn and I use to run all sorts of mischief together! He was the brain, and the misdirect. I was the silver-tongue, and if it came to it, the brawn. When we weren't swindlin' snake oil, we were runnin' up a tab in the Bee and Barb, or sowin' seeds throughout Riften with some long-termplan Bryn had cooked up. Outside him, Jarl Laila Lawgiver still lends me her ear, she's the only reason I still hold authority. Vekel in the Ratway and I have a Rapport. Of course I'd like to think Sapphire and I are close, but the lass is more close off than the Shrine of Talos in Markarth! Then, there's Mjoll the Lioness. Hah, never has there been a more elegant, and more fierce shield-maiden than she! If she ever found out that I run with the Thieves Guild, well, my affections for her would certainly not be reciprocated, and her good-aligned heart would more than likely see me hung from Mistveil Keep.. Regarding Whiterun, Hm, I have met Vignar Greymane, and Olfrid Battleborn more than a few times, and done buisness with them both. However, it's never been much more than that.",
+  "relationships": {},
+  "quests": [],
+  "session_history": [],
+  "notes": "Created during Session Zero",
+  "faction_alignment": "neutral",
+  "additional_faction_interests": "Thieves Guild"
+}
