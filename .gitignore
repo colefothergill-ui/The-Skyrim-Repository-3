@@ -33,3 +33,4 @@ _statistics.json
 /tmp/
 *.tmp
 *.bak
+*.backup
