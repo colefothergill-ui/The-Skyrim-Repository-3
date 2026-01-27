@@ -70,7 +70,7 @@
     "The Art of the Deal: Because Aldric grew up in the courts of Mistveil Keep, ran merchant trade with Brynjolf, and learned business through his family's shipping lines, drafting a deal is second nature. Once per scene, when creating an advantage to set terms on an agreement/arrangement/contract, gain +2 to Rapport. On a Success With Style, create the scene aspect 'Good Business' with 2 free invokes OR forgo those invokes to add one reasonable addendum the other party must concede."
   ],
   "refresh": 1,
-  "fate_points": 1,
+  "fate_points": 2,
   "equipment": {
     "weapons": [],
     "armor": [],
@@ -122,7 +122,8 @@
     "WHT-07: Doubled back through a risky rooftop gap, using WULD a second time this session to slip a tightening patrol at the cost of a mild consequence. Left behind the illusionary trail 'Backtracked Mirage' (2 free invokes) to mislead pursuers. Whirlwind Sprint mastery ticked +1 (now 4/8).",
     "SESSION 1 END: Delivered Battle-Born strongbox to Olfrid; obtained sealed note for Hadvar; gold now 645; Ragged Voice recovered; FP set to refresh for next session.",
     "SESSION 1 END: Delivered Battle-Born strongbox to Olfrid; gold now 645; gained sealed note for Hadvar + guard key ring; Ragged Voice cleared; fate points refreshed; Minor Milestone spent to buy stunt 'The Art of the Deal' (refresh 2→1).",
-    "SESSION 2: Met Hadvar and Legate Rikke at the west wall muster, presented Olfrid's sealed note to Hadvar (seal opened by Hadvar), assigned to Hadvar's section, requisitioned signal-smoke pots x2 and throwing axes x2 from Imperial quartermaster."
+    "SESSION 2: Met Hadvar and Legate Rikke at the west wall muster, presented Olfrid's sealed note to Hadvar (seal opened by Hadvar), assigned to Hadvar's section, requisitioned signal-smoke pots x2 and throwing axes x2 from Imperial quartermaster.",
+    "WHT-09: Took compel (Hadvar's Guard Up). Used Art of the Deal to lock public unit claim: Under Hadvar's Banner. Negotiated wager terms with Hadvar."
   ],
   "last_known_location": "Whiterun — inner parapet (west wall)",
   "faction_alignment": "neutral",
@@ -180,6 +181,9 @@
   },
   "visual_profile_ref": "data/pcs/visual_profiles/pc_aldric_galewarden.visual.json",
   "portrait_path": "assets/portraits/pc_aldric_galewarden.png",
-  "active_scene_aspects": [],
+  "active_scene_aspects": [
+    "Hadvar's Guard Up (GM: 1 free invoke)",
+    "Under Hadvar's Banner (PC: 1 free invoke)"
+  ],
   "temporary_boosts": []
 }
