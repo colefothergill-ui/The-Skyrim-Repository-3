@@ -136,7 +136,7 @@
     "if_imperial": "Primary quest giver and military commander",
     "if_stormcloak": "Major antagonist, will personally oversee execution if captured",
     "if_neutral": "Attempts recruitment, sees neutrality as wasted potential",
-    "if_dragonborn_famous": "Respects power, wants it serving the Empire"
+    "respected_warrior": "Respects martial prowess and dedication to causes"
   },
   "decision_points": {
     "civil_war_choice": {

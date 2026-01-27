@@ -3,7 +3,7 @@
   "id": "npc_stat_ralof",
   "type": "Nord Stormcloak Soldier",
   "category": "Companion",
-  "location": "Whiterun (post-Helgen)",
+  "location": "Whiterun",
   "faction": "Stormcloaks",
   "aspects": {
     "high_concept": "Passionate Stormcloak Freedom Fighter",
@@ -11,7 +11,7 @@
     "other_aspects": [
       "Brother of Gerdur, Family Man",
       "True Son of Skyrim",
-      "Died Once Already at Helgen"
+      "Survivor and Freedom Fighter"
     ]
   },
   "skills": {
@@ -36,9 +36,9 @@
   },
   "refresh": 3,
   "armor": 1,
-  "notes": "Ralof is a devoted Stormcloak soldier who saved the player's life during the dragon attack at Helgen. He's passionate about Skyrim's independence and the right to worship Talos. As Gerdur's brother, he has family connections in Riverwood. He's friendly and brotherhood-oriented, treating fellow Nords (and allies) like family. His combat style is aggressive and inspirational, rallying allies and striking fear into Imperial enemies. He survived his own execution at Helgen, making him believe the gods favor Skyrim's cause.",
+  "notes": "Ralof is a devoted Stormcloak soldier who recruits promising warriors to the rebellion cause. He's passionate about Skyrim's independence and the right to worship Talos. As Gerdur's brother, he has family connections in Riverwood. He's friendly and brotherhood-oriented, treating fellow Nords (and allies) like family. His combat style is aggressive and inspirational, rallying allies and striking fear into Imperial enemies. He believes the gods favor Skyrim's cause for freedom.",
   "combat_tactics": "Ralof fights aggressively and inspirationally. He leads charges, uses battle cries to motivate allies, and focuses on breaking enemy morale. He takes calculated risks and never backs down from Imperial forces. His presence boosts allied morale and coordination.",
-  "scene_triggers": ["Helgen escape", "Riverwood arrival", "Early Act 1 quests", "Stormcloak recruitment", "Battle of Whiterun (Stormcloak side)"],
+  "scene_triggers": ["Stormcloak recruitment", "Riverwood arrival", "Early Act 1 quests", "Stormcloak recruitment", "Battle of Whiterun (Stormcloak side)"],
   "act_context": ["Act 1", "Act 2"],
   "starting_equipment": {
     "armor": "Stormcloak Armor (Armor:1)",
@@ -56,7 +56,7 @@
     "Imperial Legion": "Enemies, tried to execute him unjustly",
     "Thalmor": "Hated oppressors, primary motivation for rebellion",
     "General Tullius": "Enemy commander, sees as foreign tyrant",
-    "Player (Helgen Survivor)": "Saved their life, considers them battle-forged kin"
+    "Player": "Recruited them to the cause, considers them battle-forged kin"
   },
   "personality_notes": {
     "speaking_style": "Direct, passionate, uses Nordic expressions, frequently invokes Talos and Skyrim",
@@ -66,7 +66,7 @@
     "character_growth": "Can learn to see good Imperials as potential allies against Thalmor, develop more nuanced view of the war, become more strategic rather than purely passionate"
   },
   "companion_mechanics": {
-    "recruitment_trigger": "Player chooses Ralof during Helgen escape or aligns with Stormcloaks at session zero",
+    "recruitment_trigger": "Player aligns with Stormcloaks or meets Ralof during recruitment",
     "starting_loyalty": 60,
     "loyalty_increases": [
       {"trigger": "Complete Stormcloak quests", "amount": 10},

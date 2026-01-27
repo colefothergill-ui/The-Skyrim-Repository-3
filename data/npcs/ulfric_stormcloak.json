@@ -159,7 +159,7 @@
     "if_stormcloak": "Primary quest giver and faction leader",
     "if_imperial": "Major antagonist, final boss of Imperial questline",
     "if_neutral": "Attempts recruitment through inspiring speeches",
-    "if_dragonborn_famous": "Sees you as the champion Skyrim needs"
+    "renowned_warrior": "Sees accomplished warriors as the champions Skyrim needs"
   },
   "decision_points": {
     "civil_war_choice": {

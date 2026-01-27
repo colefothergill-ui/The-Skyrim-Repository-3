@@ -72,7 +72,7 @@
     "General Tullius": "Imperial tyrant who must be defeated",
     "Thalmor": "Hated enemies who destroyed the Empire",
     "Jarl Balgruuf": "Disappointed in his neutrality, wants him as ally",
-    "The Dragonborn": "Respects as warrior, wants allegiance for Stormcloaks"
+    "The Player": "Respects as warrior, wants allegiance for Stormcloaks"
   },
   "trust_clock": {
     "current": 0,
@@ -129,7 +129,7 @@
     "if_imperial": "Becomes sworn enemy, will personally lead forces against party",
     "if_stormcloak": "Becomes mentor and ally, opens up strategic missions",
     "if_neutral": "Pressures party to join, sees neutrality as cowardice",
-    "if_dragonborn_famous": "Respects power but insists Dragonborn must choose a side"
+    "if_renowned": "Respects martial prowess but insists warriors must choose a side"
   },
   "story_hooks": [
     "Galmar has history with Legate Rikke - they fought together in the Great War",
