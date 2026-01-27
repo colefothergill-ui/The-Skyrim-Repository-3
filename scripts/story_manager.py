@@ -708,6 +708,309 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
         
         return result
     
+    def trigger_battle_of_whiterun_encounter(self, neutral_subfaction=None):
+        """
+        Trigger the Battle of Whiterun encounter where neutral players meet Hadvar and Ralof
+        
+        Args:
+            neutral_subfaction: The specific neutral faction the player is aligned with
+        
+        Returns:
+            Encounter data with Hadvar/Ralof meeting setup
+        """
+        state = self.load_campaign_state()
+        
+        encounter = {
+            "encounter_type": "battle_of_whiterun_choice",
+            "location": "Whiterun - Battlements or Main Gate",
+            "participants": ["Hadvar", "Ralof"],
+            "context": "The Battle of Whiterun has erupted. Stormcloak forces assault the city while Imperial defenders rally.",
+            "choice_required": True
+        }
+        
+        # Add faction-specific context
+        if neutral_subfaction == "companions":
+            encounter["arrival_context"] = (
+                "You arrive at Whiterun on Kodlak's orders to help defend the city. "
+                "The Companions focus on honor, not politics, but the battle forces you to choose."
+            )
+        elif neutral_subfaction == "thieves_guild":
+            encounter["arrival_context"] = (
+                "You came to deliver Brynjolf's message to Olfrid Battle-Born, but the battle has begun. "
+                "The guild's neutrality won't protect you in this chaos."
+            )
+        elif neutral_subfaction == "college":
+            encounter["arrival_context"] = (
+                "You arrived to assist Farengar with dragon research, but the battle interrupts everything. "
+                "The College's scholarly pursuits must wait."
+            )
+        elif neutral_subfaction == "dark_brotherhood":
+            encounter["arrival_context"] = (
+                "You came to assassinate Jarl Balgruuf, but the battle creates both opportunity and complication. "
+                "Chaos reigns, and you must decide your approach."
+            )
+        elif neutral_subfaction == "blades":
+            encounter["arrival_context"] = (
+                "You escorted Delphine to meet Farengar, but the battle erupts. "
+                "Delphine's old Imperial loyalty conflicts with the immediate danger."
+            )
+        elif neutral_subfaction == "greybeards":
+            encounter["arrival_context"] = (
+                "You came hoping to broker peace or protect innocents, but the battle has begun. "
+                "The Way of the Voice teaches restraint, but action is required."
+            )
+        else:
+            encounter["arrival_context"] = (
+                "You arrive in Whiterun as a neutral party, but the Battle of Whiterun forces you to take a side."
+            )
+        
+        # The encounter itself
+        encounter["encounter_description"] = (
+            "Amidst the chaos of battle, you encounter two familiar faces: Hadvar, the Imperial soldier, "
+            "and Ralof, the Stormcloak warrior. Both recognize you and call out for aid. "
+            "Hadvar shouts: 'The city needs defenders! Stand with us!' "
+            "Ralof counters: 'Help us free Whiterun from Imperial occupation!' "
+            "You must choose whom to assist."
+        )
+        
+        encounter["choices"] = {
+            "assist_hadvar": {
+                "description": "Fight alongside Hadvar and the Imperial defenders",
+                "consequences": [
+                    "Hadvar becomes available as companion with loyalty 60",
+                    "Ralof becomes unavailable",
+                    "Imperial Legion relationship +30",
+                    "Stormcloaks relationship -20",
+                    "Helgen escape companion decision set to 'Hadvar'"
+                ],
+                "narrative": "You choose to stand with Hadvar and defend Whiterun alongside Imperial forces."
+            },
+            "assist_ralof": {
+                "description": "Fight alongside Ralof and the Stormcloak attackers",
+                "consequences": [
+                    "Ralof becomes available as companion with loyalty 60",
+                    "Hadvar becomes unavailable",
+                    "Stormcloaks relationship +30",
+                    "Imperial Legion relationship -20",
+                    "Helgen escape companion decision set to 'Ralof'"
+                ],
+                "narrative": "You choose to stand with Ralof and assault Whiterun with the Stormcloaks."
+            }
+        }
+        
+        # Add Dark Brotherhood specific choice
+        # Note: This choice is mutually exclusive with Hadvar/Ralof choices
+        # Attempting assassination makes both civil war factions hostile
+        if neutral_subfaction == "dark_brotherhood":
+            encounter["choices"]["complete_contract"] = {
+                "description": "Attempt to assassinate Jarl Balgruuf during the chaos (WARNING: This prevents choosing Hadvar or Ralof as companions)",
+                "consequences": [
+                    "Dark Brotherhood contract completed if successful",
+                    "Both Hadvar and Ralof become hostile if discovered",
+                    "Cannot recruit either Hadvar or Ralof as companion",
+                    "Whiterun guards become hostile",
+                    "Massive gold reward from Astrid (1000+ gold)",
+                    "Must flee Whiterun after assassination",
+                    "Civil war continues without your involvement"
+                ],
+                "narrative": "You use the battle as cover to complete Astrid's contract on the Jarl. This choice means forgoing any alliance with Hadvar or Ralof.",
+                "mutually_exclusive": True,
+                "warning": "Choosing assassination prevents companion recruitment and makes both civil war factions hostile"
+            }
+        
+        return encounter
+    
+    def get_neutral_faction_quest_hooks(self, faction, act=1):
+        """
+        Get quest hooks that lead neutral faction members to Battle of Whiterun
+        
+        Args:
+            faction: The neutral faction ('companions', 'thieves_guild', 'college', etc.)
+            act: Current act (default 1 for Battle of Whiterun)
+        
+        Returns:
+            Quest hooks dictionary
+        """
+        hooks = {
+            "companions": {
+                "quest_name": "Defending Whiterun",
+                "quest_giver": "Kodlak Whitemane",
+                "objective": "Assess threats to Whiterun and help defend the city",
+                "starting_dialogue": (
+                    "Kodlak: 'Jarl Balgruuf has requested aid. Whiterun faces danger. "
+                    "I'm sending you - not to choose sides in politics, but to protect innocents. "
+                    "Go to Whiterun, see what threatens the city, and defend those who cannot defend themselves.'"
+                ),
+                "complications": "Battle of Whiterun erupts, forcing faction choice",
+                "rewards": "Companions reputation, Kodlak's respect, chosen companion"
+            },
+            "thieves_guild": {
+                "quest_name": "Riften's Business in Whiterun",
+                "quest_giver": "Brynjolf",
+                "objective": "Deliver message to Olfrid Battle-Born and secure guild operations",
+                "starting_dialogue": (
+                    "Brynjolf: 'I need you to head to Whiterun. Find Olfrid Battle-Born - "
+                    "discreet fellow, Battle-Born clan. Deliver this message. The civil war's "
+                    "heating up, and we need our operations there secured. Stay sharp.'"
+                ),
+                "complications": "Arrive during Battle of Whiterun, must survive and choose side",
+                "rewards": "Thieves Guild advancement, Olfrid's contacts, chosen companion"
+            },
+            "college": {
+                "quest_name": "Dragon Research Mission",
+                "quest_giver": "Tolfdir / Savos Aren",
+                "objective": "Assist Farengar Secret-Fire with dragon investigation",
+                "starting_dialogue": (
+                    "Savos Aren: 'Dragons returning is no coincidence. This threatens all of Skyrim. "
+                    "Go to Whiterun - Farengar Secret-Fire, a former student, is researching the phenomenon. "
+                    "Assist him, learn what he's discovered, and report back.'"
+                ),
+                "complications": "Battle interrupts research, must fight to survive and protect knowledge",
+                "rewards": "College favor, access to dragon research, chosen companion"
+            },
+            "dark_brotherhood": {
+                "quest_name": "The Whiterun Contract",
+                "quest_giver": "Astrid",
+                "objective": "Assassinate Jarl Balgruuf during battle chaos",
+                "starting_dialogue": (
+                    "Astrid: 'I have a contract for you. Jarl Balgruuf of Whiterun. "
+                    "Anonymous client, excellent payment. The city's preparing for battle - "
+                    "perfect cover. His death will look like war casualty. In, kill, out. "
+                    "Think you can handle it?'"
+                ),
+                "complications": "Must choose: complete contract, delay it, or refuse and fight in battle",
+                "rewards": "Dark Brotherhood gold and advancement, or betrayal of the family"
+            },
+            "blades": {
+                "quest_name": "Dragon Investigation Escort",
+                "quest_giver": "Delphine",
+                "objective": "Escort Delphine to Whiterun to investigate dragon research",
+                "starting_dialogue": (
+                    "Delphine: 'I need to get to Whiterun and see what Farengar's discovered "
+                    "about the dragons. My research says there's something critical in his data. "
+                    "Will you escort me? I can't risk the Thalmor catching me on the road alone.'"
+                ),
+                "complications": "Battle erupts upon arrival, must protect Delphine and choose side",
+                "rewards": "Blades trust, dragon knowledge, chosen companion"
+            },
+            "greybeards": {
+                "quest_name": "Peace Keeper's Burden",
+                "quest_giver": "Personal calling / Master Arngeir",
+                "objective": "Attempt to broker peace or at least protect civilians",
+                "starting_dialogue": (
+                    "Your own conscience drives you to Whiterun. Master Arngeir's words echo: "
+                    "'True strength lies in restraint and wisdom, not violence.' You hope to "
+                    "prevent bloodshed or at least protect innocents from the civil war."
+                ),
+                "complications": "Battle begins despite peaceful intentions, must choose side to survive",
+                "rewards": "Moral clarity, respect for trying peace, chosen companion"
+            }
+        }
+        
+        return hooks.get(faction, None)
+    
+    def resolve_hadvar_ralof_choice(self, choice):
+        """
+        Resolve the player's choice between Hadvar and Ralof
+        
+        Args:
+            choice: 'hadvar' or 'ralof'
+        
+        Returns:
+            Updated campaign state with companion added
+        """
+        state = self.load_campaign_state()
+        
+        if choice == "hadvar":
+            # Add Hadvar as active companion
+            hadvar_companion = {
+                "npc_id": "npc_stat_hadvar",
+                "name": "Hadvar",
+                "status": "active",
+                "loyalty": 60,
+                "location": "With party",
+                "recruitment_trigger": "Fought together at Battle of Whiterun",
+                "faction_affinity": "imperial_legion",
+                "notes": "Rallied to defend Whiterun together. Pragmatic Imperial soldier."
+            }
+            
+            if "companions" not in state:
+                state["companions"] = {
+                    "active_companions": [],
+                    "available_companions": [],
+                    "dismissed_companions": []
+                }
+            
+            # Remove from available if present
+            state["companions"]["available_companions"] = [
+                c for c in state["companions"].get("available_companions", [])
+                if c.get("name") != "Hadvar"
+            ]
+            
+            # Add to active
+            state["companions"]["active_companions"].append(hadvar_companion)
+            
+            # Update faction relationships
+            if "civil_war_state" in state:
+                state["civil_war_state"]["player_alliance"] = "imperial"
+                state["civil_war_state"]["faction_relationship"]["imperial_legion"] += 30
+                state["civil_war_state"]["faction_relationship"]["stormcloaks"] -= 20
+            
+            # Record decision
+            state["branching_decisions"]["helgen_escape_companion"] = "Hadvar"
+            state["branching_decisions"]["battle_of_whiterun_choice"] = "fought_with_imperials"
+            
+            print("\n✓ Hadvar joins the party as an active companion!")
+            print("  Imperial Legion relationship increased")
+            print("  Stormcloaks view you with suspicion")
+            
+        elif choice == "ralof":
+            # Add Ralof as active companion
+            ralof_companion = {
+                "npc_id": "npc_stat_ralof",
+                "name": "Ralof",
+                "status": "active",
+                "loyalty": 60,
+                "location": "With party",
+                "recruitment_trigger": "Fought together at Battle of Whiterun",
+                "faction_affinity": "stormcloaks",
+                "notes": "Rallied to assault Whiterun together. Passionate Stormcloak warrior."
+            }
+            
+            if "companions" not in state:
+                state["companions"] = {
+                    "active_companions": [],
+                    "available_companions": [],
+                    "dismissed_companions": []
+                }
+            
+            # Remove from available if present
+            state["companions"]["available_companions"] = [
+                c for c in state["companions"].get("available_companions", [])
+                if c.get("name") != "Ralof"
+            ]
+            
+            # Add to active
+            state["companions"]["active_companions"].append(ralof_companion)
+            
+            # Update faction relationships
+            if "civil_war_state" in state:
+                state["civil_war_state"]["player_alliance"] = "stormcloak"
+                state["civil_war_state"]["faction_relationship"]["stormcloaks"] += 30
+                state["civil_war_state"]["faction_relationship"]["imperial_legion"] -= 20
+            
+            # Record decision
+            state["branching_decisions"]["helgen_escape_companion"] = "Ralof"
+            state["branching_decisions"]["battle_of_whiterun_choice"] = "fought_with_stormcloaks"
+            
+            print("\n✓ Ralof joins the party as an active companion!")
+            print("  Stormcloaks relationship increased")
+            print("  Imperial Legion views you with suspicion")
+        
+        # Save updated state
+        self.save_campaign_state(state)
+        return state
+    
     def generate_wilderness_encounter(self, hold_name, act="Act 1", difficulty="moderate"):
         """
         Generate a wilderness encounter based on hold and act
