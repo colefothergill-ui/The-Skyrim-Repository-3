@@ -42,11 +42,7 @@
     "power": {
       "name": "Battle Cry",
       "effect": "Once per session, create advantage 'Frightened Enemies' with one free invoke (enemies within close range)"
-    },
-    "skill_bonuses": [
-      "Fight (+1)",
-      "Athletics (+1)"
-    ]
+    }
   },
   "stress": {
     "physical": [
@@ -58,6 +54,13 @@
       false
     ]
   },
+  "active_boosts": [
+    {
+      "name": "Silent Hinge",
+      "source": "WHT-02",
+      "expires": "end_of_scene"
+    }
+  ],
   "consequences": {
     "mild": null,
     "moderate": null,
@@ -84,6 +87,9 @@
   "quests": [],
   "session_history": [],
   "notes": "Created during Session Zero",
+  "gm_notes": [
+    "NOTE: In this repository's racial_traits.json, Nord does NOT grant +1 Athletics or +1 Fight. Nord benefits: Resist Frost (+2 vs cold), Battle Cry (1/session), optional Thu'um Extra (1 Refresh). Steed Stone already modifies Athletics situationally."
+  ],
   "session_notes": [
     "S1-01: Zone-in at Whiterun walls. Used Running on Air to create 'Gale-Runner' (2 free invokes). Spent 1 FP to use WULD. Overcame wall with style. Whirlwind Sprint mastery ticked +1 (now 3/8). Gained boost: 'Perched Like a Hawk'."
   ],

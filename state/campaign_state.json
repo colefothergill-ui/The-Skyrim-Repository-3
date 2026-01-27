@@ -116,6 +116,9 @@
   "last_updated": "2026-01-27 02:42:17",
   "session_zero_completed": true,
   "starting_location": "Whiterun",
+  "current_scene_id": "WHT-02",
+  "current_location": "Whiterun — Battle-Born Manor (upper balcony entry)",
+  "current_objective": "Deliver Brynjolf's message to Olfrid Battle-Born discreetly",
   "player_characters": [
     {
       "id": "pc_aldric_galewarden",
