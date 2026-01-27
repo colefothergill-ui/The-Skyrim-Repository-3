@@ -1,0 +1,54 @@
+{
+  "pc_id": "pc_aldric_galewarden",
+  "name": "Aldric Galewarden",
+  "portrait": {
+    "path": "assets/portraits/pc_aldric_galewarden.png",
+    "title": "Aldric Galewarden — Official Portrait",
+    "source": "User-provided",
+    "rights": "Private table use"
+  },
+  "appearance": {
+    "short": "A broad-shouldered Nord with icy blue eyes and a controlled half-smirk. Long dark hair with a heavy braid, a small hoop earring, and wrapped forearms like a brawler. Practical thief leathers with subtle purple accents, worn with the posture of a fallen noble who learned faster rules in the streets.",
+    "detailed": "Aldric Galewarden looks like Riften’s fog taught a nobleman how to survive. His eyes are pale, icy blue—steady and sharp in a way that makes people feel measured. Dark hair falls to his shoulders with a thick braid draped forward, and a small hoop earring adds a touch of streetlord flair. A neat beard frames a strong jaw, more refined than wild, like he still remembers what courtrooms smell like. His build is athletic and combat-ready: defined arms and forearms emphasized by cloth wraps, the kind worn by men who fight up close and win. He wears layered leather-and-cloth travel gear in muted greys and browns with subtle purple accents and a sash, secured by practical harness straps and metal clasps—half thief utility, half old family pride. The overall impression is dangerously handsome, calm, and competent: a friendly smile that still warns you not to get cute."
+  },
+  "silhouette_markers": [
+    "icy blue eyes",
+    "long dark hair with forward braid",
+    "small hoop earring",
+    "wrapped forearms (brawler wraps)",
+    "dark cloak",
+    "subtle purple accents / sash",
+    "leather harness straps and metal clasps",
+    "street-noble posture"
+  ],
+  "tags": [
+    "Nord",
+    "Thieves Guild",
+    "Riften",
+    "Street-Noble",
+    "Brawler",
+    "Charismatic",
+    "Voice-bloodline"
+  ],
+  "scene_triggers": [
+    "Zone-In",
+    "First Impression",
+    "Riften",
+    "Whiterun",
+    "Thieves Guild",
+    "Noble Gathering",
+    "Underworld Meeting",
+    "Guard Scrutiny",
+    "Thalmor Scrutiny"
+  ],
+  "trigger_outputs": {
+    "Zone-In": "short",
+    "First Impression": "detailed",
+    "Riften": "detailed",
+    "Whiterun": "short",
+    "Noble Gathering": "detailed",
+    "Underworld Meeting": "short",
+    "Guard Scrutiny": "short",
+    "Thalmor Scrutiny": "short"
+  }
+}
