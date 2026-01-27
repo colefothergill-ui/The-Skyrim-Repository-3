@@ -132,9 +132,10 @@
   },
   "neutral_subfaction": "thieves_guild",
   "starting_npc_contact": "brynjolf",
-  "current_scene_id": "WHT-04",
-  "current_location": "Whiterun \u2014 Battle-Born Manor (upper room, near wall safe)",
+  "current_scene_id": "WHT-06",
+  "current_location": "Whiterun \u2014 rooftops (2 zones from Battle-Born Manor)",
   "current_threats": [
     "Lantern Sweep on the Roofline"
-  ]
+  ],
+  "current_objective": "Deliver Battle-Born strongbox to Olfrid (remaining 250 + intel) OR stash/hand-off safely"
 }

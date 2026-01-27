@@ -32,3 +32,11 @@
   - Iron-banded portable strongbox (primary objective)
   - Sealed oilcloth folio (Battle-Born signet)
   - Loose ledger page with payments and a line item marked "E."
+
+## Scene WHT-06 — "Strongbox in the Wind"
+- Aldric closed the wall safe cleanly and exited via the prepped upper window route.
+- Used stunt: **RUNNING ON AIR** to create "Gale-Runner" during exfil and move rapidly across rooftops.
+- Create Advantage (Athletics): SUCCESS against active patrol pressure (lantern sweep invoked by GM).
+- Consumed invoke: **Second Exit Prepped** (free invoke used).
+- New situation aspect gained: **Gale-Runner** (1 free invoke).
+- Position: Rooftops, 2 zones away from Battle-Born Manor; strongbox physically secured.
