@@ -40,3 +40,14 @@
 - Consumed invoke: **Second Exit Prepped** (free invoke used).
 - New situation aspect gained: **Gale-Runner** (1 free invoke).
 - Position: Rooftops, 2 zones away from Battle-Born Manor; strongbox physically secured.
+
+## Scene WHT-07 — "Backtracked Mirage"
+- Aldric used Athletics movement theatrics to misdirect pursuit across rooftops.
+  - Create Advantage (Athletics): **Backtracked Mirage** — SUCCESS WITH STYLE (2 free invokes).
+  - Consumed invoke: **Gale-Runner** (last free invoke spent to sell the feint).
+- Aldric forcibly used Thu'um: **WULD** a second time this session (Desperate Push).
+  - Cost: -1 Fate Point
+  - Mild Consequence gained: **Ragged Voice** (overused Voice; persists through end of session)
+  - New Scene Aspect: **Echoing WULD** (GM: 1 free invoke)
+  - Mastery tick: Whirlwind Sprint mastery +1
+- Result: Pursuers committed to the wrong route; Aldric reappeared on/near Battle-Born roofline with the strongbox still secured.

@@ -50,7 +50,7 @@
       "intelligence_network": {
         "name": "Thalmor Intelligence Network",
         "description": "Spy network gathering intelligence on threats to Aldmeri Dominion",
-        "current_progress": 5,
+        "current_progress": 6,
         "total_segments": 8,
         "completion_effect": "Comprehensive spy network, Thalmor know everything happening in Skyrim",
         "advancement_triggers": [

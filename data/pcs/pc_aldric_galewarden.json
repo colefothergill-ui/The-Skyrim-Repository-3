@@ -59,7 +59,11 @@
     ]
   },
   "consequences": {
-    "mild": null,
+    "mild": {
+      "name": "Ragged Voice",
+      "recovery": "end_of_session",
+      "notes": "Overpushed Thu'um (second WULD use). Throat raw; future shout use risks further consequence."
+    },
     "moderate": null,
     "severe": null
   },
@@ -69,7 +73,7 @@
     "RUNNING ON AIR: Because I move fast and silent like a bad omen with good cardio, once per scene I may Create an Advantage with Stealth to become Gale-Runner; if I succeed, I may immediately move up to two zones as part of the same action (instead of the usual one), as long as the route isn\u2019t blocked by a locked-down obstacle or barrier; the Gale-Runner aspect gains free invokes as normal (1 on success, 2 on success with style)."
   ],
   "refresh": 2,
-  "fate_points": 2,
+  "fate_points": 1,
   "equipment": {
     "weapons": [],
     "armor": [],
@@ -110,7 +114,7 @@
           "Wuld"
         ],
         "mastery_clock": {
-          "current": 3,
+          "current": 4,
           "max": 8
         },
         "unmastered_use": {
@@ -154,8 +158,13 @@
   "active_scene_aspects": [
     {
       "name": "Gale-Runner",
-      "free_invokes": 1,
+      "free_invokes": 0,
       "source": "WHT-06"
+    },
+    {
+      "name": "Backtracked Mirage",
+      "free_invokes": 2,
+      "source": "WHT-07"
     }
   ],
   "inventory": []
