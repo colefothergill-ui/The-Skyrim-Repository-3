@@ -403,6 +403,12 @@ class SessionZeroManager:
                 "branching_decisions": {},
                 "world_consequences": {},
                 "active_story_arcs": [],
+                "companions": {
+                    "active_companions": [],
+                    "available_companions": [],
+                    "dismissed_companions": [],
+                    "companion_relationships": {}
+                },
                 "session_count": 0
             }
         
@@ -423,6 +429,82 @@ class SessionZeroManager:
             campaign_state["civil_war_state"]["faction_relationship"]["imperial_legion"] = 0
             campaign_state["civil_war_state"]["faction_relationship"]["stormcloaks"] = 0
         
+        # Initialize companions structure if it doesn't exist
+        if "companions" not in campaign_state:
+            campaign_state["companions"] = {
+                "active_companions": [],
+                "available_companions": [],
+                "dismissed_companions": [],
+                "companion_relationships": {}
+            }
+        
+        # Add Hadvar or Ralof as starting companion based on faction alignment
+        # Record the Helgen escape companion decision
+        if "branching_decisions" not in campaign_state:
+            campaign_state["branching_decisions"] = {}
+        
+        if faction_alignment == "imperial":
+            # Player escaped Helgen with Hadvar
+            campaign_state["branching_decisions"]["helgen_escape_companion"] = "Hadvar"
+            
+            # Add Hadvar to active companions
+            hadvar_companion = {
+                "npc_id": "npc_stat_hadvar",
+                "name": "Hadvar",
+                "status": "active",
+                "loyalty": 60,
+                "location": "With party",
+                "recruitment_trigger": "Escaped Helgen together",
+                "faction_affinity": "imperial_legion",
+                "notes": "Saved the party's life during the dragon attack at Helgen. Pragmatic Imperial soldier with family connections in Riverwood."
+            }
+            campaign_state["companions"]["active_companions"].append(hadvar_companion)
+            campaign_state["companions"]["companion_relationships"]["hadvar"] = 60
+            
+        elif faction_alignment == "stormcloak":
+            # Player escaped Helgen with Ralof
+            campaign_state["branching_decisions"]["helgen_escape_companion"] = "Ralof"
+            
+            # Add Ralof to active companions
+            ralof_companion = {
+                "npc_id": "npc_stat_ralof",
+                "name": "Ralof",
+                "status": "active",
+                "loyalty": 60,
+                "location": "With party",
+                "recruitment_trigger": "Escaped Helgen together",
+                "faction_affinity": "stormcloaks",
+                "notes": "Saved the party's life during the dragon attack at Helgen. Passionate Stormcloak soldier with family connections in Riverwood."
+            }
+            campaign_state["companions"]["active_companions"].append(ralof_companion)
+            campaign_state["companions"]["companion_relationships"]["ralof"] = 60
+            
+        else:  # neutral
+            # For neutral alignment, make both available but neither active yet
+            # GM can decide based on player RP which one they meet first
+            campaign_state["branching_decisions"]["helgen_escape_companion"] = "undecided"
+            
+            hadvar_available = {
+                "npc_id": "npc_stat_hadvar",
+                "name": "Hadvar",
+                "status": "available",
+                "loyalty": 50,
+                "location": "Riverwood or Whiterun",
+                "recruitment_condition": "Party encounters Hadvar and helps with Imperial-related task",
+                "faction_affinity": "imperial_legion"
+            }
+            ralof_available = {
+                "npc_id": "npc_stat_ralof",
+                "name": "Ralof",
+                "status": "available",
+                "loyalty": 50,
+                "location": "Riverwood or Stormcloak camps",
+                "recruitment_condition": "Party encounters Ralof and helps with Stormcloak-related task",
+                "faction_affinity": "stormcloaks"
+            }
+            campaign_state["companions"]["available_companions"].append(hadvar_available)
+            campaign_state["companions"]["available_companions"].append(ralof_available)
+        
         # Add player characters to campaign state
         campaign_state["player_characters"] = []
         for char in characters:
@@ -439,7 +521,8 @@ class SessionZeroManager:
         if faction_alignment == "imperial":
             campaign_state["starting_narrative"] = (
                 "The party arrives in Whiterun as supporters of the Imperial Legion. "
-                "Jarl Balgruuf the Greater has reluctantly sided with the Empire, and "
+                "Hadvar, the Imperial soldier who saved them during the dragon attack at Helgen, "
+                "accompanies the party. Jarl Balgruuf the Greater has reluctantly sided with the Empire, and "
                 "the Stormcloaks are preparing to assault the city. The Battle of "
                 "Whiterun approaches, and the party must help defend the city alongside "
                 "Imperial forces and the Companions of Jorrvaskr."
@@ -447,6 +530,8 @@ class SessionZeroManager:
         elif faction_alignment == "stormcloak":
             campaign_state["starting_narrative"] = (
                 "The party arrives in Whiterun as supporters of the Stormcloak Rebellion. "
+                "Ralof, the Stormcloak soldier who saved them during the dragon attack at Helgen, "
+                "accompanies the party. "
                 "Jarl Balgruuf has sided with the Empire, making Whiterun a target for "
                 "liberation. The party joins Galmar Stone-Fist in preparing to assault "
                 "the city and free it from Imperial control. The Battle of Whiterun "
@@ -455,11 +540,14 @@ class SessionZeroManager:
         else:  # neutral
             campaign_state["starting_narrative"] = (
                 "The party arrives in Whiterun, trying to remain neutral in the civil war. "
+                "During the chaos at Helgen, they encountered both Hadvar (Imperial) and Ralof (Stormcloak), "
+                "but didn't commit to either side. "
                 "Jarl Balgruuf the Greater has reluctantly sided with the Empire, and "
                 "the Stormcloaks prepare to assault the city. The party may align with "
                 "neutral factions like the Companions, who focus on honor over politics. "
                 "The Battle of Whiterun approaches, and the party must navigate the "
-                "conflict while maintaining their independence."
+                "conflict while maintaining their independence. They may encounter Hadvar or Ralof "
+                "in Riverwood or Whiterun and decide whether to accept either as a companion."
             )
         
         # Update companions relationship based on neutral alignment

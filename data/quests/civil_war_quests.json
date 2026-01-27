@@ -77,10 +77,19 @@
             }
           ],
           "npcs": ["npc_stat_whiterun_guard", "npc_stat_housecarl"],
+          "companion_support": {
+            "hadvar": {
+              "role": "Provides tactical support and morale boost",
+              "bonuses": "+1 to all defend actions when fighting alongside Hadvar",
+              "special_ability": "Shield Brother stunt applies to all party members in his zone",
+              "dialogue": "Hadvar fights alongside the party, using his Imperial training to coordinate defenses and inspire troops"
+            }
+          },
           "rewards": {
             "experience": 300,
             "faction_rank": "Quaestor",
-            "consequence": "Whiterun now supports the Empire"
+            "consequence": "Whiterun now supports the Empire",
+            "hadvar_loyalty": "+15 if Hadvar is present and survives"
           },
           "world_changes": {
             "whiterun_control": "imperial",
@@ -117,10 +126,19 @@
               "difficulty": "Good"
             }
           ],
+          "companion_support": {
+            "ralof": {
+              "role": "Provides morale boost and rallying support",
+              "bonuses": "+1 to all attack actions when fighting alongside Ralof",
+              "special_ability": "For Skyrim! stunt can be used twice in this battle",
+              "dialogue": "Ralof leads charges alongside the party, rallying Stormcloak troops and demonstrating Nord fury in combat"
+            }
+          },
           "rewards": {
             "experience": 300,
             "faction_rank": "Bone-Breaker",
-            "consequence": "Whiterun now supports the Stormcloaks"
+            "consequence": "Whiterun now supports the Stormcloaks",
+            "ralof_loyalty": "+15 if Ralof is present and survives"
           },
           "world_changes": {
             "whiterun_control": "stormcloak",
