@@ -205,7 +205,7 @@ def test_documentation_updates():
         # Should NOT contain Dragonborn-focused content
         dragonborn_mentions = content.count('Dragonborn revealed')
         assert dragonborn_mentions == 0, f"Found {dragonborn_mentions} 'Dragonborn revealed' references"
-        print("✓ 'Dragonborn revealed' references removed")
+        print("✓ Dragonborn-focused content removed from documentation")
         
         # Should contain Civil War focus
         assert 'Civil War' in content, "Missing Civil War focus"
