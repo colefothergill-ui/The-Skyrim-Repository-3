@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 from __future__ import annotations
 
 import argparse
@@ -16,7 +16,7 @@ from typing import Any, Dict, List, Optional, Tuple
 
 def read_text_safely(path: Path) -> str:
     data = path.read_bytes()
-    for enc in ("utf-8-sig", "utf-8", "cp1252", "latin-1"):
+    for enc in ("utf-8", "utf-8-sig", "cp1252", "latin-1"):
         try:
             return data.decode(enc)
         except Exception:
@@ -72,13 +72,13 @@ def extract_clocks(obj: Any, source: str, prefix: str = "") -> List[ClockView]:
     if isinstance(obj, dict):
         # direct clock-like dict
         has_current = any(k in obj for k in ("current", "current_progress", "filled", "progress"))
-        has_max = any(k in obj for k in ("max", "maximum", "max_progress", "max_segments", "total_segments"))
+        has_max = any(k in obj for k in ("max", "maximum", "max_progress", "max_segments"))
         has_name = "name" in obj or "title" in obj
 
         if has_current and has_max and has_name:
             name = str(obj.get("name") or obj.get("title") or prefix or "Unnamed Clock")
             cur = _as_int(obj.get("current", obj.get("current_progress", obj.get("filled", obj.get("progress", 0)))), 0)
-            mx = _as_int(obj.get("max", obj.get("maximum", obj.get("max_progress", obj.get("max_segments", obj.get("total_segments", 0))))), 0)
+            mx = _as_int(obj.get("max", obj.get("maximum", obj.get("max_progress", obj.get("max_segments", 0)))), 0)
             if mx > 0:
                 clocks.append(ClockView(
                     name=name,
