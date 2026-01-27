@@ -64,12 +64,12 @@
     "severe": null
   },
   "stunts": [
-    "RIFT RAT MARTIAL ARTIST: Because I\u2019ve developed a dirty, acrobatic unarmed style built for alley-fights, I get +2 when I Defend with Fight against physical attacks from a single foe in my zone, as long as I\u2019m fighting unarmed or with improvised \u201cstreet\u201d weapons; additionally, once per scene, when I Succeed with Style on that Defend, I may forgo the boost to instead create a situation aspect on the attacker or the scene (your choice) with one free invoke (e.g., Blurred Movement, Cheap Shot, or Manacled).",
-    "CLAN GALEWARDEN\u2019S THU\u2019UM: Because I come from a bloodline that trained the Voice, once per scene I get +2 when I use Will to Overcome or Create an Advantage by unleashing a Thu\u2019um (a shout); also, I may use Will instead of Lore when studying, recalling, or learning Words of Power.",
-    "RUNNING ON AIR: Because I move fast and silent like a bad omen with good cardio, once per scene I may Create an Advantage with Stealth to become Gale-Runner; if I succeed, I may immediately move up to two zones as part of the same action (instead of the usual one), as long as the route isn\u2019t blocked by a locked-down obstacle or barrier; the Gale-Runner aspect gains free invokes as normal (1 on success, 2 on success with style)."
+    "RIFT RAT MARTIAL ARTIST: Because I’ve developed a dirty, acrobatic unarmed style built for alley-fights, I get +2 when I Defend with Fight against physical attacks from a single foe in my zone, as long as I’m fighting unarmed or with improvised “street” weapons; additionally, once per scene, when I Succeed with Style on that Defend, I may forgo the boost to instead create a situation aspect on the attacker or the scene (your choice) with one free invoke (e.g., Blurred Movement, Cheap Shot, or Manacled).",
+    "CLAN GALEWARDEN’S THU’UM: Because I come from a bloodline that trained the Voice, once per scene I get +2 when I use Will to Overcome or Create an Advantage by unleashing a Thu’um (a shout); also, I may use Will instead of Lore when studying, recalling, or learning Words of Power.",
+    "RUNNING ON AIR: Because I move fast and silent like a bad omen with good cardio, once per scene I may Create an Advantage with Stealth to become Gale-Runner; if I succeed, I may immediately move up to two zones as part of the same action (instead of the usual one), as long as the route isn’t blocked by a locked-down obstacle or barrier; the Gale-Runner aspect gains free invokes as normal (1 on success, 2 on success with style)."
   ],
-  "refresh": 3,
-  "fate_points": 3,
+  "refresh": 2,
+  "fate_points": 2,
   "equipment": {
     "weapons": [],
     "armor": [],
@@ -83,5 +83,36 @@
   "session_history": [],
   "notes": "Created during Session Zero",
   "faction_alignment": "neutral",
-  "additional_faction_interests": "Thieves Guild"
+  "additional_faction_interests": "Thieves Guild",
+  "neutral_subfaction": "thieves_guild",
+  "extras": [
+    {
+      "name": "Voice of the Nord (Thu'um)",
+      "type": "extra",
+      "cost_refresh": 1,
+      "system_ref": "data/rules/thuum_system.json",
+      "starting_shout": {
+        "name": "Whirlwind Sprint (Wuld Nah Kest)",
+        "known_words": [
+          "Wuld"
+        ],
+        "mastery_clock": {
+          "filled": 2,
+          "segments": 8
+        },
+        "mechanics": {
+          "action_type": "Movement/Overcome",
+          "one_word": "Move one additional zone instantly (beyond normal movement)",
+          "unmastered_use": {
+            "cost_fate_points": 1,
+            "frequency": "once per session"
+          },
+          "mastered_use": {
+            "cost_fate_points": 0,
+            "frequency": "once per scene"
+          }
+        }
+      }
+    }
+  ]
 }
