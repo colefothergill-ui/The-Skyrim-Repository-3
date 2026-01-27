@@ -17,6 +17,7 @@ from pathlib import Path
 from datetime import datetime
 from utils import location_matches
 from query_data import DataQueryManager
+from first_impression import maybe_first_impression
 
 # Import DragonbreakManager if available
 try:
@@ -451,6 +452,24 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
         
         # Get NPCs for scene
         scene_npcs = self.get_scene_npcs(location, scene_type)
+        
+        # Add first impression hook for NPCs
+        state_path = str(self.campaign_state_path)
+        appearance_path = str(self.data_dir / "pcs" / "appearances" / "aldric_galewarden_appearance.json")
+        
+        for npc in scene_npcs:
+            npc_id = npc.get("id") or npc.get("npc_id")
+            if not npc_id:
+                continue
+            # Default disposition; GM may override per faction/context
+            try:
+                impression = maybe_first_impression(state_path, appearance_path, npc_id, disposition="neutral")
+                if impression:
+                    npc.setdefault("gm_barks", [])
+                    npc["gm_barks"].append(impression)
+            except Exception:
+                # Silently skip if appearance file or state doesn't exist
+                pass
         
         # Build scene response
         scene_setup = {
