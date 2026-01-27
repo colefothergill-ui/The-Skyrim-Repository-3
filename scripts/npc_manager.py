@@ -804,6 +804,186 @@ class NPCManager:
             print(f"{'='*60}")
         
         return affected
+    
+    def load_faction_leader_npc(self, faction):
+        """
+        Load the stat sheet for a neutral faction leader
+        
+        Args:
+            faction: Faction name ('companions', 'thieves_guild', 'college', etc.)
+        
+        Returns:
+            NPC data dict or None
+        """
+        npc_mapping = {
+            "companions": "kodlak_whitemane",
+            "thieves_guild": "brynjolf",
+            "college": "tolfdir",
+            "college_of_winterhold": "savos_aren",
+            "dark_brotherhood": "astrid",
+            "blades": "delphine",
+            "whiterun_contact": "olfrid_battle-born",
+            "court_wizard": "farengar_secret-fire"
+        }
+        
+        npc_id = npc_mapping.get(faction)
+        if not npc_id:
+            return None
+        
+        # Try loading from npc_stat_sheets directory
+        stat_sheet_path = self.data_dir / "npc_stat_sheets" / f"{npc_id}.json"
+        if stat_sheet_path.exists():
+            with open(stat_sheet_path, 'r') as f:
+                return json.load(f)
+        
+        # Fallback to npcs directory
+        return self.load_npc(npc_id)
+    
+    def add_companion_to_party(self, npc_id, loyalty=60, recruitment_context=""):
+        """
+        Add a companion to the active party
+        
+        Args:
+            npc_id: NPC ID to add
+            loyalty: Starting loyalty (default 60)
+            recruitment_context: Why/how they were recruited
+        
+        Returns:
+            Success boolean
+        """
+        npc = self.load_npc(npc_id)
+        if not npc:
+            # Try loading from stat sheets
+            stat_sheet_path = self.data_dir / "npc_stat_sheets" / f"{npc_id}.json"
+            if stat_sheet_path.exists():
+                with open(stat_sheet_path, 'r') as f:
+                    npc = json.load(f)
+            else:
+                print(f"Error: NPC {npc_id} not found")
+                return False
+        
+        state = self.load_campaign_state()
+        if not state:
+            print("Error: No campaign state found")
+            return False
+        
+        if "companions" not in state:
+            state["companions"] = {
+                "active_companions": [],
+                "available_companions": [],
+                "dismissed_companions": []
+            }
+        
+        # Check if already active
+        for comp in state["companions"]["active_companions"]:
+            if comp.get("npc_id") == npc_id:
+                print(f"{npc['name']} is already an active companion")
+                return False
+        
+        # Create companion entry
+        companion = {
+            "npc_id": npc_id,
+            "name": npc["name"],
+            "status": "active",
+            "loyalty": loyalty,
+            "location": "With party",
+            "recruitment_trigger": recruitment_context,
+            "faction_affinity": npc.get("faction", "").lower().replace(" ", "_")
+        }
+        
+        # Remove from available if present
+        state["companions"]["available_companions"] = [
+            c for c in state["companions"].get("available_companions", [])
+            if c.get("npc_id") != npc_id
+        ]
+        
+        # Add to active
+        state["companions"]["active_companions"].append(companion)
+        
+        # Update companion relationships
+        if "companion_relationships" not in state["companions"]:
+            state["companions"]["companion_relationships"] = {}
+        state["companions"]["companion_relationships"][npc["name"].lower()] = loyalty
+        
+        self.save_campaign_state(state)
+        print(f"\n✓ {npc['name']} has joined the party as an active companion!")
+        print(f"  Starting loyalty: {loyalty}")
+        print(f"  Recruitment: {recruitment_context}")
+        
+        return True
+    
+    def switch_companion_allegiance(self, npc_id, new_faction, reason=""):
+        """
+        Handle a companion switching faction allegiance (e.g., Hadvar/Ralof in neutral start)
+        
+        Args:
+            npc_id: NPC ID
+            new_faction: New faction allegiance
+            reason: Why they're switching
+        
+        Returns:
+            Result dict with loyalty changes and consequences
+        """
+        npc = self.load_npc(npc_id)
+        if not npc:
+            # Try loading from stat sheets
+            stat_sheet_path = self.data_dir / "npc_stat_sheets" / f"{npc_id}.json"
+            if stat_sheet_path.exists():
+                with open(stat_sheet_path, 'r') as f:
+                    npc = json.load(f)
+            else:
+                return {"success": False, "error": "NPC not found"}
+        
+        state = self.load_campaign_state()
+        if not state or "companions" not in state:
+            return {"success": False, "error": "No campaign state"}
+        
+        # Find companion in active list
+        companion = None
+        for comp in state["companions"]["active_companions"]:
+            if comp.get("npc_id") == npc_id:
+                companion = comp
+                break
+        
+        if not companion:
+            return {"success": False, "error": "NPC is not an active companion"}
+        
+        old_faction = companion.get("faction_affinity", "unknown")
+        
+        # Calculate loyalty impact
+        loyalty_change = 0
+        if new_faction == old_faction:
+            # No change needed
+            return {"success": True, "message": "Already aligned with this faction", "loyalty_change": 0}
+        else:
+            # Switching away from original faction causes loyalty loss
+            loyalty_change = -10
+            reason_text = reason if reason else f"Switched allegiance from {old_faction} to {new_faction}"
+            self.update_loyalty(npc_id, loyalty_change, reason_text)
+        
+        # Update companion data
+        companion["faction_affinity"] = new_faction
+        companion["notes"] = companion.get("notes", "") + f" [Switched to {new_faction}: {reason}]"
+        
+        self.save_campaign_state(state)
+        
+        result = {
+            "success": True,
+            "npc_name": npc["name"],
+            "old_faction": old_faction,
+            "new_faction": new_faction,
+            "loyalty_change": loyalty_change,
+            "current_loyalty": companion["loyalty"],
+            "reason": reason
+        }
+        
+        print(f"\n⚠️  FACTION ALLEGIANCE CHANGE")
+        print(f"  {npc['name']}: {old_faction} → {new_faction}")
+        print(f"  Loyalty impact: {loyalty_change}")
+        print(f"  Reason: {reason}")
+        print(f"  Current loyalty: {companion['loyalty']}")
+        
+        return result
 
 
 def main():
