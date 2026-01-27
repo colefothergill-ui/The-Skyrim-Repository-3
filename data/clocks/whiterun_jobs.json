@@ -30,7 +30,7 @@
       "battleborn_strongbox": {
         "name": "Battle-Born Strongbox Job",
         "description": "Retrieve the iron-banded strongbox from Battle-Born Manor for Olfrid",
-        "current": 0,
+        "current": 1,
         "max": 3,
         "completion_effect": "Job completed, payment received (250 gold + intel), Guild reputation with Whiterun contacts increased",
         "phases": [

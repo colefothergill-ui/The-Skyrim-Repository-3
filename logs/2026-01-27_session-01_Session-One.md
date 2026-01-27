@@ -20,3 +20,15 @@
   - Result: Success on a tie → entry succeeded, but outside patrol pressure increased.
 - New Scene Aspect: **Lantern Sweep on the Roofline** (GM: 1 free invoke).
 - Current position: Battle-Born Manor, upper room adjacent to concealed wall safe.
+
+## Scene WHT-05 — "Two Exits, One Safe"
+- Aldric prepared a second escape route via an upper window.
+  - Create Advantage (Stealth): **Second Exit Prepped** (1 free invoke).
+- Aldric cracked the concealed wall safe.
+  - Overcome (Stealth): SUCCESS on a tie by leveraging patron access/directions.
+  - Consumed 1 free invoke: **Battle-Born Patronage**.
+  - Minor complication: **The House Hears Something** (faint tick from the safe mechanism; potential upstairs check if time passes).
+- Safe contents spotted:
+  - Iron-banded portable strongbox (primary objective)
+  - Sealed oilcloth folio (Battle-Born signet)
+  - Loose ledger page with payments and a line item marked "E."
