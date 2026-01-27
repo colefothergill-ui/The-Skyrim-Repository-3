@@ -1344,6 +1344,87 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
         
         return True
     
+    def advance_whiterun_jobs_clock(self, clock_name, segments=1):
+        """
+        Advance a Whiterun jobs clock with gating support
+        
+        Args:
+            clock_name: Name of the specific clock (e.g., 'guild_foothold_whiterun')
+            segments: Number of segments to advance
+        """
+        clocks_dir = self.data_dir / "clocks"
+        file_path = clocks_dir / "whiterun_jobs.json"
+        
+        if not file_path.exists():
+            print(f"Error: whiterun_jobs.json not found at {file_path}")
+            return False
+        
+        # Load clocks
+        with open(file_path, 'r') as f:
+            data = json.load(f)
+        
+        clocks = data.get('whiterun_jobs', {}).get('clocks', {})
+        
+        if clock_name not in clocks:
+            print(f"Error: Clock not found: {clock_name}")
+            return False
+        
+        clock = clocks[clock_name]
+        old_progress = clock.get('current', 0)
+        max_value = clock.get('max', 10)
+        new_progress = old_progress + segments
+        
+        # Check for gating
+        if 'gate' in clock:
+            gate = clock['gate']
+            cap = gate.get('cap_until_condition_met', max_value)
+            
+            if new_progress >= cap:
+                # Load campaign state to check condition
+                campaign_state = self.load_campaign_state()
+                condition = gate.get('condition', '')
+                
+                # Simple condition evaluation for whiterun control or imperial alliance
+                condition_met = False
+                if campaign_state:
+                    civil_war = campaign_state.get('civil_war_state', {})
+                    whiterun_control = civil_war.get('whiterun_control', None)
+                    player_alliance = civil_war.get('player_alliance', 'neutral')
+                    
+                    # Check if condition mentions imperial control or alliance
+                    if 'imperial' in condition.lower():
+                        if whiterun_control == 'imperial' or player_alliance == 'imperial':
+                            condition_met = True
+                
+                if not condition_met:
+                    print(f"\n{'='*50}")
+                    print(f"⚠️  Foothold stalled: requires Imperial control or Imperial alliance.")
+                    print(f"Clock: {clock_name}")
+                    print(f"Progress capped at: {cap}/{max_value}")
+                    print(f"Gate note: {gate.get('note', 'N/A')}")
+                    print(f"{'='*50}\n")
+                    # Don't advance beyond cap
+                    new_progress = min(new_progress, cap)
+        
+        # Update progress
+        clock['current'] = max(0, min(max_value, new_progress))
+        
+        # Update timestamp
+        data['whiterun_jobs']['last_updated'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        
+        # Save updated clocks
+        with open(file_path, 'w') as f:
+            json.dump(data, f, indent=2)
+        
+        print(f"\n{'='*50}")
+        print(f"Clock Updated: {clock_name}")
+        print(f"Progress: {old_progress} -> {clock['current']} / {max_value}")
+        if clock['current'] >= max_value:
+            print(f"⚠️  CLOCK FILLED! Effect: {clock.get('completion_effect', 'See clock data')}")
+        print(f"{'='*50}\n")
+        
+        return True
+    
     def get_story_hooks_for_quest(self, quest_id):
         """Get story hooks and GM notes for a specific quest"""
         main_quests_data = self.load_main_quests()
