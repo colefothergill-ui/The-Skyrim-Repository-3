@@ -475,15 +475,34 @@ class NPCManager:
     
     def process_decision_point(self, npc_id, decision_key, chosen_option):
         """
-        Process an NPC decision point based on player choice
+        Process an NPC decision point based on player choice.
+        
+        This method handles branching narrative decisions for NPCs, applying consequences
+        such as loyalty changes, relationship modifications, quest triggers, and unlocking
+        new story paths. Decision points are defined in the NPC's JSON data under the
+        'decision_points' key.
         
         Args:
-            npc_id: ID of the NPC
-            decision_key: Key identifying the decision point
-            chosen_option: Option chosen by player
+            npc_id: ID of the NPC (e.g., 'general_tullius', 'ulfric_stormcloak')
+            decision_key: Key identifying the decision point (e.g., 'civil_war_choice')
+            chosen_option: Option chosen by player (e.g., 'imperial', 'stormcloak')
             
         Returns:
-            Dict with consequences of the decision
+            Dict containing:
+                - success: Boolean indicating if decision was processed
+                - npc_name: Name of the NPC
+                - decision: The decision key processed
+                - option: The option chosen
+                - consequences: Dict of consequences applied
+                - loyalty_change: Loyalty change amount (if any)
+                - new_relationship: Updated relationship status (if any)
+                - unlocked: New content unlocked (if any)
+                
+        Example:
+            result = manager.process_decision_point(
+                'general_tullius', 'civil_war_choice', 'imperial'
+            )
+            print(f"Loyalty changed by: {result.get('loyalty_change', 0)}")
         """
         npc = self.load_npc(npc_id)
         if not npc:
@@ -543,15 +562,48 @@ class NPCManager:
     
     def handle_dialogue_interaction(self, npc_id, dialogue_key, response_option=None):
         """
-        Handle a dialogue tree interaction with an NPC
+        Handle a dialogue tree interaction with an NPC.
+        
+        This method manages branching dialogue conversations with NPCs. On the first call
+        (without response_option), it displays the dialogue text and available responses.
+        On the second call (with response_option), it processes the player's choice,
+        applies consequences (loyalty changes, quest triggers), and follows to the next
+        dialogue node if specified.
+        
+        Dialogue trees are defined in the NPC's JSON data under 'dialogue_trees' key.
         
         Args:
-            npc_id: ID of the NPC
-            dialogue_key: Key identifying the dialogue node
-            response_option: Option chosen by player (if any)
+            npc_id: ID of the NPC (e.g., 'ulfric_stormcloak', 'lydia')
+            dialogue_key: Key identifying the dialogue node (e.g., 'initial_meeting', 'greeting')
+            response_option: (Optional) Player's response choice - can be:
+                - int: Zero-based index of response (e.g., 0 for first option)
+                - str: Exact text of response option
+                - None: Display dialogue and available responses without processing
             
         Returns:
-            Dict with dialogue results and next steps
+            Dict containing:
+                - success: Boolean indicating if dialogue was processed
+                - npc_name: Name of the NPC
+                - dialogue_key: The dialogue node accessed
+                - dialogue_text: The NPC's dialogue text
+                - responses: List of available response options (if response_option is None)
+                - loyalty_change: Loyalty change from response (if any)
+                - quest_triggered: Quest ID activated (if any)
+                - relationship_change: Updated relationship (if any)
+                - companion_status: Updated companion status (if any)
+                - next_dialogue: Key of next dialogue node (if response leads to another)
+                - next_dialogue_text: Text of next dialogue node (if applicable)
+                
+        Example:
+            # Get dialogue and responses
+            result = manager.handle_dialogue_interaction('ulfric_stormcloak', 'initial_meeting')
+            for i, response in enumerate(result['responses']):
+                print(f"{i}. {response['option']}")
+            
+            # Choose response
+            result = manager.handle_dialogue_interaction('ulfric_stormcloak', 'initial_meeting', 0)
+            if 'quest_triggered' in result:
+                print(f"Quest started: {result['quest_triggered']}")
         """
         npc = self.load_npc(npc_id)
         if not npc:
@@ -649,14 +701,48 @@ class NPCManager:
     
     def update_companion_based_on_faction_clock(self, faction, clock_value):
         """
-        Update companion availability/loyalty based on faction clock progress
+        Update companion availability and loyalty based on faction clock progress.
+        
+        This method provides runtime integration between the faction clock system
+        and companion loyalty. As factions gain or lose power (represented by clock
+        values 0-10), companions aligned with or opposed to those factions will have
+        their loyalty adjusted accordingly.
+        
+        Companions with 'allied' alignment to the faction gain loyalty when the faction
+        is doing well (clock_value >= 7). Companions with 'hostile' alignment lose
+        loyalty when enemy factions succeed.
+        
+        This creates dynamic, reactive relationships where companions care about the
+        success or failure of their affiliated factions, adding depth to companion
+        interactions during the civil war.
         
         Args:
-            faction: Faction name
-            clock_value: Current clock value (0-10 scale)
+            faction: Faction name (e.g., 'imperial_legion', 'stormcloaks', 'thalmor')
+            clock_value: Current faction clock value on 0-10 scale, where:
+                - 0-3: Faction struggling/losing
+                - 4-6: Faction holding steady
+                - 7-10: Faction succeeding/winning
             
         Returns:
-            List of affected companions
+            List of affected companions, each as dict containing:
+                - npc_id: Companion's NPC ID
+                - name: Companion's name
+                - change: Loyalty change amount (+/-)
+                - reason: Explanation of why loyalty changed
+                
+        Example:
+            # Imperial Legion wins major battle, clock advances to 8
+            affected = manager.update_companion_based_on_faction_clock('imperial_legion', 8)
+            for comp in affected:
+                print(f"{comp['name']}: {comp['change']:+d} loyalty")
+                # Output: "Lydia: +2 loyalty" (if Lydia is Imperial-aligned)
+        
+        Notes:
+            - Only affects companions at high clock values (7+)
+            - Allied companions: +2 loyalty when faction succeeds
+            - Hostile companions: -3 loyalty when enemy faction succeeds
+            - Neutral companions: No change
+            - Checks all companions (active, available, and dismissed)
         """
         state = self.load_campaign_state()
         if not state or 'companions' not in state:
