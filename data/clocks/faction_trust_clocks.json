@@ -121,9 +121,9 @@
       },
       "thieves_guild_trust": {
         "faction": "Thieves Guild",
-        "current_trust": 0,
+        "current_trust": 2,
         "max_trust": 10,
-        "trust_level": "Stranger",
+        "trust_level": "Member",
         "advancement_triggers": {
           "join_guild": "+2",
           "complete_major_heist": "+2",
