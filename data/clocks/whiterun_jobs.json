@@ -1,47 +1,47 @@
 {
-    "whiterun_jobs":  {
-                          "description":  "Track Thieves Guild operations and jobs in Whiterun",
-                          "last_updated":  "2026-01-27 (Session 1 end v3.1)",
-                          "clocks":  {
-                                         "guild_foothold_whiterun":  {
-                                                                         "name":  "Guild Foothold in Whiterun",
-                                                                         "description":  "Establishing a permanent Thieves Guild presence in Whiterun",
-                                                                         "current":  1,
-                                                                         "max":  5,
-                                                                         "completion_effect":  "Permanent Thieves Guild operations established in Whiterun with local fence and safe house access",
-                                                                         "advancement_triggers":  [
-                                                                                                      "Complete jobs for Battle-Born contacts (+1)",
-                                                                                                      "Establish reliable fence relationship (+1)",
-                                                                                                      "Secure safe house location (+1)",
-                                                                                                      "Build relationships with corrupt guards (+1)",
-                                                                                                      "Earn Olfrid\u0027s endorsement by aiding Hadvar during the Battle of Whiterun (+1; unlock cap)",
-                                                                                                      "Earn Olfrid’s endorsement by aiding Hadvar during the Battle of Whiterun (+1; unlock cap)"
-                                                                                                  ],
-                                                                         "setback_triggers":  [
-                                                                                                  "Jobs go wrong and attract attention (-1)",
-                                                                                                  "Contact relationships damaged (-1)",
-                                                                                                  "Guild operations discovered by authorities (-2)"
-                                                                                              ],
-                                                                         "gate":  {
-                                                                                      "type":  "conditional_progress_cap",
-                                                                                      "cap_until_condition_met":  3,
-                                                                                      "condition":  "state.branching_decisions.civil_war_entry_contact == \u0027hadvar\u0027 || state.civil_war_state.player_alliance == \u0027imperial\u0027",
-                                                                                      "note":  "Olfrid will not fully open the Whiterun door until you prove your alignment during the Battle of Whiterun—specifically by fighting alongside Hadvar (or formally allying with the Empire)."
-                                                                                  }
-                                                                     },
-                                         "battleborn_strongbox":  {
-                                                                      "name":  "Battle-Born Strongbox Job",
-                                                                      "description":  "Retrieve the iron-banded strongbox from Battle-Born Manor for Olfrid",
-                                                                      "current":  3,
-                                                                      "max":  3,
-                                                                      "completion_effect":  "Job completed, payment received (250 gold + intel), Guild reputation with Whiterun contacts increased",
-                                                                      "phases":  [
-                                                                                     "Phase 0: Gain access to Battle-Born Manor",
-                                                                                     "Phase 1: Locate and breach the concealed wall safe",
-                                                                                     "Phase 2: Extract strongbox from manor grounds",
-                                                                                     "Phase 3: Deliver to Olfrid or arrange hand-off"
-                                                                                 ]
-                                                                  }
-                                     }
-                      }
+  "whiterun_jobs": {
+    "description": "Track Thieves Guild operations and jobs in Whiterun",
+    "last_updated": "2026-01-27 (Session 1 end)",
+    "clocks": {
+      "guild_foothold_whiterun": {
+        "name": "Guild Foothold in Whiterun",
+        "description": "Establishing a permanent Thieves Guild presence in Whiterun",
+        "current": 2,
+        "max": 5,
+        "completion_effect": "Permanent Thieves Guild operations established in Whiterun with local fence and safe house access",
+        "advancement_triggers": [
+          "Build relationships with corrupt guards (+1)",
+          "Complete jobs for Battle-Born contacts (+1)",
+          "Earn Olfrid's endorsement by aiding Hadvar during the Battle of Whiterun (+1; unlock cap)",
+          "Earn Olfrid’s endorsement by aiding Hadvar during the Battle of Whiterun (+1; unlock cap)",
+          "Establish reliable fence relationship (+1)",
+          "Secure safe house location (+1)"
+        ],
+        "setback_triggers": [
+          "Jobs go wrong and attract attention (-1)",
+          "Contact relationships damaged (-1)",
+          "Guild operations discovered by authorities (-2)"
+        ],
+        "gate": {
+          "type": "conditional_progress_cap",
+          "cap_until_condition_met": 3,
+          "condition": "state.branching_decisions.civil_war_entry_contact == 'hadvar' || state.civil_war_state.player_alliance == 'imperial'",
+          "note": "Olfrid will not fully open the Whiterun door until you prove your alignment during the Battle of Whiterun—specifically by fighting alongside Hadvar (or formally allying with the Empire)."
+        }
+      },
+      "battleborn_strongbox": {
+        "name": "Battle-Born Strongbox Job",
+        "description": "Retrieve the iron-banded strongbox from Battle-Born Manor for Olfrid",
+        "current": 3,
+        "max": 3,
+        "completion_effect": "Job completed, payment received (250 gold + intel), Guild reputation with Whiterun contacts increased",
+        "phases": [
+          "Phase 0: Gain access to Battle-Born Manor",
+          "Phase 1: Locate and breach the concealed wall safe",
+          "Phase 2: Extract strongbox from manor grounds",
+          "Phase 3: Deliver to Olfrid or arrange hand-off"
+        ]
+      }
+    }
+  }
 }
