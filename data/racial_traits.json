@@ -30,6 +30,16 @@
         "Strong connection to Skyrim",
         "Proud of Nordic heritage",
         "Often worship Talos despite ban"
+      ],
+      "optional_extras": [
+        {
+          "name": "Voice of the Nord (Thu'um)",
+          "cost": "1 Refresh",
+          "description": "Access to the ancient Nordic tradition of the Thu'um (Dragon Shouts). See data/rules/thuum_system.json for complete mechanics.",
+          "benefit": "Can learn and use Dragon Shouts. Choose ONE shout at character creation from: Unrelenting Force, Whirlwind Sprint, or Kyne's Peace. You know ONE word of this shout and start with 2/8 segments on its mastery clock.",
+          "lore": "The Voice is an ancient Nordic tradition passed down through generations. While rare, some Nords still learn fragments of this power from elders or discover it through heritage.",
+          "mechanical_notes": "Uses Fate Point initially, mastery clock reduces to once per scene. See thuum_system.json for full details."
+        }
       ]
     },
     {
@@ -56,6 +66,16 @@
         "Natural merchants and negotiators",
         "Loyal to the Empire",
         "Cosmopolitan worldview"
+      ],
+      "optional_extras": [
+        {
+          "name": "Way of the Voice (Thu'um - Advanced Study)",
+          "cost": "1 Refresh",
+          "description": "Through disciplined study and dedication, you've gained access to the Thu'um. Imperials learn through structured training rather than heritage.",
+          "benefit": "Can learn and use Dragon Shouts through gameplay. Cannot choose shout at character creation - must learn through Greybeard training, Word Walls, or meditation. Mastery clocks have 10 segments instead of 8.",
+          "lore": "While Thu'um is a Nordic tradition, disciplined Imperials can learn it through rigorous study, particularly from the Greybeards who respect dedication over heritage.",
+          "mechanical_notes": "Slower mastery (+2 segments) but gain +1 segment when training with masters due to disciplined approach. See thuum_system.json for full details."
+        }
       ]
     },
     {
@@ -87,6 +107,16 @@
         "Feudal society background",
         "Clever and adaptable",
         "Mixed human-elf heritage"
+      ],
+      "optional_extras": [
+        {
+          "name": "Scholarly Voice (Thu'um - Magical Study)",
+          "cost": "1 Refresh",
+          "description": "Your magical aptitude allows you to understand Thu'um as a form of magic-adjacent power. You approach the Voice through academic study.",
+          "benefit": "Can learn and use Dragon Shouts through gameplay. Cannot choose shout at character creation - must learn through study, Word Walls, or meditation. Mastery clocks have 10 segments. +1 difficulty on learning from Word Walls, but +2 to learning from texts/scrolls due to scholarly nature.",
+          "lore": "Bretons, with their mixed heritage and natural magical talent, can understand Thu'um as a linguistic magic rather than purely spiritual power.",
+          "mechanical_notes": "Slower mastery but excels at book learning. See thuum_system.json for full details."
+        }
       ]
     },
     {
