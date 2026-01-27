@@ -93,7 +93,7 @@
           "Thalmor actively hunting Esbern",
           "Dossiers on remaining Blades at embassy",
           "Paarthurnax seen as Blades ally (indirectly)",
-          "Thalmor want Dragonborn to kill Paarthurnax"
+          "Thalmor want influential heroes to kill Paarthurnax"
         ],
         "gm_notes": "This connects to main quest. If party sides with Blades, they become direct Thalmor enemies."
       },
@@ -105,7 +105,7 @@
         "completion_effect": "Thalmor understand dragon crisis and seek to manipulate it for Dominion benefit",
         "advancement_triggers": [
           "Intelligence gathered on dragons (+1)",
-          "Dragonborn investigated (+2)",
+          "Rising champions investigated (+2)",
           "Ancient texts/prophecies discovered (+1)",
           "Dragon captured or controlled (+3)"
         ],
@@ -117,7 +117,7 @@
         "story_hooks": [
           "Thalmor dossier on 'The Dragon Crisis' at embassy",
           "No evidence Thalmor caused dragons (but investigated)",
-          "Thalmor want to know if Dragonborn is controllable",
+          "Thalmor want to know if rising champions are controllable",
           "Dragons don't distinguish between factions"
         ]
       },
@@ -158,14 +158,14 @@
           "Intelligence network temporarily disrupted"
         ]
       },
-      "dragonborn_assessment": {
+      "champion_assessment": {
         "status": "ongoing",
-        "description": "Evaluate if Dragonborn can be controlled or must be eliminated",
+        "description": "Evaluate if rising champions can be controlled or must be eliminated",
         "current_assessment": "Under observation",
         "factors": [
           "Faction allegiances",
           "Response to Thalmor presence",
-          "Power level and dragon souls absorbed",
+          "Power level and influence",
           "Relationship with Blades"
         ],
         "possible_outcomes": [
@@ -658,19 +658,19 @@
           ]
         }
       },
-      "operation_dragon_eye": {
-        "operation_name": "Operation Dragon Eye",
-        "objective": "Assess and control or eliminate the Dragonborn",
+      "operation_rising_champions": {
+        "operation_name": "Operation Rising Champions",
+        "objective": "Assess and control or eliminate rising champions in Skyrim",
         "priority": "Escalating",
         "current_phase": "discovery",
         "discovery_state": {
           "segments": 5,
           "current": 1,
-          "description": "Thalmor awareness and understanding of Dragonborn",
+          "description": "Thalmor awareness and understanding of regional champions",
           "revelations": [
-            "Segment 1: Reports of dragon at Helgen (completed)",
-            "Segment 2: Dragonborn identity confirmed",
-            "Segment 3: Assess Dragonborn's faction allegiances",
+            "Segment 1: Reports of powerful warriors emerging (completed)",
+            "Segment 2: Champion identities and capabilities confirmed",
+            "Segment 3: Assess champion faction allegiances",
             "Segment 4: Determine threat level to Dominion",
             "Segment 5: Formulate containment or recruitment plan"
           ]
@@ -678,18 +678,18 @@
         "progress_state": {
           "segments": 8,
           "current": 0,
-          "description": "Success in controlling or eliminating Dragonborn",
+          "description": "Success in controlling or eliminating regional champions",
           "milestones": [
             "Segment 2: Surveillance network established",
             "Segment 4: Initial contact/assessment made",
             "Segment 6: Recruitment attempt or assassination ordered",
-            "Segment 8: Dragonborn neutralized or recruited"
+            "Segment 8: Champions neutralized or recruited"
           ]
         },
         "resolution_state": {
           "segments": 6,
           "current": 0,
-          "description": "Dragonborn successfully resists Thalmor influence",
+          "description": "Champions successfully resist Thalmor influence",
           "milestones": [
             "Segment 2: Become aware of surveillance",
             "Segment 4: Reject Thalmor overtures/survive attempts",
@@ -699,13 +699,13 @@
         "triggers": {
           "discovery_advancement": [
             "Dragon killed publicly (+1 discovery)",
-            "Dragonborn identity becomes known (+2 discovery)",
+            "Champion identity becomes known (+2 discovery)",
             "Major faction joined (+1 discovery)",
-            "Embassy infiltrated - Dragonborn learns they're watched (+1 discovery)"
+            "Embassy infiltrated - champions learn they're watched (+1 discovery)"
           ],
           "progress_advancement": [
-            "Surveillance successfully tracks Dragonborn (+1 progress)",
-            "Dragonborn shows weakness or vulnerability (+1 progress)",
+            "Surveillance successfully tracks champions (+1 progress)",
+            "Champions show weakness or vulnerability (+1 progress)",
             "Opportunity for recruitment or elimination arises (+2 progress)"
           ],
           "resolution_advancement": [

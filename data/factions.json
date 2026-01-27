@@ -186,7 +186,7 @@
       "joinable": false,
       "secret_objectives": [
         "Neither side should win the civil war decisively",
-        "Gather information on Dragonborn",
+        "Gather information on rising champions and warriors",
         "Maintain presence despite Nordic hostility"
       ],
       "common_npcs": [
@@ -402,15 +402,15 @@
       "goals": [
         "Study and teach the Way of the Voice",
         "Maintain peace and meditation",
-        "Guide the Dragonborn",
+        "Guide worthy warriors",
         "Protect Paarthurnax"
       ],
       "clocks": [
         {
-          "name": "Dragonborn Training",
+          "name": "Voice Training",
           "progress": 0,
           "segments": 8,
-          "effect": "Teaching the Dragonborn the Way"
+          "effect": "Teaching warriors the Way of the Voice"
         }
       ],
       "resources": {
@@ -438,7 +438,7 @@
         "Rebuild the Blades",
         "Defeat Alduin",
         "Kill all dragons (including Paarthurnax)",
-        "Serve the Dragonborn"
+        "Serve the rising champion"
       ],
       "clocks": [
         {
@@ -838,7 +838,7 @@
             "Whiterun becomes Imperial"
           ],
           "trust_change": 3,
-          "main_quest_tie": "Affects Dragonborn's access to both factions",
+          "main_quest_tie": "Affects player's standing with both factions",
           "act_context": [
             "Act 1",
             "Act 2"
@@ -928,7 +928,7 @@
             "Whiterun becomes Stormcloak territory"
           ],
           "trust_change": 3,
-          "main_quest_tie": "Affects Dragonborn's standing with all factions",
+          "main_quest_tie": "Affects player's standing with all factions",
           "act_context": [
             "Act 1",
             "Act 2"
@@ -1011,7 +1011,7 @@
     }
   },
   "main_story_integration": {
-    "description": "How faction quests tie into the main Dragonborn questline",
+    "description": "How faction quests tie into the civil war and regional conflicts",
     "key_interactions": [
       {
         "quest": "Diplomatic Immunity",
@@ -1046,7 +1046,7 @@
           "Companions",
           "Any faction at high trust"
         ],
-        "description": "Final confrontation - high-trust factions send champions to aid the Dragonborn"
+        "description": "Final confrontation - high-trust factions send champions to aid their allies"
       }
     ],
     "civil_war_dragon_crisis": {
