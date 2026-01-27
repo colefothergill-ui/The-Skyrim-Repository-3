@@ -17,6 +17,18 @@ from pathlib import Path
 from datetime import datetime
 
 
+# Faction name mapping for consistency
+FACTION_NAME_MAPPING = {
+    "college": "college_of_winterhold",
+    "college_of_winterhold": "college_of_winterhold",
+    "companions": "companions",
+    "thieves_guild": "thieves_guild",
+    "dark_brotherhood": "dark_brotherhood",
+    "blades": "blades",
+    "greybeards": "greybeards"
+}
+
+
 class SessionZeroManager:
     def __init__(self, data_dir="../data", state_dir="../state"):
         self.data_dir = Path(data_dir)
@@ -732,7 +744,8 @@ class SessionZeroManager:
             # Set base neutral faction relationship
             if neutral_subfaction:
                 # Specific neutral faction gets higher relationship
-                faction_key = neutral_subfaction if neutral_subfaction != "college" else "college_of_winterhold"
+                # Use mapping to ensure consistent faction names
+                faction_key = FACTION_NAME_MAPPING.get(neutral_subfaction, neutral_subfaction)
                 campaign_state["faction_relationships"][faction_key] = 30
             else:
                 # Generic neutral gets modest companion relationship
