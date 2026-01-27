@@ -390,9 +390,13 @@ class DragonbreakManager:
 ---
 """
         
+        # Check if file exists and needs header before opening
+        file_exists = self.dragonbreak_log_path.exists()
+        file_is_empty = not file_exists or self.dragonbreak_log_path.stat().st_size == 0
+        
         # Append to log file
         with open(self.dragonbreak_log_path, 'a') as f:
-            if not self.dragonbreak_log_path.exists() or self.dragonbreak_log_path.stat().st_size == 0:
+            if file_is_empty:
                 f.write("# Dragonbreak Event Log\n\n")
                 f.write("This log tracks all timeline fractures (Dragonbreaks) in the campaign.\n\n")
                 f.write("---\n")

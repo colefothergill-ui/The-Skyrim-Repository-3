@@ -22,8 +22,11 @@ from query_data import DataQueryManager
 try:
     from dragonbreak_manager import DragonbreakManager
     DRAGONBREAK_AVAILABLE = True
-except ImportError:
+except (ImportError, ModuleNotFoundError) as e:
     DRAGONBREAK_AVAILABLE = False
+    # Optionally log the import failure for debugging
+    # import sys
+    # print(f"Warning: DragonbreakManager not available: {e}", file=sys.stderr)
 
 
 class StoryManager:

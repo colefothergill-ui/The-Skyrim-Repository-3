@@ -190,8 +190,16 @@ def test_documentation_updates():
     """Test that documentation has been updated"""
     print("\n=== Testing Documentation Updates ===")
     try:
+        import os
+        from pathlib import Path
+        
+        # Get the repository root directory
+        test_dir = Path(__file__).parent
+        repo_root = test_dir.parent
+        doc_path = repo_root / 'docs' / 'campaign_module.md'
+        
         # Check campaign_module.md has been updated
-        with open('../docs/campaign_module.md', 'r') as f:
+        with open(doc_path, 'r') as f:
             content = f.read()
             
         # Should NOT contain Dragonborn-focused content
