@@ -799,17 +799,23 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
         }
         
         # Add Dark Brotherhood specific choice
+        # Note: This choice is mutually exclusive with Hadvar/Ralof choices
+        # Attempting assassination makes both civil war factions hostile
         if neutral_subfaction == "dark_brotherhood":
             encounter["choices"]["complete_contract"] = {
-                "description": "Attempt to assassinate Jarl Balgruuf during the chaos",
+                "description": "Attempt to assassinate Jarl Balgruuf during the chaos (WARNING: This prevents choosing Hadvar or Ralof as companions)",
                 "consequences": [
                     "Dark Brotherhood contract completed if successful",
                     "Both Hadvar and Ralof become hostile if discovered",
+                    "Cannot recruit either Hadvar or Ralof as companion",
                     "Whiterun guards become hostile",
-                    "Massive gold reward from Astrid",
-                    "Must flee Whiterun after assassination"
+                    "Massive gold reward from Astrid (1000+ gold)",
+                    "Must flee Whiterun after assassination",
+                    "Civil war continues without your involvement"
                 ],
-                "narrative": "You use the battle as cover to complete Astrid's contract on the Jarl."
+                "narrative": "You use the battle as cover to complete Astrid's contract on the Jarl. This choice means forgoing any alliance with Hadvar or Ralof.",
+                "mutually_exclusive": True,
+                "warning": "Choosing assassination prevents companion recruitment and makes both civil war factions hostile"
             }
         
         return encounter
