@@ -69,7 +69,7 @@
     "RUNNING ON AIR: Because I move fast and silent like a bad omen with good cardio, once per scene I may Create an Advantage with Stealth to become Gale-Runner; if I succeed, I may immediately move up to two zones as part of the same action (instead of the usual one), as long as the route isn’t blocked by a locked-down obstacle or barrier; the Gale-Runner aspect gains free invokes as normal (1 on success, 2 on success with style)."
   ],
   "refresh": 2,
-  "fate_points": 2,
+  "fate_points": 1,
   "equipment": {
     "weapons": [],
     "armor": [],
@@ -84,6 +84,10 @@
   "quests": [],
   "session_history": [],
   "notes": "Created during Session Zero",
+  "session_notes": [
+    "S1-01: Zone-in at Whiterun walls. Used Running on Air to create 'Gale-Runner' (2 free invokes). Spent 1 FP to use WULD. Overcame wall with style. Whirlwind Sprint mastery ticked +1 (now 3/8). Gained boost: 'Perched Like a Hawk'."
+  ],
+  "last_known_location": "Whiterun — inner parapet (west wall)",
   "faction_alignment": "neutral",
   "additional_faction_interests": "Thieves Guild",
   "neutral_subfaction": "thieves_guild",
@@ -99,7 +103,7 @@
           "Wuld"
         ],
         "mastery_clock": {
-          "filled": 2,
+          "filled": 3,
           "segments": 8
         },
         "mechanics": {
