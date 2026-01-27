@@ -1,0 +1,12 @@
+[
+  {
+    "op": "replace",
+    "path": "/whiterun_jobs/clocks/guild_foothold_whiterun/gate/condition",
+    "value": "state.branching_decisions.civil_war_entry_contact == 'hadvar' || state.civil_war_state.player_alliance == 'imperial'"
+  },
+  {
+    "op": "replace",
+    "path": "/whiterun_jobs/clocks/guild_foothold_whiterun/gate/note",
+    "value": "Olfrid will not fully open the Whiterun door until you prove your alignment during the Battle of Whiterun—specifically by fighting alongside Hadvar (or formally allying with the Empire)."
+  }
+]

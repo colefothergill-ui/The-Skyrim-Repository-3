@@ -213,7 +213,7 @@ class RepositoryExporter:
                         print(f"Warning: Could not add README.md: {e}")
                 
                 # Add all data files
-                for directory in ['data', 'scripts', 'docs']:
+                for directory in ['data', 'scripts', 'docs', 'state', 'logs', 'patches']:
                     dir_path = self.repo_dir / directory
                     if dir_path.exists():
                         try:
