@@ -8,6 +8,7 @@ This script manages:
 - Story progression based on player choices
 - Integration between main quest, civil war, and Thalmor arcs
 - Scene-based NPC/enemy stat application
+- Dragonbreak support for parallel timeline events
 """
 
 import json
@@ -16,6 +17,13 @@ from pathlib import Path
 from datetime import datetime
 from utils import location_matches
 from query_data import DataQueryManager
+
+# Import DragonbreakManager if available
+try:
+    from dragonbreak_manager import DragonbreakManager
+    DRAGONBREAK_AVAILABLE = True
+except ImportError:
+    DRAGONBREAK_AVAILABLE = False
 
 
 class StoryManager:
@@ -28,6 +36,12 @@ class StoryManager:
         self.thalmor_path = self.data_dir / "thalmor_arcs.json"
         self.npc_stat_sheets_dir = self.data_dir / "npc_stat_sheets"
         self.query_manager = DataQueryManager(str(self.data_dir))
+        
+        # Initialize Dragonbreak Manager if available
+        if DRAGONBREAK_AVAILABLE:
+            self.dragonbreak_manager = DragonbreakManager(str(self.data_dir), str(self.state_dir))
+        else:
+            self.dragonbreak_manager = None
         
     def load_campaign_state(self):
         """Load current campaign state"""
@@ -957,6 +971,118 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
         print("\n" + "="*60 + "\n")
         
         return quest_info
+    
+    def initiate_dragonbreak(self, fracture_name, description, trigger_event):
+        """
+        Initiate a timeline fracture (Dragonbreak) for parallel story paths
+        
+        Args:
+            fracture_name: Name of the timeline fracture
+            description: Description of what caused the fracture
+            trigger_event: The event that triggered this fracture
+        
+        Returns:
+            The ID of the new timeline branch, or None if Dragonbreak is unavailable
+        """
+        if not self.dragonbreak_manager:
+            print("Warning: Dragonbreak Manager not available")
+            return None
+        
+        branch_id = self.dragonbreak_manager.create_timeline_fracture(
+            fracture_name, description, trigger_event
+        )
+        
+        # Record this in campaign state
+        state = self.load_campaign_state()
+        if state:
+            if 'dragonbreak_events' not in state:
+                state['dragonbreak_events'] = []
+            
+            state['dragonbreak_events'].append({
+                'branch_id': branch_id,
+                'name': fracture_name,
+                'trigger': trigger_event,
+                'timestamp': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+            self.save_campaign_state(state)
+        
+        return branch_id
+    
+    def track_parallel_event(self, event_type, event_data, branch_mapping):
+        """
+        Track an event that has different outcomes across timeline branches
+        
+        Args:
+            event_type: Type of event ('npc', 'faction', 'quest', 'world_state')
+            event_data: Core data about the event (id, name)
+            branch_mapping: Dict mapping branch_id to outcome in that branch
+        """
+        if not self.dragonbreak_manager:
+            print("Warning: Dragonbreak Manager not available")
+            return False
+        
+        if event_type == 'npc':
+            self.dragonbreak_manager.track_npc_across_branches(
+                event_data['id'], event_data['name'], branch_mapping
+            )
+        elif event_type == 'faction':
+            self.dragonbreak_manager.track_faction_across_branches(
+                event_data['id'], event_data['name'], branch_mapping
+            )
+        elif event_type == 'quest':
+            self.dragonbreak_manager.track_quest_across_branches(
+                event_data['id'], event_data['name'], branch_mapping
+            )
+        
+        return True
+    
+    def handle_branching_decision_with_dragonbreak(self, decision_key, choices_dict):
+        """
+        Handle a major branching decision by creating parallel timelines
+        
+        Args:
+            decision_key: Key for the decision (e.g., 'civil_war_alliance')
+            choices_dict: Dict of choice -> outcome mapping
+                         e.g., {'imperial': {...}, 'stormcloak': {...}}
+        
+        Returns:
+            Dict mapping choice to timeline branch
+        """
+        if not self.dragonbreak_manager:
+            print("Warning: Dragonbreak Manager not available, using standard branching")
+            return {}
+        
+        branches = {}
+        
+        # Create a timeline branch for each choice
+        for choice, outcome in choices_dict.items():
+            branch_id = self.dragonbreak_manager.create_timeline_fracture(
+                f"{decision_key}_{choice}",
+                f"Timeline where player chose: {choice}",
+                decision_key
+            )
+            branches[choice] = branch_id
+            
+            # Define consequences for this branch
+            if 'consequences' in outcome:
+                for cons_type, cons_data in outcome['consequences'].items():
+                    self.dragonbreak_manager.define_branch_consequence(
+                        branch_id, cons_type, cons_data
+                    )
+        
+        return branches
+    
+    def get_active_timeline_state(self):
+        """
+        Get the state of the currently active timeline branch
+        
+        Returns:
+            Timeline state dict or None
+        """
+        if not self.dragonbreak_manager:
+            return None
+        
+        return self.dragonbreak_manager.get_timeline_state()
 
 
 def main():
