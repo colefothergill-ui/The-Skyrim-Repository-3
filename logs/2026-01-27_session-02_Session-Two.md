@@ -14,7 +14,7 @@
 - Scene Aspect created: **Good Business** (invokes traded for addendum)
 - Objective set: Prepare for the Battle of Whiterun; make contact with Hadvar using Olfrid's sealed note; pursue the Voice instructor lead.
 
-## Scene WHT-09 — Muster at the Gate / West Wall Assignment
+## Scene WHT-09 — West Wall Muster (Hadvar's Unit)
 
 **Location:** Whiterun — West Wall (gatehouse section)  
 **Scene Aspects:**
@@ -27,11 +27,28 @@ Aldric made his way to the west wall muster where Imperial forces were assemblin
 
 At the gate muster, Aldric encountered **Legate Rikke**, the commanding officer of the Imperial Legion forces in Skyrim, alongside **Hadvar**, who was organizing his section. Aldric presented Olfrid Battle-Born's sealed note to Hadvar, who broke the seal and read the contents.
 
-### Create Advantage Success: "Assigned to Hadvar's Section"
+### Compel Accepted: "Hadvar's Guard Up"
 
-The note from Olfrid carried enough weight to secure Aldric's official assignment to Hadvar's section. Hadvar confirmed the arrangement, granting Aldric legitimate standing within the Imperial forces.
+While Hadvar acknowledged the note from Olfrid Battle-Born, he remained cautious and professional, keeping his guard up around this Thieves Guild operative. Hadvar made it clear that Aldric would need to prove himself in the upcoming battle—this wasn't just going to be a favor handed out on Battle-Born's say-so.
 
-**Advantage Created:** "Assigned to Hadvar's Section" (1 free invoke)
+**Compel:** "Hadvar's Guard Up" - Aldric accepted this compel, earning a Fate Point. Hadvar is watching closely and expects Aldric to demonstrate his worth and loyalty during the battle.
+
+**Scene Aspect Created (GM):** "Hadvar's Guard Up (GM: 1 free invoke)"
+
+### Using Art of the Deal: Locking the Unit Claim
+
+Aldric wasn't content to simply be another soldier in the ranks. Drawing on his expertise from **The Art of the Deal**, he negotiated with Hadvar to establish his standing within the unit and set clear terms for their collaboration.
+
+**Scene Aspect Created (PC):** "Under Hadvar's Banner (PC: 1 free invoke)" - Aldric successfully used his social prowess to position himself as a recognized member of Hadvar's unit, giving him leverage and legitimacy during the upcoming battle.
+
+### Wager Terms with Hadvar
+
+As part of the negotiation, Aldric and Hadvar established wager terms that would govern their arrangement during the Battle of Whiterun:
+
+- **Prove Your Worth:** Aldric must demonstrate loyalty and competence fighting alongside Hadvar's unit during the battle
+- **Visibility Matters:** The arrangement with Olfrid requires that Aldric be publicly seen fighting under Hadvar's banner
+- **Imperial Channel:** Success in the battle will strengthen the Imperial connection for Aldric's Thu'um instructor search through Olfrid's network
+- **Mutual Benefit:** Both parties gain from this arrangement—Hadvar gets a skilled fighter, and Aldric gains legitimate military standing and Battle-Born patronage
 
 ### Equipment Requisition
 
@@ -45,11 +62,24 @@ By making contact with Hadvar and establishing himself within the Imperial milit
 
 **Clock Progress:** Thu'um Instructor (through Olfrid) ticked from 1/4 to 2/4.
 
+### Scene Setup: Incoming Assault
+
+The scene concluded with the Imperial forces preparing for the imminent Stormcloak assault. Scouts reported enemy forces approaching with siege ladders and preparations to breach the gate. The battle was about to begin, and Aldric found himself positioned on the battlements alongside Hadvar's unit, ready to face the incoming attack.
+
+**Situation:** 
+- Stormcloak forces approaching with ladders
+- Gate breach preparations underway
+- Hadvar's unit positioned at the gatehouse section of the west wall
+- Aldric equipped and ready for combat
+
 ### Scene Summary
 
 - Met Legate Rikke and Hadvar at the west wall Imperial forward command
 - Delivered Olfrid's sealed note to Hadvar (seal opened and read)
+- Accepted compel "Hadvar's Guard Up" (+1 FP, now at 2 FP)
+- Used Art of the Deal to create aspect "Under Hadvar's Banner"
+- Negotiated wager terms with Hadvar for the battle
 - Officially assigned to Hadvar's section for the coming battle
 - Requisitioned smoke pots and throwing axes from Imperial stores
 - Advanced Thu'um instructor search through Imperial military channels
-- Battle of Whiterun forces visibly mobilizing (countdown clock 2→3)
+- Battle of Whiterun forces visibly mobilizing; Stormcloak assault imminent (ladders and gate breach incoming)
