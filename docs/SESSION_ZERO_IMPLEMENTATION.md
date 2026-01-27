@@ -1,13 +1,153 @@
-# Session Zero Revamp - Implementation Summary
+# Session Zero Implementation - Complete Character Creation
 
 ## Overview
-This document summarizes the changes made to revamp the session zero system to focus on the Battle of Whiterun and enforce mandatory faction alignment and Standing Stone selection.
+This document describes the comprehensive Session Zero system for Skyrim Fate Core, including full character creation with Aspects, Skills, and Stunts following Fate Core rules.
+
+## Character Creation Features
+
+### 1. **Aspects** (Fate Core Core Mechanic)
+
+The system now enforces complete aspect definition:
+
+#### High Concept (Required)
+- Defines the core identity of the character
+- Cannot be skipped or left as placeholder
+- Examples: "Nord Warrior Seeking Redemption", "Cunning Thief with a Heart of Gold"
+
+#### Trouble (Required)
+- A defining problem or complication that makes life interesting
+- Must be defined during Session Zero
+- Cannot be skipped
+- Examples: "Haunted by Past Mistakes", "Wanted by the Thalmor", "Can't Resist a Challenge"
+
+#### Additional Aspects (1-3 Required)
+- Players must define at least 1 additional aspect
+- Can define up to 3 additional aspects
+- Examples: "Defender of the Weak", "Bond with a Companion", "Distrusts Magic Users"
+
+**Implementation**: `prompt_for_aspects()` method guides players through interactive aspect creation with validation.
+
+### 2. **Skills** (Fate Core Pyramid/Column Rule)
+
+The system enforces the Fate Core skill pyramid:
+- **1 skill** at Great (+4)
+- **2 skills** at Good (+3)
+- **3 skills** at Fair (+2)
+- **4 skills** at Average (+1)
+
+#### Available Skills for Skyrim:
+1. Fight - Melee combat
+2. Shoot - Ranged combat (bows, crossbows)
+3. Athletics - Physical activities, running, climbing
+4. Physique - Raw strength and endurance
+5. Notice - Perception and awareness
+6. Stealth - Sneaking and hiding
+7. Lore - Knowledge of history, magic, and creatures
+8. Will - Mental fortitude and magic resistance
+9. Rapport - Social interaction and persuasion
+10. Deceive - Lying and trickery
+11. Empathy - Understanding others' emotions
+12. Crafts - Creating and repairing items
+13. Survival - Wilderness skills
+
+**Implementation**: `prompt_for_skills()` method enforces pyramid structure with validation.
+
+### 3. **Stunts** (3 Initial Stunts Required)
+
+Players must create exactly 3 stunts during Session Zero:
+- Stunts are special abilities that make characters unique
+- Can interact with campaign mechanics (Thu'um, faction bonuses, etc.)
+- Examples:
+  - "Whirlwind Attack: Once per scene, attack all enemies in your zone"
+  - "Battle Fury: +2 to Fight when you take a consequence"
+  - "Shadow Step: +2 to Stealth when creating advantages in darkness"
+
+**Implementation**: `prompt_for_stunts()` method with validation.
+
+## Session Zero Workflow
+
+### Enhanced Interactive Process
+
+1. **GM Setup**
+   - Enter GM name
+   - Define campaign premise
+
+2. **Party Faction Alignment** (Required)
+   - Choose: Imperial Legion, Stormcloak Rebellion, or Neutral
+   - Affects starting narrative and relationships
+
+3. **For Each Character**:
+   
+   a. **Basic Information**
+      - Player name
+      - Character name
+      - Race selection (from races.json)
+      - Standing Stone selection (REQUIRED)
+   
+   b. **Aspects** (NEW)
+      - Define High Concept
+      - Define Trouble
+      - Define 1-3 additional aspects
+   
+   c. **Skills** (NEW)
+      - Build skill pyramid
+      - Select 1/2/3/4 skills at Great/Good/Fair/Average
+      - Validation prevents duplicates
+   
+   d. **Stunts** (NEW)
+      - Create 3 unique stunts
+      - Examples provided for guidance
+   
+   e. **Backstory**
+      - Civil War involvement
+      - Faction stance motivation
+      - Character goals
+      - Whiterun connections
+
+4. **Validation & Export**
+   - Complete validation of all fields
+   - Character saved to `data/pcs/[character_id].json`
+   - Campaign state updated
+   - Session Zero log generated with full stats
+
+## Validation System
+
+The `validate_character_data()` method ensures:
+
+✅ **Required Fields**: name, player, race, standing_stone, faction_alignment  
+✅ **Aspects**:
+  - High Concept is defined (not placeholder)
+  - Trouble is defined (not placeholder)
+  - At least 1 additional aspect exists
+✅ **Skills**:
+  - Exactly 1 skill at Great (+4)
+  - Exactly 2 skills at Good (+3)
+  - Exactly 3 skills at Fair (+2)
+  - Exactly 4 skills at Average (+1)
+  - No duplicate skills
+✅ **Stunts**:
+  - Exactly 3 stunts defined
+  - Each stunt has meaningful content
 
 ## Changes Made
 
 ### 1. Enhanced `scripts/session_zero.py`
 
-#### New Features Added:
+#### New Constants:
+- `SKYRIM_SKILLS`: List of 13 Fate Core skills for Skyrim
+- `SKILL_PYRAMID`: Skill distribution requirements (1/2/3/4)
+
+#### New Methods:
+- `prompt_for_aspects()`: Interactive aspect creation
+- `prompt_for_skills()`: Interactive skill pyramid builder
+- `prompt_for_stunts()`: Interactive stunt creation
+
+#### Enhanced Methods:
+- `create_character_template()`: Updated to use `other_aspects` array
+- `validate_character_data()`: Comprehensive validation including aspects, skills, stunts
+- `create_session_zero_log()`: Displays complete character stats including all aspects, skills, and stunts
+
+#### Existing Features (Unchanged):
 
 1. **Battle of Whiterun Context Display** (`display_civil_war_context()`)
    - Presents detailed information about the Imperial/Stormcloak conflict

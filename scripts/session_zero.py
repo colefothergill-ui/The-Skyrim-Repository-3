@@ -28,6 +28,34 @@ FACTION_NAME_MAPPING = {
     "greybeards": "greybeards"
 }
 
+# Fate Core skill list for Skyrim
+SKYRIM_SKILLS = [
+    "Fight",
+    "Shoot",
+    "Athletics",
+    "Physique",
+    "Notice",
+    "Stealth",
+    "Lore",
+    "Will",
+    "Rapport",
+    "Deceive",
+    "Empathy",
+    "Crafts",
+    "Survival"
+]
+
+# Fate Core skill pyramid structure
+SKILL_PYRAMID = {
+    "Great (+4)": 1,
+    "Good (+3)": 2,
+    "Fair (+2)": 3,
+    "Average (+1)": 4
+}
+
+# Validation constants
+MIN_STUNT_LENGTH = 10  # Minimum characters for a meaningful stunt description
+
 
 class SessionZeroManager:
     def __init__(self, data_dir="../data", state_dir="../state"):
@@ -326,10 +354,8 @@ class SessionZeroManager:
             "level": 1,
             "aspects": {
                 "high_concept": f"{selected_race['starting_aspect']}",
-                "trouble": "[Player to define]",
-                "aspect_3": f"Blessed by {standing_stone}",
-                "aspect_4": "[Player to define]",
-                "aspect_5": "[Player to define]"
+                "trouble": "[Player to define - Required]",
+                "other_aspects": []  # Will be filled during interactive session
             },
             "skills": {
                 "Great (+4)": [],
@@ -351,7 +377,7 @@ class SessionZeroManager:
                 "moderate": None,
                 "severe": None
             },
-            "stunts": [],
+            "stunts": [],  # Will be filled during interactive session (3 stunts required)
             "refresh": 3,
             "fate_points": 3,
             "equipment": {
@@ -383,6 +409,155 @@ class SessionZeroManager:
         
         print(f"\nCharacter saved to: {filepath}")
         return filepath
+    
+    def prompt_for_aspects(self, character):
+        """Prompt player to define High Concept, Trouble, and additional aspects"""
+        print("\n" + "="*60)
+        print("ASPECTS - Define Your Character")
+        print("="*60)
+        print("\nAspects are phrases that describe who your character is.")
+        print("They can be invoked for bonuses or compelled for fate points.")
+        
+        # High Concept
+        print("\n--- HIGH CONCEPT ---")
+        print("Your High Concept is the core of your character.")
+        print(f"Current: {character['aspects']['high_concept']}")
+        print("You can keep this or create your own.")
+        print("Examples: 'Nord Warrior Seeking Redemption', 'Cunning Thief with a Heart of Gold'")
+        
+        high_concept = input("\nHigh Concept (press Enter to keep current): ").strip()
+        if high_concept:
+            character['aspects']['high_concept'] = high_concept
+        
+        # Trouble
+        print("\n--- TROUBLE ---")
+        print("Your Trouble is a complication that makes life interesting.")
+        print("Examples: 'Haunted by Past Mistakes', 'Wanted by the Thalmor', 'Can't Resist a Challenge'")
+        
+        trouble = ""
+        while not trouble:
+            trouble = input("\nTrouble (required): ").strip()
+            if not trouble:
+                print("⚠️  Trouble is required! It's what makes your character interesting.")
+        character['aspects']['trouble'] = trouble
+        
+        # Additional Aspects (1-3)
+        print("\n--- ADDITIONAL ASPECTS ---")
+        print("You can define 1-3 additional aspects.")
+        print("Examples: 'Defender of the Weak', 'Bond with a Companion', 'Distrusts Magic Users'")
+        
+        other_aspects = []
+        for i in range(3):
+            print(f"\nAspect {i+1} of 3 (press Enter to skip):")
+            aspect = input("  > ").strip()
+            if aspect:
+                other_aspects.append(aspect)
+            elif i == 0:
+                # First aspect is required
+                print("⚠️  You need at least 1 additional aspect!")
+                while not aspect:
+                    aspect = input("  > ").strip()
+                other_aspects.append(aspect)
+        
+        character['aspects']['other_aspects'] = other_aspects
+        
+        print("\n✓ Aspects defined:")
+        print(f"  High Concept: {character['aspects']['high_concept']}")
+        print(f"  Trouble: {character['aspects']['trouble']}")
+        for i, aspect in enumerate(other_aspects, 1):
+            print(f"  Aspect {i}: {aspect}")
+    
+    def prompt_for_skills(self, character):
+        """Prompt player to select skills following the Fate Core pyramid"""
+        print("\n" + "="*60)
+        print("SKILLS - Build Your Skill Pyramid")
+        print("="*60)
+        print("\nFate Core uses a skill pyramid:")
+        print("  - 1 skill at Great (+4)")
+        print("  - 2 skills at Good (+3)")
+        print("  - 3 skills at Fair (+2)")
+        print("  - 4 skills at Average (+1)")
+        print("\nAvailable Skills:")
+        for i, skill in enumerate(SKYRIM_SKILLS, 1):
+            print(f"  {i:2d}. {skill}")
+        
+        selected_skills = set()
+        
+        # Select skills for each level
+        for level_name, count in SKILL_PYRAMID.items():
+            print(f"\n--- {level_name} ---")
+            print(f"Select {count} skill(s):")
+            
+            level_skills = []
+            for i in range(count):
+                while True:
+                    skill_input = input(f"  Skill {i+1} of {count}: ").strip()
+                    
+                    # Check if it's a number (index) or skill name
+                    if skill_input.isdigit():
+                        idx = int(skill_input) - 1
+                        if 0 <= idx < len(SKYRIM_SKILLS):
+                            skill = SKYRIM_SKILLS[idx]
+                        else:
+                            print(f"⚠️  Invalid number. Choose 1-{len(SKYRIM_SKILLS)}")
+                            continue
+                    else:
+                        # Try to match skill name
+                        skill = None
+                        for s in SKYRIM_SKILLS:
+                            if s.lower() == skill_input.lower():
+                                skill = s
+                                break
+                        if not skill:
+                            print(f"⚠️  '{skill_input}' is not a valid skill. Use number or exact name.")
+                            continue
+                    
+                    if skill in selected_skills:
+                        print(f"⚠️  {skill} already selected. Choose a different skill.")
+                        continue
+                    
+                    level_skills.append(skill)
+                    selected_skills.add(skill)
+                    print(f"    ✓ {skill} at {level_name}")
+                    break
+            
+            character['skills'][level_name] = level_skills
+        
+        print("\n✓ Skill Pyramid Complete:")
+        for level_name, skills in character['skills'].items():
+            if skills:
+                print(f"  {level_name}: {', '.join(skills)}")
+    
+    def prompt_for_stunts(self, character):
+        """Prompt player to create 3 stunts"""
+        print("\n" + "="*60)
+        print("STUNTS - Special Abilities")
+        print("="*60)
+        print("\nStunts are special abilities that make your character unique.")
+        print("You start with 3 stunts.")
+        print("\nStunt Format: [Name]: [Effect]")
+        print("\nExamples:")
+        print("  - Whirlwind Attack: Once per scene, attack all enemies in your zone")
+        print("  - Battle Fury: +2 to Fight when you take a consequence")
+        print("  - Shadow Step: +2 to Stealth when creating advantages in darkness")
+        print("  - Arcane Shield: Spend a Fate Point to absorb one hit completely")
+        
+        stunts = []
+        for i in range(3):
+            print(f"\n--- Stunt {i+1} of 3 ---")
+            stunt = ""
+            while not stunt:
+                stunt = input("Enter stunt: ").strip()
+                if not stunt:
+                    print("⚠️  Stunt is required!")
+            stunts.append(stunt)
+            print(f"  ✓ Added: {stunt}")
+        
+        character['stunts'] = stunts
+        
+        print("\n✓ Stunts defined:")
+        for i, stunt in enumerate(stunts, 1):
+            print(f"  {i}. {stunt}")
     
     def display_neutral_faction_starts(self):
         """Display specific neutral faction starting options"""
@@ -793,6 +968,62 @@ class SessionZeroManager:
             if len(character['race'].strip()) < 3:
                 errors.append("Race selection appears invalid or too short")
         
+        # Validate aspects
+        if 'aspects' in character:
+            aspects = character['aspects']
+            
+            # Check High Concept
+            if not aspects.get('high_concept') or aspects['high_concept'] == "[Player to define - Required]":
+                errors.append("High Concept is required and must be defined")
+            
+            # Check Trouble
+            if not aspects.get('trouble') or aspects['trouble'] == "[Player to define - Required]":
+                errors.append("Trouble is required and must be defined")
+            
+            # Check other aspects (need at least 1)
+            other_aspects = aspects.get('other_aspects', [])
+            if not other_aspects or len(other_aspects) < 1:
+                errors.append("At least 1 additional aspect is required")
+        else:
+            errors.append("Aspects section missing from character")
+        
+        # Validate skills pyramid
+        if 'skills' in character:
+            skills = character['skills']
+            total_skills = 0
+            
+            for level_name, count in SKILL_PYRAMID.items():
+                level_skills = skills.get(level_name, [])
+                if len(level_skills) != count:
+                    errors.append(f"Skill pyramid error: {level_name} should have {count} skill(s), but has {len(level_skills)}")
+                total_skills += len(level_skills)
+            
+            expected_total_skills = sum(SKILL_PYRAMID.values())
+            if total_skills != expected_total_skills:
+                errors.append(f"Total skills should be {expected_total_skills}, but found {total_skills}")
+            
+            # Check for duplicate skills
+            all_skills = []
+            for level_skills in skills.values():
+                all_skills.extend(level_skills)
+            if len(all_skills) != len(set(all_skills)):
+                errors.append("Duplicate skills detected - each skill can only be selected once")
+        else:
+            errors.append("Skills section missing from character")
+        
+        # Validate stunts (need exactly 3)
+        if 'stunts' in character:
+            stunts = character['stunts']
+            if len(stunts) != 3:
+                errors.append(f"Exactly 3 stunts are required, but found {len(stunts)}")
+            
+            # Check that stunts are not empty or too short
+            for i, stunt in enumerate(stunts, 1):
+                if not stunt or len(stunt.strip()) < MIN_STUNT_LENGTH:
+                    errors.append(f"Stunt {i} is empty or too short (minimum {MIN_STUNT_LENGTH} characters)")
+        else:
+            errors.append("Stunts section missing from character")
+        
         if errors:
             print("\n⚠️  CHARACTER VALIDATION ERRORS:")
             for error in errors:
@@ -847,10 +1078,24 @@ decide where they stand in this pivotal battle.
 - **Race**: {character['race']}
 - **Standing Stone**: {character['standing_stone']}
 - **Faction Alignment**: {faction_name}
-- **High Concept**: {character['aspects']['high_concept']}
-- **Backstory Summary**: {character.get('backstory', '[To be developed]')}
 
+#### Aspects
+- **High Concept**: {character['aspects']['high_concept']}
+- **Trouble**: {character['aspects']['trouble']}
 """
+            for i, aspect in enumerate(character['aspects'].get('other_aspects', []), 1):
+                log_content += f"- **Aspect {i}**: {aspect}\n"
+            
+            log_content += "\n#### Skills\n"
+            for level_name, skills in character['skills'].items():
+                if skills:
+                    log_content += f"- **{level_name}**: {', '.join(skills)}\n"
+            
+            log_content += "\n#### Stunts\n"
+            for i, stunt in enumerate(character.get('stunts', []), 1):
+                log_content += f"{i}. {stunt}\n"
+            
+            log_content += f"\n**Backstory Summary**: {character.get('backstory', '[To be developed]')}\n\n"
         
         # Add faction-specific starting narrative
         if campaign_info.get('faction_alignment') == 'imperial':
@@ -1085,6 +1330,15 @@ the Battle of Whiterun will shape Skyrim's future.
             if character:
                 # Add faction alignment to character
                 character['faction_alignment'] = faction_alignment
+                
+                # Prompt for Aspects (High Concept, Trouble, and 1-3 additional)
+                self.prompt_for_aspects(character)
+                
+                # Prompt for Skills (Fate Core pyramid)
+                self.prompt_for_skills(character)
+                
+                # Prompt for Stunts (3 required)
+                self.prompt_for_stunts(character)
                 
                 # Additional backstory prompts
                 print("\n--- Backstory Development ---")

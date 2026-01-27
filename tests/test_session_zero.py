@@ -54,16 +54,32 @@ def test_validate_character_data():
             
             manager = SessionZeroManager(data_dir=str(data_dir), state_dir=str(state_dir))
             
-            # Test 1: Valid character
+            # Test 1: Valid complete character
             valid_character = {
                 'name': 'Test Character',
                 'player': 'Test Player',
                 'race': 'Nord',
                 'standing_stone': 'The Warrior Stone',
-                'faction_alignment': 'imperial'
+                'faction_alignment': 'imperial',
+                'aspects': {
+                    'high_concept': 'Nord Warrior Seeking Glory',
+                    'trouble': 'Haunted by Past Failures',
+                    'other_aspects': ['Loyal to Friends', 'Distrusts Magic']
+                },
+                'skills': {
+                    'Great (+4)': ['Fight'],
+                    'Good (+3)': ['Athletics', 'Physique'],
+                    'Fair (+2)': ['Will', 'Notice', 'Rapport'],
+                    'Average (+1)': ['Shoot', 'Stealth', 'Lore', 'Empathy']
+                },
+                'stunts': [
+                    'Whirlwind Attack: Once per scene, attack all enemies',
+                    'Battle Fury: +2 to Fight when wounded',
+                    'Unbreakable: +2 to defend against physical attacks'
+                ]
             }
-            assert manager.validate_character_data(valid_character), "Valid character should pass validation"
-            print("✓ Valid character passes validation")
+            assert manager.validate_character_data(valid_character), "Valid complete character should pass validation"
+            print("✓ Valid complete character passes validation")
             
             # Test 2: Missing required field
             invalid_character = {
@@ -81,7 +97,19 @@ def test_validate_character_data():
                 'player': 'Test Player',
                 'race': 'Nord',
                 'standing_stone': 'The Warrior Stone',
-                'faction_alignment': 'invalid_faction'
+                'faction_alignment': 'invalid_faction',
+                'aspects': {
+                    'high_concept': 'Test Concept',
+                    'trouble': 'Test Trouble',
+                    'other_aspects': ['Test Aspect']
+                },
+                'skills': {
+                    'Great (+4)': ['Fight'],
+                    'Good (+3)': ['Athletics', 'Physique'],
+                    'Fair (+2)': ['Will', 'Notice', 'Rapport'],
+                    'Average (+1)': ['Shoot', 'Stealth', 'Lore', 'Empathy']
+                },
+                'stunts': ['Stunt 1', 'Stunt 2', 'Stunt 3']
             }
             assert not manager.validate_character_data(invalid_faction), "Invalid faction should fail validation"
             print("✓ Invalid faction alignment detected")
@@ -96,6 +124,75 @@ def test_validate_character_data():
             }
             assert not manager.validate_character_data(empty_stone), "Empty standing stone should fail validation"
             print("✓ Empty standing stone detected")
+            
+            # Test 5: Missing trouble aspect
+            missing_trouble = {
+                'name': 'Test Character',
+                'player': 'Test Player',
+                'race': 'Nord',
+                'standing_stone': 'The Warrior Stone',
+                'faction_alignment': 'imperial',
+                'aspects': {
+                    'high_concept': 'Test Concept',
+                    'trouble': '[Player to define - Required]',  # Not filled
+                    'other_aspects': ['Test Aspect']
+                },
+                'skills': {
+                    'Great (+4)': ['Fight'],
+                    'Good (+3)': ['Athletics', 'Physique'],
+                    'Fair (+2)': ['Will', 'Notice', 'Rapport'],
+                    'Average (+1)': ['Shoot', 'Stealth', 'Lore', 'Empathy']
+                },
+                'stunts': ['Stunt 1', 'Stunt 2', 'Stunt 3']
+            }
+            assert not manager.validate_character_data(missing_trouble), "Missing trouble should fail validation"
+            print("✓ Missing trouble aspect detected")
+            
+            # Test 6: Invalid skill pyramid (wrong count)
+            invalid_skills = {
+                'name': 'Test Character',
+                'player': 'Test Player',
+                'race': 'Nord',
+                'standing_stone': 'The Warrior Stone',
+                'faction_alignment': 'imperial',
+                'aspects': {
+                    'high_concept': 'Test Concept',
+                    'trouble': 'Test Trouble',
+                    'other_aspects': ['Test Aspect']
+                },
+                'skills': {
+                    'Great (+4)': ['Fight', 'Athletics'],  # Should be 1, not 2
+                    'Good (+3)': ['Physique'],
+                    'Fair (+2)': ['Will', 'Notice', 'Rapport'],
+                    'Average (+1)': ['Shoot', 'Stealth', 'Lore', 'Empathy']
+                },
+                'stunts': ['Stunt 1', 'Stunt 2', 'Stunt 3']
+            }
+            assert not manager.validate_character_data(invalid_skills), "Invalid skill pyramid should fail validation"
+            print("✓ Invalid skill pyramid detected")
+            
+            # Test 7: Wrong number of stunts
+            wrong_stunts = {
+                'name': 'Test Character',
+                'player': 'Test Player',
+                'race': 'Nord',
+                'standing_stone': 'The Warrior Stone',
+                'faction_alignment': 'imperial',
+                'aspects': {
+                    'high_concept': 'Test Concept',
+                    'trouble': 'Test Trouble',
+                    'other_aspects': ['Test Aspect']
+                },
+                'skills': {
+                    'Great (+4)': ['Fight'],
+                    'Good (+3)': ['Athletics', 'Physique'],
+                    'Fair (+2)': ['Will', 'Notice', 'Rapport'],
+                    'Average (+1)': ['Shoot', 'Stealth', 'Lore', 'Empathy']
+                },
+                'stunts': ['Stunt 1', 'Stunt 2']  # Should be 3, not 2
+            }
+            assert not manager.validate_character_data(wrong_stunts), "Wrong number of stunts should fail validation"
+            print("✓ Wrong number of stunts detected")
             
             print("\n✓ ALL CHARACTER VALIDATION TESTS PASSED")
             return True
@@ -127,7 +224,12 @@ def test_update_campaign_state():
                     'player': 'Test Player',
                     'race': 'Nord',
                     'standing_stone': 'The Warrior Stone',
-                    'faction_alignment': 'imperial'
+                    'faction_alignment': 'imperial',
+                    'aspects': {
+                        'high_concept': 'Nord Warrior',
+                        'trouble': 'Hot-Headed',
+                        'other_aspects': ['Loyal']
+                    }
                 }
             ]
             

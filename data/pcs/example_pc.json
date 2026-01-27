@@ -15,10 +15,10 @@
     ]
   },
   "skills": {
-    "Great": ["Fight"],
-    "Good": ["Athletics", "Physique"],
-    "Fair": ["Will", "Notice", "Rapport"],
-    "Average": ["Shoot", "Stealth", "Lore", "Empathy"]
+    "Great (+4)": ["Fight"],
+    "Good (+3)": ["Athletics", "Physique"],
+    "Fair (+2)": ["Will", "Notice", "Rapport"],
+    "Average (+1)": ["Shoot", "Stealth", "Lore", "Empathy"]
   },
   "stunts": [
     "Whirlwind Attack: Once per scene, attack all enemies in your zone",
