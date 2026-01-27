@@ -646,11 +646,22 @@ def main():
     print("\n4. Getting World State...")
     world_state = manager.get_world_state()
     if world_state:
-        print(f"Game Date: {world_state['game_date']}")
-        print(f"Days Passed: {world_state['in_game_days_passed']}")
-        print(f"Dragon Crisis Status: {world_state['dragon_crisis']['status']}")
+        print(f"Game Date: {world_state.get('game_date', 'Unknown')}")
+        print(f"Days Passed: {world_state.get('in_game_days_passed', 0)}")
+        
+        # Post-Alduin timeline - dragon crisis is resolved
+        post_dragon = world_state.get('post_dragon_crisis', {})
+        if post_dragon:
+            print(f"Dragon Status: {post_dragon.get('status', 'Unknown')}")
+            print(f"Timeline Note: {post_dragon.get('timeline_note', 'N/A')}")
+        
+        # Show Civil War status from political situation
+        political_situation = world_state.get('political_situation', {})
+        if political_situation:
+            print(f"\nCivil War Status: {political_situation.get('skyrim_status', 'Unknown')}")
+        
         print("\nActive Threats:")
-        for threat in world_state['active_threats']:
+        for threat in world_state.get('active_threats', []):
             print(f"  - {threat}")
     
     # Example: Query PDF Topics
