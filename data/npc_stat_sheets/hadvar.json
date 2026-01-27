@@ -114,7 +114,7 @@
   ],
   "whiterun_integration": "In Whiterun, Hadvar can use his Imperial credentials to gain audience with Jarl Balgruuf. During the Battle of Whiterun, if fighting for Imperials, he provides tactical bonuses to party. He knows many Whiterun guards from joint operations. His presence makes Imperial-aligned NPCs more cooperative.",
   "dialogue_samples": {
-    "greeting": "Good to see you again. After what we went through at Helgen, I'd say we're bound by more than just circumstance.",
+    "greeting": "Good to see you again. After what we've been through together in the civil war, I'd say we're bound by more than just circumstance.",
     "combat_start": "Form up! Protect the vulnerable and watch your flanks!",
     "low_health": "I'm hurt, but I can still fight! Keep going!",
     "victory": "Well fought. Let's help the wounded and regroup.",

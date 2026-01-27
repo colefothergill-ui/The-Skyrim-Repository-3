@@ -62,7 +62,7 @@
     "speaking_style": "Direct, passionate, uses Nordic expressions, frequently invokes Talos and Skyrim",
     "motivations": ["Free Skyrim from Imperial control", "Restore Talos worship openly", "Protect family in Riverwood", "See Ulfric crowned High King"],
     "fears": ["Skyrim becoming a Thalmor puppet state", "Losing family to the war", "Talos worship being completely erased", "Dying without seeing Skyrim free"],
-    "quirks": ["Touches his Talos amulet when stressed", "Speaks of Helgen dragon as divine intervention", "Shares mead and stories enthusiastically with friends"],
+    "quirks": ["Touches his Talos amulet when stressed", "Speaks passionately of Skyrim's freedom and divine favor", "Shares mead and stories enthusiastically with friends"],
     "character_growth": "Can learn to see good Imperials as potential allies against Thalmor, develop more nuanced view of the war, become more strategic rather than purely passionate"
   },
   "companion_mechanics": {
@@ -116,7 +116,7 @@
   ],
   "whiterun_integration": "In Whiterun, Ralof maintains contacts with Gray-Mane clan and other Nord traditionalists. During Battle of Whiterun, if fighting for Stormcloaks, he provides morale bonuses to party and allied troops. His presence makes Stormcloak-sympathetic NPCs more open. He can identify which Whiterun residents secretly support Ulfric.",
   "dialogue_samples": {
-    "greeting": "Look who it is! My friend from Helgen. We survived a dragon together - that makes us kin in my book.",
+    "greeting": "Look who it is! My friend from the cause. We're fighting for Skyrim together - that makes us kin in my book.",
     "combat_start": "For Skyrim! Show these bastards what true Nords are made of!",
     "low_health": "By Talos, they'll have to do better than that! I won't fall again!",
     "victory": "That's how we do it! Skyrim's freedom is worth every drop of blood!",

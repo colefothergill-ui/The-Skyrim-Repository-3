@@ -120,7 +120,7 @@
     "ulfric_stormcloak": "Asset (uncooperative). Contact forbidden. Terminated due to impending High King murder",
     "delphine": "Blades agent. Capture for interrogation priority. Use of force authorized.",
     "esbern": "Last Blades historian. Elimination critical. Last seen in Riften.",
-    "dragonborn": "Civil war participants. Status pending investigation. Assess influence and controllability."
+    "civil_war_participants": "Rising champions and key actors. Status pending investigation. Assess influence and controllability."
   },
   "season_unending_role": {
     "participation": "Attends as Aldmeri Dominion representative",
