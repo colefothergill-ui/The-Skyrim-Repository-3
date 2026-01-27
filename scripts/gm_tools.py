@@ -189,9 +189,9 @@ class GMTools:
         # Main quest status
         main_quest = campaign_state.get('main_quest_state', {})
         print(f"\n--- Main Quest ---")
-        print(f"Dragonborn Revealed: {main_quest.get('dragonborn_revealed')}")
-        print(f"Dragon Souls: {main_quest.get('dragon_souls_absorbed')}")
-        print(f"Shouts Learned: {len(main_quest.get('shouts_learned', []))}")
+        print(f"Civil War Involvement: {main_quest.get('civil_war_involvement', True)}")
+        print(f"Major Battles: {main_quest.get('battles_participated', 0)}")
+        print(f"Faction Quests Completed: {len(main_quest.get('faction_quests_completed', []))}")
         
         # Thalmor threat
         thalmor = campaign_state.get('thalmor_arc', {})
@@ -240,12 +240,12 @@ class GMTools:
         
         # Check main quest progression
         main_quest = campaign_state.get('main_quest_state', {})
-        if not main_quest.get('dragonborn_revealed'):
-            suggestions.append({
-                'priority': 'HIGH',
-                'category': 'Main Quest',
-                'suggestion': 'Advance toward revealing the Dragonborn (Dragon Rising quest)'
-            })
+        # Civil war is central, so always suggest advancing it
+        suggestions.append({
+            'priority': 'HIGH',
+            'category': 'Civil War',
+            'suggestion': 'Advance the Civil War storyline with battle preparations or faction missions'
+        })
         
         # Check civil war
         civil_war = campaign_state.get('civil_war_state', {})
