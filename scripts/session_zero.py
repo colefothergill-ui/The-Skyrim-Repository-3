@@ -53,6 +53,9 @@ SKILL_PYRAMID = {
     "Average (+1)": 4
 }
 
+# Validation constants
+MIN_STUNT_LENGTH = 10  # Minimum characters for a meaningful stunt description
+
 
 class SessionZeroManager:
     def __init__(self, data_dir="../data", state_dir="../state"):
@@ -450,18 +453,11 @@ class SessionZeroManager:
             if aspect:
                 other_aspects.append(aspect)
             elif i == 0:
+                # First aspect is required
                 print("⚠️  You need at least 1 additional aspect!")
-                aspect = input("  > ").strip()
-                if aspect:
-                    other_aspects.append(aspect)
-        
-        if not other_aspects:
-            # Ensure at least one additional aspect
-            print("\n⚠️  At least 1 additional aspect is required!")
-            aspect = input("Enter at least one aspect: ").strip()
-            while not aspect:
-                aspect = input("This is required - enter an aspect: ").strip()
-            other_aspects.append(aspect)
+                while not aspect:
+                    aspect = input("  > ").strip()
+                other_aspects.append(aspect)
         
         character['aspects']['other_aspects'] = other_aspects
         
@@ -1002,8 +998,9 @@ class SessionZeroManager:
                     errors.append(f"Skill pyramid error: {level_name} should have {count} skill(s), but has {len(level_skills)}")
                 total_skills += len(level_skills)
             
-            if total_skills != 10:  # 1+2+3+4 = 10 total skills
-                errors.append(f"Total skills should be 10, but found {total_skills}")
+            expected_total_skills = sum(SKILL_PYRAMID.values())
+            if total_skills != expected_total_skills:
+                errors.append(f"Total skills should be {expected_total_skills}, but found {total_skills}")
             
             # Check for duplicate skills
             all_skills = []
@@ -1020,10 +1017,10 @@ class SessionZeroManager:
             if len(stunts) != 3:
                 errors.append(f"Exactly 3 stunts are required, but found {len(stunts)}")
             
-            # Check that stunts are not empty
+            # Check that stunts are not empty or too short
             for i, stunt in enumerate(stunts, 1):
-                if not stunt or len(stunt.strip()) < 5:
-                    errors.append(f"Stunt {i} is empty or too short")
+                if not stunt or len(stunt.strip()) < MIN_STUNT_LENGTH:
+                    errors.append(f"Stunt {i} is empty or too short (minimum {MIN_STUNT_LENGTH} characters)")
         else:
             errors.append("Stunts section missing from character")
         
