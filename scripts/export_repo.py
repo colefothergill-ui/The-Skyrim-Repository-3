@@ -14,6 +14,21 @@ from datetime import datetime
 from pathlib import Path
 
 
+def load_json_safely(path):
+    """
+    Windows often defaults to cp1252; repo JSON is intended to be UTF-8.
+    This loader tries UTF-8 variants first, then common fallbacks.
+    """
+    import json
+    data = path.read_bytes()
+    for enc in ("utf-8", "utf-8-sig", "cp1252", "latin-1"):
+        try:
+            return json.loads(data.decode(enc))
+        except Exception:
+            continue
+    return json.loads(data.decode("latin-1", errors="replace"))
+
+
 class RepositoryExporter:
     def __init__(self, repo_dir="."):
         self.repo_dir = Path(repo_dir)
@@ -156,8 +171,7 @@ class RepositoryExporter:
         # World State
         world_state_file = self.data_dir / "world_state" / "current_state.json"
         if world_state_file.exists():
-            with open(world_state_file, 'r', encoding='utf-8') as f:
-                world_state = json.load(f)
+            world_state = load_json_safely(Path(world_state_file))
             
             reference += "## Current World State\n"
             reference += f"- **Date**: {world_state.get('game_date', 'Unknown')}\n"
@@ -174,8 +188,7 @@ class RepositoryExporter:
         quests_dir = self.data_dir / "quests"
         if quests_dir.exists():
             for quest_file in quests_dir.glob("*.json"):
-                with open(quest_file, 'r', encoding='utf-8') as f:
-                    quest = json.load(f)
+                quest = load_json_safely(Path(quest_file))
                 if quest.get('status') == 'Active':
                     reference += f"- **{quest['name']}** ({quest['type']})\n"
                     reference += f"  {quest.get('description', '')}\n"
@@ -184,8 +197,7 @@ class RepositoryExporter:
         pcs_dir = self.data_dir / "pcs"
         if pcs_dir.exists():
             for pc_file in pcs_dir.glob("*.json"):
-                with open(pc_file, 'r', encoding='utf-8') as f:
-                    pc = json.load(f)
+                pc = load_json_safely(Path(pc_file))
                 reference += f"- **{pc['name']}** ({pc.get('race', 'Unknown')} {pc.get('class', 'Unknown')})\n"
                 reference += f"  High Concept: {pc['aspects']['high_concept']}\n"
         

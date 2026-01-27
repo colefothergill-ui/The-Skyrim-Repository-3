@@ -17,6 +17,7 @@ from pathlib import Path
 from datetime import datetime
 from utils import location_matches
 from query_data import DataQueryManager
+from first_impression import maybe_first_impression
 
 # Import DragonbreakManager if available
 try:
@@ -451,6 +452,28 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
         
         # Get NPCs for scene
         scene_npcs = self.get_scene_npcs(location, scene_type)
+        
+        # Add first impression hook for NPCs
+        # TODO: Make PC appearance path configurable for multi-PC campaigns
+        # For now, hardcoded to Aldric as per COPILOT PATCH specification
+        state_path = str(self.campaign_state_path)
+        appearance_path = str(self.data_dir / "pcs" / "appearances" / "aldric_galewarden_appearance.json")
+        
+        # Only attempt first impressions if appearance file exists
+        if Path(appearance_path).exists():
+            for npc in scene_npcs:
+                npc_id = npc.get("id") or npc.get("npc_id")
+                if not npc_id:
+                    continue
+                # Default disposition; GM may override per faction/context
+                try:
+                    impression = maybe_first_impression(state_path, appearance_path, npc_id, disposition="neutral")
+                    if impression:
+                        npc.setdefault("gm_barks", [])
+                        npc["gm_barks"].append(impression)
+                except (FileNotFoundError, json.JSONDecodeError, KeyError, ValueError):
+                    # Silently skip if state doesn't exist or has invalid data
+                    pass
         
         # Build scene response
         scene_setup = {

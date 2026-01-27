@@ -69,7 +69,7 @@
     "RUNNING ON AIR: Because I move fast and silent like a bad omen with good cardio, once per scene I may Create an Advantage with Stealth to become Gale-Runner; if I succeed, I may immediately move up to two zones as part of the same action (instead of the usual one), as long as the route isn’t blocked by a locked-down obstacle or barrier; the Gale-Runner aspect gains free invokes as normal (1 on success, 2 on success with style)."
   ],
   "refresh": 2,
-  "fate_points": 1,
+  "fate_points": 2,
   "equipment": {
     "weapons": [],
     "armor": [],
@@ -94,33 +94,37 @@
   "extras": [
     {
       "name": "Voice of the Nord (Thu'um)",
-      "type": "extra",
       "cost_refresh": 1,
-      "system_ref": "data/rules/thuum_system.json",
+      "rules_ref": "data/rules/thuum_system.json",
       "starting_shout": {
         "name": "Whirlwind Sprint (Wuld Nah Kest)",
-        "known_words": [
-          "Wuld"
-        ],
-        "mastery_clock": {
-          "filled": 3,
-          "segments": 8
-        },
-        "mechanics": {
-          "action_type": "Movement/Overcome",
-          "one_word": "Move one additional zone instantly (beyond normal movement)",
-          "unmastered_use": {
-            "cost_fate_points": 1,
-            "frequency": "once per session"
-          },
-          "mastered_use": {
-            "cost_fate_points": 0,
-            "frequency": "once per scene"
-          }
-        }
+        "known_words": ["Wuld"],
+        "mastery_clock": { "current": 3, "max": 8 },
+        "unmastered_use": { "cost_fate_points": 1, "frequency": "once per session" },
+        "mastered_use": { "cost_fate_points": 0, "frequency": "once per scene" },
+        "one_word_effect": "Move one additional zone instantly (beyond normal movement)."
       }
     }
   ],
+  "derived": {
+    "effective_skills_note": "Effective = skill pyramid + racial skill bonuses + standing stone bonuses.",
+    "effective_skills": {
+      "Rapport": 4,
+      "Fight": 4,
+      "Stealth": 3,
+      "Athletics": 4,
+      "Will": 2,
+      "Physique": 2,
+      "Empathy": 1,
+      "Notice": 1,
+      "Lore": 1,
+      "Deceive": 1
+    },
+    "bonus_sources": {
+      "race": { "Fight": 1, "Athletics": 1 },
+      "standing_stone": { "Athletics": 1 }
+    }
+  },
   "visual_profile_ref": "data/pcs/visual_profiles/pc_aldric_galewarden.visual.json",
   "portrait_path": "assets/portraits/pc_aldric_galewarden.png"
 }
