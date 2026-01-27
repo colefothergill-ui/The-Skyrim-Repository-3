@@ -140,6 +140,11 @@ def test_companion_recruitment():
         assert len(available) == 0, "Should have 0 available companions after recruitment"
         print("✓ Companion removed from available list")
         
+        # Test duplicate recruitment prevention
+        success = manager.recruit_companion('test_companion')
+        assert not success, "Should not be able to recruit already active companion"
+        print("✓ Duplicate recruitment prevention works")
+        
         print("\n✓ ALL COMPANION RECRUITMENT TESTS PASSED")
         return True
         

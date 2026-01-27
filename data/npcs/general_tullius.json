@@ -37,7 +37,7 @@
   },
   "refresh": 3,
   "fate_points": 3,
-  "notes": "General Tullius is a career soldier from Cyrodiil sent to pacify Skyrim. He sees the Stormcloak rebellion as an unnecessary distraction from the real threat - the Aldmeri Dominion. Efficient and pragmatic, but struggles to understand Nord culture.",
+  "notes": "General Tullius is a career soldier from Cyrodiil sent to pacify Skyrim. He sees the Stormcloak rebellion as an unnecessary distraction from the real threat - the Aldmeri Dominion. Efficient and pragmatic, but struggles to understand Nord culture. Skills note: 'Tactics' and 'Command' are custom Skyrim campaign skills appropriate for military leaders - Tactics for strategic planning, Command for direct troop leadership.",
   "relationships": {
     "Emperor Titus Mede II": "Absolute loyalty",
     "Legate Rikke": "Trusted second-in-command",

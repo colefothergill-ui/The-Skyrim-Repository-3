@@ -152,7 +152,7 @@ class NPCManager:
         print(f"{'='*60}")
         
         # Basic info
-        print(f"Role: {npc.get('role', 'Unknown')}")
+        print(f"Role: {npc.get('type', npc.get('role', 'Unknown'))}")
         print(f"Faction: {npc.get('faction', 'None')}")
         
         # Loyalty
@@ -382,6 +382,11 @@ class NPCManager:
             print(f"Cannot recruit {companion['name']}: {companion.get('recruitment_condition', 'Requirements not met')}")
             return False
         
+        # Check if already active
+        if any(c['npc_id'] == npc_id for c in companions['active_companions']):
+            print(f"{companion['name']} is already in the active party")
+            return False
+        
         # Move to active companions
         companion['status'] = 'active'
         companions['active_companions'].append(companion)
@@ -471,7 +476,7 @@ class NPCManager:
             if faction_affinity.lower() == faction:
                 return 'allied'
         
-        return 'neutral'
+        return 'unknown'
     
     def process_decision_point(self, npc_id, decision_key, chosen_option):
         """
