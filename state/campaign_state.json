@@ -67,6 +67,32 @@
       "next_milestone": "Discover Thalmor manipulation"
     }
   ],
+  "companions": {
+    "active_companions": [],
+    "available_companions": [
+      {
+        "npc_id": "lydia",
+        "name": "Lydia",
+        "status": "available",
+        "loyalty": 60,
+        "location": "Dragonsreach, Whiterun",
+        "recruitment_condition": "Become Thane of Whiterun",
+        "faction_affinity": "whiterun"
+      },
+      {
+        "npc_id": "aela_the_huntress",
+        "name": "Aela the Huntress",
+        "status": "unavailable",
+        "loyalty": 50,
+        "location": "Jorrvaskr, Whiterun",
+        "recruitment_condition": "Complete Companions questline",
+        "faction_affinity": "companions"
+      }
+    ],
+    "dismissed_companions": [],
+    "companion_relationships": {},
+    "notes": "Companion loyalty ranges from 0-100. Active companions travel with the party. Available companions can be recruited. Dismissed companions can be re-recruited."
+  },
   "session_count": 0,
   "last_updated": "2026-01-23 13:16:59"
 }

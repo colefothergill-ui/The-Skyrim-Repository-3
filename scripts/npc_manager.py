@@ -16,10 +16,13 @@ from datetime import datetime
 
 
 class NPCManager:
-    def __init__(self, data_dir="../data"):
+    def __init__(self, data_dir="../data", state_dir="../state"):
         self.data_dir = Path(data_dir)
+        self.state_dir = Path(state_dir)
         self.npcs_dir = self.data_dir / "npcs"
         self.relationships_path = self.data_dir / "npc_relationships.json"
+        self.campaign_state_path = self.state_dir / "campaign_state.json"
+        self.faction_clocks_path = self.data_dir / "civil_war_clocks.json"
         
     def load_npc(self, npc_id):
         """Load an NPC file"""
@@ -308,6 +311,405 @@ class NPCManager:
         
         print(f"Result: {result}")
         return will_comply
+    
+    def load_campaign_state(self):
+        """Load campaign state data"""
+        if self.campaign_state_path.exists():
+            with open(self.campaign_state_path, 'r') as f:
+                return json.load(f)
+        return None
+    
+    def save_campaign_state(self, state):
+        """Save campaign state data"""
+        self.state_dir.mkdir(exist_ok=True)
+        with open(self.campaign_state_path, 'w') as f:
+            json.dump(state, f, indent=2)
+        return True
+    
+    def get_active_companions(self):
+        """Get list of currently active companions"""
+        state = self.load_campaign_state()
+        if state and 'companions' in state:
+            return state['companions'].get('active_companions', [])
+        return []
+    
+    def get_available_companions(self):
+        """Get list of available companions that can be recruited"""
+        state = self.load_campaign_state()
+        if state and 'companions' in state:
+            return state['companions'].get('available_companions', [])
+        return []
+    
+    def recruit_companion(self, npc_id):
+        """
+        Recruit a companion to the active party
+        
+        Args:
+            npc_id: ID of the NPC to recruit
+            
+        Returns:
+            Boolean indicating success
+        """
+        state = self.load_campaign_state()
+        if not state:
+            print("Could not load campaign state")
+            return False
+        
+        if 'companions' not in state:
+            state['companions'] = {
+                'active_companions': [],
+                'available_companions': [],
+                'dismissed_companions': [],
+                'companion_relationships': {}
+            }
+        
+        companions = state['companions']
+        
+        # Find companion in available list
+        companion = None
+        for i, comp in enumerate(companions['available_companions']):
+            if comp['npc_id'] == npc_id:
+                companion = comp
+                companions['available_companions'].pop(i)
+                break
+        
+        if not companion:
+            print(f"Companion {npc_id} not found in available companions")
+            return False
+        
+        # Check recruitment conditions
+        if companion.get('status') == 'unavailable':
+            print(f"Cannot recruit {companion['name']}: {companion.get('recruitment_condition', 'Requirements not met')}")
+            return False
+        
+        # Move to active companions
+        companion['status'] = 'active'
+        companions['active_companions'].append(companion)
+        
+        state['last_updated'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        self.save_campaign_state(state)
+        
+        print(f"\n✓ {companion['name']} has joined the party!")
+        print(f"Loyalty: {companion.get('loyalty', 50)}/100")
+        
+        return True
+    
+    def dismiss_companion(self, npc_id):
+        """
+        Dismiss a companion from active party
+        
+        Args:
+            npc_id: ID of the companion to dismiss
+            
+        Returns:
+            Boolean indicating success
+        """
+        state = self.load_campaign_state()
+        if not state or 'companions' not in state:
+            return False
+        
+        companions = state['companions']
+        
+        # Find and remove from active companions
+        companion = None
+        for i, comp in enumerate(companions['active_companions']):
+            if comp['npc_id'] == npc_id:
+                companion = comp
+                companions['active_companions'].pop(i)
+                break
+        
+        if not companion:
+            print(f"Companion {npc_id} not found in active companions")
+            return False
+        
+        # Move to dismissed companions
+        companion['status'] = 'dismissed'
+        companions['dismissed_companions'].append(companion)
+        
+        state['last_updated'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        self.save_campaign_state(state)
+        
+        print(f"\n{companion['name']} has been dismissed and returned to {companion.get('location', 'their home')}")
+        
+        return True
+    
+    def check_faction_alignment(self, npc_id, faction):
+        """
+        Check NPC's alignment with a specific faction
+        
+        Args:
+            npc_id: ID of the NPC
+            faction: Faction name to check
+            
+        Returns:
+            String: 'allied', 'neutral', 'hostile', or 'unknown'
+        """
+        npc = self.load_npc(npc_id)
+        if not npc:
+            return 'unknown'
+        
+        npc_faction = npc.get('faction', '').lower()
+        faction = faction.lower()
+        
+        # Check direct faction membership
+        if npc_faction == faction:
+            return 'allied'
+        
+        # Check relationships
+        relationships = npc.get('relationships', {})
+        for entity, relation in relationships.items():
+            if entity.lower() == faction or faction in entity.lower():
+                relation_lower = relation.lower()
+                if any(word in relation_lower for word in ['ally', 'friend', 'loyal', 'trust']):
+                    return 'allied'
+                elif any(word in relation_lower for word in ['enemy', 'hostile', 'hate', 'rival']):
+                    return 'hostile'
+        
+        # Check faction affinity for companions
+        if 'companion_status' in npc:
+            faction_affinity = npc.get('companion_status', {}).get('faction_affinity', '')
+            if faction_affinity.lower() == faction:
+                return 'allied'
+        
+        return 'neutral'
+    
+    def process_decision_point(self, npc_id, decision_key, chosen_option):
+        """
+        Process an NPC decision point based on player choice
+        
+        Args:
+            npc_id: ID of the NPC
+            decision_key: Key identifying the decision point
+            chosen_option: Option chosen by player
+            
+        Returns:
+            Dict with consequences of the decision
+        """
+        npc = self.load_npc(npc_id)
+        if not npc:
+            return {'success': False, 'message': 'NPC not found'}
+        
+        decision_points = npc.get('decision_points', {})
+        if decision_key not in decision_points:
+            return {'success': False, 'message': 'Decision point not found'}
+        
+        decision = decision_points[decision_key]
+        
+        # Check if condition is met (simplified - would need more complex logic)
+        if 'condition' in decision:
+            print(f"Decision condition: {decision['condition']}")
+        
+        # Get consequences for chosen option
+        consequences = decision.get('consequences', {}).get(chosen_option, {})
+        if not consequences and chosen_option in decision.get('options', []):
+            # Option exists but no consequences defined
+            consequences = {'message': f"Chose {chosen_option}"}
+        
+        result = {
+            'success': True,
+            'npc_name': npc['name'],
+            'decision': decision_key,
+            'option': chosen_option,
+            'consequences': consequences
+        }
+        
+        # Apply loyalty changes
+        loyalty_change = consequences.get('loyalty_change', 0)
+        if loyalty_change != 0:
+            self.update_loyalty(npc_id, loyalty_change, f"Decision: {decision_key} - {chosen_option}")
+            result['loyalty_change'] = loyalty_change
+        
+        # Handle relationship changes
+        if 'relationship_change' in consequences:
+            new_relationship = consequences['relationship_change']
+            print(f"\nRelationship with {npc['name']} changed to: {new_relationship}")
+            result['new_relationship'] = new_relationship
+        
+        # Handle quest triggers
+        if 'unlocks' in consequences:
+            print(f"\nUnlocked: {consequences['unlocks']}")
+            result['unlocked'] = consequences['unlocks']
+        
+        # Print result
+        print(f"\n{'='*60}")
+        print(f"DECISION POINT: {decision_key}")
+        print(f"NPC: {npc['name']}")
+        print(f"Chosen: {chosen_option}")
+        if 'note' in consequences:
+            print(f"Note: {consequences['note']}")
+        print(f"{'='*60}")
+        
+        return result
+    
+    def handle_dialogue_interaction(self, npc_id, dialogue_key, response_option=None):
+        """
+        Handle a dialogue tree interaction with an NPC
+        
+        Args:
+            npc_id: ID of the NPC
+            dialogue_key: Key identifying the dialogue node
+            response_option: Option chosen by player (if any)
+            
+        Returns:
+            Dict with dialogue results and next steps
+        """
+        npc = self.load_npc(npc_id)
+        if not npc:
+            return {'success': False, 'message': 'NPC not found'}
+        
+        dialogue_trees = npc.get('dialogue_trees', {})
+        if dialogue_key not in dialogue_trees:
+            return {'success': False, 'message': 'Dialogue not found'}
+        
+        dialogue = dialogue_trees[dialogue_key]
+        
+        print(f"\n{npc['name']}: {dialogue.get('greeting', dialogue.get('dialogue', ''))}")
+        
+        result = {
+            'success': True,
+            'npc_name': npc['name'],
+            'dialogue_key': dialogue_key,
+            'dialogue_text': dialogue.get('greeting', dialogue.get('dialogue', ''))
+        }
+        
+        # If this dialogue has a condition, check it
+        if 'condition' in dialogue:
+            result['condition'] = dialogue['condition']
+            print(f"[Condition: {dialogue['condition']}]")
+        
+        # Handle responses
+        if 'responses' in dialogue and not response_option:
+            print("\nAvailable responses:")
+            for i, response in enumerate(dialogue['responses'], 1):
+                print(f"{i}. {response['option']}")
+            result['responses'] = dialogue['responses']
+            return result
+        
+        # Process chosen response
+        if response_option is not None and 'responses' in dialogue:
+            chosen_response = None
+            
+            # Find the response by option text or index
+            if isinstance(response_option, int):
+                if 0 <= response_option < len(dialogue['responses']):
+                    chosen_response = dialogue['responses'][response_option]
+            else:
+                for response in dialogue['responses']:
+                    if response['option'] == response_option:
+                        chosen_response = response
+                        break
+            
+            if chosen_response:
+                print(f"\nYou: {chosen_response['option']}")
+                
+                # Apply loyalty changes
+                if 'loyalty_change' in chosen_response:
+                    loyalty_change = chosen_response['loyalty_change']
+                    self.update_loyalty(npc_id, loyalty_change, f"Dialogue: {chosen_response['option']}")
+                    result['loyalty_change'] = loyalty_change
+                
+                # Handle quest triggers
+                if 'quest_trigger' in chosen_response:
+                    print(f"\n[Quest triggered: {chosen_response['quest_trigger']}]")
+                    result['quest_triggered'] = chosen_response['quest_trigger']
+                
+                # Handle relationship changes
+                if 'relationship_change' in chosen_response:
+                    print(f"\n[Relationship changed: {chosen_response['relationship_change']}]")
+                    result['relationship_change'] = chosen_response['relationship_change']
+                
+                # Handle companion status changes
+                if 'companion_status' in chosen_response:
+                    result['companion_status'] = chosen_response['companion_status']
+                
+                # Follow to next dialogue
+                if 'leads_to' in chosen_response:
+                    next_dialogue_key = chosen_response['leads_to']
+                    result['next_dialogue'] = next_dialogue_key
+                    
+                    if next_dialogue_key in dialogue_trees:
+                        next_dialogue = dialogue_trees[next_dialogue_key]
+                        print(f"\n{npc['name']}: {next_dialogue.get('dialogue', '')}")
+                        result['next_dialogue_text'] = next_dialogue.get('dialogue', '')
+        
+        # Handle quest activation
+        if 'quest_activated' in dialogue:
+            print(f"\n[Quest activated: {dialogue['quest_activated']}]")
+            result['quest_activated'] = dialogue['quest_activated']
+        
+        # Handle faction alignment
+        if 'faction_alignment' in dialogue:
+            print(f"\n[Faction alignment: {dialogue['faction_alignment']}]")
+            result['faction_alignment'] = dialogue['faction_alignment']
+        
+        return result
+    
+    def update_companion_based_on_faction_clock(self, faction, clock_value):
+        """
+        Update companion availability/loyalty based on faction clock progress
+        
+        Args:
+            faction: Faction name
+            clock_value: Current clock value (0-10 scale)
+            
+        Returns:
+            List of affected companions
+        """
+        state = self.load_campaign_state()
+        if not state or 'companions' not in state:
+            return []
+        
+        affected = []
+        companions_data = state['companions']
+        
+        # Check all companions (active, available, dismissed)
+        all_companions = (
+            companions_data.get('active_companions', []) +
+            companions_data.get('available_companions', []) +
+            companions_data.get('dismissed_companions', [])
+        )
+        
+        for companion in all_companions:
+            npc_id = companion['npc_id']
+            
+            # Check faction alignment
+            alignment = self.check_faction_alignment(npc_id, faction)
+            
+            # Adjust loyalty based on faction clock and alignment
+            if alignment == 'allied':
+                # Faction doing well = companion happier
+                if clock_value >= 7:
+                    loyalty_change = 2
+                    reason = f"{faction} faction is succeeding"
+                    self.update_loyalty(npc_id, loyalty_change, reason)
+                    affected.append({
+                        'npc_id': npc_id,
+                        'name': companion['name'],
+                        'change': loyalty_change,
+                        'reason': reason
+                    })
+            elif alignment == 'hostile':
+                # Faction doing well = companion unhappy
+                if clock_value >= 7:
+                    loyalty_change = -3
+                    reason = f"Enemy faction {faction} is succeeding"
+                    self.update_loyalty(npc_id, loyalty_change, reason)
+                    affected.append({
+                        'npc_id': npc_id,
+                        'name': companion['name'],
+                        'change': loyalty_change,
+                        'reason': reason
+                    })
+        
+        if affected:
+            print(f"\n{'='*60}")
+            print(f"FACTION CLOCK UPDATE: {faction} at {clock_value}/10")
+            print(f"Affected companions:")
+            for comp in affected:
+                print(f"  - {comp['name']}: {comp['change']:+d} ({comp['reason']})")
+            print(f"{'='*60}")
+        
+        return affected
 
 
 def main():
@@ -322,10 +724,16 @@ def main():
     print("3. Update Loyalty")
     print("4. Create NPC Template")
     print("5. Loyalty Check for Situation")
-    print("6. Exit")
+    print("6. Recruit Companion")
+    print("7. Dismiss Companion")
+    print("8. Check Active Companions")
+    print("9. Process Decision Point")
+    print("10. Handle Dialogue Interaction")
+    print("11. Check Faction Alignment")
+    print("12. Exit")
     
     while True:
-        choice = input("\nEnter choice (1-6): ").strip()
+        choice = input("\nEnter choice (1-12): ").strip()
         
         if choice == "1":
             manager.list_npcs()
@@ -352,11 +760,48 @@ def main():
             manager.companion_loyalty_check(npc_id, situation)
         
         elif choice == "6":
+            npc_id = input("NPC ID to recruit: ").strip()
+            manager.recruit_companion(npc_id)
+        
+        elif choice == "7":
+            npc_id = input("NPC ID to dismiss: ").strip()
+            manager.dismiss_companion(npc_id)
+        
+        elif choice == "8":
+            companions = manager.get_active_companions()
+            print(f"\nActive Companions ({len(companions)}):")
+            for comp in companions:
+                print(f"  - {comp['name']} (Loyalty: {comp.get('loyalty', 50)}/100)")
+        
+        elif choice == "9":
+            npc_id = input("NPC ID: ").strip()
+            decision_key = input("Decision key (e.g., civil_war_choice): ").strip()
+            option = input("Chosen option: ").strip()
+            result = manager.process_decision_point(npc_id, decision_key, option)
+            print(f"\nResult: {result}")
+        
+        elif choice == "10":
+            npc_id = input("NPC ID: ").strip()
+            dialogue_key = input("Dialogue key (e.g., initial_meeting): ").strip()
+            result = manager.handle_dialogue_interaction(npc_id, dialogue_key)
+            if result.get('responses'):
+                response_idx = input("\nChoose response (0-based index): ").strip()
+                if response_idx.isdigit():
+                    result = manager.handle_dialogue_interaction(npc_id, dialogue_key, int(response_idx))
+            print(f"\nResult: {result}")
+        
+        elif choice == "11":
+            npc_id = input("NPC ID: ").strip()
+            faction = input("Faction name: ").strip()
+            alignment = manager.check_faction_alignment(npc_id, faction)
+            print(f"\n{npc_id} alignment with {faction}: {alignment}")
+        
+        elif choice == "12":
             print("Goodbye!")
             break
         
         else:
-            print("Invalid choice. Please enter 1-6.")
+            print("Invalid choice. Please enter 1-12.")
 
 
 if __name__ == "__main__":
