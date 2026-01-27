@@ -53,14 +53,14 @@
     "Thalmor": "Sworn enemies who destroyed the Blades, will kill on sight",
     "Orgnar": "Employee at inn, unaware of her true identity",
     "Paarthurnax": "Views as dragon who must die, regardless of redemption",
-    "The Dragonborn": "Potential tool for defeating dragons or rebuilding Blades"
+    "The Player": "Potential ally for defeating dragons or rebuilding Blades"
   },
   "personality_notes": {
     "speaking_style": "Direct, commanding, sometimes harsh, uses military terms, suspicious questions to test loyalty",
     "motivations": ["Destroy all dragons", "Rebuild the Blades", "Defeat the Thalmor", "Protect Skyrim from draconic threat", "Find and rescue Esbern", "Restore Blades' honor"],
     "fears": ["Thalmor discovering her", "Dragons winning", "Blades dying out completely", "Betrayal", "Failing the Blades' ancient purpose"],
     "quirks": ["Checks exits constantly", "Tests new people aggressively", "Keeps weapons within reach always", "Speaks reverently of Blades history"],
-    "character_growth": "May learn to trust again, could soften stance on Paarthurnax debate, might accept Dragonborn's leadership"
+    "character_growth": "May learn to trust again, could soften stance on Paarthurnax debate, might accept worthy warriors' leadership"
   },
   "blades_identity": {
     "cover": "Operates Sleeping Giant Inn in Riverwood as 'just an innkeeper'",
@@ -73,7 +73,7 @@
     "research": "Has been tracking dragon burial sites and ancient dragon lore",
     "farengar_connection": "Feeds information to Farengar without revealing she's a Blade",
     "dragonstone": "Knows about Bleak Falls Barrow Dragonstone, sent thugs to retrieve it",
-    "urgency": "Helgen dragon attack confirmed her worst fears",
+    "urgency": "Recent dragon activity and civil war chaos have accelerated the threat",
     "goal": "Find and kill dragons before they become unstoppable threat"
   },
   "whiterun_research_mission": {
@@ -103,7 +103,7 @@
   "dialogue_samples": {
     "innkeeper_cover": "Welcome to the Sleeping Giant Inn. Bed and board, clean and quiet. Keep your business your own, and we'll get along fine.",
     "revealing_identity": "Enough games. I'm Delphine, one of the last of the Blades. You've seen dragons return - I've been preparing for this. Now, I need to know if you're someone I can trust.",
-    "recruitment": "The Blades were dragon hunters long before we served the Empire. That's our true purpose. With dragons returning, we need that purpose again. You're Dragonborn - that makes you the key to everything.",
+    "recruitment": "The Blades were dragon hunters long before we served the Empire. That's our true purpose. With dragons returning, we need that purpose again. You have the skills and courage - that makes you someone worth recruiting.",
     "whiterun_mission": "I need to get to Whiterun and see what Farengar's really discovered about the dragons. My research says there's something critical in his data. Will you escort me? I can't risk the Thalmor catching me on the road alone.",
     "during_battle": "This civil war is a distraction! Dragons are the real threat! But if we must fight, then fight smart. Choose your side and stick with it.",
     "thalmor_hatred": "The Thalmor destroyed the Blades, hunted us down like animals. They call it 'justice.' I call it murder. And I remember every single one of my fallen comrades."

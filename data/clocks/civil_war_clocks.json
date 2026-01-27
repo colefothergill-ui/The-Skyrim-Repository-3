@@ -46,7 +46,7 @@
         "total_segments": 8,
         "completion_effect": "Battle of Whiterun occurs - Whiterun must choose a side or fall",
         "advancement_triggers": [
-          "Dragonborn delays choosing sides (+1 per session)",
+          "Player delays choosing sides (+1 per session)",
           "Ulfric issues ultimatum to Balgruuf (+2)",
           "Imperial reinforcements arrive in Whiterun (+1)",
           "Stormcloak forces mass near Whiterun (+1)"

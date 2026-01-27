@@ -118,8 +118,8 @@ def test_imperial_companion_assignment():
             
             # Verify branching decision recorded
             assert 'branching_decisions' in campaign_state, "Branching decisions missing"
-            assert campaign_state['branching_decisions']['helgen_escape_companion'] == 'Hadvar', "Helgen decision not recorded"
-            print("✓ Helgen escape companion decision recorded")
+            assert campaign_state['branching_decisions']['civil_war_entry_contact'] == 'Hadvar', "Civil War entry contact decision not recorded"
+            print("✓ Civil War entry contact decision recorded")
             
             # Verify narrative mentions Hadvar
             assert 'Hadvar' in campaign_state['starting_narrative'], "Starting narrative should mention Hadvar"
@@ -172,8 +172,8 @@ def test_stormcloak_companion_assignment():
             
             # Verify branching decision recorded
             assert 'branching_decisions' in campaign_state, "Branching decisions missing"
-            assert campaign_state['branching_decisions']['helgen_escape_companion'] == 'Ralof', "Helgen decision not recorded"
-            print("✓ Helgen escape companion decision recorded")
+            assert campaign_state['branching_decisions']['civil_war_entry_contact'] == 'Ralof', "Civil War entry contact decision not recorded"
+            print("✓ Civil War entry contact decision recorded")
             
             # Verify narrative mentions Ralof
             assert 'Ralof' in campaign_state['starting_narrative'], "Starting narrative should mention Ralof"
@@ -229,8 +229,8 @@ def test_neutral_companion_availability():
             
             # Verify branching decision is undecided
             assert 'branching_decisions' in campaign_state, "Branching decisions missing"
-            assert campaign_state['branching_decisions']['helgen_escape_companion'] == 'undecided', "Helgen decision should be undecided"
-            print("✓ Helgen escape companion marked as undecided")
+            assert campaign_state['branching_decisions']['civil_war_entry_contact'] == 'undecided', "Civil War entry contact should be undecided"
+            print("✓ Civil War entry contact marked as undecided")
             
             # Verify narrative mentions both
             assert 'Hadvar' in campaign_state['starting_narrative'], "Starting narrative should mention Hadvar"
@@ -261,7 +261,7 @@ def test_story_manager_companion_methods():
             campaign_state = {
                 "campaign_id": "test",
                 "branching_decisions": {
-                    "helgen_escape_companion": "Hadvar"
+                    "civil_war_entry_contact": "Hadvar"
                 },
                 "companions": {
                     "active_companions": [{

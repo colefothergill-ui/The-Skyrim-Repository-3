@@ -79,7 +79,7 @@ class StoryManager:
         Record a major branching decision
         
         Args:
-            decision_key: Key from branching_decisions (e.g., 'helgen_escape_companion')
+            decision_key: Key from branching_decisions (e.g., 'civil_war_entry_contact')
             choice: The choice made (e.g., 'Ralof' or 'Hadvar')
         """
         state = self.load_campaign_state()
@@ -140,7 +140,7 @@ class StoryManager:
         Update main quest progression
         
         Kwargs can include:
-            dragonborn_revealed: bool
+            civil_war_involvement: bool
             dragons_knowledge: str
             blades_contacted: bool
             greybeards_training: str
@@ -316,7 +316,7 @@ Imperial Victories: {state['civil_war_state']['imperial_victories']}
 Stormcloak Victories: {state['civil_war_state']['stormcloak_victories']}
 
 === Main Quest ===
-Dragonborn Revealed: {state['main_quest_state']['dragonborn_revealed']}
+Civil War Active: {state['main_quest_state'].get('civil_war_involvement', True)}
 Dragon Souls: {state['main_quest_state']['dragon_souls_absorbed']}
 Shouts Known: {len(state['main_quest_state']['shouts_learned'])}
 Greybeards Training: {state['main_quest_state']['greybeards_training']}
@@ -578,7 +578,7 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
     
     def get_starting_companion(self):
         """
-        Get the starting companion (Hadvar or Ralof) based on Helgen escape decision
+        Get the starting companion (Hadvar or Ralof) based on civil war entry contact
         
         Returns:
             Dict with companion info or None
@@ -587,16 +587,16 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
         if not state:
             return None
         
-        # Check branching decision for Helgen escape companion
-        helgen_companion = state.get('branching_decisions', {}).get('helgen_escape_companion')
+        # Check branching decision for civil war entry contact
+        entry_companion = state.get('branching_decisions', {}).get('civil_war_entry_contact')
         
-        if not helgen_companion or helgen_companion == 'undecided':
+        if not entry_companion or entry_companion == 'undecided':
             return None
         
         # Find companion in active companions
         if 'companions' in state:
             for companion in state['companions'].get('active_companions', []):
-                if companion['name'] == helgen_companion:
+                if companion['name'] == entry_companion:
                     return companion
         
         return None
@@ -617,7 +617,7 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
             return {"companions": [], "suggestions": []}
         
         active_companions = state['companions'].get('active_companions', [])
-        helgen_companion = state.get('branching_decisions', {}).get('helgen_escape_companion')
+        entry_companion = state.get('branching_decisions', {}).get('civil_war_entry_contact')
         
         result = {
             'companions': [],
@@ -625,7 +625,7 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
         }
         
         # Add Hadvar dialogue hooks
-        if helgen_companion == "Hadvar":
+        if entry_companion == "Hadvar":
             hadvar_hooks = {
                 'name': 'Hadvar',
                 'location': location,
@@ -640,13 +640,13 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
                 })
                 hadvar_hooks['hooks'].append({
                     'trigger': 'At Alvor\'s forge',
-                    'dialogue': "Uncle! It's good to see you. These are the people I escaped Helgen with. Can you help us?"
+                    'dialogue': "Uncle! It's good to see you. These are my companions from the civil war efforts. Can you help us?"
                 })
             
             if location.lower() == "whiterun":
                 hadvar_hooks['hooks'].append({
                     'trigger': 'Approaching gates',
-                    'dialogue': "Whiterun. The heart of Skyrim. We need to inform the Jarl about the dragon attack. My Imperial credentials should get us an audience."
+                    'dialogue': "Whiterun. The heart of Skyrim. We need to inform the Jarl about the war situation. My Imperial credentials should get us an audience."
                 })
                 if situation == "civil_war":
                     hadvar_hooks['hooks'].append({
@@ -663,7 +663,7 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
             result['companions'].append(hadvar_hooks)
         
         # Add Ralof dialogue hooks
-        elif helgen_companion == "Ralof":
+        elif entry_companion == "Ralof":
             ralof_hooks = {
                 'name': 'Ralof',
                 'location': location,
@@ -678,7 +678,7 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
                 })
                 ralof_hooks['hooks'].append({
                     'trigger': 'At the lumber mill',
-                    'dialogue': "Gerdur! By Talos, it's good to see you alive. These are friends - we escaped Helgen together when that dragon attacked."
+                    'dialogue': "Gerdur! By Talos, it's good to see you alive. These are friends - we're fighting together for Skyrim's freedom."
                 })
             
             if location.lower() == "whiterun":
@@ -781,7 +781,7 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
                     "Ralof becomes unavailable",
                     "Imperial Legion relationship +30",
                     "Stormcloaks relationship -20",
-                    "Helgen escape companion decision set to 'Hadvar'"
+                    "Civil war entry contact set to 'Hadvar'"
                 ],
                 "narrative": "You choose to stand with Hadvar and defend Whiterun alongside Imperial forces."
             },
@@ -792,7 +792,7 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
                     "Hadvar becomes unavailable",
                     "Stormcloaks relationship +30",
                     "Imperial Legion relationship -20",
-                    "Helgen escape companion decision set to 'Ralof'"
+                    "Civil war entry contact set to 'Ralof'"
                 ],
                 "narrative": "You choose to stand with Ralof and assault Whiterun with the Stormcloaks."
             }
@@ -957,7 +957,7 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
                 state["civil_war_state"]["faction_relationship"]["stormcloaks"] -= 20
             
             # Record decision
-            state["branching_decisions"]["helgen_escape_companion"] = "Hadvar"
+            state["branching_decisions"]["civil_war_entry_contact"] = "Hadvar"
             state["branching_decisions"]["battle_of_whiterun_choice"] = "fought_with_imperials"
             
             print("\n✓ Hadvar joins the party as an active companion!")
@@ -1000,7 +1000,7 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
                 state["civil_war_state"]["faction_relationship"]["imperial_legion"] -= 20
             
             # Record decision
-            state["branching_decisions"]["helgen_escape_companion"] = "Ralof"
+            state["branching_decisions"]["civil_war_entry_contact"] = "Ralof"
             state["branching_decisions"]["battle_of_whiterun_choice"] = "fought_with_stormcloaks"
             
             print("\n✓ Ralof joins the party as an active companion!")
@@ -1554,7 +1554,7 @@ def main():
             print(manager.generate_story_summary())
         
         elif choice == "2":
-            decision_key = input("Decision key (e.g., 'helgen_escape_companion'): ").strip()
+            decision_key = input("Decision key (e.g., 'civil_war_entry_contact'): ").strip()
             decision_value = input("Choice made: ").strip()
             manager.record_branching_decision(decision_key, decision_value)
         
@@ -1563,7 +1563,7 @@ def main():
             manager.update_civil_war_state(alliance=alliance if alliance != 'neutral' else None)
         
         elif choice == "4":
-            print("Update main quest (enter key=value, e.g., 'dragonborn_revealed=true')")
+            print("Update main quest (enter key=value, e.g., 'civil_war_involvement=true')")
             update = input("Update: ").strip()
             if '=' in update:
                 key, value = update.split('=', 1)

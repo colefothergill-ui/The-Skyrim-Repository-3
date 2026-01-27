@@ -3,7 +3,7 @@
   "id": "npc_stat_hadvar",
   "type": "Nord Imperial Soldier",
   "category": "Companion",
-  "location": "Whiterun (post-Helgen)",
+  "location": "Whiterun",
   "faction": "Imperial Legion",
   "aspects": {
     "high_concept": "Pragmatic Imperial Soldier with a Heart",
@@ -36,9 +36,9 @@
   },
   "refresh": 3,
   "armor": 1,
-  "notes": "Hadvar is a professional Imperial soldier who saved the player's life during the dragon attack at Helgen. Unlike many Imperials, he shows compassion and pragmatism, willing to help civilians regardless of their allegiance. As Alvor's nephew, he has connections in Riverwood. He's conflicted about the civil war but believes the Empire provides stability that Skyrim needs. His combat style focuses on defensive tactics and protecting allies.",
+  "notes": "Hadvar is a professional Imperial soldier who recruits promising warriors to the Legion cause. Unlike many Imperials, he shows compassion and pragmatism, willing to help civilians regardless of their allegiance. As Alvor's nephew, he has connections in Riverwood. He's conflicted about the civil war but believes the Empire provides stability that Skyrim needs. His combat style focuses on defensive tactics and protecting allies.",
   "combat_tactics": "Hadvar fights defensively, prioritizing protection of allies over aggressive offense. He uses his shield effectively and coordinates with party members. In battle, he'll position himself between enemies and weaker party members, using his Imperial Training to hold the line.",
-  "scene_triggers": ["Helgen escape", "Riverwood arrival", "Early Act 1 quests", "Whiterun defense preparations", "Battle of Whiterun (Imperial side)"],
+  "scene_triggers": ["Imperial recruitment", "Riverwood arrival", "Early Act 1 quests", "Whiterun defense preparations", "Battle of Whiterun (Imperial side)"],
   "act_context": ["Act 1", "Act 2"],
   "starting_equipment": {
     "armor": "Imperial Light Armor (Armor:1)",
@@ -55,7 +55,7 @@
     "Legate Rikke": "Direct commander, admires her leadership",
     "Ulfric Stormcloak": "Enemy commander, respects as warrior but opposes rebellion",
     "Stormcloaks": "Enemy combatants, but tries to minimize civilian casualties",
-    "Player (Helgen Survivor)": "Saved their life, feels responsible for their safety"
+    "Player": "Recruited them to the cause, feels responsible for their safety"
   },
   "personality_notes": {
     "speaking_style": "Professional but warm, uses military terms naturally, tries to be reassuring in crisis",
@@ -65,7 +65,7 @@
     "character_growth": "Can question orders more openly, develop stronger stance on Imperial-Thalmor relationship, learn to balance duty with morality"
   },
   "companion_mechanics": {
-    "recruitment_trigger": "Player chooses Hadvar during Helgen escape or aligns with Imperials at session zero",
+    "recruitment_trigger": "Player aligns with Imperials or meets Hadvar during recruitment",
     "starting_loyalty": 60,
     "loyalty_increases": [
       {"trigger": "Defend innocent civilians", "amount": 5},
@@ -114,7 +114,7 @@
   ],
   "whiterun_integration": "In Whiterun, Hadvar can use his Imperial credentials to gain audience with Jarl Balgruuf. During the Battle of Whiterun, if fighting for Imperials, he provides tactical bonuses to party. He knows many Whiterun guards from joint operations. His presence makes Imperial-aligned NPCs more cooperative.",
   "dialogue_samples": {
-    "greeting": "Good to see you again. After what we went through at Helgen, I'd say we're bound by more than just circumstance.",
+    "greeting": "Good to see you again. After what we've been through together in the civil war, I'd say we're bound by more than just circumstance.",
     "combat_start": "Form up! Protect the vulnerable and watch your flanks!",
     "low_health": "I'm hurt, but I can still fight! Keep going!",
     "victory": "Well fought. Let's help the wounded and regroup.",

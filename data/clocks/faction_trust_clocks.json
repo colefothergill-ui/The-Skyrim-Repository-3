@@ -254,7 +254,7 @@
         "advancement_triggers": {
           "deliver_dragon_warning": "+1",
           "retrieve_dragonstone": "+1",
-          "defeat_dragon_at_watchtower": "+3 (Dragonborn revealed)",
+          "defeat_dragon_at_watchtower": "+3 (Hero revealed)",
           "defend_whiterun_in_battle": "+4",
           "become_thane": "+2",
           "help_whiterun_citizens": "+1 per major help"

@@ -78,11 +78,11 @@ def demo_session_zero():
         # Add faction alignment
         character['faction_alignment'] = 'imperial'
         character['backstory'] = """
-**Helgen Incident**: Falsely accused of theft, caught at border during dragon attack
+**Civil War Context**: Concerned about Skyrim's internal conflict and Empire's rule
 
 **Civil War Stance**: Believes in Imperial law and order to unite Skyrim
 
-**Motivation**: Seeks to prove innocence and become a legendary warrior
+**Motivation**: Seeks to prove loyalty and become a legendary warrior
 
 **Connections**: Has family in Whiterun who support the Empire
 """

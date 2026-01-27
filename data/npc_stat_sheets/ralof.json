@@ -3,7 +3,7 @@
   "id": "npc_stat_ralof",
   "type": "Nord Stormcloak Soldier",
   "category": "Companion",
-  "location": "Whiterun (post-Helgen)",
+  "location": "Whiterun",
   "faction": "Stormcloaks",
   "aspects": {
     "high_concept": "Passionate Stormcloak Freedom Fighter",
@@ -11,7 +11,7 @@
     "other_aspects": [
       "Brother of Gerdur, Family Man",
       "True Son of Skyrim",
-      "Died Once Already at Helgen"
+      "Survivor and Freedom Fighter"
     ]
   },
   "skills": {
@@ -36,9 +36,9 @@
   },
   "refresh": 3,
   "armor": 1,
-  "notes": "Ralof is a devoted Stormcloak soldier who saved the player's life during the dragon attack at Helgen. He's passionate about Skyrim's independence and the right to worship Talos. As Gerdur's brother, he has family connections in Riverwood. He's friendly and brotherhood-oriented, treating fellow Nords (and allies) like family. His combat style is aggressive and inspirational, rallying allies and striking fear into Imperial enemies. He survived his own execution at Helgen, making him believe the gods favor Skyrim's cause.",
+  "notes": "Ralof is a devoted Stormcloak soldier who recruits promising warriors to the rebellion cause. He's passionate about Skyrim's independence and the right to worship Talos. As Gerdur's brother, he has family connections in Riverwood. He's friendly and brotherhood-oriented, treating fellow Nords (and allies) like family. His combat style is aggressive and inspirational, rallying allies and striking fear into Imperial enemies. He believes the gods favor Skyrim's cause for freedom.",
   "combat_tactics": "Ralof fights aggressively and inspirationally. He leads charges, uses battle cries to motivate allies, and focuses on breaking enemy morale. He takes calculated risks and never backs down from Imperial forces. His presence boosts allied morale and coordination.",
-  "scene_triggers": ["Helgen escape", "Riverwood arrival", "Early Act 1 quests", "Stormcloak recruitment", "Battle of Whiterun (Stormcloak side)"],
+  "scene_triggers": ["Stormcloak recruitment", "Riverwood arrival", "Early Act 1 quests", "Stormcloak recruitment", "Battle of Whiterun (Stormcloak side)"],
   "act_context": ["Act 1", "Act 2"],
   "starting_equipment": {
     "armor": "Stormcloak Armor (Armor:1)",
@@ -56,17 +56,17 @@
     "Imperial Legion": "Enemies, tried to execute him unjustly",
     "Thalmor": "Hated oppressors, primary motivation for rebellion",
     "General Tullius": "Enemy commander, sees as foreign tyrant",
-    "Player (Helgen Survivor)": "Saved their life, considers them battle-forged kin"
+    "Player": "Recruited them to the cause, considers them battle-forged kin"
   },
   "personality_notes": {
     "speaking_style": "Direct, passionate, uses Nordic expressions, frequently invokes Talos and Skyrim",
     "motivations": ["Free Skyrim from Imperial control", "Restore Talos worship openly", "Protect family in Riverwood", "See Ulfric crowned High King"],
     "fears": ["Skyrim becoming a Thalmor puppet state", "Losing family to the war", "Talos worship being completely erased", "Dying without seeing Skyrim free"],
-    "quirks": ["Touches his Talos amulet when stressed", "Speaks of Helgen dragon as divine intervention", "Shares mead and stories enthusiastically with friends"],
+    "quirks": ["Touches his Talos amulet when stressed", "Speaks passionately of Skyrim's freedom and divine favor", "Shares mead and stories enthusiastically with friends"],
     "character_growth": "Can learn to see good Imperials as potential allies against Thalmor, develop more nuanced view of the war, become more strategic rather than purely passionate"
   },
   "companion_mechanics": {
-    "recruitment_trigger": "Player chooses Ralof during Helgen escape or aligns with Stormcloaks at session zero",
+    "recruitment_trigger": "Player aligns with Stormcloaks or meets Ralof during recruitment",
     "starting_loyalty": 60,
     "loyalty_increases": [
       {"trigger": "Complete Stormcloak quests", "amount": 10},
@@ -116,7 +116,7 @@
   ],
   "whiterun_integration": "In Whiterun, Ralof maintains contacts with Gray-Mane clan and other Nord traditionalists. During Battle of Whiterun, if fighting for Stormcloaks, he provides morale bonuses to party and allied troops. His presence makes Stormcloak-sympathetic NPCs more open. He can identify which Whiterun residents secretly support Ulfric.",
   "dialogue_samples": {
-    "greeting": "Look who it is! My friend from Helgen. We survived a dragon together - that makes us kin in my book.",
+    "greeting": "Look who it is! My friend from the cause. We're fighting for Skyrim together - that makes us kin in my book.",
     "combat_start": "For Skyrim! Show these bastards what true Nords are made of!",
     "low_health": "By Talos, they'll have to do better than that! I won't fall again!",
     "victory": "That's how we do it! Skyrim's freedom is worth every drop of blood!",

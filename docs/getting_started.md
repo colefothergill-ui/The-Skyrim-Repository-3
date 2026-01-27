@@ -253,7 +253,7 @@ Once you're comfortable with the basics:
 1. Add more factions and clocks
 2. Create deeper NPC networks
 3. Develop custom quests
-4. Experiment with Shouts (Thu'um) for Dragonborn PCs
+4. Experiment with unique faction abilities and stunt systems
 5. Create custom stunts for unique abilities
 6. Develop your own house rules
 

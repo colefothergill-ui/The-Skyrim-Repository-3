@@ -603,13 +603,13 @@ class SessionZeroManager:
             }
         
         # Add Hadvar or Ralof as starting companion based on faction alignment
-        # Record the Helgen escape companion decision
+        # Record the civil war entry contact decision
         if "branching_decisions" not in campaign_state:
             campaign_state["branching_decisions"] = {}
         
         if faction_alignment == "imperial":
-            # Player escaped Helgen with Hadvar
-            campaign_state["branching_decisions"]["helgen_escape_companion"] = "Hadvar"
+            # Player met Hadvar through Imperial recruitment
+            campaign_state["branching_decisions"]["civil_war_entry_contact"] = "Hadvar"
             
             # Add Hadvar to active companions
             hadvar_companion = {
@@ -618,16 +618,16 @@ class SessionZeroManager:
                 "status": "active",
                 "loyalty": 60,
                 "location": "With party",
-                "recruitment_trigger": "Escaped Helgen together",
+                "recruitment_trigger": "Imperial Legion recruitment",
                 "faction_affinity": "imperial_legion",
-                "notes": "Saved the party's life during the dragon attack at Helgen. Pragmatic Imperial soldier with family connections in Riverwood."
+                "notes": "Met during Imperial recruitment. Pragmatic Imperial soldier with family connections in Riverwood."
             }
             campaign_state["companions"]["active_companions"].append(hadvar_companion)
             campaign_state["companions"]["companion_relationships"]["hadvar"] = 60
             
         elif faction_alignment == "stormcloak":
-            # Player escaped Helgen with Ralof
-            campaign_state["branching_decisions"]["helgen_escape_companion"] = "Ralof"
+            # Player met Ralof through Stormcloak recruitment
+            campaign_state["branching_decisions"]["civil_war_entry_contact"] = "Ralof"
             
             # Add Ralof to active companions
             ralof_companion = {
@@ -636,9 +636,9 @@ class SessionZeroManager:
                 "status": "active",
                 "loyalty": 60,
                 "location": "With party",
-                "recruitment_trigger": "Escaped Helgen together",
+                "recruitment_trigger": "Stormcloak recruitment",
                 "faction_affinity": "stormcloaks",
-                "notes": "Saved the party's life during the dragon attack at Helgen. Passionate Stormcloak soldier with family connections in Riverwood."
+                "notes": "Met during Stormcloak recruitment. Passionate Stormcloak soldier with family connections in Riverwood."
             }
             campaign_state["companions"]["active_companions"].append(ralof_companion)
             campaign_state["companions"]["companion_relationships"]["ralof"] = 60
@@ -646,7 +646,7 @@ class SessionZeroManager:
         else:  # neutral
             # For neutral alignment, make both available but neither active yet
             # GM can decide based on player RP which one they meet first
-            campaign_state["branching_decisions"]["helgen_escape_companion"] = "undecided"
+            campaign_state["branching_decisions"]["civil_war_entry_contact"] = "undecided"
             
             hadvar_available = {
                 "npc_id": "npc_stat_hadvar",
@@ -685,7 +685,7 @@ class SessionZeroManager:
         if faction_alignment == "imperial":
             campaign_state["starting_narrative"] = (
                 "The party arrives in Whiterun as supporters of the Imperial Legion. "
-                "Hadvar, the Imperial soldier who saved them during the dragon attack at Helgen, "
+                "Hadvar, an Imperial soldier who recruited them to the cause, "
                 "accompanies the party. Jarl Balgruuf the Greater has reluctantly sided with the Empire, and "
                 "the Stormcloaks are preparing to assault the city. The Battle of "
                 "Whiterun approaches, and the party must help defend the city alongside "
@@ -694,7 +694,7 @@ class SessionZeroManager:
         elif faction_alignment == "stormcloak":
             campaign_state["starting_narrative"] = (
                 "The party arrives in Whiterun as supporters of the Stormcloak Rebellion. "
-                "Ralof, the Stormcloak soldier who saved them during the dragon attack at Helgen, "
+                "Ralof, a Stormcloak soldier who recruited them to the cause, "
                 "accompanies the party. "
                 "Jarl Balgruuf has sided with the Empire, making Whiterun a target for "
                 "liberation. The party joins Galmar Stone-Fist in preparing to assault "
@@ -713,8 +713,7 @@ class SessionZeroManager:
                     # Default neutral narrative
                     campaign_state["starting_narrative"] = (
                         "The party arrives in Whiterun, trying to remain neutral in the civil war. "
-                        "During the chaos at Helgen, they encountered both Hadvar (Imperial) and Ralof (Stormcloak), "
-                        "but didn't commit to either side. "
+                        "They have not yet committed to either side in the conflict. "
                         "Jarl Balgruuf the Greater has reluctantly sided with the Empire, and "
                         "the Stormcloaks prepare to assault the city. The party may align with "
                         "neutral factions like the Companions, who focus on honor over politics. "
@@ -726,8 +725,7 @@ class SessionZeroManager:
                 # Default neutral narrative
                 campaign_state["starting_narrative"] = (
                     "The party arrives in Whiterun, trying to remain neutral in the civil war. "
-                    "During the chaos at Helgen, they encountered both Hadvar (Imperial) and Ralof (Stormcloak), "
-                    "but didn't commit to either side. "
+                    "They have not yet committed to either side in the conflict. "
                     "Jarl Balgruuf the Greater has reluctantly sided with the Empire, and "
                     "the Stormcloaks prepare to assault the city. The party may align with "
                     "neutral factions like the Companions, who focus on honor over politics. "
@@ -1092,8 +1090,8 @@ the Battle of Whiterun will shape Skyrim's future.
                 print("\n--- Backstory Development ---")
                 print("Answer these questions to flesh out your character:")
                 
-                print("\n1. Why were you at Helgen when the dragons attacked?")
-                helgen_reason = input("   > ").strip()
+                print("\n1. How did you become involved in the Civil War?")
+                war_entry = input("   > ").strip()
                 
                 print("\n2. Why do you support the " + 
                       ("Imperial Legion" if faction_alignment == "imperial" else 
@@ -1109,7 +1107,7 @@ the Battle of Whiterun will shape Skyrim's future.
                 
                 # Build backstory
                 backstory = f"""
-**Helgen Incident**: {helgen_reason if helgen_reason else '[To be determined]'}
+**Civil War Entry**: {war_entry if war_entry else '[To be determined]'}
 
 **Civil War Stance**: {civil_war_stance if civil_war_stance else '[To be determined]'}
 

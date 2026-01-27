@@ -3,10 +3,10 @@
   "in_game_days_passed": 6,
   "current_era": "Fourth Era",
   "major_events": [
-    "Dragon crisis has been resolved - Alduin defeated",
-    "Civil war between Imperials and Stormcloaks continues",
+    "Civil war between Imperials and Stormcloaks intensifies",
     "High King Torygg was killed by Ulfric Stormcloak",
-    "Thalmor influence in Skyrim grows stronger"
+    "Thalmor influence in Skyrim grows stronger",
+    "Battle of Whiterun approaches"
   ],
   "political_situation": {
     "skyrim_status": "Civil War in progress",
@@ -27,11 +27,10 @@
     ]
   },
   "post_dragon_crisis": {
-    "status": "Resolved",
-    "timeline_note": "Alduin has been defeated, remaining dragons are scattered",
-    "helgen_status": "Ruins remain, rebuilding has not begun",
-    "dragon_knowledge": "Common knowledge that dragons returned but were dealt with",
-    "blades_status": "Reformed but keeping low profile"
+    "status": "Dragons are largely inactive",
+    "timeline_note": "Ancient dragon lore speaks of their return, but none have been seen recently",
+    "dragon_knowledge": "Dragons are creatures of legend, with few recent sightings",
+    "blades_status": "Nearly extinct, few remain in hiding"
   },
   "faction_standings": {
     "Imperial Legion": {
@@ -52,11 +51,11 @@
   },
   "weather_and_season": "Late summer, generally pleasant weather",
   "rumors_and_news": [
-    "The dragon threat has passed, but Skyrim remains divided",
-    "Helgen ruins stand as reminder of the dragon crisis",
+    "Civil war tensions rise as both sides prepare for battle",
     "Jarl Balgruuf refuses to take sides in the civil war",
     "Thalmor Justiciars are becoming more aggressive",
-    "Bandits are becoming bolder on the roads"
+    "Bandits are becoming bolder on the roads",
+    "Strange reports of dragon sightings in distant lands"
   ],
   "active_threats": [
     "Civil war escalation",
@@ -64,5 +63,5 @@
     "Bandit activity on trade routes",
     "Political instability in neutral holds"
   ],
-  "notes": "Post-Alduin timeline: The dragon crisis has been resolved, but Skyrim remains divided by civil war. The Thalmor work behind the scenes to keep both sides weak. Jarls are being forced to choose sides, and the common people are caught in the middle."
+  "notes": "Campaign Focus: The civil war between Imperials and Stormcloaks dominates Skyrim. The Thalmor work behind the scenes to keep both sides weak. Jarls are being forced to choose sides, and the common people are caught in the middle. The Battle of Whiterun will be a pivotal moment."
 }

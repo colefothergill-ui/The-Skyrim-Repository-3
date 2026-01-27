@@ -181,7 +181,7 @@ See `/data/clocks/thalmor_influence_clocks.json` for detailed tracking.
 #### **Elenwen** (First Emissary)
 - **Role**: Spy mistress and political manipulator
 - **Location**: Thalmor Embassy
-- **Key Scenes**: Helgen (Act I), Diplomatic Immunity (Act II), Season Unending (Act III)
+- **Key Scenes**: Battle of Whiterun (Act I), Diplomatic Immunity (Act II), Season Unending (Act III)
 - **Tactics**: Information, leverage, diplomatic immunity
 - **Vulnerability**: Exposure of her schemes
 

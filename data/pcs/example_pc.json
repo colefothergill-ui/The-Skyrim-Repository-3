@@ -40,7 +40,7 @@
   "milestones": [
     "Minor: Defeated bandits at Valtheim Towers",
     "Significant: Cleared Bleak Falls Barrow",
-    "Major: Discovered Dragonborn heritage"
+    "Major: Became Thane of Whiterun"
   ],
   "equipment": [
     "Iron Greatsword",
@@ -55,9 +55,9 @@
     "Ulfric Stormcloak": "Suspicious of motives"
   },
   "quests": [
-    "Active: Investigate dragon attacks",
-    "Active: Find the Greybeards",
+    "Active: Investigate rumors of unrest",
+    "Active: Support the civil war effort",
     "Completed: Retrieved Dragonstone from Bleak Falls Barrow"
   ],
-  "notes": "Erich is a Nord warrior who recently discovered he is Dragonborn. He is struggling with this newfound responsibility while trying to atone for past mistakes."
+  "notes": "Erich is a Nord warrior who recently became Thane of Whiterun. He is rising as a hero in the Civil War while trying to atone for past mistakes."
 }

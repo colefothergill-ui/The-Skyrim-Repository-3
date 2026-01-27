@@ -73,7 +73,7 @@
     "Ulfric Stormcloak": "Respects as a warrior but sees him as misguided and dangerous",
     "Thalmor": "Despises them but must work alongside them",
     "Jarl Balgruuf": "Hopes he stays loyal to the Empire",
-    "The Dragonborn": "Sees as potential to end the war, respects regardless of allegiance"
+    "The Player": "Sees as potential to end the war, respects capable warriors"
   },
   "trust_clock": {
     "current": 0,
@@ -136,7 +136,7 @@
     "if_stormcloak": "Becomes enemy but shows reluctance to fight a worthy Nord warrior",
     "if_imperial": "Becomes mentor and tactical advisor, shows her true Nord heart",
     "if_neutral": "Tries to recruit with appeals to protecting Skyrim from Thalmor",
-    "if_dragonborn_famous": "Sees Dragonborn as Talos-sent to end the conflict"
+    "if_renowned_warrior": "Sees capable warriors as potential to end the conflict"
   },
   "story_hooks": [
     "Rikke worships Talos in secret - a massive risk in her position",
