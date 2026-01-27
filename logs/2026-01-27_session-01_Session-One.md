@@ -68,6 +68,6 @@
 
 ## End of Session — Session 1 Wrap
 - **Gold:** 645 septims (recorded)
-- **Fate Points:** Set to Refresh (2) for next session
 - **Recovery:** Mild consequence *Ragged Voice* cleared (end-of-session recovery)
-- **Milestone:** **Minor Milestone** (standard end-of-session)
+- **Milestone:** **Minor Milestone**
+  - Spent on new stunt: **The Art of the Deal** (refresh paid; refresh 2→1)
