@@ -18,25 +18,63 @@ from utils import location_matches
 
 class DataQueryManager:
     def __init__(self, data_dir="data"):
+        """
+        Initialize the DataQueryManager.
+        
+        Args:
+            data_dir: Path to the data directory (default: "data")
+        """
         self.data_dir = Path(data_dir)
         self.npc_stat_sheets_dir = self.data_dir / "npc_stat_sheets"
         
+        # Ensure directories exist
+        (self.data_dir / "npcs").mkdir(parents=True, exist_ok=True)
+        (self.data_dir / "pcs").mkdir(parents=True, exist_ok=True)
+        (self.data_dir / "quests").mkdir(parents=True, exist_ok=True)
+        (self.data_dir / "factions").mkdir(parents=True, exist_ok=True)
+        (self.data_dir / "sessions").mkdir(parents=True, exist_ok=True)
+        (self.data_dir / "world_state").mkdir(parents=True, exist_ok=True)
+        (self.data_dir / "rules").mkdir(parents=True, exist_ok=True)
+        
     def query_npcs(self, name=None, location=None, faction=None):
-        """Query NPCs based on filters"""
+        """
+        Query NPCs based on filters.
+        
+        Args:
+            name: Filter by name (partial match, case-insensitive)
+            location: Filter by location (exact match, case-insensitive)
+            faction: Filter by faction (exact match, case-insensitive)
+            
+        Returns:
+            list: List of matching NPC dictionaries
+        """
         npcs_dir = self.data_dir / "npcs"
+        if not npcs_dir.exists():
+            return []
+            
         results = []
         
         for npc_file in npcs_dir.glob("*.json"):
-            with open(npc_file, 'r') as f:
-                npc = json.load(f)
+            try:
+                with open(npc_file, 'r', encoding='utf-8') as f:
+                    npc = json.load(f)
+            except (IOError, json.JSONDecodeError) as e:
+                print(f"Warning: Error reading {npc_file.name}: {e}")
+                continue
             
             match = True
-            if name and name.lower() not in npc.get('name', '').lower():
-                match = False
-            if location and location.lower() != npc.get('location', '').lower():
-                match = False
-            if faction and faction.lower() != npc.get('faction', '').lower():
-                match = False
+            if name and isinstance(name, str):
+                npc_name = npc.get('name', '')
+                if isinstance(npc_name, str) and name.lower() not in npc_name.lower():
+                    match = False
+            if location and isinstance(location, str):
+                npc_location = npc.get('location', '')
+                if isinstance(npc_location, str) and location.lower() != npc_location.lower():
+                    match = False
+            if faction and isinstance(faction, str):
+                npc_faction = npc.get('faction', '')
+                if isinstance(npc_faction, str) and faction.lower() != npc_faction.lower():
+                    match = False
             
             if match:
                 results.append(npc)
@@ -44,19 +82,39 @@ class DataQueryManager:
         return results
     
     def query_pcs(self, name=None, player=None):
-        """Query Player Characters"""
+        """
+        Query Player Characters.
+        
+        Args:
+            name: Filter by character name (partial match, case-insensitive)
+            player: Filter by player name (partial match, case-insensitive)
+            
+        Returns:
+            list: List of matching PC dictionaries
+        """
         pcs_dir = self.data_dir / "pcs"
+        if not pcs_dir.exists():
+            return []
+            
         results = []
         
         for pc_file in pcs_dir.glob("*.json"):
-            with open(pc_file, 'r') as f:
-                pc = json.load(f)
+            try:
+                with open(pc_file, 'r', encoding='utf-8') as f:
+                    pc = json.load(f)
+            except (IOError, json.JSONDecodeError) as e:
+                print(f"Warning: Error reading {pc_file.name}: {e}")
+                continue
             
             match = True
-            if name and name.lower() not in pc.get('name', '').lower():
-                match = False
-            if player and player.lower() not in pc.get('player', '').lower():
-                match = False
+            if name and isinstance(name, str):
+                pc_name = pc.get('name', '')
+                if isinstance(pc_name, str) and name.lower() not in pc_name.lower():
+                    match = False
+            if player and isinstance(player, str):
+                pc_player = pc.get('player', '')
+                if isinstance(pc_player, str) and player.lower() not in pc_player.lower():
+                    match = False
             
             if match:
                 results.append(pc)
@@ -64,21 +122,44 @@ class DataQueryManager:
         return results
     
     def query_quests(self, status=None, quest_type=None, name=None):
-        """Query quests based on filters"""
+        """
+        Query quests based on filters.
+        
+        Args:
+            status: Filter by status (exact match, case-insensitive)
+            quest_type: Filter by quest type (exact match, case-insensitive)
+            name: Filter by name (partial match, case-insensitive)
+            
+        Returns:
+            list: List of matching quest dictionaries
+        """
         quests_dir = self.data_dir / "quests"
+        if not quests_dir.exists():
+            return []
+            
         results = []
         
         for quest_file in quests_dir.glob("*.json"):
-            with open(quest_file, 'r') as f:
-                quest = json.load(f)
+            try:
+                with open(quest_file, 'r', encoding='utf-8') as f:
+                    quest = json.load(f)
+            except (IOError, json.JSONDecodeError) as e:
+                print(f"Warning: Error reading {quest_file.name}: {e}")
+                continue
             
             match = True
-            if status and quest.get('status', '').lower() != status.lower():
-                match = False
-            if quest_type and quest.get('type', '').lower() != quest_type.lower():
-                match = False
-            if name and name.lower() not in quest.get('name', '').lower():
-                match = False
+            if status and isinstance(status, str):
+                quest_status = quest.get('status', '')
+                if isinstance(quest_status, str) and quest_status.lower() != status.lower():
+                    match = False
+            if quest_type and isinstance(quest_type, str):
+                quest_quest_type = quest.get('type', '')
+                if isinstance(quest_quest_type, str) and quest_quest_type.lower() != quest_type.lower():
+                    match = False
+            if name and isinstance(name, str):
+                quest_name = quest.get('name', '')
+                if isinstance(quest_name, str) and name.lower() not in quest_name.lower():
+                    match = False
             
             if match:
                 results.append(quest)
@@ -86,19 +167,39 @@ class DataQueryManager:
         return results
     
     def query_factions(self, name=None, faction_type=None):
-        """Query factions"""
+        """
+        Query factions.
+        
+        Args:
+            name: Filter by faction name (partial match, case-insensitive)
+            faction_type: Filter by faction type (exact match, case-insensitive)
+            
+        Returns:
+            list: List of matching faction dictionaries
+        """
         factions_dir = self.data_dir / "factions"
+        if not factions_dir.exists():
+            return []
+            
         results = []
         
         for faction_file in factions_dir.glob("*.json"):
-            with open(faction_file, 'r') as f:
-                faction = json.load(f)
+            try:
+                with open(faction_file, 'r', encoding='utf-8') as f:
+                    faction = json.load(f)
+            except (IOError, json.JSONDecodeError) as e:
+                print(f"Warning: Error reading {faction_file.name}: {e}")
+                continue
             
             match = True
-            if name and name.lower() not in faction.get('name', '').lower():
-                match = False
-            if faction_type and faction_type.lower() != faction.get('type', '').lower():
-                match = False
+            if name and isinstance(name, str):
+                faction_name = faction.get('name', '')
+                if isinstance(faction_name, str) and name.lower() not in faction_name.lower():
+                    match = False
+            if faction_type and isinstance(faction_type, str):
+                faction_faction_type = faction.get('type', '')
+                if isinstance(faction_faction_type, str) and faction_type.lower() != faction_faction_type.lower():
+                    match = False
             
             if match:
                 results.append(faction)
@@ -107,7 +208,7 @@ class DataQueryManager:
     
     def query_faction_quests(self, faction_id=None, quest_id=None, act=None):
         """
-        Query faction quests from factions.json
+        Query faction quests from factions.json.
         
         Args:
             faction_id: Filter by faction (e.g., 'companions', 'thieves_guild')
@@ -115,15 +216,18 @@ class DataQueryManager:
             act: Filter by act context (e.g., 'Act 1', 'Act 2')
         
         Returns:
-            Dict with faction quest information
+            dict: Faction quest information, or error dict if file not found
         """
         factions_file = self.data_dir / "factions.json"
         
         if not factions_file.exists():
             return {"error": "Factions file not found"}
         
-        with open(factions_file, 'r') as f:
-            factions_data = json.load(f)
+        try:
+            with open(factions_file, 'r', encoding='utf-8') as f:
+                factions_data = json.load(f)
+        except (IOError, json.JSONDecodeError) as e:
+            return {"error": f"Error reading factions file: {e}"}
         
         faction_quests = factions_data.get('faction_quests', {})
         results = {}
@@ -133,8 +237,14 @@ class DataQueryManager:
             if faction_id and faction != faction_id:
                 continue
             
+            if not isinstance(quest_data, dict):
+                continue
+                
             filtered_quests = []
             for quest in quest_data.get('quests', []):
+                if not isinstance(quest, dict):
+                    continue
+                    
                 # Filter by quest_id if provided
                 if quest_id and quest.get('id') != quest_id:
                     continue
@@ -155,56 +265,100 @@ class DataQueryManager:
         return results
     
     def get_trust_mechanics(self):
-        """Get trust mechanics from factions.json"""
+        """
+        Get trust mechanics from factions.json.
+        
+        Returns:
+            dict: Trust mechanics data, or error dict if file not found
+        """
         factions_file = self.data_dir / "factions.json"
         
         if not factions_file.exists():
             return {"error": "Factions file not found"}
         
-        with open(factions_file, 'r') as f:
-            factions_data = json.load(f)
+        try:
+            with open(factions_file, 'r', encoding='utf-8') as f:
+                factions_data = json.load(f)
+        except (IOError, json.JSONDecodeError) as e:
+            return {"error": f"Error reading factions file: {e}"}
         
         return factions_data.get('trust_mechanics', {})
     
     def get_main_story_integration(self):
-        """Get main story integration info from factions.json"""
+        """
+        Get main story integration info from factions.json.
+        
+        Returns:
+            dict: Main story integration data, or error dict if file not found
+        """
         factions_file = self.data_dir / "factions.json"
         
         if not factions_file.exists():
             return {"error": "Factions file not found"}
         
-        with open(factions_file, 'r') as f:
-            factions_data = json.load(f)
+        try:
+            with open(factions_file, 'r', encoding='utf-8') as f:
+                factions_data = json.load(f)
+        except (IOError, json.JSONDecodeError) as e:
+            return {"error": f"Error reading factions file: {e}"}
         
         return factions_data.get('main_story_integration', {})
     
     def get_world_state(self):
-        """Get the current world state"""
+        """
+        Get the current world state.
+        
+        Returns:
+            dict: World state data if successful, None otherwise
+        """
         world_state_file = self.data_dir / "world_state" / "current_state.json"
         if world_state_file.exists():
-            with open(world_state_file, 'r') as f:
-                return json.load(f)
+            try:
+                with open(world_state_file, 'r', encoding='utf-8') as f:
+                    return json.load(f)
+            except (IOError, json.JSONDecodeError) as e:
+                print(f"Error reading world state: {e}")
+                return None
         return None
     
     def search_rules(self, keyword):
-        """Search rules documentation for keyword"""
+        """
+        Search rules documentation for keyword.
+        
+        Args:
+            keyword: Search term to look for in rules files
+            
+        Returns:
+            list: List of dicts containing file name and matching lines
+        """
+        if not keyword or not isinstance(keyword, str):
+            print("Error: keyword must be a non-empty string")
+            return []
+            
         rules_dir = self.data_dir / "rules"
+        if not rules_dir.exists():
+            return []
+            
         results = []
         
         for rules_file in rules_dir.glob("*.md"):
-            with open(rules_file, 'r') as f:
-                content = f.read()
+            try:
+                with open(rules_file, 'r', encoding='utf-8') as f:
+                    content = f.read()
+            except (IOError, UnicodeDecodeError) as e:
+                print(f"Warning: Error reading {rules_file.name}: {e}")
+                continue
             
             if keyword.lower() in content.lower():
                 # Find relevant sections
                 lines = content.split('\n')
                 relevant_lines = []
-                for i, line in enumerate(lines):
+                for line_index, line in enumerate(lines):
                     if keyword.lower() in line.lower():
                         # Get context (2 lines before and after)
-                        start = max(0, i - 2)
-                        end = min(len(lines), i + 3)
-                        relevant_lines.extend(lines[start:end])
+                        context_start = max(0, line_index - 2)
+                        context_end = min(len(lines), line_index + 3)
+                        relevant_lines.extend(lines[context_start:context_end])
                 
                 results.append({
                     'file': rules_file.name,
@@ -214,25 +368,60 @@ class DataQueryManager:
         return results
     
     def get_session_log(self, session_number=None):
-        """Get session log(s)"""
+        """
+        Get session log(s).
+        
+        Args:
+            session_number: Specific session number to retrieve, or None for all sessions
+            
+        Returns:
+            list: List of session data dictionaries
+        """
         sessions_dir = self.data_dir / "sessions"
+        if not sessions_dir.exists():
+            return []
+            
         results = []
         
         if session_number:
+            if not isinstance(session_number, int) or session_number <= 0:
+                print("Error: session_number must be a positive integer")
+                return []
+                
             session_file = sessions_dir / f"session_{session_number:03d}.json"
             if session_file.exists():
-                with open(session_file, 'r') as f:
-                    return [json.load(f)]
+                try:
+                    with open(session_file, 'r', encoding='utf-8') as f:
+                        return [json.load(f)]
+                except (IOError, json.JSONDecodeError) as e:
+                    print(f"Error reading session file: {e}")
+                    return []
         else:
             # Return all sessions
             for session_file in sorted(sessions_dir.glob("session_*.json")):
-                with open(session_file, 'r') as f:
-                    results.append(json.load(f))
+                try:
+                    with open(session_file, 'r', encoding='utf-8') as f:
+                        results.append(json.load(f))
+                except (IOError, json.JSONDecodeError) as e:
+                    print(f"Warning: Error reading {session_file.name}: {e}")
+                    continue
         
         return results
     
     def get_character_relationships(self, character_id):
-        """Get all relationships for a character (PC or NPC)"""
+        """
+        Get all relationships for a character (PC or NPC).
+        
+        Args:
+            character_id: The character ID to look up
+            
+        Returns:
+            dict: Relationships dictionary, or empty dict if not found
+        """
+        if not character_id or not isinstance(character_id, str):
+            print("Error: character_id must be a non-empty string")
+            return {}
+            
         # Check NPCs
         npcs = self.query_npcs()
         pcs = self.query_pcs()
@@ -255,14 +444,28 @@ class DataQueryManager:
         return {}
     
     def query_pdf_topics(self, topic):
-        """Query PDF index for topic and return relevant files"""
+        """
+        Query PDF index for topic and return relevant files.
+        
+        Args:
+            topic: Topic to search for in PDF index
+            
+        Returns:
+            dict: Query results with files and details, or error dict
+        """
+        if not topic or not isinstance(topic, str):
+            return {"error": "Topic must be a non-empty string", "files": [], "details": []}
+            
         pdf_index_file = self.data_dir / "pdf_index.json"
         
         if not pdf_index_file.exists():
-            return {"error": "PDF index not found", "files": []}
+            return {"error": "PDF index not found", "files": [], "details": []}
         
-        with open(pdf_index_file, 'r') as f:
-            pdf_index = json.load(f)
+        try:
+            with open(pdf_index_file, 'r', encoding='utf-8') as f:
+                pdf_index = json.load(f)
+        except (IOError, json.JSONDecodeError) as e:
+            return {"error": f"Error reading PDF index: {e}", "files": [], "details": []}
         
         # Search query mappings
         query_mappings = pdf_index.get('query_mappings', {})
@@ -277,15 +480,20 @@ class DataQueryManager:
         results = []
         topics_data = pdf_index.get('topics', {})
         
-        for category, items in topics_data.items():
-            for item_name, item_data in items.items():
-                if topic_lower in ' '.join(item_data.get('topics', [])).lower():
-                    results.append({
-                        'file': item_data['file'],
-                        'format': item_data['format'],
-                        'description': item_data['description'],
-                        'source_pdf': item_data.get('source_pdf', 'Unknown')
-                    })
+        if isinstance(topics_data, dict):
+            for category, items in topics_data.items():
+                if isinstance(items, dict):
+                    for item_name, item_data in items.items():
+                        if isinstance(item_data, dict):
+                            topics_list = item_data.get('topics', [])
+                            if isinstance(topics_list, list):
+                                if topic_lower in ' '.join(topics_list).lower():
+                                    results.append({
+                                        'file': item_data.get('file', 'Unknown'),
+                                        'format': item_data.get('format', 'Unknown'),
+                                        'description': item_data.get('description', ''),
+                                        'source_pdf': item_data.get('source_pdf', 'Unknown')
+                                    })
         
         return {
             'query': topic,
@@ -294,36 +502,53 @@ class DataQueryManager:
         }
     
     def get_pdf_content(self, topic):
-        """Get actual content from PDF-converted files for a topic"""
+        """
+        Get actual content from PDF-converted files for a topic.
+        
+        Args:
+            topic: Topic to retrieve content for
+            
+        Returns:
+            dict: Dictionary with query and list of content results
+        """
         query_result = self.query_pdf_topics(topic)
         content = []
         
         for detail in query_result.get('details', []):
-            file_path = Path(detail['file'])
+            file_path = Path(detail.get('file', ''))
+            
+            # Skip if file path is invalid
+            if not file_path or not isinstance(detail, dict):
+                continue
             
             # Adjust path if relative
             if not file_path.is_absolute():
                 file_path = self.data_dir.parent / file_path
             
             if file_path.exists():
-                if detail['format'] == 'json':
-                    with open(file_path, 'r') as f:
-                        data = json.load(f)
-                        content.append({
-                            'file': str(file_path),
-                            'type': 'json',
-                            'content': data,
-                            'description': detail['description']
-                        })
-                elif detail['format'] == 'markdown':
-                    with open(file_path, 'r') as f:
-                        text = f.read()
-                        content.append({
-                            'file': str(file_path),
-                            'type': 'markdown',
-                            'content': text,
-                            'description': detail['description']
-                        })
+                detail_format = detail.get('format', '')
+                try:
+                    if detail_format == 'json':
+                        with open(file_path, 'r', encoding='utf-8') as f:
+                            data = json.load(f)
+                            content.append({
+                                'file': str(file_path),
+                                'type': 'json',
+                                'content': data,
+                                'description': detail.get('description', '')
+                            })
+                    elif detail_format == 'markdown':
+                        with open(file_path, 'r', encoding='utf-8') as f:
+                            text = f.read()
+                            content.append({
+                                'file': str(file_path),
+                                'type': 'markdown',
+                                'content': text,
+                                'description': detail.get('description', '')
+                            })
+                except (IOError, json.JSONDecodeError, UnicodeDecodeError) as e:
+                    print(f"Warning: Error reading {file_path}: {e}")
+                    continue
         
         return {
             'query': topic,
