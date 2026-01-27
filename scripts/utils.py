@@ -14,10 +14,12 @@ def location_matches(search_location, sheet_location):
     
     Args:
         search_location: Location to search for (e.g., "Whiterun", "ruins")
+                        Can be None or empty string, which returns False
         sheet_location: Location from stat sheet (e.g., "Ancient Nordic Ruins")
+                       Can be None or empty string, which returns False
     
     Returns:
-        bool: True if locations match
+        bool: True if locations match, False if either location is invalid
     
     Examples:
         >>> location_matches("Whiterun", "Whiterun")
@@ -28,8 +30,17 @@ def location_matches(search_location, sheet_location):
         True
         >>> location_matches("Solitude", "Whiterun")
         False
+        >>> location_matches(None, "Whiterun")
+        False
+        >>> location_matches("", "Whiterun")
+        False
     """
+    # Defensive check: ensure both inputs are valid strings
     if not search_location or not sheet_location:
+        return False
+    
+    # Type checking for safety
+    if not isinstance(search_location, str) or not isinstance(sheet_location, str):
         return False
     
     search_lower = search_location.lower()
