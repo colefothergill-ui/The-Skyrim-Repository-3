@@ -66,11 +66,21 @@ Magic in Skyrim uses the Lore skill for casting and understanding spells.
 **Casting**: Roll Lore vs. target difficulty. Spending Fate Points can boost spell power.
 
 ### Dragon Shouts (Thu'um)
-Dragonborn characters can learn and use shouts:
-- Shouts are powerful aspects that can be invoked
-- Each shout has three words of power
-- Learning requires absorbing dragon souls and finding word walls
-- Shouts have cooldown (usually one use per scene)
+The Thu'um (Dragon Shouts) is an ancient Nordic tradition that can be learned through dedication, training, and discovery. This is NOT a Dragonborn-exclusive power in post-Alduin campaigns.
+
+**Access**: 
+- Nords can take "Voice of the Nord" Extra at character creation (1 Refresh)
+- Bretons and Imperials can learn through "Way of the Voice" Extra (1 Refresh, learned during gameplay)
+
+**Core Mechanics**:
+- Shouts require Fate Point initially
+- Each shout has a Mastery Clock (8 segments for Nords, 10 for others)
+- Once mastered, shouts become "once per scene" without Fate Point cost
+- Learning methods: Word Walls, Greybeard training, teachers, meditation
+
+**Available Shouts**: Unrelenting Force, Whirlwind Sprint, Elemental Fury, Frost Breath, Fire Breath, Become Ethereal, and more.
+
+**Complete mechanics**: See `data/rules/thuum_system.json` for full details on all shouts, learning methods, and progression systems.
 
 ### Combat
 - Initiative: Highest Notice goes first
