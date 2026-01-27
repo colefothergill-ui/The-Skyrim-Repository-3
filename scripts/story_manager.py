@@ -1396,7 +1396,7 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
                         if whiterun_control == 'imperial' or player_alliance == 'imperial':
                             condition_met = True
                 
-                if not condition_met and new_progress >= cap:
+                if not condition_met:
                     print(f"\n{'='*50}")
                     print(f"⚠️  Foothold stalled: requires Imperial control or Imperial alliance.")
                     print(f"Clock: {clock_name}")
