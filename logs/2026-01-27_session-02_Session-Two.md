@@ -134,3 +134,9 @@ The Stormcloak attacker was sent tumbling backward off the ladder, crashing into
 
 WHT-10: Aldric targets Galmar's weapon arm; tie creates Boost Stiff-Arm Sting. Galmar Overcomes to rearm, clearing Stolen Weapon.
 
+## WHT-10 — Rolling Fog Duel (Aldric vs Galmar)
+
+Note: SEEING STARS spent, Galmar Stress [3] checked, Aldric Moderate Cracked Ribs, Boosts Kidney-Shocked and Staggered in the Fog now in play.
+
+Your move: pick Option 1–6 and I'll resolve the next exchange—either the finisher attempt… or Galmar reminding everyone why he's the Stormcloak war chief.
+

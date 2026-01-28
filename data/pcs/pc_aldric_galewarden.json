@@ -50,7 +50,7 @@
   },
   "stress": {
     "physical": [
-      false,
+      true,
       true
     ],
     "mental": [
@@ -60,7 +60,7 @@
   },
   "consequences": {
     "mild": null,
-    "moderate": null,
+    "moderate": "Cracked Ribs",
     "severe": null
   },
   "stunts": [
@@ -144,7 +144,8 @@
     "WHT-09: Defended vs Stormcloak veteran with Rift Rat Martial Artist → SWS; gained boost Veteran Off-Balance.",
     "WHT-09: Joined Hadvar's unit on the West Wall; negotiated unit terms; requisitioned smoke bombs + axes; took point at a ladder and started dropping climbers with Rift Rat martial arts.",
     "WHT-09: Executed a command disruption: threw axe to take out a Stormcloak banneret; deployed smoke for partial cover against archers; wall defenders rallied.",
-    "WHT-10: Fight is effectively +4 (Good +3 + Nord racial +1). Created Advantage vs Galmar: SEEING STARS (SWS, 2 free invokes). Took 2-shift axe counter; marked Physical Stress [2]."
+    "WHT-10: Fight is effectively +4 (Good +3 + Nord racial +1). Created Advantage vs Galmar: SEEING STARS (SWS, 2 free invokes). Took 2-shift axe counter; marked Physical Stress [2].",
+    "WHT-10: Spent both free invokes on SEEING STARS to land SWS body blows; gained Boost 'Kidney-Shocked'. Galmar countered with Stone-Fist Crush + True Nord's Fury; took 5 shifts → Stress[1] + Moderate 'Cracked Ribs'."
   ],
   "last_known_location": "Whiterun — Gate Approach (groundside), within Rolling Fog near Stormcloak command knot",
   "faction_alignment": "neutral",
@@ -215,6 +216,7 @@
   "temporary_boosts": [
     "Left Flank Cleared (1 free invoke)",
     "Veteran Off-Balance (1 free invoke)",
-    "BEAR-HELM CHECKED (1 free invoke)"
+    "BEAR-HELM CHECKED (1 free invoke)",
+    "Kidney-Shocked (vs Galmar) — 1 free invoke"
   ]
 }

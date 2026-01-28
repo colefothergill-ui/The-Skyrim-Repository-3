@@ -1,12 +1,5 @@
 [
-  {
-    "op": "replace",
-    "path": "/whiterun_jobs/clocks/guild_foothold_whiterun/gate/condition",
-    "value": "state.branching_decisions.civil_war_entry_contact == 'hadvar' || state.civil_war_state.player_alliance == 'imperial'"
-  },
-  {
-    "op": "replace",
-    "path": "/whiterun_jobs/clocks/guild_foothold_whiterun/gate/note",
-    "value": "Olfrid will not fully open the Whiterun door until you prove your alignment during the Battle of Whiterun—specifically by fighting alongside Hadvar (or formally allying with the Empire)."
-  }
+  { "op": "replace", "path": "/civil_war_state/battle_of_whiterun_status", "value": "in_progress" },
+  { "op": "replace", "path": "/current_scene_id", "value": "WHT-10" },
+  { "op": "replace", "path": "/current_location", "value": "Whiterun — outer walls (fog-choked breach line), Galmar engaged" }
 ]
