@@ -13,5 +13,3 @@
 ## Player Characters
 - **Erich Stormblade** (Nord Warrior)
   High Concept: Nord Warrior Seeking Redemption
-- **Aldric Galewarden** (Nord Unknown)
-  High Concept: Thieves Guild Ruffian - Last of Clan Galewarden

@@ -123,7 +123,7 @@ The Stormcloak attacker was sent tumbling backward off the ladder, crashing into
 - Requisitioned battlefield tools: smoke bombs and axes.
 - Held a ladder point almost solo using Rift Rat martial arts.
 - Threw an axe to drop a Stormcloak banneret (command disruption) and popped smoke to blunt archer volleys.
-- WHT-09: Aldric bodyguards Hadvar under arrow volleys; Create Advantage (Athletics + spent Boost) → Galewarden's Windward Guard (SWS, 2 free invokes).
+  - WHT-09: (Former entry removed)
 - Whiterun Guild Foothold clock advanced to 4/5; Hadvar-contact gate satisfied.
 
 ## Scene WHT-09 — West Wall Hold
@@ -133,4 +133,3 @@ The Stormcloak attacker was sent tumbling backward off the ladder, crashing into
 - Scene cut triggered by Galmar Stone-Fist entering the field. Aldric breaks from the wall, uses smoke + Running on Air to reach groundside, then WULD-charges Galmar. Impact doesn't bowl him, but disrupts his cadence. Aldric takes Physical Stress [2].
 
 WHT-10: Aldric targets Galmar's weapon arm; tie creates Boost Stiff-Arm Sting. Galmar Overcomes to rearm, clearing Stolen Weapon.
-
