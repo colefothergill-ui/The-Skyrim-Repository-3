@@ -140,7 +140,9 @@
     "Echoing WULD",
     "Suspicious Wall Patrol",
     "Crowded Battlements",
-    "Biting Wind Off the Tundra"
+    "Biting Wind Off the Tundra",
+    "Second Ladder Toppled",
+    "Veteran Stormcloak Climbers"
   ],
   "current_objective": "Prepare for the Battle of Whiterun; be seen fighting alongside Hadvar; use Olfrid's sealed note; lock in Battle-Born patronage; pursue Thu'um instructor lead (Olfrid addendum).",
   "quest_flags": {

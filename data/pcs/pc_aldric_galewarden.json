@@ -125,7 +125,10 @@
     "SESSION 2: Met Hadvar and Legate Rikke at the west wall muster, presented Olfrid's sealed note to Hadvar (seal opened by Hadvar), assigned to Hadvar's section, requisitioned signal-smoke pots x2 and throwing axes x2 from Imperial quartermaster.",
     "WHT-09: Took compel (Hadvar's Guard Up). Used Art of the Deal to lock public unit claim: Under Hadvar's Banner. Negotiated wager terms with Hadvar.",
     "WHT-09: Used Battle Cry (racial, once/session) to create 'Frightened Enemies' (1 free invoke).",
-    "WHT-09: Succeeded with Style on Defend using Rift Rat Martial Artist; created 'Kicked Off the Ladder' (1 free invoke)."
+    "WHT-09: Succeeded with Style on Defend using Rift Rat Martial Artist; created 'Kicked Off the Ladder' (1 free invoke).",
+    "WHT-09: Used Running on Air → created Gale-Runner (SWS, 2 free invokes; 1 spent).",
+    "WHT-09: Overcame second ladder with Athletics (spent Broken Rhythm boost + Gale-Runner invoke) → ladder toppled; gained boost Left Flank Cleared.",
+    "WHT-09: Defended vs Stormcloak veteran with Rift Rat Martial Artist → SWS; gained boost Veteran Off-Balance."
   ],
   "last_known_location": "Whiterun — inner parapet (west wall)",
   "faction_alignment": "neutral",
@@ -187,7 +190,11 @@
     "Hadvar's Guard Up (GM: 1 free invoke)",
     "Under Hadvar's Banner (PC: 1 free invoke)",
     "Frightened Enemies (PC: 1 free invoke)",
-    "Kicked Off the Ladder (PC: 1 free invoke)"
+    "Kicked Off the Ladder (PC: 1 free invoke)",
+    "Gale-Runner (1 free invoke remaining)"
   ],
-  "temporary_boosts": []
+  "temporary_boosts": [
+    "Left Flank Cleared (1 free invoke)",
+    "Veteran Off-Balance (1 free invoke)"
+  ]
 }
