@@ -123,4 +123,6 @@ The Stormcloak attacker was sent tumbling backward off the ladder, crashing into
 - Requisitioned battlefield tools: smoke bombs and axes.
 - Held a ladder point almost solo using Rift Rat martial arts.
 - Threw an axe to drop a Stormcloak banneret (command disruption) and popped smoke to blunt archer volleys.
+- WHT-09: Aldric bodyguards Hadvar under arrow volleys; Create Advantage (Athletics + spent Boost) → Galewarden's Windward Guard (SWS, 2 free invokes).
+- Whiterun Guild Foothold clock advanced to 4/5; Hadvar-contact gate satisfied.
 
