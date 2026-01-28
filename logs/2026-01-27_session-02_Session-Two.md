@@ -117,3 +117,10 @@ The Stormcloak attacker was sent tumbling backward off the ladder, crashing into
 - **Rift Rat defense:** Success with Style created "Kicked Off the Ladder" aspect
 - **Public alignment:** Imperial forces and Hadvar witnessing Aldric's combat effectiveness
 - **Thu'um instructor progress:** Hadvar contact established, Imperial channel active for instructor search
+
+## The Battle Begins — West Wall (WHT-09)
+- Aldric presented Olfrid's sealed note as proof-of-contact and folded into Hadvar's unit.
+- Requisitioned battlefield tools: smoke bombs and axes.
+- Held a ladder point almost solo using Rift Rat martial arts.
+- Threw an axe to drop a Stormcloak banneret (command disruption) and popped smoke to blunt archer volleys.
+
