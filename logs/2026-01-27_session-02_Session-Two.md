@@ -83,3 +83,37 @@ The scene concluded with the Imperial forces preparing for the imminent Stormclo
 - Requisitioned smoke pots and throwing axes from Imperial stores
 - Advanced Thu'um instructor search through Imperial military channels
 - Battle of Whiterun forces visibly mobilizing; Stormcloak assault imminent (ladders and gate breach incoming)
+
+## Scene WHT-09 — West Wall Muster (First Ladder Clash)
+
+### Battle Cry Unleashed
+
+As the first wave of Stormcloak forces surged toward the gatehouse section with their siege ladders, Aldric drew upon his Nord heritage. With a bellowing roar that echoed across the battlements, he unleashed his **Battle Cry** racial power (once per session), tapping into the ancient martial tradition of his people.
+
+The intimidating shout reverberated through the close-quarters combat zone, causing visible hesitation and fear among the attacking Stormcloak soldiers in the immediate area.
+
+**Racial Power Used:** Battle Cry (once per session)  
+**Scene Aspect Created (PC):** "Frightened Enemies (PC: 1 free invoke)"
+
+### Rift Rat Defense - Success with Style
+
+When a Stormcloak soldier climbed to the top of a siege ladder and lunged at Aldric with a battle axe, the Rift Rat martial artist was ready. Drawing on his unarmed combat expertise and acrobatic street-fighting techniques, Aldric executed a perfect defensive maneuver.
+
+**Action:** Defend with Fight (using Rift Rat Martial Artist stunt)  
+**Result:** Succeeded with Style
+
+Using his Rift Rat Martial Artist stunt, Aldric not only defended successfully but also turned the tables on his attacker. Rather than taking the boost from his Success with Style, he chose to create a situation aspect on the scene that would benefit the entire defensive effort.
+
+**Scene Aspect Created (PC):** "Kicked Off the Ladder (PC: 1 free invoke)"
+
+The Stormcloak attacker was sent tumbling backward off the ladder, crashing into soldiers below and creating chaos in the assault column. The ladder itself was momentarily compromised, buying valuable time for the Imperial defenders.
+
+### Combat Summary
+
+- **Hadvar's unit confirmation:** Aldric fighting visibly alongside Hadvar's section
+- **Compel accepted:** "Hadvar's Guard Up" accepted earlier (earned +1 FP)
+- **Equipment requisitioned:** Signal-smoke pots x2 and throwing axes x2 now in inventory
+- **Battle Cry used:** Racial power expended for this session, creating "Frightened Enemies"
+- **Rift Rat defense:** Success with Style created "Kicked Off the Ladder" aspect
+- **Public alignment:** Imperial forces and Hadvar witnessing Aldric's combat effectiveness
+- **Thu'um instructor progress:** Hadvar contact established, Imperial channel active for instructor search
