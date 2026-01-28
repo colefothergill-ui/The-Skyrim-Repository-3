@@ -115,7 +115,7 @@
     "notes": "Companion loyalty ranges from 0-100. Active companions travel with the party. Available companions can be recruited. Dismissed companions can be re-recruited."
   },
   "session_count": 1,
-  "last_updated": "2026-01-27T20:11:23Z",
+  "last_updated": "2026-01-27T20:30:00Z",
   "session_zero_completed": true,
   "starting_location": "Whiterun",
   "player_characters": [
@@ -135,21 +135,19 @@
   "neutral_subfaction": "thieves_guild",
   "starting_npc_contact": "brynjolf",
   "current_scene_id": "WHT-09",
-  "current_location": "Whiterun — West Wall (gatehouse section)",
+  "current_location": "Whiterun — West Wall battlements (Battle of Whiterun)",
   "current_threats": [
-    "Echoing WULD",
-    "Suspicious Wall Patrol",
-    "Crowded Battlements",
-    "Biting Wind Off the Tundra",
-    "Second Ladder Toppled",
-    "Veteran Stormcloak Climbers"
+    "Stormcloak ladder assault",
+    "Arrow volleys",
+    "Command-and-control targets (banneret/sergeants)"
   ],
-  "current_objective": "Prepare for the Battle of Whiterun; be seen fighting alongside Hadvar; use Olfrid's sealed note; lock in Battle-Born patronage; pursue Thu'um instructor lead (Olfrid addendum).",
+  "current_objective": "Hold the West Wall during the Battle of Whiterun; visibly fight alongside Hadvar; keep Hadvar alive; use Olfrid's sealed note as proof-of-contact; leverage the battle to unlock Battle-Born patronage + Thu'um instructor lead.",
   "quest_flags": {
     "battleborn_strongbox_delivered": true,
     "battle_of_whiterun_pending": true,
     "olfrid_note_acquired": true,
     "hadvar_contact_pending": false,
+    "hadvar_contact_made": true,
     "thuum_instructor_requested": true,
     "battleborn_patronage_contract": true
   }
