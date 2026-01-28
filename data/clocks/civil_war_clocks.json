@@ -42,7 +42,7 @@
       "battle_of_whiterun_countdown": {
         "name": "Battle of Whiterun Countdown",
         "description": "Tension builds as both sides prepare for the pivotal Battle of Whiterun",
-        "current_progress": 3,
+        "current_progress": 8,
         "total_segments": 8,
         "completion_effect": "Battle of Whiterun occurs - Whiterun must choose a side or fall",
         "advancement_triggers": [
@@ -105,7 +105,7 @@
     },
     "major_battles": {
       "battle_of_whiterun": {
-        "status": "pending",
+        "status": "in_progress",
         "description": "The pivotal battle that will determine Whiterun's allegiance",
         "importance": "Critical - Forces neutral parties to choose sides",
         "possible_outcomes": [

@@ -51,7 +51,7 @@
   "stress": {
     "physical": [
       false,
-      false
+      true
     ],
     "mental": [
       false,
@@ -102,9 +102,9 @@
       },
       {
         "id": "consumable_smoke_bombs",
-        "name": "Smoke Bombs (x1 remaining)",
+        "name": "Smoke Bombs (x0 remaining)",
         "type": "consumable",
-        "notes": "Battlefield obscurant. Use to Create Advantage: Smoke Screen / Patchy Cover."
+        "notes": "Battlefield obscurant. Use to Create Advantage: Smoke Screen / Patchy Cover. Used during WHT-10 fog approach."
       },
       {
         "id": "weapon_throwing_axes",
@@ -206,11 +206,13 @@
     "Under Hadvar's Banner (PC: 1 free invoke)",
     "Frightened Enemies (PC: 1 free invoke)",
     "Kicked Off the Ladder (PC: 1 free invoke)",
-    "Gale-Runner (1 free invoke remaining)",
-    "Galewarden's Windward Guard (2 free invokes)"
+    "Galewarden's Windward Guard (2 free invokes)",
+    "Rolling Fog (free invoke spent)",
+    "Gale-Runner (2 free invokes)"
   ],
   "temporary_boosts": [
     "Left Flank Cleared (1 free invoke)",
-    "Veteran Off-Balance (1 free invoke)"
+    "Veteran Off-Balance (1 free invoke)",
+    "BEAR-HELM CHECKED (1 free invoke)"
   ]
 }

@@ -7,7 +7,7 @@
   "active_pc_id": "pc_aldric_galewarden",
   "civil_war_state": {
     "player_alliance": "neutral",
-    "battle_of_whiterun_status": "approaching",
+    "battle_of_whiterun_status": "in_progress",
     "imperial_victories": 0,
     "stormcloak_victories": 0,
     "key_battles_completed": [],
@@ -134,8 +134,8 @@
   },
   "neutral_subfaction": "thieves_guild",
   "starting_npc_contact": "brynjolf",
-  "current_scene_id": "WHT-09",
-  "current_location": "Whiterun — West Wall battlements (gatehouse section)",
+  "current_scene_id": "WHT-10",
+  "current_location": "Whiterun — Gate Approach (groundside), within Rolling Fog near Stormcloak command knot",
   "current_threats": [
     "Stormcloak ladder assault",
     "Arrow volleys",
