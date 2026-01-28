@@ -31,7 +31,7 @@
     "True Nord's Fury: When fighting Imperials or Thalmor, invoke 'Skyrim Belongs to the Nords' for free once per scene"
   ],
   "stress": {
-    "physical": [false, false, false, false],
+    "physical": [false, false, false, true],
     "mental": [false, false, false]
   },
   "consequences": {

@@ -132,3 +132,5 @@ The Stormcloak attacker was sent tumbling backward off the ladder, crashing into
 ## Scene WHT-10 — The Bear in the Fog
 - Scene cut triggered by Galmar Stone-Fist entering the field. Aldric breaks from the wall, uses smoke + Running on Air to reach groundside, then WULD-charges Galmar. Impact doesn't bowl him, but disrupts his cadence. Aldric takes Physical Stress [2].
 
+WHT-10: Aldric targets Galmar's weapon arm; tie creates Boost Stiff-Arm Sting. Galmar Overcomes to rearm, clearing Stolen Weapon.
+
