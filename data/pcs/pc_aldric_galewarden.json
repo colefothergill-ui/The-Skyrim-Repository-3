@@ -51,7 +51,7 @@
   "stress": {
     "physical": [
       false,
-      false
+      true
     ],
     "mental": [
       false,
@@ -207,10 +207,12 @@
     "Frightened Enemies (PC: 1 free invoke)",
     "Kicked Off the Ladder (PC: 1 free invoke)",
     "Gale-Runner (1 free invoke remaining)",
-    "Galewarden's Windward Guard (2 free invokes)"
+    "Galewarden's Windward Guard (2 free invokes)",
+    "ROLLING FOG (1 free invoke)"
   ],
   "temporary_boosts": [
     "Left Flank Cleared (1 free invoke)",
-    "Veteran Off-Balance (1 free invoke)"
+    "Veteran Off-Balance (1 free invoke)",
+    "BEAR-HELM CHECKED (1 free invoke)"
   ]
 }

@@ -126,3 +126,9 @@ The Stormcloak attacker was sent tumbling backward off the ladder, crashing into
 - WHT-09: Aldric bodyguards Hadvar under arrow volleys; Create Advantage (Athletics + spent Boost) → Galewarden's Windward Guard (SWS, 2 free invokes).
 - Whiterun Guild Foothold clock advanced to 4/5; Hadvar-contact gate satisfied.
 
+## Scene WHT-09 — West Wall Hold
+- Aldric joined Hadvar's section and held the ladder point while disrupting Stormcloak command flow.
+
+## Scene WHT-10 — The Bear in the Fog
+- Scene cut triggered by Galmar Stone-Fist entering the field. Aldric breaks from the wall, uses smoke + Running on Air to reach groundside, then WULD-charges Galmar. Impact doesn't bowl him, but disrupts his cadence. Aldric takes Physical Stress [2].
+
