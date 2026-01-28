@@ -31,7 +31,7 @@
     "True Nord's Fury: When fighting Imperials or Thalmor, invoke 'Skyrim Belongs to the Nords' for free once per scene"
   ],
   "stress": {
-    "physical": [false, false, false, false],
+    "physical": [false, false, false, true],
     "mental": [false, false, false]
   },
   "consequences": {
@@ -138,7 +138,7 @@
     "His stone-fist technique is legendary among Stormcloaks",
     "May reveal doubts about the rebellion in private moments of vulnerability"
   ],
-  "gm_notes": "Galmar is the heart of the Stormcloak military. Unlike Ulfric who has political motivations, Galmar is purely focused on freeing Skyrim through force. He represents the traditional Nord warrior culture. Can be used to show the costs of war and the complexity of the rebellion - he's not evil, just deeply committed to his cause. His relationship with Rikke adds tragedy to the civil war.",
+  "gm_notes": "Galmar is the heart of the Stormcloak military. Unlike Ulfric who has political motivations, Galmar is purely focused on freeing Skyrim through force. He represents the traditional Nord warrior culture. Can be used to show the costs of war and the complexity of the rebellion - he's not evil, just deeply committed to his cause. His relationship with Rikke adds tragedy to the civil war.\nWHT-10: SEEING STARS applied (2 free invokes against Galmar). Spent 1 FP to invoke Veteran of the Great War on an attack.",
   "loot_if_defeated": {
     "guaranteed": ["Galmar's battleaxe (enchanted)", "Stormcloak officer armor", "Strategic battle plans"],
     "campaign_impact": "Defeating Galmar is a major blow to Stormcloak morale and military efficiency"

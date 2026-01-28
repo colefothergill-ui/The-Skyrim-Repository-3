@@ -141,7 +141,7 @@
     "Arrow volleys",
     "Command-and-control targets (banneret/sergeants)"
   ],
-  "current_objective": "Hold the West Wall during the Battle of Whiterun; visibly fight alongside Hadvar; keep Hadvar alive; use Olfrid's sealed note as proof-of-contact; leverage the battle to unlock Battle-Born patronage + Thu'um instructor lead.",
+  "current_objective": "Hold the West Wall during the Battle of Whiterun; visibly fight alongside Hadvar; keep Hadvar alive; use Olfrid's sealed note as proof-of-contact; leverage the battle to unlock Battle-Born patronage + Thu'um instructor lead.\nWHT-10: Aldric engages Galmar Stone-Fist in the fog while trying to preserve Hadvar-visibility clause.",
   "quest_flags": {
     "battleborn_strongbox_delivered": true,
     "battle_of_whiterun_pending": true,

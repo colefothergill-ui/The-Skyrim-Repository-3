@@ -143,9 +143,10 @@
     "WHT-09: Overcame second ladder with Athletics (spent Broken Rhythm boost + Gale-Runner invoke) → ladder toppled; gained boost Left Flank Cleared.",
     "WHT-09: Defended vs Stormcloak veteran with Rift Rat Martial Artist → SWS; gained boost Veteran Off-Balance.",
     "WHT-09: Joined Hadvar's unit on the West Wall; negotiated unit terms; requisitioned smoke bombs + axes; took point at a ladder and started dropping climbers with Rift Rat martial arts.",
-    "WHT-09: Executed a command disruption: threw axe to take out a Stormcloak banneret; deployed smoke for partial cover against archers; wall defenders rallied."
+    "WHT-09: Executed a command disruption: threw axe to take out a Stormcloak banneret; deployed smoke for partial cover against archers; wall defenders rallied.",
+    "WHT-10: Fight is effectively +4 (Good +3 + Nord racial +1). Created Advantage vs Galmar: SEEING STARS (SWS, 2 free invokes). Took 2-shift axe counter; marked Physical Stress [2]."
   ],
-  "last_known_location": "Whiterun — West Wall battlements (Battle of Whiterun)",
+  "last_known_location": "Whiterun — Gate Approach (groundside), within Rolling Fog near Stormcloak command knot",
   "faction_alignment": "neutral",
   "additional_faction_interests": "Thieves Guild",
   "neutral_subfaction": "thieves_guild",
@@ -208,7 +209,8 @@
     "Kicked Off the Ladder (PC: 1 free invoke)",
     "Galewarden's Windward Guard (2 free invokes)",
     "Rolling Fog (free invoke spent)",
-    "Gale-Runner (2 free invokes)"
+    "Gale-Runner (2 free invokes)",
+    "SEEING STARS (2 free invokes)"
   ],
   "temporary_boosts": [
     "Left Flank Cleared (1 free invoke)",
