@@ -55,6 +55,16 @@ def test_is_companion_present_partial():
     print("✓ Partial name matching works")
 
 
+def test_is_companion_present_empty():
+    """Test companion detection with empty companions list"""
+    print("\n=== Testing is_companion_present with Empty List ===")
+    
+    assert not is_companion_present([], "lydia"), "Should return False for empty list"
+    assert not is_companion_present([], "anyone"), "Should return False for empty list"
+    
+    print("✓ Empty companions list handling works")
+
+
 def test_is_quest_active_string():
     """Test quest state detection with string format"""
     print("\n=== Testing is_quest_active with Strings ===")
@@ -149,6 +159,7 @@ def run_all_tests():
         test_is_companion_present_string,
         test_is_companion_present_dict,
         test_is_companion_present_partial,
+        test_is_companion_present_empty,
         test_is_quest_active_string,
         test_is_quest_active_dict,
         test_is_quest_active_empty,

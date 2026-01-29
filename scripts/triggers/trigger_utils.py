@@ -92,7 +92,7 @@ def is_night_time(campaign_state):
         campaign_state: Dictionary containing campaign state including time of day
     
     Returns:
-        bool: True if it's night (8 PM to 6 AM), False otherwise
+        bool: True if it's night (8 PM to 5:59 AM, i.e., hours 20-23 and 0-5), False otherwise
     
     Examples:
         >>> is_night_time({"time_of_day": "night"})
