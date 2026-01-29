@@ -22,10 +22,24 @@ Handles all Whiterun Hold locations including:
 
 Features companion commentary for Whiterun-based followers (currently Lydia).
 
+### Windhelm Triggers (`windhelm_triggers.py`)
+
+Handles all Windhelm and Eastmarch locations including:
+- Windhelm City districts:
+  - Palace of the Kings (Ulfric's throne room)
+  - Gray Quarter (Dunmer district with racial tension)
+  - Stone Quarter (market district)
+  - Windhelm Docks (Argonian workers, East Empire Company)
+- Eastmarch wilderness:
+  - Hot Springs (volcanic tundra)
+  - Dunmeth Pass (border with Morrowind)
+
+Features one-time narrative events (e.g., Rolff Stone-Fist harassing Dunmer) and evolving ambient descriptions.
+
 ## Usage
 
 ```python
-from triggers import whiterun_location_triggers
+from triggers import whiterun_location_triggers, windhelm_location_triggers
 
 campaign_state = {
     "companions": {
@@ -33,7 +47,11 @@ campaign_state = {
     }
 }
 
+# Whiterun triggers
 events = whiterun_location_triggers("whiterun", campaign_state)
+
+# Windhelm triggers
+events = windhelm_location_triggers("windhelm_palace_of_the_kings", campaign_state)
 ```
 
 ## Future Expansions
@@ -41,7 +59,7 @@ events = whiterun_location_triggers("whiterun", campaign_state)
 Additional trigger modules can be added for other holds and locations:
 - `riften_triggers.py` - Riften and the Rift Hold
 - `solitude_triggers.py` - Solitude and Haafingar Hold
-- `windhelm_triggers.py` - Windhelm and Eastmarch Hold
+- ~~`windhelm_triggers.py` - Windhelm and Eastmarch Hold~~ ✓ Implemented
 - `markarth_triggers.py` - Markarth and the Reach
 - `winterhold_triggers.py` - Winterhold and its college
 - `dawnstar_triggers.py` - Dawnstar and the Pale
@@ -53,12 +71,15 @@ Additional trigger modules can be added for other holds and locations:
 
 Each trigger module should have corresponding tests in the `tests/` directory.
 
-See `tests/test_whiterun_triggers.py` for an example test suite.
+Test suites available:
+- `tests/test_whiterun_triggers.py` - Whiterun triggers test suite
+- `tests/test_windhelm_triggers.py` - Windhelm triggers test suite
 
 ## Documentation
 
-For detailed information about the Whiterun triggers, see:
+For detailed information about the triggers, see:
 - `docs/whiterun_triggers_guide.md`
 
 For demo usage examples, run:
 - `tests/demo_whiterun_triggers.py`
+- `tests/demo_windhelm_triggers.py`
