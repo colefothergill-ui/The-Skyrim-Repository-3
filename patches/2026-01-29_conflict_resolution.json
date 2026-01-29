@@ -33,6 +33,22 @@
         },
         {
           "op": "replace",
+          "path": "/whiterun_jobs/clocks/guild_foothold_whiterun/gate/note",
+          "value": "Olfrid will not fully open the Whiterun door until you prove your alignment during the Battle of Whiterun—specifically by fighting alongside Ralof (or formally allying with the Stormcloaks)."
+        },
+        {
+          "op": "replace",
+          "path": "/whiterun_jobs/clocks/guild_foothold_whiterun/advancement_triggers",
+          "value": [
+            "Build relationships with corrupt guards (+1)",
+            "Complete jobs for Battle-Born contacts (+1)",
+            "Earn Olfrid's endorsement by aiding Ralof during the Battle of Whiterun (+1; unlock cap)",
+            "Establish reliable fence relationship (+1)",
+            "Secure safe house location (+1)"
+          ]
+        },
+        {
+          "op": "replace",
           "path": "/whiterun_jobs/last_updated",
           "value": "2026-01-29 (Session 0) — gate aligned to Stormcloak/Ralof continuity"
         }
