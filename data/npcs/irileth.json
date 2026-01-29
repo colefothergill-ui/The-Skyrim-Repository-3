@@ -2,7 +2,6 @@
   "name": "Irileth",
   "id": "irileth",
   "type": "Ally",
-  "category": "Friendly NPC",
   "location": "Whiterun - Dragonsreach (Cloud District)",
   "faction": "Whiterun Guard",
   "aspects": {
@@ -30,7 +29,8 @@
   },
   "consequences": {
     "mild": null,
-    "moderate": null
+    "moderate": null,
+    "severe": null
   },
   "refresh": 2,
   "fate_points": 2,

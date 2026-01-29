@@ -2,7 +2,6 @@
   "name": "Kodlak Whitemane",
   "id": "kodlak_whitemane",
   "type": "Ally",
-  "category": "Friendly NPC",
   "location": "Whiterun - Jorrvaskr (Wind District)",
   "faction": "The Companions",
   "aspects": {
@@ -30,7 +29,8 @@
   },
   "consequences": {
     "mild": null,
-    "moderate": null
+    "moderate": null,
+    "severe": null
   },
   "refresh": 3,
   "fate_points": 3,

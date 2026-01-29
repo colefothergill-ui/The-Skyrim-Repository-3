@@ -1,8 +1,7 @@
 {
   "name": "Olfrid Battle-Born",
   "id": "olfrid_battle_born",
-  "type": "Neutral",
-  "category": "Friendly NPC",
+  "type": "Merchant",
   "location": "Whiterun - Wind District",
   "faction": "Battle-Born Clan",
   "aspects": {
@@ -30,7 +29,8 @@
   },
   "consequences": {
     "mild": null,
-    "moderate": null
+    "moderate": null,
+    "severe": null
   },
   "refresh": 2,
   "fate_points": 2,
