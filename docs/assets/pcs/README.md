@@ -3,8 +3,6 @@
 This directory is intended to contain character portrait images for PCs.
 
 ## Expected Files
-- khagar_yal.jpg - Portrait of Khagar Yal (not available in current session)
+- khagar_yal.jpg - Portrait of Khagar Yal (expected at `docs/assets/pcs/khagar_yal.jpg`)
 
-Note: The image file 'Khagar Yal.jpg' was not found in the mounted data directory during this update.
-The PC file references 'docs/assets/pcs/khagar_yal.jpg' but this file needs to be added separately.
-
+Note: The PC file references `docs/assets/pcs/khagar_yal.jpg`, but this image file is not currently present in the repository and should be added separately.
