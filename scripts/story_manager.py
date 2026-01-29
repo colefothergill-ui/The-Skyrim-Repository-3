@@ -454,13 +454,28 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
         scene_npcs = self.get_scene_npcs(location, scene_type)
         
         # Add first impression hook for NPCs
-        # TODO: Make PC appearance path configurable for multi-PC campaigns
-        # For now, hardcoded to Aldric as per COPILOT PATCH specification
+        # Dynamically determine PC appearance path based on active PC
         state_path = str(self.campaign_state_path)
-        appearance_path = str(self.data_dir / "pcs" / "appearances" / "aldric_galewarden_appearance.json")
+        appearance_path = None
+        
+        # Try to determine PC ID from campaign state
+        try:
+            with open(self.campaign_state_path, 'r') as f:
+                state = json.load(f)
+                pc_id = state.get("active_pc_id") or state.get("active_pc")
+                if not pc_id and state.get("player_characters"):
+                    # Fallback to first PC in player_characters list
+                    pc_id = state["player_characters"][0].get("id")
+                
+                if pc_id:
+                    # Convert pc_id to appearance file slug
+                    slug = pc_id.replace("pc_", "")
+                    appearance_path = str(self.data_dir / "pcs" / "appearances" / f"{slug}_appearance.json")
+        except (FileNotFoundError, json.JSONDecodeError, KeyError):
+            pass  # No state or invalid state, skip first impressions
         
         # Only attempt first impressions if appearance file exists
-        if Path(appearance_path).exists():
+        if appearance_path and Path(appearance_path).exists():
             for npc in scene_npcs:
                 npc_id = npc.get("id") or npc.get("npc_id")
                 if not npc_id:

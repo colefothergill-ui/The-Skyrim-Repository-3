@@ -11,7 +11,6 @@
   Alvor has asked you to bring news of the civil war escalation to the Jarl of Whiterun. Tensions are rising and the neutral hold needs to be warned.
 
 ## Player Characters
-- **Erich Stormblade** (Nord Warrior)
-  High Concept: Nord Warrior Seeking Redemption
-- **Aldric Galewarden** (Nord Unknown)
-  High Concept: Thieves Guild Ruffian - Last of Clan Galewarden
+- **Active PC**: (set after Session Zero)
+  - Run `scripts/session_zero.py` to generate the new character sheet in `data/pcs/`
+  - Ensure `state/campaign_state.json` contains the correct `active_pc_id`

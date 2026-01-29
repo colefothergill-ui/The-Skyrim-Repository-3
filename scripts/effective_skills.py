@@ -106,7 +106,7 @@ def compute_effective_skills(pc, data_dir="data"):
 if __name__ == "__main__":
     import argparse
     ap = argparse.ArgumentParser()
-    ap.add_argument("--pc", required=True, help="Path to PC json (e.g., data/pcs/pc_aldric_galewarden.json)")
+    ap.add_argument("--pc", required=True, help="Path to PC json (e.g., data/pcs/example_pc.json)")
     ap.add_argument("--data-dir", default="data", help="Data directory containing standing_stones.json")
     args = ap.parse_args()
 

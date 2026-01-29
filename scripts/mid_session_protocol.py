@@ -397,9 +397,11 @@ def main() -> int:
         print("[WARN] state/campaign_state.json not found. Output will be partial.")
 
     # Load primary PC
-    pc_path = pick_primary_pc(repo, state) or (repo / "data" / "pcs" / "pc_aldric_galewarden.json")
+    pc_path = pick_primary_pc(repo, state)
     pc: Dict[str, Any] = {}
-    if pc_path.exists():
+    if not pc_path:
+        print("[WARN] No primary PC found. Run Session Zero to create a character in data/pcs/ and set state.active_pc_id.")
+    elif pc_path.exists():
         try:
             pc = read_json_safely(pc_path)
         except Exception as e:

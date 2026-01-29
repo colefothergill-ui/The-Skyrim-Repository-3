@@ -3,19 +3,28 @@
   "campaign_name": "The Elder Scrolls: Skyrim - Fate Core Campaign",
   "started_date": "4E 201, 17th of Last Seed",
   "current_act": 1,
-  "active_pc": "pc_aldric_galewarden",
-  "active_pc_id": "pc_aldric_galewarden",
+
+  "active_pc": null,
+  "active_pc_id": null,
+
+  "session_zero_completed": false,
+  "session_count": 0,
+  "last_updated": "REBOOT_RESET",
+
+  "starting_location": "Whiterun",
+
   "civil_war_state": {
     "player_alliance": "neutral",
-    "battle_of_whiterun_status": "in_progress",
+    "battle_of_whiterun_status": "not_started",
     "imperial_victories": 0,
     "stormcloak_victories": 0,
     "key_battles_completed": [],
     "faction_relationship": {
-      "imperial_legion": 1,
+      "imperial_legion": 0,
       "stormcloaks": 0
     }
   },
+
   "main_quest_state": {
     "post_alduin_timeline": true,
     "dragon_crisis_resolved": true,
@@ -23,6 +32,7 @@
     "greybeards_relations": "respectful",
     "timeline_notes": "Campaign occurs after Alduin's defeat. Dragon crisis has ended, focus is on civil war and Thalmor conspiracy."
   },
+
   "thalmor_arc": {
     "thalmor_awareness_of_party": "none",
     "embassy_infiltrated": false,
@@ -38,24 +48,27 @@
       {
         "plot_id": "eliminate_talos_worship",
         "description": "Continue persecution of Talos worshippers",
-        "progress": 2,
+        "progress": 0,
         "clock_segments": 10
       }
     ]
   },
+
   "branching_decisions": {
     "civil_war_stance": null,
     "jarl_balgruuf_support": null,
     "thalmor_embassy_approach": null,
     "talos_worship_stance": null,
-    "civil_war_entry_contact": "hadvar"
+    "civil_war_entry_contact": "undecided"
   },
+
   "world_consequences": {
     "towns_affected": [],
     "npcs_killed": [],
     "npcs_befriended": [],
     "major_choices": []
   },
+
   "active_story_arcs": [
     {
       "arc_name": "Civil War",
@@ -70,85 +83,16 @@
       "next_milestone": "Discover Thalmor manipulation"
     }
   ],
+
   "companions": {
     "active_companions": [],
-    "available_companions": [
-      {
-        "npc_id": "lydia",
-        "name": "Lydia",
-        "status": "available",
-        "loyalty": 60,
-        "location": "Dragonsreach, Whiterun",
-        "recruitment_condition": "Become Thane of Whiterun",
-        "faction_affinity": "whiterun"
-      },
-      {
-        "npc_id": "aela_the_huntress",
-        "name": "Aela the Huntress",
-        "status": "unavailable",
-        "loyalty": 50,
-        "location": "Jorrvaskr, Whiterun",
-        "recruitment_condition": "Complete Companions questline",
-        "faction_affinity": "companions"
-      },
-      {
-        "npc_id": "npc_stat_hadvar",
-        "name": "Hadvar",
-        "status": "available",
-        "loyalty": 50,
-        "location": "Riverwood or Whiterun",
-        "recruitment_condition": "Party encounters Hadvar and helps with Imperial-related task",
-        "faction_affinity": "imperial_legion"
-      },
-      {
-        "npc_id": "npc_stat_ralof",
-        "name": "Ralof",
-        "status": "available",
-        "loyalty": 50,
-        "location": "Riverwood or Stormcloak camps",
-        "recruitment_condition": "Party encounters Ralof and helps with Stormcloak-related task",
-        "faction_affinity": "stormcloaks"
-      }
-    ],
+    "available_companions": [],
     "dismissed_companions": [],
     "companion_relationships": {},
-    "notes": "Companion loyalty ranges from 0-100. Active companions travel with the party. Available companions can be recruited. Dismissed companions can be re-recruited."
+    "notes": "Companion loyalty ranges from 0-100."
   },
-  "session_count": 1,
-  "last_updated": "2026-01-27T20:30:00Z",
-  "session_zero_completed": true,
-  "starting_location": "Whiterun",
-  "player_characters": [
-    {
-      "id": "pc_aldric_galewarden",
-      "name": "Aldric Galewarden",
-      "player": "Cole",
-      "race": "Nord",
-      "standing_stone": "The Steed Stone",
-      "faction_alignment": "neutral"
-    }
-  ],
-  "starting_narrative": "Brynjolf found you in Riften's marketplace and saw potential. After proving yourself, he offers a mission: \"I need you to head to Whiterun. Find Olfrid Battle-Born and deliver this message. With the war heating up, we need to ensure our operations there stay... profitable.\" You arrive in Whiterun to find tensions at a breaking point. As you deliver Brynjolf's message to Olfrid, news arrives that Stormcloak forces are approaching. The Battle of Whiterun is about to begin, and you see both Hadvar and Ralof in the chaos. You must choose a side.",
-  "faction_relationships": {
-    "thieves_guild": 30
-  },
-  "neutral_subfaction": "thieves_guild",
-  "starting_npc_contact": "brynjolf",
-  "current_scene_id": "WHT-10",
-  "current_location": "Whiterun — Gate Approach (groundside), within Rolling Fog near Stormcloak command knot",
-  "current_threats": [
-    "Stormcloak ladder assault",
-    "Arrow volleys",
-    "Command-and-control targets (banneret/sergeants)"
-  ],
-  "current_objective": "Hold the West Wall during the Battle of Whiterun; visibly fight alongside Hadvar; keep Hadvar alive; use Olfrid's sealed note as proof-of-contact; leverage the battle to unlock Battle-Born patronage + Thu'um instructor lead.\nWHT-10: Aldric engages Galmar Stone-Fist in the fog while trying to preserve Hadvar-visibility clause.",
-  "quest_flags": {
-    "battleborn_strongbox_delivered": true,
-    "battle_of_whiterun_pending": true,
-    "olfrid_note_acquired": true,
-    "hadvar_contact_pending": false,
-    "hadvar_contact_made": true,
-    "thuum_instructor_requested": true,
-    "battleborn_patronage_contract": true
-  }
+
+  "player_characters": [],
+  "starting_narrative": "",
+  "faction_relationships": {}
 }
