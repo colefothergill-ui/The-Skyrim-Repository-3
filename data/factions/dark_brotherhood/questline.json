@@ -21,7 +21,7 @@
       ],
       "branching_choice": {
         "join_brotherhood": "Kill at least one captive to satisfy Astrid and accept her invitation to join the Dark Brotherhood.",
-        "betray_brotherhood": "Instead attack Astrid. **Branch:** This triggers the alternate quest 'Destroy the Dark Brotherhood', where you align with Imperial forces to wipe out the faction."
+        "betray_brotherhood": "Instead attack Astrid. Branch: This triggers the alternate quest 'Destroy the Dark Brotherhood', where you align with Imperial forces to wipe out the faction."
       }
     },
     {
@@ -42,7 +42,7 @@
     {
       "id": "db04_first_contracts",
       "name": "First Contracts",
-      "description": "The player carries out a set of initial contracts given by Nazir to demonstrate efficiency and loyalty. Targets are minor (examples: a beggar in Markarth, a ex-miller in Ivarstead, a troublesome bard in Dawnstar).",
+      "description": "The player carries out a set of initial contracts given by Nazir to demonstrate efficiency and loyalty. Targets are minor (examples: a beggar in Markarth, an ex-miller in Ivarstead, a troublesome bard in Dawnstar).",
       "objectives": [
         "Assassinate the assigned targets (typically 2–3 minor contracts across Skyrim)",
         "Return to Nazir after each kill for payment"
