@@ -617,22 +617,40 @@ NPC attitudes:
         Check if a described event breaks Tier-1 Elder Scrolls canon, and recommend Dragonbreak if so.
         Args:
             event_desc (str): Description of the event or player action.
+        Returns:
+            bool: True if canon divergence detected, False otherwise.
         """
-        # Keywords for essential NPCs or events that should trigger a Dragonbreak
-        critical_triggers = ["Ulfric Stormcloak", "General Tullius", "Jarl Elisif", "Whiterun destroyed", "Solitude destroyed"]
+        # Keywords for essential NPCs that should trigger a Dragonbreak
+        essential_characters = ["Ulfric Stormcloak", "General Tullius", "Jarl Elisif"]
+        # Major cities that cannot be destroyed
+        major_cities = ["Whiterun", "Solitude"]
         # Action keywords that indicate a major canon divergence
-        action_keywords = ["kill", "killed", "dead", "destroy", "destroyed", "assassinate", "assassinated", "murder", "murdered", "die", "died", "death"]
+        harmful_actions = ["kill", "killed", "dead", "assassinate", "assassinated", "murder", "murdered", "die", "died", "death"]
+        destruction_actions = ["destroy", "destroyed", "destruction", "razed", "burned down"]
         
         canon_conflict = False
-        for trigger in critical_triggers:
-            if trigger.lower() in event_desc.lower():
-                # Check if any action keyword is present
-                for action in action_keywords:
-                    if action in event_desc.lower():
+        event_lower = event_desc.lower()
+        
+        # Check for essential character deaths/harm
+        for character in essential_characters:
+            if character.lower() in event_lower:
+                for action in harmful_actions:
+                    if action in event_lower:
                         canon_conflict = True
                         break
                 if canon_conflict:
                     break
+        
+        # Check for major city destruction
+        if not canon_conflict:
+            for city in major_cities:
+                if city.lower() in event_lower:
+                    for action in destruction_actions:
+                        if action in event_lower:
+                            canon_conflict = True
+                            break
+                    if canon_conflict:
+                        break
         
         if canon_conflict:
             print("\n⚠️  **Major Canon Divergence Detected!**")
@@ -642,6 +660,8 @@ NPC attitudes:
             print("– Narratively, NPCs may have conflicting memories of this event. Proceed with caution to preserve immersion.")
         else:
             print("No Tier-1 canon conflicts detected in this event.")
+        
+        return canon_conflict
 
 
 def main():
