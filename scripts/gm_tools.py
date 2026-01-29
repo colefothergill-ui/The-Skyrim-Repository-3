@@ -662,6 +662,33 @@ NPC attitudes:
             print("No Tier-1 canon conflicts detected in this event.")
         
         return canon_conflict
+    
+    def tri_check_result(self, successes):
+        """
+        Determine outcome narrative for a Tri-Check (3-roll challenge) based on successes.
+        
+        Args:
+            successes (int): Number of successful checks out of 3 (0-3).
+        """
+        print("\n" + "="*70)
+        print("TRI-CHECK OUTCOME")
+        print("="*70)
+        if successes >= 3:
+            # All three checks succeeded – overwhelming success
+            print("★ **Full Success (3/3)**: You accomplish your goal brilliantly. Everything goes in the party's favor with added benefits.")
+            print("Narrative: The plan not only works, it exceeds expectations. No complications – maybe even a bonus reward or advantage.")
+        elif successes == 2:
+            # Two successes – success with a minor cost
+            print("✓ **Major Success (2/3)**: You succeed, but with a small cost or complication.")
+            print("Narrative: The party achieves the goal, but perhaps they expend extra resources or suffer a minor consequence in the process.")
+        elif successes == 1:
+            # One success – success at a significant cost, or a mixed outcome
+            print("≈ **Partial Success (1/3)**: You only partly succeed, or succeed but with a serious cost.")
+            print("Narrative: The goal is achieved *barely*. Expect a major complication or harm – success comes at a price that changes the situation.")
+        else:
+            # 0 successes – failure that still moves the story forward
+            print("✘ **Failure (0/3)**: You do not succeed, but the story moves forward with consequences.")
+            print("Narrative: The attempt fails or causes a serious setback. The party must deal with fallout, but the GM should ensure this propels the story (not a dead end).")
 
 
 def main():
@@ -680,11 +707,12 @@ def main():
     print("7. Suggest NPC Stats for Scene")
     print("8. Inject NPC Stats to Combat")
     print("9. Get NPC Relationship Advice")
-    print("10. Check Major Canon Divergence")
-    print("11. Exit")
+    print("10. Tri-Check System Resolution")
+    print("11. Check Major Canon Divergence")
+    print("12. Exit")
     
     while True:
-        choice = input("\nEnter choice (1-11): ").strip()
+        choice = input("\nEnter choice (1-12): ").strip()
         
         if choice == "1":
             tools.view_all_clocks()
@@ -725,15 +753,26 @@ def main():
             tools.get_npc_relationship_advice(npc_name)
         
         elif choice == "10":
+            successes_input = input("Number of successes (0-3): ").strip()
+            try:
+                successes = int(successes_input)
+                if 0 <= successes <= 3:
+                    tools.tri_check_result(successes)
+                else:
+                    print("Please enter a number between 0 and 3")
+            except ValueError:
+                print("Invalid input. Please enter a number between 0 and 3")
+        
+        elif choice == "11":
             event_desc = input("Event description: ").strip()
             tools.check_major_canon_divergence(event_desc)
         
-        elif choice == "11":
+        elif choice == "12":
             print("Goodbye!")
             break
         
         else:
-            print("Invalid choice. Please enter 1-11.")
+            print("Invalid choice. Please enter 1-12.")
 
 
 if __name__ == "__main__":
