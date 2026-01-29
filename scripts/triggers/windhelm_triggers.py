@@ -2,10 +2,13 @@
 """
 Windhelm Location Triggers
 
-This module handles location-based triggers for Windhelm and the Palace of the Kings.
-It provides contextual events, faction-based NPC interactions, and quest prompts
-specific to Windhelm and Eastmarch Hold.
+This module handles location-based triggers for Windhelm and Eastmarch.
+It provides contextual events, NPC interactions, and companion commentary
+specific to Windhelm Hold, including quest hooks for Blood on the Ice
+and The White Phial.
 """
+
+from .trigger_utils import is_companion_present, is_quest_active, is_night_time
 
 
 def windhelm_location_triggers(loc, campaign_state):
@@ -13,8 +16,8 @@ def windhelm_location_triggers(loc, campaign_state):
     Generate location-specific triggers for Windhelm locations.
     
     Args:
-        loc: Current location string (e.g., "windhelm", "palace of the kings")
-        campaign_state: Dictionary containing campaign state including faction alignment
+        loc: Current location string (e.g., "windhelm", "windhelm_graveyard")
+        campaign_state: Dictionary containing campaign state including companions and quests
         
     Returns:
         List of event strings to be narrated to players
@@ -24,23 +27,53 @@ def windhelm_location_triggers(loc, campaign_state):
     # Normalize location for case-insensitive matching
     loc_lower = str(loc).lower()
     
-    # Stormcloak recruitment prompt if unaligned and first time in Palace
-    # Handle Palace first to avoid triggering gate messages when entering Palace
-    if "palace of the kings" in loc_lower and not campaign_state.get("stormcloaks_joined") and not campaign_state.get("imperial_legion_joined"):
-        if not campaign_state.get("stormcloak_recruit_offer_seen"):
-            events.append("Galmar Stone-Fist steps forward as you enter the hall, sizing you up with a warrior's gaze. \"You look like you can handle yourself,\" he growls in a tone that's almost an invitation. \"If you've come to Windhelm seeking purpose, speak to Jarl Ulfric. We've need of warriors with heart.\" It seems an opportunity to join the Stormcloaks is at hand.")
-            campaign_state["stormcloak_recruit_offer_seen"] = True
+    # Get active companions
+    active_companions = campaign_state.get("companions", {}).get("active_companions", [])
     
-    # Faction alignment reactions at Windhelm city gates (not Palace)
-    elif "windhelm" in loc_lower and "palace" not in loc_lower:
-        # Friendly greeting if player is a known Stormcloak ally
-        if campaign_state.get("stormcloaks_joined") and not campaign_state.get("windhelm_stormcloak_welcome_done"):
-            events.append("As you pass through the gates of Windhelm wearing the Stormcloak colors, a guard claps a hand to his heart in salute. \"Welcome, brother. Skyrim is a step closer to freedom thanks to warriors like you,\" he says gruffly, letting you through with a proud nod.")
-            campaign_state["windhelm_stormcloak_welcome_done"] = True
+    # District/area-specific triggers
+    if ("gray_quarter" in loc_lower or "grey_quarter" in loc_lower) and "windhelm" in loc_lower:
+        events.append("You enter the Gray Quarter, home to Windhelm's Dark Elf population. The air is thick with incense and the sounds of foreign tongues. Dilapidated buildings and suspicious glances speak to the Dunmer's treatment in this city.")
+    
+    elif "graveyard" in loc_lower and "windhelm" in loc_lower:
+        events.append("The cold wind whistles through Windhelm's graveyard. Stone markers stand as silent witnesses to the city's dead, their names weathered by Skyrim's harsh winters.")
         
-        # Hostile reaction if player is known Imperial (but Windhelm is still Stormcloak-held)
-        if campaign_state.get("imperial_legion_joined") and not campaign_state.get("windhelm_imperial_warning_done"):
-            events.append("Upon entering Windhelm, you notice the mood shift. A pair of Stormcloak guards glare in your direction. One grips his axe tighter. \"Mind yourself, Imperial,\" he calls out coldly. \"You're walking among true Nords now.\" The warning is clear – your allegiance is noted here.")
-            campaign_state["windhelm_imperial_warning_done"] = True
+        # Blood on the Ice quest hook - nighttime graveyard visit
+        if not is_quest_active(campaign_state, "blood_on_the_ice"):
+            if is_night_time(campaign_state):
+                events.append("You hear distant shouts near the graveyard... A guard's voice cuts through the night: 'Another one! Someone get the steward!' A crowd is gathering around something near the Hall of the Dead.")
+            else:
+                # Daytime hint
+                events.append("A guard stationed nearby mutters to his companion: 'Three murders in as many weeks. The Butcher strikes again, they say. Keep your eyes open after dark.'")
+    
+    elif "market" in loc_lower and "windhelm" in loc_lower:
+        events.append("The marketplace of Windhelm bustles with activity. Vendors hawk their wares while Nord shoppers barter loudly. The imposing Palace of the Kings looms over the district.")
+        
+        # White Phial shop hint
+        if not is_quest_active(campaign_state, "the_white_phial"):
+            events.append("As you pass by the White Phial alchemy shop, you hear raised voices inside. An elderly voice rasps: 'I don't have much time, Quintus! The Phial must be found!' followed by a younger man's worried reply.")
+    
+    elif ("palace_of_the_kings" in loc_lower and "windhelm" in loc_lower) or ("palace" in loc_lower and "windhelm" in loc_lower):
+        events.append("You stand before the Palace of the Kings, seat of Jarl Ulfric Stormcloak. The ancient stone fortress radiates power and defiance, a symbol of Nordic tradition and the Stormcloak cause.")
+    
+    elif ("candlehearth_hall" in loc_lower and "windhelm" in loc_lower) or ("candlehearth" in loc_lower and "windhelm" in loc_lower):
+        events.append("Candlehearth Hall's warmth is a welcome respite from Windhelm's bitter cold. The inn is filled with the smell of roasting meat and the sound of travelers sharing tales.")
+    
+    # General Windhelm entrance
+    elif loc_lower.startswith("windhelm") or "windhelm" in loc_lower:
+        events.append("The ancient stone walls of Windhelm rise before you, weathered by countless winters. Known as the City of Kings, Windhelm stands as a bastion of Nordic tradition and the current seat of Ulfric Stormcloak's rebellion.")
+        
+        # General quest hooks when entering the city
+        if not is_quest_active(campaign_state, "blood_on_the_ice") and is_night_time(campaign_state):
+            events.append("The city feels tense at night. Shadows seem longer here, and few citizens walk the streets after dark. You overhear whispered conversations about recent murders...")
+    
+    # Companion commentary for Windhelm-relevant companions
+    if is_companion_present(active_companions, "stenvar"):
+        if loc_lower.startswith("windhelm"):
+            events.append('Stenvar grunts as you enter Windhelm. "Never cared much for this place. Too cold, too many politics. But the mead at Candlehearth Hall isn\'t bad."')
+    
+    # Companions with Nord heritage might comment on the city's history
+    if is_companion_present(active_companions, "uthgerd"):
+        if loc_lower.startswith("windhelm"):
+            events.append('Uthgerd looks around appreciatively. "Windhelm... the oldest city in Skyrim. Built by Ysgramor himself. Whatever you think of Ulfric, you can\'t deny this place has history."')
     
     return events

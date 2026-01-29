@@ -4,7 +4,7 @@ Tests for Windhelm Location Triggers
 
 This module tests the windhelm_location_triggers function to ensure
 proper event generation based on location and campaign state, including
-faction-based reactions and recruitment prompts.
+quest hooks for Blood on the Ice and The White Phial.
 """
 
 import sys
@@ -16,235 +16,316 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'scripts'))
 from triggers.windhelm_triggers import windhelm_location_triggers
 
 
-def test_stormcloak_welcome():
-    """Test that Stormcloak-aligned players get a friendly welcome"""
-    print("\n=== Testing Stormcloak Welcome Trigger ===")
+def test_gray_quarter_trigger():
+    """Test that Gray Quarter triggers appropriate events"""
+    print("\n=== Testing Gray Quarter Trigger ===")
     
     campaign_state = {
-        "stormcloaks_joined": True
+        "companions": {
+            "active_companions": []
+        }
+    }
+    
+    events = windhelm_location_triggers("windhelm_gray_quarter", campaign_state)
+    
+    assert len(events) > 0, "Expected at least one event for Gray Quarter"
+    assert any("Gray Quarter" in event for event in events), "Expected Gray Quarter description"
+    assert any("Dunmer" in event or "Dark Elf" in event for event in events), "Expected reference to Dunmer/Dark Elves"
+    print(f"✓ Gray Quarter trigger works: {events}")
+
+
+def test_graveyard_trigger_nighttime():
+    """Test that graveyard at night triggers Blood on the Ice quest hook"""
+    print("\n=== Testing Graveyard Nighttime Trigger ===")
+    
+    campaign_state = {
+        "companions": {
+            "active_companions": []
+        },
+        "time_of_day": "night",
+        "quests": {
+            "active": [],
+            "completed": []
+        }
+    }
+    
+    events = windhelm_location_triggers("windhelm_graveyard", campaign_state)
+    
+    assert len(events) > 0, "Expected at least one event for graveyard at night"
+    assert any("graveyard" in event.lower() for event in events), "Expected graveyard description"
+    assert any("shouts" in event.lower() or "murder" in event.lower() for event in events), "Expected Blood on the Ice quest hook"
+    print(f"✓ Graveyard nighttime trigger works: {events}")
+
+
+def test_graveyard_trigger_daytime():
+    """Test that graveyard during day triggers subtle hints"""
+    print("\n=== Testing Graveyard Daytime Trigger ===")
+    
+    campaign_state = {
+        "companions": {
+            "active_companions": []
+        },
+        "time_of_day": "day",
+        "quests": {
+            "active": [],
+            "completed": []
+        }
+    }
+    
+    events = windhelm_location_triggers("windhelm_graveyard", campaign_state)
+    
+    assert len(events) > 0, "Expected at least one event for graveyard during day"
+    assert any("graveyard" in event.lower() for event in events), "Expected graveyard description"
+    # Should still have some hint about murders
+    assert any("murder" in event.lower() or "butcher" in event.lower() for event in events), "Expected subtle quest hint"
+    print(f"✓ Graveyard daytime trigger works: {events}")
+
+
+def test_graveyard_quest_active():
+    """Test that graveyard doesn't trigger quest hook if already active"""
+    print("\n=== Testing Graveyard with Active Quest ===")
+    
+    campaign_state = {
+        "companions": {
+            "active_companions": []
+        },
+        "time_of_day": "night",
+        "quests": {
+            "active": ["blood_on_the_ice"],
+            "completed": []
+        }
+    }
+    
+    events = windhelm_location_triggers("windhelm_graveyard", campaign_state)
+    
+    # Should still have graveyard description but not the quest discovery hook
+    assert len(events) > 0, "Expected at least one event for graveyard"
+    # The specific quest start event should not appear
+    assert not any("Another one!" in event for event in events), "Should not trigger quest start if already active"
+    print(f"✓ Graveyard with active quest works correctly: {events}")
+
+
+def test_market_white_phial_trigger():
+    """Test that marketplace triggers White Phial quest hook"""
+    print("\n=== Testing Market White Phial Trigger ===")
+    
+    campaign_state = {
+        "companions": {
+            "active_companions": []
+        },
+        "quests": {
+            "active": [],
+            "completed": []
+        }
+    }
+    
+    events = windhelm_location_triggers("windhelm_market", campaign_state)
+    
+    assert len(events) > 0, "Expected at least one event for market"
+    assert any("market" in event.lower() for event in events), "Expected marketplace description"
+    assert any("White Phial" in event or "Nurelion" in event for event in events), "Expected White Phial quest hook"
+    print(f"✓ Market White Phial trigger works: {events}")
+
+
+def test_market_quest_active():
+    """Test that market doesn't trigger quest hook if already active"""
+    print("\n=== Testing Market with Active Quest ===")
+    
+    campaign_state = {
+        "companions": {
+            "active_companions": []
+        },
+        "quests": {
+            "active": ["the_white_phial"],
+            "completed": []
+        }
+    }
+    
+    events = windhelm_location_triggers("windhelm_market", campaign_state)
+    
+    # Should have market description but not the quest hook
+    assert len(events) > 0, "Expected at least one event for market"
+    assert not any("Quintus" in event and "Phial must be found" in event for event in events), "Should not trigger quest hook if already active"
+    print(f"✓ Market with active quest works correctly: {events}")
+
+
+def test_palace_of_the_kings_trigger():
+    """Test that Palace of the Kings triggers appropriate events"""
+    print("\n=== Testing Palace of the Kings Trigger ===")
+    
+    campaign_state = {
+        "companions": {
+            "active_companions": []
+        }
+    }
+    
+    events = windhelm_location_triggers("windhelm_palace_of_the_kings", campaign_state)
+    
+    assert len(events) > 0, "Expected at least one event for Palace"
+    assert any("Palace of the Kings" in event for event in events), "Expected Palace description"
+    assert any("Ulfric" in event for event in events), "Expected reference to Ulfric"
+    print(f"✓ Palace of the Kings trigger works: {events}")
+
+
+def test_general_windhelm_entrance():
+    """Test that general Windhelm entrance triggers appropriate events"""
+    print("\n=== Testing General Windhelm Entrance ===")
+    
+    campaign_state = {
+        "companions": {
+            "active_companions": []
+        },
+        "time_of_day": "day"
     }
     
     events = windhelm_location_triggers("windhelm", campaign_state)
     
-    assert len(events) > 0, "Expected at least one event for Stormcloak welcome"
-    assert any("Stormcloak colors" in event for event in events), "Expected Stormcloak welcome message"
-    assert campaign_state.get("windhelm_stormcloak_welcome_done"), "Expected welcome flag to be set"
-    print(f"✓ Stormcloak welcome trigger works: {events}")
+    assert len(events) > 0, "Expected at least one event for Windhelm entrance"
+    assert any("Windhelm" in event for event in events), "Expected Windhelm description"
+    assert any("City of Kings" in event or "ancient" in event.lower() for event in events), "Expected historical reference"
+    print(f"✓ General Windhelm entrance trigger works: {events}")
 
 
-def test_imperial_warning():
-    """Test that Imperial-aligned players get a hostile warning"""
-    print("\n=== Testing Imperial Warning Trigger ===")
+def test_companion_stenvar_commentary():
+    """Test that Stenvar provides commentary in Windhelm"""
+    print("\n=== Testing Stenvar Companion Commentary ===")
     
     campaign_state = {
-        "imperial_legion_joined": True
+        "companions": {
+            "active_companions": ["Stenvar"]
+        }
     }
     
     events = windhelm_location_triggers("windhelm", campaign_state)
     
-    assert len(events) > 0, "Expected at least one event for Imperial warning"
-    assert any("Imperial" in event and "Mind yourself" in event for event in events), "Expected Imperial warning message"
-    assert campaign_state.get("windhelm_imperial_warning_done"), "Expected warning flag to be set"
-    print(f"✓ Imperial warning trigger works: {events}")
+    assert len(events) > 0, "Expected at least one event"
+    assert any("Stenvar" in event for event in events), "Expected Stenvar commentary"
+    print(f"✓ Stenvar commentary trigger works: {events}")
 
 
-def test_stormcloak_recruitment_prompt():
-    """Test that unaligned players get recruitment prompt at Palace"""
-    print("\n=== Testing Stormcloak Recruitment Prompt ===")
+def test_companion_stenvar_dict_format():
+    """Test that Stenvar in dict format provides commentary"""
+    print("\n=== Testing Stenvar Companion (Dict Format) ===")
+    
+    campaign_state = {
+        "companions": {
+            "active_companions": [
+                {"name": "Stenvar", "npc_id": "stenvar"}
+            ]
+        }
+    }
+    
+    events = windhelm_location_triggers("windhelm", campaign_state)
+    
+    assert len(events) > 0, "Expected at least one event"
+    assert any("Stenvar" in event for event in events), "Expected Stenvar commentary"
+    print(f"✓ Stenvar (dict format) commentary trigger works: {events}")
+
+
+def test_companion_uthgerd_commentary():
+    """Test that Uthgerd provides commentary in Windhelm"""
+    print("\n=== Testing Uthgerd Companion Commentary ===")
+    
+    campaign_state = {
+        "companions": {
+            "active_companions": [{"name": "Uthgerd the Unbroken", "npc_id": "uthgerd"}]
+        }
+    }
+    
+    events = windhelm_location_triggers("windhelm", campaign_state)
+    
+    assert len(events) > 0, "Expected at least one event"
+    assert any("Uthgerd" in event for event in events), "Expected Uthgerd commentary"
+    assert any("Ysgramor" in event or "oldest city" in event for event in events), "Expected historical commentary from Uthgerd"
+    print(f"✓ Uthgerd commentary trigger works: {events}")
+
+
+def test_empty_companions():
+    """Test that triggers work with no companions"""
+    print("\n=== Testing Empty Companions ===")
+    
+    campaign_state = {
+        "companions": {
+            "active_companions": []
+        }
+    }
+    
+    events = windhelm_location_triggers("windhelm", campaign_state)
+    
+    assert len(events) > 0, "Expected at least one event even without companions"
+    print(f"✓ Triggers work with empty companions: {events}")
+
+
+def test_missing_campaign_state():
+    """Test that triggers handle missing campaign state gracefully"""
+    print("\n=== Testing Missing Campaign State ===")
     
     campaign_state = {}
     
-    events = windhelm_location_triggers("palace of the kings", campaign_state)
-    
-    assert len(events) > 0, "Expected at least one event for recruitment prompt"
-    assert any("Galmar Stone-Fist" in event for event in events), "Expected Galmar recruitment message"
-    assert campaign_state.get("stormcloak_recruit_offer_seen"), "Expected recruitment flag to be set"
-    print(f"✓ Stormcloak recruitment prompt works: {events}")
-
-
-def test_no_duplicate_welcome():
-    """Test that welcome message only appears once"""
-    print("\n=== Testing No Duplicate Welcome ===")
-    
-    campaign_state = {
-        "stormcloaks_joined": True,
-        "windhelm_stormcloak_welcome_done": True
-    }
-    
     events = windhelm_location_triggers("windhelm", campaign_state)
     
-    assert len(events) == 0, "Expected no events when welcome already done"
-    print(f"✓ No duplicate welcome: {events}")
+    # Should still return basic location description
+    assert len(events) > 0, "Expected at least one event even with minimal state"
+    print(f"✓ Triggers handle missing state gracefully: {events}")
 
 
-def test_no_duplicate_warning():
-    """Test that warning message only appears once"""
-    print("\n=== Testing No Duplicate Warning ===")
+def test_candlehearth_hall_trigger():
+    """Test that Candlehearth Hall triggers appropriate events"""
+    print("\n=== Testing Candlehearth Hall Trigger ===")
     
     campaign_state = {
-        "imperial_legion_joined": True,
-        "windhelm_imperial_warning_done": True
+        "companions": {
+            "active_companions": []
+        }
     }
     
-    events = windhelm_location_triggers("windhelm", campaign_state)
+    events = windhelm_location_triggers("windhelm_candlehearth_hall", campaign_state)
     
-    assert len(events) == 0, "Expected no events when warning already done"
-    print(f"✓ No duplicate warning: {events}")
-
-
-def test_no_duplicate_recruitment():
-    """Test that recruitment prompt only appears once"""
-    print("\n=== Testing No Duplicate Recruitment ===")
-    
-    campaign_state = {
-        "stormcloak_recruit_offer_seen": True
-    }
-    
-    events = windhelm_location_triggers("palace of the kings", campaign_state)
-    
-    assert len(events) == 0, "Expected no events when recruitment already seen"
-    print(f"✓ No duplicate recruitment: {events}")
-
-
-def test_no_recruitment_if_joined():
-    """Test that recruitment prompt doesn't appear if already joined Stormcloaks"""
-    print("\n=== Testing No Recruitment if Already Joined ===")
-    
-    campaign_state = {
-        "stormcloaks_joined": True
-    }
-    
-    events = windhelm_location_triggers("palace of the kings", campaign_state)
-    
-    assert not any("Galmar Stone-Fist steps forward" in event for event in events), "Expected no recruitment if already joined"
-    print(f"✓ No recruitment when already joined: {events}")
-
-
-def test_no_recruitment_if_imperial():
-    """Test that recruitment prompt doesn't appear if joined Imperial Legion"""
-    print("\n=== Testing No Recruitment if Imperial Legion Member ===")
-    
-    campaign_state = {
-        "imperial_legion_joined": True
-    }
-    
-    events = windhelm_location_triggers("palace of the kings", campaign_state)
-    
-    assert not any("Galmar Stone-Fist steps forward" in event for event in events), "Expected no recruitment if Imperial Legion member"
-    print(f"✓ No recruitment when Imperial Legion member: {events}")
-
-
-def test_neutral_player():
-    """Test neutral player with no faction alignment"""
-    print("\n=== Testing Neutral Player ===")
-    
-    campaign_state = {}
-    
-    events = windhelm_location_triggers("windhelm", campaign_state)
-    
-    # Should not trigger faction-specific messages outside Palace
-    assert not any("Stormcloak colors" in event for event in events), "Expected no Stormcloak welcome for neutral"
-    assert not any("Mind yourself, Imperial" in event for event in events), "Expected no Imperial warning for neutral"
-    print(f"✓ Neutral player gets no faction messages: {events}")
-
-
-def test_case_insensitive_location():
-    """Test that location matching is case-insensitive"""
-    print("\n=== Testing Case-Insensitive Location Matching ===")
-    
-    campaign_state = {
-        "stormcloaks_joined": True
-    }
-    
-    # Test various case variations
-    events1 = windhelm_location_triggers("WINDHELM", campaign_state)
-    campaign_state["windhelm_stormcloak_welcome_done"] = False
-    events2 = windhelm_location_triggers("Windhelm", campaign_state)
-    campaign_state["windhelm_stormcloak_welcome_done"] = False
-    events3 = windhelm_location_triggers("windhelm", campaign_state)
-    
-    assert len(events1) > 0 and len(events2) > 0 and len(events3) > 0, "Expected events for all case variations"
-    print(f"✓ Case-insensitive matching works")
-
-
-def test_palace_location_variants():
-    """Test that Palace location triggers work with variants including comma format"""
-    print("\n=== Testing Palace Location Variants ===")
-    
-    campaign_state = {}
-    
-    events1 = windhelm_location_triggers("palace of the kings", campaign_state)
-    campaign_state["stormcloak_recruit_offer_seen"] = False
-    events2 = windhelm_location_triggers("Palace of the Kings", campaign_state)
-    campaign_state["stormcloak_recruit_offer_seen"] = False
-    events3 = windhelm_location_triggers("PALACE OF THE KINGS", campaign_state)
-    campaign_state["stormcloak_recruit_offer_seen"] = False
-    # Test actual format used in data files
-    events4 = windhelm_location_triggers("Palace of the Kings, Windhelm", campaign_state)
-    campaign_state["stormcloak_recruit_offer_seen"] = False
-    events5 = windhelm_location_triggers("Windhelm, Palace of the Kings", campaign_state)
-    
-    assert all(len(events) > 0 for events in [events1, events2, events3, events4, events5]), "Expected recruitment for all Palace variants"
-    print(f"✓ Palace location variants work (including comma formats)")
-
-
-def test_palace_does_not_trigger_gate_messages():
-    """Test that entering Palace with comma format doesn't trigger gate welcome/warning"""
-    print("\n=== Testing Palace Doesn't Trigger Gate Messages ===")
-    
-    # Test Stormcloak member entering Palace shouldn't get gate welcome
-    campaign_state = {"stormcloaks_joined": True}
-    events = windhelm_location_triggers("Palace of the Kings, Windhelm", campaign_state)
-    assert not any("gates of Windhelm" in event for event in events), "Palace entry should not trigger gate welcome"
-    assert not campaign_state.get("windhelm_stormcloak_welcome_done"), "Gate welcome flag should not be set at Palace"
-    
-    # Test Imperial member entering Palace shouldn't get gate warning
-    campaign_state = {"imperial_legion_joined": True}
-    events = windhelm_location_triggers("Windhelm, Palace of the Kings", campaign_state)
-    assert not any("Mind yourself, Imperial" in event for event in events), "Palace entry should not trigger gate warning"
-    assert not campaign_state.get("windhelm_imperial_warning_done"), "Gate warning flag should not be set at Palace"
-    
-    print(f"✓ Palace entry doesn't trigger gate messages")
+    assert len(events) > 0, "Expected at least one event for Candlehearth Hall"
+    assert any("Candlehearth" in event for event in events), "Expected Candlehearth Hall description"
+    print(f"✓ Candlehearth Hall trigger works: {events}")
 
 
 def run_all_tests():
-    """Run all windhelm trigger tests"""
-    print("\n" + "="*60)
-    print("WINDHELM TRIGGERS TEST SUITE")
-    print("="*60)
+    """Run all test functions"""
+    print("=" * 60)
+    print("Running Windhelm Location Trigger Tests")
+    print("=" * 60)
     
-    tests = [
-        test_stormcloak_welcome,
-        test_imperial_warning,
-        test_stormcloak_recruitment_prompt,
-        test_no_duplicate_welcome,
-        test_no_duplicate_warning,
-        test_no_duplicate_recruitment,
-        test_no_recruitment_if_joined,
-        test_no_recruitment_if_imperial,
-        test_neutral_player,
-        test_case_insensitive_location,
-        test_palace_location_variants,
-        test_palace_does_not_trigger_gate_messages
+    test_functions = [
+        test_gray_quarter_trigger,
+        test_graveyard_trigger_nighttime,
+        test_graveyard_trigger_daytime,
+        test_graveyard_quest_active,
+        test_market_white_phial_trigger,
+        test_market_quest_active,
+        test_palace_of_the_kings_trigger,
+        test_general_windhelm_entrance,
+        test_companion_stenvar_commentary,
+        test_companion_stenvar_dict_format,
+        test_companion_uthgerd_commentary,
+        test_empty_companions,
+        test_missing_campaign_state,
+        test_candlehearth_hall_trigger
     ]
     
     passed = 0
     failed = 0
     
-    for test in tests:
+    for test_func in test_functions:
         try:
-            test()
+            test_func()
             passed += 1
         except AssertionError as e:
-            print(f"✗ {test.__name__} failed: {e}")
+            print(f"✗ {test_func.__name__} FAILED: {e}")
             failed += 1
         except Exception as e:
-            print(f"✗ {test.__name__} error: {e}")
+            print(f"✗ {test_func.__name__} ERROR: {e}")
             failed += 1
     
-    print("\n" + "="*60)
-    print(f"RESULTS: {passed} passed, {failed} failed")
-    print("="*60 + "\n")
+    print("\n" + "=" * 60)
+    print(f"Test Results: {passed} passed, {failed} failed")
+    print("=" * 60)
     
     return failed == 0
 

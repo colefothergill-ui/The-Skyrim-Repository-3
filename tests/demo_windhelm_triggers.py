@@ -1,130 +1,211 @@
 #!/usr/bin/env python3
 """
-Demo script showing Windhelm triggers in action
+Demo script showing how to use Windhelm location triggers
 
-This demonstrates the faction-aware triggers for Windhelm,
-including Stormcloak welcome, Imperial warning, and recruitment prompts.
+This demonstrates quest hooks, companion commentary, and location-based events
+for the Eastmarch side quests.
 """
 
 import sys
 import os
 
-# Add parent directory to path for imports
+# Add parent directory to path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'scripts'))
 
 from triggers.windhelm_triggers import windhelm_location_triggers
 
 
-def demo_stormcloak_arrival():
-    """Demonstrate Stormcloak-aligned player arriving in Windhelm"""
-    print("\n" + "="*70)
-    print("SCENARIO 1: Stormcloak warrior arrives in Windhelm")
-    print("="*70)
+def demo_scenario_1():
+    """Demo: Player enters Windhelm graveyard at night (Blood on the Ice hook)"""
+    print("\n" + "="*60)
+    print("SCENARIO 1: Windhelm Graveyard at Night (Quest Hook)")
+    print("="*60)
     
     campaign_state = {
-        "stormcloaks_joined": True
+        "companions": {
+            "active_companions": []
+        },
+        "time_of_day": "night",
+        "quests": {
+            "active": [],
+            "completed": []
+        }
     }
     
-    print("\nPlayer Status: Member of the Stormcloaks")
-    print("Location: Entering Windhelm")
+    print("\nPlayer Location: Windhelm Graveyard")
+    print("Time of Day: Night")
+    print("Active Companions: None")
+    print("Quest Status: Blood on the Ice not started")
     print("\nTriggered Events:")
-    events = windhelm_location_triggers("windhelm", campaign_state)
-    for event in events:
-        print(f"  → {event}")
+    
+    events = windhelm_location_triggers("windhelm_graveyard", campaign_state)
+    for i, event in enumerate(events, 1):
+        print(f"  {i}. {event}")
+    
+    print("\n💡 This triggers the start of the 'Blood on the Ice' quest!")
 
 
-def demo_imperial_arrival():
-    """Demonstrate Imperial-aligned player arriving in Windhelm"""
-    print("\n" + "="*70)
-    print("SCENARIO 2: Imperial soldier arrives in Windhelm")
-    print("="*70)
+def demo_scenario_2():
+    """Demo: Player enters marketplace (White Phial hook)"""
+    print("\n" + "="*60)
+    print("SCENARIO 2: Windhelm Market (Quest Hook)")
+    print("="*60)
     
     campaign_state = {
-        "imperial_legion_joined": True
+        "companions": {
+            "active_companions": []
+        },
+        "quests": {
+            "active": [],
+            "completed": []
+        }
     }
     
-    print("\nPlayer Status: Member of the Imperial Legion")
-    print("Location: Entering Windhelm")
+    print("\nPlayer Location: Windhelm Market")
+    print("Active Companions: None")
+    print("Quest Status: The White Phial not started")
     print("\nTriggered Events:")
-    events = windhelm_location_triggers("windhelm", campaign_state)
-    for event in events:
-        print(f"  → {event}")
-
-
-def demo_neutral_palace():
-    """Demonstrate neutral player entering Palace of the Kings"""
-    print("\n" + "="*70)
-    print("SCENARIO 3: Neutral adventurer visits Palace of the Kings")
-    print("="*70)
     
-    campaign_state = {}
+    events = windhelm_location_triggers("windhelm_market", campaign_state)
+    for i, event in enumerate(events, 1):
+        print(f"  {i}. {event}")
     
-    print("\nPlayer Status: Neutral (no faction allegiance)")
-    print("Location: Entering Palace of the Kings")
-    print("\nTriggered Events:")
-    events = windhelm_location_triggers("palace of the kings", campaign_state)
-    for event in events:
-        print(f"  → {event}")
+    print("\n💡 This hints at the 'The White Phial' quest from Nurelion!")
 
 
-def demo_return_visit():
-    """Demonstrate that triggers only fire once"""
-    print("\n" + "="*70)
-    print("SCENARIO 4: Return visit - triggers don't repeat")
-    print("="*70)
+def demo_scenario_3():
+    """Demo: Player enters Windhelm with Stenvar"""
+    print("\n" + "="*60)
+    print("SCENARIO 3: Entering Windhelm with Stenvar")
+    print("="*60)
     
     campaign_state = {
-        "stormcloaks_joined": True,
-        "windhelm_stormcloak_welcome_done": True
+        "companions": {
+            "active_companions": ["Stenvar"]
+        }
     }
     
-    print("\nPlayer Status: Stormcloak member (already welcomed)")
-    print("Location: Returning to Windhelm")
+    print("\nPlayer Location: Windhelm")
+    print("Active Companions: Stenvar")
     print("\nTriggered Events:")
+    
     events = windhelm_location_triggers("windhelm", campaign_state)
-    if not events:
-        print("  → (No events - welcome already delivered)")
-    else:
+    for i, event in enumerate(events, 1):
+        print(f"  {i}. {event}")
+
+
+def demo_scenario_4():
+    """Demo: Player tours Windhelm districts"""
+    print("\n" + "="*60)
+    print("SCENARIO 4: Touring Windhelm Districts")
+    print("="*60)
+    
+    campaign_state = {
+        "companions": {
+            "active_companions": [{"name": "Uthgerd the Unbroken", "npc_id": "uthgerd"}]
+        }
+    }
+    
+    locations = [
+        ("Gray Quarter", "windhelm_gray_quarter"),
+        ("Palace of the Kings", "windhelm_palace_of_the_kings"),
+        ("Candlehearth Hall", "windhelm_candlehearth_hall")
+    ]
+    
+    print("\nActive Companions: Uthgerd the Unbroken")
+    
+    for location_name, location_key in locations:
+        print(f"\n--- {location_name} ---")
+        events = windhelm_location_triggers(location_key, campaign_state)
         for event in events:
-            print(f"  → {event}")
+            print(f"  • {event}")
 
 
-def demo_npc_relationships():
-    """Show the NPC relationship updates"""
-    print("\n" + "="*70)
-    print("SCENARIO 5: Key Eastmarch NPC relationships")
-    print("="*70)
+def demo_scenario_5():
+    """Demo: Quest already active - no hook triggered"""
+    print("\n" + "="*60)
+    print("SCENARIO 5: Quest Already Active (No Hook)")
+    print("="*60)
     
-    print("\nUlfric Stormcloak's view of Brunwulf Free-Winter:")
-    print("  → Political opponent in Windhelm who questions his policies;")
-    print("     potential replacement Jarl if deposed")
+    campaign_state = {
+        "companions": {
+            "active_companions": []
+        },
+        "time_of_day": "night",
+        "quests": {
+            "active": ["blood_on_the_ice"],
+            "completed": []
+        }
+    }
     
-    print("\nGalmar Stone-Fist's view of Brunwulf Free-Winter:")
-    print("  → Views him with suspicion as an 'Imperial lover' who undermines Ulfric")
+    print("\nPlayer Location: Windhelm Graveyard")
+    print("Time of Day: Night")
+    print("Quest Status: Blood on the Ice already active")
+    print("\nTriggered Events:")
     
-    print("\nBrunwulf Free-Winter's stance:")
-    print("  → Respects Ulfric's love for Skyrim but deeply disagrees with")
-    print("     his prejudices; could become Jarl if Ulfric is deposed.")
-    print("  → Trusted ally to Windhelm's Dunmer families")
+    events = windhelm_location_triggers("windhelm_graveyard", campaign_state)
+    for i, event in enumerate(events, 1):
+        print(f"  {i}. {event}")
+    
+    print("\n💡 Notice: The quest discovery event does NOT trigger since the quest is already active!")
 
 
-def run_demo():
+def demo_scenario_6():
+    """Demo: Graveyard during the day (subtle hint)"""
+    print("\n" + "="*60)
+    print("SCENARIO 6: Graveyard During Day (Subtle Hint)")
+    print("="*60)
+    
+    campaign_state = {
+        "companions": {
+            "active_companions": []
+        },
+        "time_of_day": "day",
+        "quests": {
+            "active": [],
+            "completed": []
+        }
+    }
+    
+    print("\nPlayer Location: Windhelm Graveyard")
+    print("Time of Day: Day")
+    print("Quest Status: Blood on the Ice not started")
+    print("\nTriggered Events:")
+    
+    events = windhelm_location_triggers("windhelm_graveyard", campaign_state)
+    for i, event in enumerate(events, 1):
+        print(f"  {i}. {event}")
+    
+    print("\n💡 During the day, players get subtle hints about the murders rather than the full discovery scene!")
+
+
+def main():
     """Run all demo scenarios"""
-    print("\n" + "="*70)
-    print("WINDHELM TRIGGERS DEMONSTRATION")
-    print("Showing faction-aware triggers and NPC relationships")
-    print("="*70)
+    print("\n" + "="*60)
+    print("WINDHELM LOCATION TRIGGERS - DEMONSTRATION")
+    print("Eastmarch Side Quests: Blood on the Ice & The White Phial")
+    print("="*60)
     
-    demo_stormcloak_arrival()
-    demo_imperial_arrival()
-    demo_neutral_palace()
-    demo_return_visit()
-    demo_npc_relationships()
+    demo_scenario_1()
+    demo_scenario_2()
+    demo_scenario_3()
+    demo_scenario_4()
+    demo_scenario_5()
+    demo_scenario_6()
     
-    print("\n" + "="*70)
-    print("Demo complete! Windhelm now responds to faction allegiances.")
-    print("="*70 + "\n")
+    print("\n" + "="*60)
+    print("DEMO COMPLETE")
+    print("="*60)
+    print("\n📜 Quest Data:")
+    print("   - Quest definitions available in: data/quests/eastmarch_side_quests.json")
+    print("   - Blood on the Ice: Murder mystery investigation in Windhelm")
+    print("   - The White Phial: Retrieve a legendary alchemical artifact")
+    print("\n🎮 Integration:")
+    print("   - Triggers automatically activate based on location and time")
+    print("   - Quest hooks only appear when quests are not yet active/completed")
+    print("   - Companion commentary enhances immersion")
+    print()
 
 
 if __name__ == "__main__":
-    run_demo()
+    main()
