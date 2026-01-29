@@ -28,7 +28,7 @@
       "optional": false
     },
     {
-      "description": "Optional: If you found hints of an influential benefactor behind the skooma operation, decide what to do with this information (expose it to the Jarl or quietly deal with it).",
+      "description": "If you found hints of an influential benefactor behind the skooma operation, decide what to do with this information (expose it to the Jarl or quietly deal with it).",
       "status": "Pending",
       "optional": true
     }
@@ -36,18 +36,17 @@
   "rewards": {
     "experience": 200,
     "gold": 500,
-    "items": ["Blade of the Rift (enchanted sword)"],
+    "items": ["Blade of the Rift"],
     "reputation": "+10 with Riften Guard"
   },
   "prerequisites": [],
   "consequences": {
-    "success": "The skooma pipeline in The Rift is cut off. Jarl Laila publicly thanks you for making her hold safer. She grants you the title Thane of the Rift, acknowledging your service (with all the honors that entail – you receive the Blade of the Rift and Housecarl Iona's service). The citizens of Riften see a decrease in skooma-related crimes and suffering. If any evidence pointed to a bigger player (such as Maven Black-Briar), you either handed it to Laila – who now eyes Maven with suspicion but lacks concrete proof to act – or you gave it to Maven, who \"appreciates your discretion\" (secretly pleased to have eliminated competition). In either case, the immediate crisis is resolved and your standing in Riften is greatly improved.",
+    "success": "The skooma pipeline in The Rift is cut off. Jarl Laila publicly thanks you for making her hold safer. She grants you the title Thane of the Rift, acknowledging your service. The citizens of Riften see a decrease in skooma-related crimes and suffering. If any evidence pointed to a bigger player (such as Maven Black-Briar), you either handed it to Laila – who now eyes Maven with suspicion but lacks concrete proof to act – or you gave it to Maven, who \"appreciates your discretion\" (secretly pleased to have eliminated competition). In either case, the immediate crisis is resolved and your standing in Riften is greatly improved.",
     "failure": "The skooma trade continues unabated. Addicts in Riften grow in number, straining the city's safety. Jarl Laila's authority is undermined as she fails to solve the problem – possibly giving Maven Black-Briar more leverage in city matters. In time, Maven might herself crush the skooma ring (to secure her own interests), but she will remember that you did not aid when asked. You do not gain Thaneship, and guards remain wary of your commitment to the hold."
   },
   "complications": [
     "During the raid on the skooma hideout, one dealer attempts to bribe you to let him flee, hinting that \"someone high up in Riften\" is protecting them. How you handle this could affect evidence gathered.",
-    "If evidence or a captured dealer implicates Maven Black-Briar (e.g., a ledger with \"M.B.\" initials or a note referencing her), you face a choice: reveal this to Jarl Laila, which could ignite a political confrontation (Laila can't act openly against Maven without more proof, but it sows distrust), or quietly inform Maven that her name came up, earning her favor as she moves to cover her tracks. This choice will influence your relationship with Maven and the Jarl.",
-    "Civil War Consideration: If Maven Black-Briar has become Jarl by the time this quest is in progress, the quest flavor changes – Maven herself tasks you with wiping out the skooma operation, calling it a personal nuisance. She rewards you in gold and influence rather than making you Thane (since she already favors you enough to entrust the task). The underlying truth might be that she wanted the competition removed. Completing it under Maven grants a hefty reward but also subtly ties you into Maven's pocket for future favors."
+    "If evidence or a captured dealer implicates Maven Black-Briar (e.g., a ledger with \"M.B.\" initials or a note referencing her), you face a choice: reveal this to Jarl Laila, which could ignite a political confrontation (Laila can't act openly against Maven without more proof, but it sows distrust), or quietly inform Maven that her name came up, earning her favor as she moves to cover her tracks. This choice will influence your relationship with Maven and the Jarl."
   ],
   "enemies": [
     {
@@ -76,9 +75,9 @@
     "Gold and valuables from the illegal trade",
     "Various weapons and armor from defeated thugs"
   ],
-  "notes": "Becoming Thane of the Rift via this quest means the player can buy property in Riften (if applicable) and Iona becomes available as a companion (this can be handled in campaign state by marking the thaneship and adding Iona to available companions). The outcome of the optional objective can be reflected in world state or NPC dialogue: e.g., if Maven's involvement was exposed, Maven might be colder to the player later and the Riften guards keep a closer eye on her business; if covered up, Maven privately thanks the player with perhaps an extra reward or simply a note in her relationship that she 'owes you one.' This quest highlights the pervasive corruption in Riften and gives the player a chance to either reinforce the current system (by siding with Maven) or slightly reform it (by empowering the Jarl with info).",
-  "related_npcs": ["Jarl Laila Law-Giver", "Maven Black-Briar", "Wujeeta (Argonian dockworker informant)", "Sarthis Idren (Skooma dealer ringleader)"],
-  "related_locations": ["Riften", "Riften Warehouse (or Skooma Den location)", "Mistveil Keep"],
+  "notes": "Becoming Thane of the Rift via this quest means the player can buy property in Riften (if applicable) and Iona becomes available as a companion (this can be handled in campaign state by marking the thaneship and adding Iona to available companions). The outcome of the optional objective can be reflected in world state or NPC dialogue. If Maven's involvement was exposed, Maven might be colder to the player later and the Riften guards keep a closer eye on her business. If covered up, Maven privately thanks the player with perhaps an extra reward or simply a note in her relationship that she 'owes you one.' This quest highlights the pervasive corruption in Riften and gives the player a chance to either reinforce the current system (by siding with Maven) or slightly reform it (by empowering the Jarl with info). Civil War Note: If Maven Black-Briar has become Jarl by the time this quest is active, the quest flavor changes – Maven herself tasks you with wiping out the skooma operation as competition. She rewards you in gold and influence rather than making you Thane, and completing it under Maven subtly ties you into her pocket for future favors.",
+  "related_npcs": ["Jarl Laila Law-Giver", "Maven Black-Briar", "Wujeeta", "Sarthis Idren"],
+  "related_locations": ["Riften", "Riften Warehouse", "Mistveil Keep"],
   "fate_core_notes": {
     "aspects": [
       "Corruption Runs Deep: Maven's Shadow Over Riften",
