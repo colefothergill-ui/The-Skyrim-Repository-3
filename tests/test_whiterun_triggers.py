@@ -222,12 +222,12 @@ def test_complex_companion_objects():
             "active_companions": [
                 {
                     "name": "Lydia",
-                    "id": "lydia",
+                    "npc_id": "lydia",
                     "loyalty": 70
                 },
                 {
                     "name": "Hadvar",
-                    "id": "hadvar",
+                    "npc_id": "hadvar",
                     "loyalty": 65
                 }
             ]

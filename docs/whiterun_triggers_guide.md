@@ -201,12 +201,12 @@ campaign_state = {
         "active_companions": [
             {
                 "name": "Lydia",
-                "id": "lydia",
+                "npc_id": "lydia",
                 "loyalty": 70
             },
             {
                 "name": "Hadvar",
-                "id": "hadvar",
+                "npc_id": "hadvar",
                 "loyalty": 65
             }
         ]
@@ -214,4 +214,4 @@ campaign_state = {
 }
 ```
 
-In this format, the function checks both the `name` and `id` fields of the companion dictionary. Both formats are fully supported and will correctly trigger companion commentary.
+In this format, the function checks both the `name` and `npc_id` fields of the companion dictionary. Both formats are fully supported and will correctly trigger companion commentary.

@@ -23,9 +23,9 @@ def _is_companion_present(active_companions, companion_name):
     
     for companion in active_companions:
         if isinstance(companion, dict):
-            # Check dictionary companions by name or id field
-            comp_name = companion.get("name", "").lower()
-            comp_id = companion.get("id", "").lower()
+            # Check dictionary companions by name or npc_id/id field
+            comp_name = str(companion.get("name", "")).lower()
+            comp_id = str(companion.get("npc_id", companion.get("id", ""))).lower()
             # Use startswith to allow variations like "Lydia" or "Lydia (Housecarl)"
             if comp_name.startswith(companion_name_lower) or comp_id.startswith(companion_name_lower):
                 return True
