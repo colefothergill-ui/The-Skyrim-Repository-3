@@ -4,10 +4,17 @@
   "player": "Cole",
   "race": "Orc",
   "standing_stone": "The Lord Stone",
-  "visual_profile_ref": "data/pcs/visual_profiles/khagar_yal_visual.json",
   "level": 1,
+  "visual_profile_ref": "khagar_yal_visual",
+
+  "appearance": {
+    "art_path": "docs/assets/pcs/khagar_yal.jpg",
+    "short_description": "A towering Orsimer warchief wrapped in fur-lined mail and Stormcloak colors, moving like a predator that learned politics by eating it.",
+    "long_description": "Khagar Yal is a massive, broad-shouldered Orc with ruggedly noble features—tusks proud rather than grotesque, posture straight like a bannerpole, and golden-yellow eyes that burn with that 'wolfish' lycanthrope sheen when the hunt is on. His gear is practical-but-mythic: fur-lined mail, weather-stained leathers, and the red-blue Stormcloak palette worked into straps and cloth. He carries himself like a clan-leader who's done the math on violence and still chose it—measured until the moment he isn't."
+  },
+
   "aspects": {
-    "high_concept": "Crun Voshu Kala\u2019s (Heart Worthy Stronghold) Warchief - The Great Beast; Khagar Yal.",
+    "high_concept": "Crun Voshu Kala's (Heart Worthy Stronghold) Warchief - The Great Beast; Khagar Yal.",
     "trouble": "The Code of Hircine.",
     "other_aspects": [
       "The Stag of Eastmarch. (Title)",
@@ -15,26 +22,14 @@
       "The Thrill of the Hunt. (Vengeful Active Hunt Impose on Ambassador Elenwen)."
     ]
   },
+
   "skills": {
-    "Great (+4)": [
-      "Fight"
-    ],
-    "Good (+3)": [
-      "Physique",
-      "Notice"
-    ],
-    "Fair (+2)": [
-      "Empathy",
-      "Crafts",
-      "Will"
-    ],
-    "Average (+1)": [
-      "Shoot",
-      "Stealth",
-      "Athletics",
-      "Survival"
-    ]
+    "Great (+4)": ["Fight"],
+    "Good (+3)": ["Physique", "Notice"],
+    "Fair (+2)": ["Empathy", "Crafts", "Will"],
+    "Average (+1)": ["Shoot", "Stealth", "Athletics", "Survival"]
   },
+
   "racial_bonuses": {
     "ability": {
       "name": "Warrior's Blood",
@@ -44,104 +39,94 @@
       "name": "Berserker Rage",
       "effect": "Once per session, double all stress dealt and taken for one scene"
     },
-    "skill_bonuses": [
-      "Fight (+1)",
-      "Crafts (+1)"
-    ]
+    "skill_bonuses": ["Fight (+1)", "Crafts (+1)"],
+    "starting_aspect": "Proud Orsimer Warrior"
   },
+
   "stress": {
-    "physical": [
-      false,
-      false
-    ],
-    "mental": [
-      false,
-      false
-    ]
+    "physical": [false, false, false],
+    "mental": [false, false]
   },
+
   "consequences": {
     "mild": null,
     "moderate": null,
     "severe": null
   },
+
   "stunts": [
-    "Scent of Blood: Because Khagar Yal is a Werebear the scent of blood from his prey makes escape impossible and direct melee combat with him, hard to say the least. Once per scene when Khagar inflicts stress or someone has stress taken within the same Zone, he can Create Advantage using Notice at a +2 Bonus for the 4dF. Gaining the situation Aspect - Predator vs Prey (2 Free Invokes.) on SWS he marks the particular prey with \u2018The Wild Hunt\u2019 on inflicted stress or consequences, gaining a passive +2 Bonus of Notice rolls to track them for that session.",
-    "Warchief\u2019s Wisdom: Because Khagar Yal has had many years leading his Clan, he has learned to have an integral sense when speaking to someone\u2019s heart and employing his insight. He can use Empathy in place of Rapport, and Once Per Scene may Create Advantage gaining a +2 bonus to the roll when discerning someone\u2019s heart. Learning one of the following deep seated truths of their character, Their Intent, Their Pain ( a personal loss ), Their Struggle. On SWS he learns two.",
-    "Supernatural Regeneration: Because of Khagar Yal\u2019s Lycanthropy, his body regenerates wounds far faster than most. Allowing him to use Physique for his Defense rolls, and Once per session he may reduce up to a set number of stress equal to his Physique, or choose to reduce a Physical Consequence down by one or to none. Severe to Moderate to Mild to None."
+    "Scent of Blood: Because Khagar Yal is a Werebear the scent of blood from his prey makes escape impossible and direct melee combat with him, hard to say the least. Once per scene when Khagar inflicts stress or someone has stress taken within the same Zone, he can Create Advantage using Notice at a +2 Bonus for the 4dF. Gaining the situation Aspect - Predator vs Prey (2 Free Invokes.) on SWS he marks the particular prey with 'The Wild Hunt' on inflicted stress or consequences, gaining a passive +2 Bonus of Notice rolls to track them for that session.",
+    "Warchief's Wisdom: Because Khagar Yal has had many years leading his Clan, he has learned to have an integral sense when speaking to someone's heart and employing his insight. He can use Empathy in place of Rapport, and Once Per Scene may Create Advantage gaining a +2 bonus to the roll when discerning someone's heart. Learning one of the following deep seated truths of their character, Their Intent, Their Pain (a personal loss), Their Struggle. On SWS he learns two.",
+    "Supernatural Regeneration: Because of Khagar Yal's Lycanthropy, his body regenerates wounds far faster than most. Allowing him to use Physique for his Defense rolls, and Once per session he may reduce up to a set number of stress equal to his Physique, or choose to reduce a Physical Consequence down by one or to none. Severe to Moderate to Mild to None."
   ],
+
+  "extras": {
+    "werebear_transformation": {
+      "name": "Werebear Transformation (Extra)",
+      "refresh_cost": 1,
+      "aspect": "Moon-Called Beast-Blood (Werebear)",
+      "rules": [
+        "Transform: Once per scene, shift into Werebear form (free action if you have narrative positioning; otherwise Overcome Fair +2).",
+        "In Beast Form: You cannot use delicate tools, locks, or fine social nuance; speech becomes limited and predatory.",
+        "Silver and fire are narrative counters; GM is encouraged to compel this."
+      ],
+      "stunts": [
+        "Bear-Form Apex: While transformed, gain Weapon:2 on unarmed attacks and +2 to Physique for Overcome actions involving brute force (breaking, lifting, charging).",
+        "Hide of the Wild: While transformed, gain Armor:1 against non-silver physical attacks."
+      ]
+    },
+
+    "daedric_artifact_bitter_mercy": {
+      "name": "Daedric Artifact: Spear of Bitter Mercy (Level 1)",
+      "refresh_cost": 1,
+      "reference_rules_path": "data/rules/artifacts.json",
+      "aspect": "The New Moon (New Cycle): The Spear hums with the will of the Huntsman—dormant, craving worthy prey.",
+      "traits": [
+        "Bitter Mercy: When Bitter Mercy helps you inflict a Mild Consequence on a target, that target gains the situation aspect 'Bitter Mercy'. Until that creature is taken out, your stress dealt to that creature counts as Weapon:1 (stacking with other weapon ratings only if explicitly allowed by the current scene)."
+      ],
+      "stunts": [
+        "Pack Tactics: When within the same zone as at least one companion in your party, once per scene you may Create an Advantage with Crafts at +2. On success, place one of: 'Flanked by the Spear', 'Coordinated Strike', or 'Boxed-In'. This advantage starts with 3 free invokes usable by you or your companions. On Success With Style, you and your companions also gain +2 to your next Attack roll this scene."
+      ],
+      "awakening_note": "This artifact is intentionally dormant at Level 1. Use the Bitter Mercy Awakening clock in data/clocks/pc_extras_clocks.json to unlock higher tiers."
+    }
+  },
+
   "refresh": 1,
   "fate_points": 1,
+
+  "fate_point_ledger": [
+    { "type": "refresh_reset", "delta": 0, "note": "Refresh reduced to 1 due to extras purchases; session start FP set to 1." },
+    { "type": "compel_award", "delta": 1, "note": "Self-compel via Trouble: The Code of Hircine during predator-rite escalation." },
+    { "type": "invoke_spend", "delta": -1, "note": "Invoked High Concept in the Rikke clash to press the 'apex predator' read." }
+  ],
+
   "equipment": {
     "weapons": [
       {
         "name": "Spear of Bitter Mercy",
-        "type": "Daedric Artifact (Hircine) — Spear",
-        "awakening_level": 1,
-        "aspect": "The New Moon (New Cycle)",
-        "weapon_rating": 2,
-        "traits": [
-          "Bitter Mercy: When your spear attack forces a target to absorb harm by taking a Mild Consequence, place the situational aspect 'Bitter Mercy' on them with 1 free invoke. While it exists, your spear attacks vs that target gain Weapon:1. Ends when the target is Taken Out/Concedes or the Mild Consequence clears."
-        ],
-        "notes": "Dormant. Awakens via worthy prey and Code-of-Hircine-aligned hunts."
+        "type": "Daedric Artifact (Hircine)",
+        "notes": "Dormant Level 1; awakening handled by clock. See extras.daedric_artifact_bitter_mercy."
       }
     ],
-    "armor": [],
-    "items": []
-  },
-  "extras": {
-    "lycanthropy_werebear": {
-      "type": "Extra",
-      "cost_refresh": 1,
-      "extra_aspect": "Marked by Hircine — Blood of the Werebear",
-      "transformation": {
-        "free_uses_per_session": 1,
-        "additional_use_cost": "1 Fate Point",
-        "duration": "One scene",
-        "benefits": [
-          "In werebear form: unarmed attacks are Weapon:2",
-          "In werebear form: Armor:1 vs physical attacks",
-          "May Overcome with Physique when brute force is valid"
-        ],
-        "limits": [
-          "Cannot use weapons (including Spear of Bitter Mercy) or fine tools while transformed",
-          "Cannot use Crafts while transformed; communication is primal/intimidating"
-        ],
-        "vulnerabilities": [
-          "Silver ignores Armor:1 and disables regeneration for 2 exchanges",
-          "Fire disables regeneration for 2 exchanges"
-        ],
-        "control_hook": "When you take a Consequence in werebear form, GM may compel 'The Beast Snaps the Leash' (lose precision for 1 exchange: must Attack or smash an obstacle). Refuse by paying 1 Fate Point or accept a Boost against you like 'Blood-Frenzy Echo'."
+    "armor": [
+      {
+        "name": "Fur-Lined Mail (Stormcloak colors)",
+        "type": "Medium armor",
+        "notes": "Visual + narrative identity piece; mechanical armor handled case-by-case unless upgraded."
       }
-    },
-    "daedric_artifact_spear_of_bitter_mercy": {
-      "type": "Extra",
-      "cost_refresh": 1,
-      "awakening": {
-        "current_level": 1,
-        "level_name": "The New Moon (New Cycle)",
-        "progress_clock_ref": "data/clocks/pc_extras_clocks.json#/pc_extras_clocks/clocks/spear_of_bitter_mercy_awakening"
-      },
-      "stunts": [
-        "Pack Tactics (Spear): Once per scene, if Khagar and at least one ally/companion are in the same zone, he may Create Advantage with Crafts at +2, choosing: 'Flanked by the Spear', 'Coordinated Strike', or 'Boxed-In'. On success: 2 free invokes (party can use). On success with style: 3 free invokes, and each ally in the zone gains a Boost 'In Sync' (one-time +2 on their next Attack)."
-      ]
-    }
-  },
-  "refresh_spend_log": {
-    "base_refresh": 3,
-    "spent_refresh": 2,
-    "remaining_refresh": 1,
-    "spent_on": [
-      "Extra: Lycanthropy (Werebear Transformation)",
-      "Extra: Daedric Artifact (Spear of Bitter Mercy, Awakening Level 1)"
+    ],
+    "items": [
+      { "name": "Dispatch Case (Imperial)", "notes": "Captured from Rikke's perimeter knot; grants Battle of Whiterun advantage in state/campaign_state.json." }
     ]
   },
+
   "gold": 100,
   "experience": 0,
   "backstory": "**Civil War Entry**: Khagar Yal: \u201cOrcs of the Stronghold\u2019s of Skyrim see me, and know the tale. The heretic Warchief of Hircine. He who lost his Clan to Thalmor, to the Sorceress Elenwen. The Thalmor Witch wished to occupy our Grotto. Seeking to utilize The Lord of the Hunt\u2019s blessing as their; Elven Hamlet of Operation. To spy upon the enemies of their Dominion. To them it was a fortuitous enchanted sanctuary from the cold of Eastmarch. For us it was our home, blessed by The Lord of the Hunt, who intended it be for us! I said no, so they use their Zugra (Cursed) Magicka on us, forced my companions to change, and turn on one another. If not for Lord Hircine\u2019s spear gifted to me, I too would\u2019ve changed, and fallen as well.Only I had not, Instead I withdrew from Crun Voshu Grotto, and returned the following night, but not as an Orc as Predator hunting Prey. Those Thalmor lasted not five full minutes, before the Witch Elenwen retreated through a portal to her embassy. Since the, I have sworn an oath of the hunt, and vowed to have her head for the Clansmen she claimed just a day prior! Wracked up so many Altmer bodies in the following six months that it drew the local Nord's attention, and praise. They named me, Stag of Eastmarch. Beginning to sequester my advice, and aide anytime a Thalmor gave them issues, or took one of there own. Was not long after, that I had met the Bear of Markarth, Chieftan Ulfric Stormcloak himself. His code was non to disimilar to my own, garnering a fast bond when he came to encounter me in the geyser's west of Kynesgrove. I told him of the Predator upon his porch, and as it would have it, the enemy of my enemy is my friend. So when he asked me to join his ranks, I all to happily accepted.\n\n**Civil War Stance**: Khagar Yal: \"Support is a strong word, but between my bond with the Chieftan of Ysgrammor's city, my Hunter's oath on Elenwen and her Thalmor. Well, let's just say following Hircine's Code is far easier amongst their ranks. Besides, The Spear of Bitter Mercy requires worthy prey, and frankly, I've never trusted the Empire! Skyrim is better without it's meddling, and all the more without the Witch Elenwen having a say about a damn thing. Finally, Ulfric has promised to lend aide toward the rebuilding of Crun Voshu Kala's lodging inside the grotto that, the Thalmor had burned on their way out. From their, I will rebuild my Clan.\n\n**Motivation**: Khagar Yal: \"Hm, to answer this. One must explain my Clan's creed that I still carry. My Clansmen were not like other displaced Strongholds of Skyrim! We did not follow Malacath, but Lord Hircine. For each and every one of us carried his Blessing; The Blood of the Bear. So we adopted a new code, one based of the beliefs of Hircine. One: Hunt only worthy prey, not those whom cannot defend themselves. Two: Honor your pack, your prey, and all of which it provides for. Three: One should practice cunning and wisdom as you do to hone strength and skill. To not is to be no better than the prey you hunt. Four: Slay prey only which would slay you if they could. (Don\u2019t kill pacifist who won\u2019t fight back.) Five: Maintain the natural order in the ecosystem where symbiosis is achieved. In Nord terms, the Code is a perpetuating moral code, as it is a driver to improve one's strength as a Noble warrior, and Beast Blood. However, if you want the more finiteless Warchief response. I want my Clan back, I want Elenwen hunted and mounted, and I want to one day be a Legend amongst my people. Hah! Oh yeah, and I'd like to be the Lord of the Hunt's Champion. Bloodmoon, I already carry his spear. Not long left to go on that.\n\n**Connections**: Khagar Yal: \"They are all dead. Most Nord's look upon me with as much respect, as they do apprehension. Prejudice will do that to you. Not like I care, just makes you a less sharp sword when you're hung up on the pelt of the prey, and not the wit of the pack. Despite this, Ulfric and I seem to be on good terms, we've even endeavored to go on a few Hunts together. Galmar is as much an Orc as I am. Hah! I'd never tell him that though. Regardless, he too has my respect. A feeling that is mutual. Lastly, I do enjoy the Nord named Ralof, strong, more cunning than he let's on. Staunch, like stone. Whiterun? No, However, I had heard tale of 'The Companions'. They interest me, I'd very much like to cross blades with their best. I hope they defend Whiterun when we take it, should Chieftan Balgruuf end up not seeing it Ulfric's way.\"",
   "relationships": {},
   "quests": [],
   "session_history": [],
-  "notes": "Created during Session Zero",
+  "notes": "Mid-session updated: extras purchased (Werebear Transformation + Spear of Bitter Mercy), tactical concession won against Legate Rikke.",
   "faction_alignment": "stormcloak",
   "additional_faction_interests": "The Companions."
 }

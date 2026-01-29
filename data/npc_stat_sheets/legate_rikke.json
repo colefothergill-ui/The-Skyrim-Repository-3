@@ -6,6 +6,11 @@
   "location": "Castle Dour, Solitude / Imperial command posts",
   "faction": "Imperial Legion",
   "role": "Legate and General Tullius's Chief Tactical Officer",
+  "current_status": {
+    "status": "escaped",
+    "notes": "Conceded the perimeter clash; withdrew to preserve her command function. Left behind dispatch case under duress.",
+    "sanies_lupinus_exposure": true
+  },
   "aspects": {
     "high_concept": "Imperial Legate Torn Between Empire and Skyrim",
     "trouble": "Secretly Sympathetic to Skyrim's Plight",
@@ -37,7 +42,7 @@
   "consequences": {
     "mild": null,
     "moderate": null,
-    "severe": null
+    "severe": "Bitten Hand — Sanies Lupinus Exposure (Beast-Blood Seeded)"
   },
   "refresh": 3,
   "fate_points": 3,

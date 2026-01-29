@@ -6,9 +6,24 @@
   "active_pc": "Khagar Yal",
   "active_pc_id": "pc_khagar_yal",
   "session_zero_completed": true,
-  "session_count": 0,
-  "last_updated": "2026-01-29 03:33:30",
+  "session_count": 1,
+  "last_updated": "2026-01-29 16:30:00",
   "starting_location": "Whiterun",
+
+  "current_scene_id": "A1-S01-WHITERUN-PERIMETER-RIKKE-KNOT",
+  "current_location": "Whiterun Hold — Imperial perimeter camp (outer ring, command-tent knot)",
+  "active_hold": "Whiterun",
+  "current_objective": "Disrupt Imperial command cohesion before the Battle of Whiterun; extract intel; keep the alarm contained.",
+  "current_npcs": ["npc_stat_ralof", "npc_stat_legate_rikke"],
+
+  "scene_flags": {
+    "herbal_scent_ritual_completed": true,
+    "dispatch_case_captured": true,
+    "pack_tactics_used_this_scene": true,
+    "legate_rikke_conceded_and_escaped": true,
+    "legate_rikke_sanies_lupinus_exposure": true
+  },
+
   "civil_war_state": {
     "player_alliance": "stormcloak",
     "battle_of_whiterun_status": "approaching",
@@ -18,8 +33,17 @@
     "faction_relationship": {
       "imperial_legion": -20,
       "stormcloaks": 30
-    }
+    },
+    "battle_of_whiterun_modifiers": [
+      {
+        "aspect": "Imperial Counterplan Compromised",
+        "free_invokes": 2,
+        "source": "Captured dispatch case from Legate Rikke's command knot (pre-battle perimeter).",
+        "expires": "End of Battle of Whiterun"
+      }
+    ]
   },
+
   "main_quest_state": {
     "post_alduin_timeline": true,
     "dragon_crisis_resolved": true,
@@ -27,8 +51,9 @@
     "greybeards_relations": "respectful",
     "timeline_notes": "Campaign occurs after Alduin's defeat. Dragon crisis has ended, focus is on civil war and Thalmor conspiracy."
   },
+
   "thalmor_arc": {
-    "thalmor_awareness_of_party": "none",
+    "thalmor_awareness_of_party": "low",
     "embassy_infiltrated": false,
     "elenwen_disposition": "neutral",
     "thalmor_schemes_discovered": [],
@@ -47,6 +72,7 @@
       }
     ]
   },
+
   "branching_decisions": {
     "civil_war_stance": "stormcloak",
     "jarl_balgruuf_support": null,
@@ -54,46 +80,54 @@
     "talos_worship_stance": null,
     "civil_war_entry_contact": "Ralof"
   },
+
   "world_consequences": {
     "towns_affected": [],
     "npcs_killed": [],
     "npcs_befriended": [],
-    "major_choices": []
+    "major_choices": [
+      "Engaged and defeated Legate Rikke's perimeter knot via coordinated strike; forced her concession (she escaped).",
+      "Captured dispatch case: gained Battle of Whiterun tactical advantage.",
+      "Inflicted Sanies Lupinus exposure via bite to Rikke's hand during breakaway."
+    ]
   },
+
   "active_story_arcs": [
     {
       "arc_name": "Civil War",
       "status": "brewing",
       "progress": 0,
-      "next_milestone": "Player must choose a side"
+      "next_milestone": "Battle of Whiterun fires; use the captured advantage decisively"
     },
     {
       "arc_name": "Thalmor Conspiracy",
       "status": "hidden",
       "progress": 0,
-      "next_milestone": "Discover Thalmor manipulation"
+      "next_milestone": "Thalmor begin to notice anomalies: daedric artifacts + unusual predator rites"
     }
   ],
+
   "companions": {
     "active_companions": [
       {
         "npc_id": "npc_stat_ralof",
         "name": "Ralof",
         "status": "active",
-        "loyalty": 60,
+        "loyalty": 62,
         "location": "With party",
         "recruitment_trigger": "Stormcloak recruitment",
         "faction_affinity": "stormcloaks",
-        "notes": "Met during Stormcloak recruitment. Passionate Stormcloak soldier with family connections in Riverwood."
+        "notes": "Raised loyalty during the perimeter strike planning and execution."
       }
     ],
     "available_companions": [],
     "dismissed_companions": [],
     "companion_relationships": {
-      "ralof": 60
+      "ralof": 62
     },
     "notes": "Companion loyalty ranges from 0-100."
   },
+
   "player_characters": [
     {
       "id": "pc_khagar_yal",
@@ -104,6 +138,7 @@
       "faction_alignment": "stormcloak"
     }
   ],
+
   "starting_narrative": "The party arrives in Whiterun as supporters of the Stormcloak Rebellion. Ralof, a Stormcloak soldier who recruited them to the cause, accompanies the party. Jarl Balgruuf has sided with the Empire, making Whiterun a target for liberation. The party joins Galmar Stone-Fist in preparing to assault the city and free it from Imperial control. The Battle of Whiterun is imminent, and Skyrim's future hangs in the balance.",
   "faction_relationships": {}
 }
