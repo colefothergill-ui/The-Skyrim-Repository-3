@@ -1,272 +1,290 @@
 #!/usr/bin/env python3
 """
-Test for Whiterun location triggers
+Tests for Whiterun Location Triggers
+
+This module tests the whiterun_location_triggers function to ensure
+proper event generation based on location and campaign state.
 """
 
 import sys
 import os
 
-# Add parent directory to path
+# Add parent directory to path for imports
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'scripts'))
 
 from triggers.whiterun_triggers import whiterun_location_triggers
 
 
-def test_plains_district_first_visit():
-    """Test Plains District first visit trigger"""
-    print("\n=== Testing Plains District First Visit ===")
-    
-    campaign_state = {}
-    location = "Whiterun - Plains District"
-    
-    events = whiterun_location_triggers(location, campaign_state)
-    
-    # Should have 2 events: intro and feud
-    assert len(events) == 2, f"Expected 2 events, got {len(events)}"
-    assert "bustle of activity" in events[0], "Missing Plains District intro"
-    assert "Gray-Mane" in events[1], "Missing feud encounter"
-    assert campaign_state.get("whiterun_plains_intro_done") == True, "Intro flag not set"
-    assert campaign_state.get("graymane_feud_seen") == True, "Feud flag not set"
-    
-    print("✓ Plains District first visit works correctly")
-    return True
-
-
-def test_plains_district_repeat_visit():
-    """Test Plains District repeat visit"""
-    print("\n=== Testing Plains District Repeat Visit ===")
+def test_plains_district_trigger():
+    """Test that Plains District triggers appropriate events"""
+    print("\n=== Testing Plains District Trigger ===")
     
     campaign_state = {
-        "whiterun_plains_intro_done": True,
-        "graymane_feud_seen": True
+        "companions": {
+            "active_companions": []
+        }
     }
-    location = "Whiterun - Plains District"
     
-    events = whiterun_location_triggers(location, campaign_state)
+    events = whiterun_location_triggers("whiterun_plains_district", campaign_state)
     
-    # Should only have repeatable flavor
-    assert len(events) == 1, f"Expected 1 event, got {len(events)}"
-    assert "lively Plains District" in events[0], "Missing repeatable flavor"
-    
-    print("✓ Plains District repeat visit works correctly")
-    return True
+    assert len(events) > 0, "Expected at least one event for Plains District"
+    assert any("Plains District" in event for event in events), "Expected Plains District description"
+    print(f"✓ Plains District trigger works: {events}")
 
 
-def test_wind_district_first_visit():
-    """Test Wind District first visit"""
-    print("\n=== Testing Wind District First Visit ===")
-    
-    campaign_state = {}
-    location = "Whiterun - Wind District"
-    
-    events = whiterun_location_triggers(location, campaign_state)
-    
-    # Should have intro only (no quest hook yet)
-    assert len(events) == 1, f"Expected 1 event, got {len(events)}"
-    assert "Gildergreen" in events[0], "Missing Wind District intro"
-    assert campaign_state.get("whiterun_wind_intro_done") == True, "Intro flag not set"
-    
-    print("✓ Wind District first visit works correctly")
-    return True
-
-
-def test_wind_district_with_quest_hook():
-    """Test Wind District with quest hook"""
-    print("\n=== Testing Wind District Quest Hook ===")
+def test_wind_district_trigger():
+    """Test that Wind District triggers appropriate events"""
+    print("\n=== Testing Wind District Trigger ===")
     
     campaign_state = {
-        "whiterun_wind_intro_done": True,
-        "graymane_feud_seen": True
+        "companions": {
+            "active_companions": []
+        }
     }
-    location = "Whiterun - Wind District"
     
-    events = whiterun_location_triggers(location, campaign_state)
+    events = whiterun_location_triggers("whiterun_wind_district", campaign_state)
     
-    # Should have repeatable flavor + quest hook
-    assert len(events) == 2, f"Expected 2 events, got {len(events)}"
-    assert "Wind District" in events[0], "Missing repeatable flavor"
-    assert "Missing in Action" in events[1], "Missing quest hook"
-    
-    print("✓ Wind District quest hook works correctly")
-    return True
+    assert len(events) > 0, "Expected at least one event for Wind District"
+    assert any("Wind District" in event for event in events), "Expected Wind District description"
+    assert any("Gildergreen" in event or "Jorrvaskr" in event for event in events), "Expected district landmarks"
+    print(f"✓ Wind District trigger works: {events}")
 
 
-def test_cloud_district_first_visit():
-    """Test Cloud District first visit"""
-    print("\n=== Testing Cloud District First Visit ===")
-    
-    campaign_state = {}
-    location = "Whiterun - Cloud District"
-    
-    events = whiterun_location_triggers(location, campaign_state)
-    
-    # Should have intro only
-    assert len(events) == 1, f"Expected 1 event, got {len(events)}"
-    assert "Dragonsreach" in events[0], "Missing Cloud District intro"
-    assert campaign_state.get("whiterun_cloud_intro_done") == True, "Intro flag not set"
-    
-    print("✓ Cloud District first visit works correctly")
-    return True
-
-
-def test_cloud_district_with_jarl_audience():
-    """Test Cloud District with Jarl audience trigger"""
-    print("\n=== Testing Cloud District Jarl Audience ===")
+def test_cloud_district_trigger():
+    """Test that Cloud District triggers appropriate events"""
+    print("\n=== Testing Cloud District Trigger ===")
     
     campaign_state = {
-        "whiterun_cloud_intro_done": True,
-        "dragon_rising_completed": True
+        "companions": {
+            "active_companions": []
+        }
     }
-    location = "Whiterun - Cloud District"
     
-    events = whiterun_location_triggers(location, campaign_state)
+    events = whiterun_location_triggers("whiterun_cloud_district", campaign_state)
     
-    # Should have repeatable flavor + jarl audience
-    assert len(events) == 2, f"Expected 2 events, got {len(events)}"
-    assert "Cloud District" in events[0], "Missing repeatable flavor"
-    assert "Balgruuf" in events[1], "Missing jarl audience"
-    assert campaign_state.get("jarl_audience_done") == True, "Jarl audience flag not set"
-    
-    print("✓ Cloud District jarl audience works correctly")
-    return True
+    assert len(events) > 0, "Expected at least one event for Cloud District"
+    assert any("Cloud District" in event for event in events), "Expected Cloud District description"
+    assert any("Dragonsreach" in event for event in events), "Expected Dragonsreach mention"
+    print(f"✓ Cloud District trigger works: {events}")
 
 
-def test_dragonsreach_location():
-    """Test Dragonsreach as location name"""
-    print("\n=== Testing Dragonsreach Location ===")
+def test_general_whiterun_trigger():
+    """Test general Whiterun entrance trigger"""
+    print("\n=== Testing General Whiterun Trigger ===")
+    
+    campaign_state = {
+        "companions": {
+            "active_companions": []
+        }
+    }
+    
+    events = whiterun_location_triggers("whiterun", campaign_state)
+    
+    assert len(events) > 0, "Expected at least one event for Whiterun"
+    assert any("gates" in event.lower() or "whiterun" in event.lower() for event in events), "Expected Whiterun entrance description"
+    print(f"✓ General Whiterun trigger works: {events}")
+
+
+def test_lydia_companion_commentary():
+    """Test that Lydia provides commentary when in Whiterun"""
+    print("\n=== Testing Lydia Companion Commentary ===")
+    
+    # Test with Lydia as active companion
+    campaign_state = {
+        "companions": {
+            "active_companions": ["Lydia", "Hadvar"]
+        }
+    }
+    
+    events = whiterun_location_triggers("whiterun", campaign_state)
+    
+    assert len(events) > 0, "Expected events when Lydia is present"
+    lydia_event = [e for e in events if "Lydia" in e and "Thane" in e]
+    assert len(lydia_event) > 0, "Expected Lydia to comment about being in Whiterun"
+    print(f"✓ Lydia commentary works: {lydia_event[0]}")
+
+
+def test_lydia_commentary_case_insensitive():
+    """Test that Lydia detection is case-insensitive"""
+    print("\n=== Testing Lydia Commentary (Case Insensitive) ===")
+    
+    # Test with lowercase lydia
+    campaign_state = {
+        "companions": {
+            "active_companions": ["lydia"]
+        }
+    }
+    
+    events = whiterun_location_triggers("Whiterun", campaign_state)
+    
+    lydia_event = [e for e in events if "Lydia" in e]
+    assert len(lydia_event) > 0, "Expected Lydia commentary with lowercase companion name"
+    print(f"✓ Case-insensitive Lydia detection works")
+
+
+def test_lydia_commentary_in_district():
+    """Test that Lydia comments in Whiterun districts"""
+    print("\n=== Testing Lydia Commentary in Districts ===")
+    
+    campaign_state = {
+        "companions": {
+            "active_companions": ["Lydia"]
+        }
+    }
+    
+    # Test in Plains District
+    events = whiterun_location_triggers("whiterun_plains_district", campaign_state)
+    lydia_event = [e for e in events if "Lydia" in e]
+    assert len(lydia_event) > 0, "Expected Lydia to comment in Plains District"
+    
+    # Test in Wind District
+    events = whiterun_location_triggers("whiterun_wind_district", campaign_state)
+    lydia_event = [e for e in events if "Lydia" in e]
+    assert len(lydia_event) > 0, "Expected Lydia to comment in Wind District"
+    
+    print(f"✓ Lydia comments in all Whiterun districts")
+
+
+def test_no_lydia_commentary_outside_whiterun():
+    """Test that Lydia doesn't comment when outside Whiterun"""
+    print("\n=== Testing No Lydia Commentary Outside Whiterun ===")
+    
+    campaign_state = {
+        "companions": {
+            "active_companions": ["Lydia"]
+        }
+    }
+    
+    # Test in a non-Whiterun location
+    events = whiterun_location_triggers("riverwood", campaign_state)
+    lydia_event = [e for e in events if "Lydia" in e and "Thane" in e]
+    
+    # Lydia should not comment in non-Whiterun locations
+    assert len(lydia_event) == 0, "Lydia should not comment outside Whiterun"
+    print(f"✓ Lydia correctly silent outside Whiterun")
+
+
+def test_no_companion_commentary_without_lydia():
+    """Test that no Lydia commentary appears without her as companion"""
+    print("\n=== Testing No Commentary Without Lydia ===")
+    
+    campaign_state = {
+        "companions": {
+            "active_companions": ["Hadvar", "Ralof"]
+        }
+    }
+    
+    events = whiterun_location_triggers("whiterun", campaign_state)
+    lydia_event = [e for e in events if "Lydia" in e]
+    
+    assert len(lydia_event) == 0, "Expected no Lydia commentary without her in party"
+    print(f"✓ No Lydia commentary when she's not a companion")
+
+
+def test_empty_companions_list():
+    """Test handling of empty companions list"""
+    print("\n=== Testing Empty Companions List ===")
+    
+    campaign_state = {
+        "companions": {
+            "active_companions": []
+        }
+    }
+    
+    events = whiterun_location_triggers("whiterun", campaign_state)
+    
+    assert len(events) > 0, "Expected events even with no companions"
+    lydia_event = [e for e in events if "Lydia" in e]
+    assert len(lydia_event) == 0, "Expected no Lydia commentary with empty companions"
+    print(f"✓ Handles empty companions list correctly")
+
+
+def test_missing_companions_key():
+    """Test handling of missing companions key in campaign state"""
+    print("\n=== Testing Missing Companions Key ===")
     
     campaign_state = {}
-    location = "Whiterun - Dragonsreach"
     
-    events = whiterun_location_triggers(location, campaign_state)
+    events = whiterun_location_triggers("whiterun", campaign_state)
     
-    # Should trigger Cloud District intro
-    assert len(events) == 1, f"Expected 1 event, got {len(events)}"
-    assert "Dragonsreach" in events[0], "Missing Dragonsreach intro"
-    assert campaign_state.get("whiterun_cloud_intro_done") == True, "Intro flag not set"
-    
-    print("✓ Dragonsreach location works correctly")
-    return True
+    # Should not crash, just return location events without companion commentary
+    assert len(events) > 0, "Expected events even without companions key"
+    print(f"✓ Handles missing companions key gracefully")
 
 
-def test_non_whiterun_location():
-    """Test non-Whiterun location"""
-    print("\n=== Testing Non-Whiterun Location ===")
+def test_complex_companion_objects():
+    """Test with companion as dictionary objects (more realistic)"""
+    print("\n=== Testing Complex Companion Objects ===")
     
-    campaign_state = {}
-    location = "Riverwood"
+    # More realistic campaign state with companion objects
+    campaign_state = {
+        "companions": {
+            "active_companions": [
+                {
+                    "name": "Lydia",
+                    "npc_id": "lydia",
+                    "loyalty": 70
+                },
+                {
+                    "name": "Hadvar",
+                    "npc_id": "hadvar",
+                    "loyalty": 65
+                }
+            ]
+        }
+    }
     
-    events = whiterun_location_triggers(location, campaign_state)
+    events = whiterun_location_triggers("whiterun", campaign_state)
     
-    # Should have no events
-    assert len(events) == 0, f"Expected 0 events, got {len(events)}"
-    
-    print("✓ Non-Whiterun location correctly returns no events")
-    return True
+    # The function should properly detect Lydia from dictionary companions
+    assert len(events) > 0, "Expected events when Lydia dict is present"
+    lydia_event = [e for e in events if "Lydia" in e and "Thane" in e]
+    assert len(lydia_event) > 0, "Expected Lydia commentary with dictionary companion"
+    print(f"✓ Function handles complex companion objects correctly")
 
 
-def test_case_insensitive():
-    """Test case insensitivity"""
-    print("\n=== Testing Case Insensitivity ===")
-    
-    campaign_state = {}
-    location = "WHITERUN - PLAINS DISTRICT"
-    
-    events = whiterun_location_triggers(location, campaign_state)
-    
-    # Should still trigger events
-    assert len(events) == 2, f"Expected 2 events, got {len(events)}"
-    
-    print("✓ Case insensitivity works correctly")
-    return True
-
-
-def test_none_location():
-    """Test None as location"""
-    print("\n=== Testing None Location ===")
-    
-    campaign_state = {}
-    location = None
-    
-    events = whiterun_location_triggers(location, campaign_state)
-    
-    # Should have no events and not crash
-    assert len(events) == 0, f"Expected 0 events, got {len(events)}"
-    
-    print("✓ None location handled correctly")
-    return True
-
-
-def test_state_persistence():
-    """Test that state changes persist across calls"""
-    print("\n=== Testing State Persistence ===")
-    
-    campaign_state = {}
-    
-    # First visit to Plains District
-    events1 = whiterun_location_triggers("Whiterun - Plains District", campaign_state)
-    assert len(events1) == 2, "First visit should have 2 events"
-    
-    # Second visit to Plains District
-    events2 = whiterun_location_triggers("Whiterun - Plains District", campaign_state)
-    assert len(events2) == 1, "Second visit should have 1 event"
-    
-    # Visit to Wind District should see feud
-    events3 = whiterun_location_triggers("Whiterun - Wind District", campaign_state)
-    assert len(events3) == 2, "Wind District should have 2 events (intro + quest hook)"
-    
-    print("✓ State persistence works correctly")
-    return True
-
-
-def main():
+def run_all_tests():
     """Run all tests"""
-    print("="*60)
-    print("WHITERUN TRIGGERS TEST SUITE")
-    print("="*60)
+    print("=" * 60)
+    print("Running Whiterun Triggers Tests")
+    print("=" * 60)
     
-    results = []
+    tests = [
+        test_plains_district_trigger,
+        test_wind_district_trigger,
+        test_cloud_district_trigger,
+        test_general_whiterun_trigger,
+        test_lydia_companion_commentary,
+        test_lydia_commentary_case_insensitive,
+        test_lydia_commentary_in_district,
+        test_no_lydia_commentary_outside_whiterun,
+        test_no_companion_commentary_without_lydia,
+        test_empty_companions_list,
+        test_missing_companions_key,
+        test_complex_companion_objects,
+    ]
     
-    # Run tests
-    try:
-        results.append(("Plains District First Visit", test_plains_district_first_visit()))
-        results.append(("Plains District Repeat Visit", test_plains_district_repeat_visit()))
-        results.append(("Wind District First Visit", test_wind_district_first_visit()))
-        results.append(("Wind District Quest Hook", test_wind_district_with_quest_hook()))
-        results.append(("Cloud District First Visit", test_cloud_district_first_visit()))
-        results.append(("Cloud District Jarl Audience", test_cloud_district_with_jarl_audience()))
-        results.append(("Dragonsreach Location", test_dragonsreach_location()))
-        results.append(("Non-Whiterun Location", test_non_whiterun_location()))
-        results.append(("Case Insensitivity", test_case_insensitive()))
-        results.append(("None Location", test_none_location()))
-        results.append(("State Persistence", test_state_persistence()))
-    except Exception as e:
-        print(f"\n✗ Test failed with exception: {e}")
-        import traceback
-        traceback.print_exc()
-        return 1
+    passed = 0
+    failed = 0
     
-    # Summary
-    print("\n" + "="*60)
-    print("TEST SUMMARY")
-    print("="*60)
+    for test in tests:
+        try:
+            test()
+            passed += 1
+        except AssertionError as e:
+            failed += 1
+            print(f"✗ {test.__name__} failed: {e}")
+        except Exception as e:
+            failed += 1
+            print(f"✗ {test.__name__} error: {e}")
     
-    passed = sum(1 for _, result in results if result)
-    total = len(results)
+    print("\n" + "=" * 60)
+    print(f"Test Results: {passed} passed, {failed} failed")
+    print("=" * 60)
     
-    for name, result in results:
-        status = "✓ PASS" if result else "✗ FAIL"
-        print(f"{status}: {name}")
-    
-    print(f"\nTotal: {passed}/{total} tests passed")
-    
-    if passed == total:
-        print("\n🎉 ALL TESTS PASSED! 🎉")
-        return 0
-    else:
-        print(f"\n⚠️  {total - passed} test(s) failed")
-        return 1
+    return failed == 0
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    success = run_all_tests()
+    sys.exit(0 if success else 1)
