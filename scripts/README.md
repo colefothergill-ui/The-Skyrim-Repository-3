@@ -145,7 +145,42 @@ python3 export_repo.py
 
 ---
 
-### 5. workflow_example.py
+### 5. triggers/whiterun_triggers.py
+**Purpose**: Location-based narrative triggers and events for Whiterun
+
+**Usage**:
+```python
+from triggers.whiterun_triggers import whiterun_location_triggers
+
+# Campaign state tracks which events have occurred
+campaign_state = {}
+
+# Get events for a location
+events = whiterun_location_triggers("Whiterun - Plains District", campaign_state)
+
+# Display events to players
+for event in events:
+    print(event)
+```
+
+**Features**:
+- First-time descriptive text for each district (Plains, Wind, Cloud)
+- Repeatable atmospheric flavor text on subsequent visits
+- Dynamic event triggers (Gray-Mane vs Battle-Born feud)
+- Quest hooks (Missing in Action quest)
+- Integration with campaign state flags
+- Jarl audience trigger after dragon fight
+
+**Districts covered**:
+- **Plains District**: Market area, initial feud encounter
+- **Wind District**: Residential area, Companions and Temple, quest hooks
+- **Cloud District/Dragonsreach**: Jarl's palace, formal audiences
+
+**Integration**: Call `whiterun_location_triggers()` from your story manager whenever the player location changes to a Whiterun area. The function returns a list of narrative descriptions and event prompts to present to the players.
+
+---
+
+### 6. workflow_example.py
 **Purpose**: Demonstrates complete workflow
 
 **Usage**:
