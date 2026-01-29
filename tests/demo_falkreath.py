@@ -44,7 +44,7 @@ def demo_falkreath_data():
     
     hold_data = load_json_file('../data/holds/falkreath.json')
     if hold_data:
-        print(f"\nHold: {hold_data['name']}")
+        print(f"\nHold: {hold_data['hold']}")
         print(f"Capital: {hold_data['capital']}")
         print(f"Jarl: {hold_data['jarl']}")
         print(f"Steward: {hold_data['steward']}")
@@ -55,8 +55,8 @@ def demo_falkreath_data():
             hidden = " [HIDDEN]" if loc.get('hidden') else ""
             print(f"  • {loc['name']} ({loc['type']}){hidden}")
         
-        print(f"\n--- City Districts ({len(hold_data['city_districts'])}) ---")
-        for district in hold_data['city_districts']:
+        print(f"\n--- City Districts ({len(hold_data['districts'])}) ---")
+        for district in hold_data['districts']:
             print(f"  • {district['name']}")
         
         print(f"\n--- Local Quest Hooks ({len(hold_data['local_quest_hooks'])}) ---")

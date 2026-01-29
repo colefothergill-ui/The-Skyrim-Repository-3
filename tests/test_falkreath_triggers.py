@@ -158,6 +158,20 @@ def test_astrid_abduction_no_contact():
     print("✓ Astrid abduction correctly doesn't trigger without DB contact")
 
 
+def test_astrid_abduction_already_joined():
+    """Test that abduction doesn't happen if already joined DB"""
+    print("\n=== Testing Astrid Abduction (Already Joined) ===")
+    
+    campaign_state = {
+        'dark_brotherhood_contacted': True,
+        'dark_brotherhood_joined': True
+    }
+    scene_astrid_abduction(campaign_state)
+    
+    assert campaign_state.get('astrid_abduction_scene') is not True, "Abduction should not occur if already joined DB"
+    print("✓ Astrid abduction correctly doesn't trigger for existing members")
+
+
 def test_sanctuary_discovery():
     """Test sanctuary discovery trigger"""
     print("\n=== Testing Sanctuary Discovery ===")
@@ -238,6 +252,7 @@ def run_all_tests():
         test_dark_brotherhood_contact_once,
         test_astrid_abduction,
         test_astrid_abduction_no_contact,
+        test_astrid_abduction_already_joined,
         test_sanctuary_discovery,
         test_sanctuary_discovery_once,
         test_sanctuary_entry,

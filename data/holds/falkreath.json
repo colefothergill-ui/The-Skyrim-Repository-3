@@ -1,6 +1,5 @@
 {
-  "name": "Falkreath Hold",
-  "type": "Hold",
+  "hold": "Falkreath Hold",
   "capital": "Falkreath",
   "jarl": "Jarl Siddgeir (Imperial-aligned, young and indulgent)",
   "steward": "Nenya (Bosmer steward to Jarl Siddgeir)",
@@ -35,7 +34,7 @@
       "description": "The forests of Falkreath Hold hide numerous ancient tombs and barrow mounds. Bandits, necromancers, or worse have taken up residence in these ruins, which hold both danger and potential clues to dark rituals affecting the hold."
     }
   ],
-  "city_districts": [
+  "districts": [
     {
       "name": "Falkreath Graveyard",
       "description": "One of Skyrim's largest graveyards, filling much of Falkreath. Tombstones and freshly dug graves dot the landscape. Locals visit often to mourn lost family, and the Priests of Arkay maintain a constant vigil here."
