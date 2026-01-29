@@ -37,7 +37,7 @@ def windhelm_location_triggers(loc, campaign_state):
             campaign_state["windhelm_imperial_warning_done"] = True
 
     # Stormcloak recruitment prompt if unaligned and first time in Palace
-    if "palace of the kings" in loc_lower and not campaign_state.get("stormcloaks_joined"):
+    if "palace of the kings" in loc_lower and not campaign_state.get("stormcloaks_joined") and not campaign_state.get("imperial_legion_joined"):
         if not campaign_state.get("stormcloak_recruit_offer_seen"):
             events.append("Galmar Stone-Fist steps forward as you enter the hall, sizing you up with a warrior's gaze. \"You look like you can handle yourself,\" he growls in a tone that's almost an invitation. \"If you've come to Windhelm seeking purpose, speak to Jarl Ulfric. We've need of warriors with heart.\" It seems an opportunity to join the Stormcloaks is at hand.")
             campaign_state["stormcloak_recruit_offer_seen"] = True

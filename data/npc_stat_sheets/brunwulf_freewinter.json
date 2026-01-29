@@ -35,6 +35,7 @@
     "moderate": null,
     "severe": null
   },
+  "refresh": 3,
   "equipment": {
     "weapon": "Steel Sword",
     "armor": "Worn Legionnaire Armor (kept from his service)",

@@ -120,6 +120,20 @@ def test_no_recruitment_if_joined():
     print(f"✓ No recruitment when already joined: {events}")
 
 
+def test_no_recruitment_if_imperial():
+    """Test that recruitment prompt doesn't appear if joined Imperial Legion"""
+    print("\n=== Testing No Recruitment if Imperial Legion Member ===")
+    
+    campaign_state = {
+        "imperial_legion_joined": True
+    }
+    
+    events = windhelm_location_triggers("palace of the kings", campaign_state)
+    
+    assert not any("Galmar Stone-Fist steps forward" in event for event in events), "Expected no recruitment if Imperial Legion member"
+    print(f"✓ No recruitment when Imperial Legion member: {events}")
+
+
 def test_neutral_player():
     """Test neutral player with no faction alignment"""
     print("\n=== Testing Neutral Player ===")
@@ -183,6 +197,7 @@ def run_all_tests():
         test_no_duplicate_warning,
         test_no_duplicate_recruitment,
         test_no_recruitment_if_joined,
+        test_no_recruitment_if_imperial,
         test_neutral_player,
         test_case_insensitive_location,
         test_palace_location_variants
