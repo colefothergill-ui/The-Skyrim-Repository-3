@@ -275,7 +275,7 @@
           "trigger": "After establishing base at Sky Haven Temple",
           "description": "Recruit warriors to rebuild the Blades order",
           "objective": "Find 3+ worthy followers to join Blades",
-          "reputation_gain": 15 per recruit,
+          "reputation_gain": "15 per recruit",
           "note": "Some followers may refuse if it requires killing Paarthurnax"
         },
         {
@@ -284,7 +284,7 @@
           "description": "Conduct covert operations against Thalmor in Skyrim",
           "objective": "Disrupt Thalmor intelligence, rescue prisoners, recover Blade artifacts",
           "difficulty": "Great (+4) stealth and combat challenges",
-          "reputation_gain": 25 per major operation,
+          "reputation_gain": "25 per major operation",
           "story_impact": "Major factor in Thalmor conspiracy storyline"
         }
       ]
@@ -387,6 +387,80 @@
           "reward": "Become Listener, lead Brotherhood"
         }
       ]
+    },
+    "companions": {
+      "faction": "The Companions",
+      "headquarters": "Jorrvaskr, Whiterun",
+      "status": "Honor-bound warrior guild (neutral in Civil War)",
+      "initial_contact": {
+        "name": "Trouble at the Farm - Giant Slaying Introduction",
+        "location": "Near Pelagia Farm, Whiterun Outskirts",
+        "trigger": "PC encounters a giant attacking the farm (early Act I)",
+        "npc": "Aela the Huntress, Farkas",
+        "scene_description": "A giant roars in pain as two warriors engage it. Aela looses arrows while Farkas closes in with his blade. The farmers cower. You arrive as the battle hangs in the balance.",
+        "player_options": [
+          {
+            "option": "Help the Companions defeat the giant",
+            "leads_to": "companions_recruitment_offer",
+            "skill_check": "Fight or Shoot (Average +1) to significantly wound the giant"
+          },
+          {
+            "option": "Stay back and watch",
+            "leads_to": "companions_outcome_observe",
+            "note": "The giant is defeated by the Companions; PC is chastised for inaction but can still approach"
+          }
+        ],
+        "companions_recruitment_offer": {
+          "dialogue": "Aela approaches, impressed. \"Not bad. You handle yourself well. Ever thought about joining the Companions?\"",
+          "quest": "Join the Companions",
+          "reward": "Invitation to Jorrvaskr (Companions headquarters)",
+          "faction_alignment": "neutral"
+        },
+        "companions_outcome_observe": {
+          "description": "The giant collapses under the Companions' assault. Farkas notices you watching.",
+          "outcome": "Farkas grunts about needing more brave souls. Aela still offers the PC a chance to prove themselves at Jorrvaskr."
+        }
+      },
+      "faction_adaptation": {
+        "imperial_aligned": {
+          "aela_comment": "You fight with discipline. Good. The Companions respect strength, not politics.",
+          "note": "Companions are neutral but appreciate martial skill regardless of allegiance"
+        },
+        "stormcloak_aligned": {
+          "aela_comment": "A true Nord warrior. The Companions have always stood for Skyrim's honor.",
+          "note": "Slight cultural affinity, +5 reputation bonus for Nord traditions",
+          "farkas_comment": "Good to see someone who fights for what they believe in."
+        },
+        "neutral": {
+          "aela_comment": "Smart. The Companions don't take sides in politics. We fight for honor, not banners.",
+          "note": "Perfect alignment with Companions' philosophy, +10 reputation bonus for staying neutral"
+        }
+      },
+      "progression_encounters": [
+        {
+          "name": "Proving Honor",
+          "trigger": "After accepting invitation to Jorrvaskr",
+          "objective": "Undertake a trial mission with Farkas (retrieve a fragment of Wuuthrad from a tomb)",
+          "npc": "Farkas, Kodlak Whitemane",
+          "reputation_gain": 20,
+          "unlocks": "Official Companions membership, access to Inner Circle quests"
+        },
+        {
+          "name": "The Silver Hand",
+          "trigger": "Upon becoming a Companion (Act II)",
+          "description": "Companions hunt a group of werewolf hunters (the Silver Hand) after a tragedy in the guild.",
+          "major_story_branch": true,
+          "reputation_gain": 30,
+          "story_impact": "Inner Circle's secret (the beast blood) is revealed; PC must choose to embrace or cure lycanthropy."
+        },
+        {
+          "name": "Purity of Revenge / Glory of the Dead",
+          "trigger": "Late Companions questline (Act III)",
+          "description": "After a great loss, undertake the final missions to avenge Kodlak and cure the Circle's lycanthropy curse.",
+          "reputation_gain": 50,
+          "reward": "Kodlak's spirit laid to rest, player can cure their beast blood if desired. Companions faction fully allied."
+        }
+      ]
     }
   },
   "faction_interaction_matrix": {
@@ -411,14 +485,23 @@
         "imperial": "May receive contracts supporting Imperial goals",
         "stormcloak": "May receive contracts supporting Stormcloak goals",
         "neutral": "Receive contracts from all sides, maximum flexibility"
+      },
+      "companions": {
+        "imperial": "Companions officially neutral but may show preference for defending Whiterun",
+        "stormcloak": "Companions officially neutral but respect Nord traditions and independence",
+        "neutral": "Perfect fit, Companions honor neutrality in political conflicts, +5 reputation"
       }
     },
     "multiple_neutral_factions": {
       "thieves_guild_college": "Compatible. Can be scholarly thief or magically talented infiltrator.",
       "thieves_guild_dark_brotherhood": "Compatible but attention-drawing. Committing many crimes attracts notice.",
+      "thieves_guild_companions": "Compatible. Both guilds respect honor among their members, though methods differ.",
       "college_blades": "Compatible. Blades respect magical knowledge for combating threats.",
       "college_dark_brotherhood": "Compatible. Magic aids assassination.",
+      "college_companions": "Compatible. Companions respect all forms of strength, including magical prowess.",
       "blades_dark_brotherhood": "Conflicted. Blades serve justice, Brotherhood serves death. Possible but causes internal conflict.",
+      "blades_companions": "Highly compatible. Both are honorable warrior organizations with proud traditions.",
+      "companions_dark_brotherhood": "Conflicted. Companions value honor, Brotherhood uses subterfuge. Inner Circle secret complicates this.",
       "all_neutral": "Possible but challenging to manage. Divided loyalties and time commitments."
     }
   },
