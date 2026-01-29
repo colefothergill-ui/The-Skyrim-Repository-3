@@ -612,6 +612,57 @@ NPC attitudes:
             print("• Create relationship clocks for ongoing developments")
             print("• Make relationship changes feel earned through roleplay")
     
+    def check_major_canon_divergence(self, event_desc):
+        """
+        Check if a described event breaks Tier-1 Elder Scrolls canon, and recommend Dragonbreak if so.
+        Args:
+            event_desc (str): Description of the event or player action.
+        Returns:
+            bool: True if canon divergence detected, False otherwise.
+        """
+        # Keywords for essential NPCs that should trigger a Dragonbreak
+        essential_characters = ["Ulfric Stormcloak", "General Tullius", "Jarl Elisif"]
+        # Major cities that cannot be destroyed
+        major_cities = ["Whiterun", "Solitude"]
+        # Action keywords that indicate a major canon divergence
+        harmful_actions = ["kill", "killed", "dead", "assassinate", "assassinated", "murder", "murdered", "die", "died", "death"]
+        destruction_actions = ["destroy", "destroyed", "destruction", "razed", "burned down"]
+        
+        canon_conflict = False
+        event_lower = event_desc.lower()
+        
+        # Check for essential character deaths/harm
+        for character in essential_characters:
+            if character.lower() in event_lower:
+                for action in harmful_actions:
+                    if action in event_lower:
+                        canon_conflict = True
+                        break
+                if canon_conflict:
+                    break
+        
+        # Check for major city destruction
+        if not canon_conflict:
+            for city in major_cities:
+                if city.lower() in event_lower:
+                    for action in destruction_actions:
+                        if action in event_lower:
+                            canon_conflict = True
+                            break
+                    if canon_conflict:
+                        break
+        
+        if canon_conflict:
+            print("\n⚠️  **Major Canon Divergence Detected!**")
+            print("The described event contradicts established core canon (e.g. an essential character's premature death).")
+            print("Recommendation: Invoke the **Dragonbreak protocol** to accommodate this branch of reality.")
+            print("– Log this in `dragonbreak_log.md` and update `world_state.json` with parallel timeline details.")
+            print("– Narratively, NPCs may have conflicting memories of this event. Proceed with caution to preserve immersion.")
+        else:
+            print("No Tier-1 canon conflicts detected in this event.")
+        
+        return canon_conflict
+    
     def tri_check_result(self, successes):
         """
         Determine outcome narrative for a Tri-Check (3-roll challenge) based on successes.
@@ -657,10 +708,11 @@ def main():
     print("8. Inject NPC Stats to Combat")
     print("9. Get NPC Relationship Advice")
     print("10. Tri-Check System Resolution")
-    print("11. Exit")
+    print("11. Check Major Canon Divergence")
+    print("12. Exit")
     
     while True:
-        choice = input("\nEnter choice (1-11): ").strip()
+        choice = input("\nEnter choice (1-12): ").strip()
         
         if choice == "1":
             tools.view_all_clocks()
@@ -712,11 +764,15 @@ def main():
                 print("Invalid input. Please enter a number between 0 and 3")
         
         elif choice == "11":
+            event_desc = input("Event description: ").strip()
+            tools.check_major_canon_divergence(event_desc)
+        
+        elif choice == "12":
             print("Goodbye!")
             break
         
         else:
-            print("Invalid choice. Please enter 1-11.")
+            print("Invalid choice. Please enter 1-12.")
 
 
 if __name__ == "__main__":
