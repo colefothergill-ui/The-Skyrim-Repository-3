@@ -5,6 +5,7 @@
   "race": "Orc",
   "standing_stone": "The Lord Stone",
   "level": 1,
+  "visual_profile_ref": "khagar_yal_visual",
 
   "appearance": {
     "art_path": "docs/assets/pcs/khagar_yal.jpg",
