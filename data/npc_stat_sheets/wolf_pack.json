@@ -1,0 +1,33 @@
+{
+  "name": "Wolf Pack",
+  "id": "wolf_pack",
+  "type": "Wildlife",
+  "category": "Enemy",
+  "location": "Forests and Tundra",
+  "aspects": {
+    "high_concept": "Pack of Hungry Wolves",
+    "trouble": "Feral Cunning, Fear of Fire",
+    "other_aspects": [
+      "Coordinated Pack Hunters",
+      "Territorial Predators"
+    ]
+  },
+  "skills": {
+    "Fair": ["Fight"],
+    "Average": ["Athletics", "Notice"]
+  },
+  "stunts": [
+    "Pack Tactics: For each additional wolf beyond the first, the pack gains +1 to create an advantage or overcome when acting together (max +3)",
+    "Howling Dread: Once per scene, the pack's howls impose a temporary aspect \"Instinctual Fear\" on prey"
+  ],
+  "stress": {
+    "physical": [false, false], 
+    "notes": "Treat each stress box as one wolf taken out (e.g., a pack of 2 wolves has 2 stress boxes)"
+  },
+  "consequences": {
+    "mild": null,
+    "moderate": null,
+    "severe": null
+  },
+  "loot": ["Wolf pelts"]
+}
