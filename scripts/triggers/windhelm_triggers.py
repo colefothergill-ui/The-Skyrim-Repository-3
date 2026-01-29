@@ -82,7 +82,7 @@ def windhelm_location_triggers(loc, campaign_state):
         if campaign_state.get("whiterun_control") == "stormcloak" and not campaign_state.get("windhelm_heard_whiterun_win"):
             events.append("Word of Whiterun's fall to the Stormcloaks has reached Windhelm. The city is alive with celebration – you see blue Stormcloak banners hung from windows and hear a smith shouting, \"Victory for Ulfric!\" in between hammer strikes. In the Palace courtyard, a crowd cheers as a messenger announces Balgruuf's surrender. Windhelm basks in this triumph, however brief it may be.")
             campaign_state["windhelm_heard_whiterun_win"] = True
-        if campaign_state.get("whiterun_control") == "imperial" and not campaign_state.get("windhelm_heard_whiterun_loss"):
+        elif campaign_state.get("whiterun_control") == "imperial" and not campaign_state.get("windhelm_heard_whiterun_loss"):
             events.append("A hush has fallen over Windhelm. Rumor spreads that the assault on Whiterun failed; Jarl Balgruuf remains with the Empire. You notice doubled patrols – Stormcloak guards drilling with a fierce urgency. Inside Candlehearth Hall, citizens speak in worried tones about what went wrong and how soon Imperials might counterattack. The sting of the loss is palpable in the air.")
             campaign_state["windhelm_heard_whiterun_loss"] = True
 
