@@ -3,8 +3,8 @@
   "campaign_name": "The Elder Scrolls: Skyrim - Fate Core Campaign",
   "started_date": "4E 201, 17th of Last Seed",
   "current_act": 1,
-  "active_pc": "pc_aldric_galewarden",
-  "active_pc_id": "pc_aldric_galewarden",
+  "active_pc": null,
+  "active_pc_id": null,
   "civil_war_state": {
     "player_alliance": "neutral",
     "battle_of_whiterun_status": "in_progress",
@@ -118,16 +118,7 @@
   "last_updated": "2026-01-27T20:30:00Z",
   "session_zero_completed": true,
   "starting_location": "Whiterun",
-  "player_characters": [
-    {
-      "id": "pc_aldric_galewarden",
-      "name": "Aldric Galewarden",
-      "player": "Cole",
-      "race": "Nord",
-      "standing_stone": "The Steed Stone",
-      "faction_alignment": "neutral"
-    }
-  ],
+  "player_characters": [],
   "starting_narrative": "Brynjolf found you in Riften's marketplace and saw potential. After proving yourself, he offers a mission: \"I need you to head to Whiterun. Find Olfrid Battle-Born and deliver this message. With the war heating up, we need to ensure our operations there stay... profitable.\" You arrive in Whiterun to find tensions at a breaking point. As you deliver Brynjolf's message to Olfrid, news arrives that Stormcloak forces are approaching. The Battle of Whiterun is about to begin, and you see both Hadvar and Ralof in the chaos. You must choose a side.",
   "faction_relationships": {
     "thieves_guild": 30
@@ -141,7 +132,7 @@
     "Arrow volleys",
     "Command-and-control targets (banneret/sergeants)"
   ],
-  "current_objective": "Hold the West Wall during the Battle of Whiterun; visibly fight alongside Hadvar; keep Hadvar alive; use Olfrid's sealed note as proof-of-contact; leverage the battle to unlock Battle-Born patronage + Thu'um instructor lead.\nWHT-10: Aldric engages Galmar Stone-Fist in the fog while trying to preserve Hadvar-visibility clause.",
+  "current_objective": "Hold the West Wall during the Battle of Whiterun; visibly fight alongside Hadvar; keep Hadvar alive; use Olfrid's sealed note as proof-of-contact; leverage the battle to unlock Battle-Born patronage + Thu'um instructor lead.",
   "quest_flags": {
     "battleborn_strongbox_delivered": true,
     "battle_of_whiterun_pending": true,

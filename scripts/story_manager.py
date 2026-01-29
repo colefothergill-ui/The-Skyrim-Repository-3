@@ -455,7 +455,7 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
         
         # Add first impression hook for NPCs
         # TODO: Make PC appearance path configurable for multi-PC campaigns
-        # For now, hardcoded to Aldric as per COPILOT PATCH specification
+        # (Removed Aldric-specific hardcoding)
         state_path = str(self.campaign_state_path)
         appearance_path = str(self.data_dir / "pcs" / "appearances" / "aldric_galewarden_appearance.json")
         
