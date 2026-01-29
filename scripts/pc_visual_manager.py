@@ -37,13 +37,13 @@ def get_pc_path(repo_root: Path, pc_id: str | None):
     auto = auto_pick_single_pc(pcs_dir)
     if auto:
         return auto
-    raise FileNotFoundError("Could not determine PC file. Provide --pc pc_aldric_galewarden (or ensure only 1 pc_*.json exists).")
+    raise FileNotFoundError("Could not determine PC file. Provide --pc pc_<your_character_id> (or ensure only 1 pc_*.json exists, excluding example_pc.json).")
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--repo", default=".", help="Repo root (default: .)")
-    ap.add_argument("--pc", default=None, help="PC id (e.g., pc_aldric_galewarden). If omitted, auto-picks if only one PC exists.")
+    ap.add_argument("--pc", default=None, help="PC id (e.g., pc_khagar_yal). If omitted, auto-picks if only one PC exists.")
     ap.add_argument("--trigger", default="Zone-In", help="Trigger keyword (Zone-In, First Impression, Riften, Whiterun, etc.)")
     args = ap.parse_args()
 
