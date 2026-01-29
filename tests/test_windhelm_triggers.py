@@ -286,6 +286,208 @@ def test_candlehearth_hall_trigger():
     print(f"✓ Candlehearth Hall trigger works: {events}")
 
 
+def test_civil_war_stormcloak_victory():
+    """Test that Windhelm celebrates Stormcloak victory at Whiterun"""
+    print("\n=== Testing Civil War: Stormcloak Victory at Whiterun ===")
+    
+    campaign_state = {
+        "companions": {
+            "active_companions": []
+        },
+        "whiterun_control": "stormcloak"
+    }
+    
+    events = windhelm_location_triggers("windhelm", campaign_state)
+    
+    assert len(events) > 0, "Expected at least one event"
+    assert any("Victory for Ulfric" in event or "celebration" in event.lower() for event in events), "Expected victory celebration"
+    assert any("Balgruuf" in event for event in events), "Expected reference to Balgruuf's surrender"
+    assert campaign_state.get("windhelm_heard_whiterun_win") == True, "Expected flag to be set"
+    print(f"✓ Stormcloak victory celebration works: {events}")
+
+
+def test_civil_war_stormcloak_victory_only_once():
+    """Test that Stormcloak victory celebration only fires once"""
+    print("\n=== Testing Civil War: Victory Celebration Fires Once ===")
+    
+    campaign_state = {
+        "companions": {
+            "active_companions": []
+        },
+        "whiterun_control": "stormcloak",
+        "windhelm_heard_whiterun_win": True
+    }
+    
+    events = windhelm_location_triggers("windhelm", campaign_state)
+    
+    # Should have basic windhelm description but not the victory event
+    assert len(events) > 0, "Expected at least one event"
+    assert not any("Victory for Ulfric" in event for event in events), "Should not trigger victory event twice"
+    print(f"✓ Victory celebration only fires once: {events}")
+
+
+def test_civil_war_imperial_victory():
+    """Test that Windhelm reacts to Imperial victory at Whiterun"""
+    print("\n=== Testing Civil War: Imperial Victory at Whiterun ===")
+    
+    campaign_state = {
+        "companions": {
+            "active_companions": []
+        },
+        "whiterun_control": "imperial"
+    }
+    
+    events = windhelm_location_triggers("windhelm", campaign_state)
+    
+    assert len(events) > 0, "Expected at least one event"
+    assert any("hush" in event.lower() or "failed" in event.lower() for event in events), "Expected somber reaction"
+    assert any("Balgruuf" in event for event in events), "Expected reference to Balgruuf staying with Empire"
+    assert campaign_state.get("windhelm_heard_whiterun_loss") == True, "Expected flag to be set"
+    print(f"✓ Imperial victory reaction works: {events}")
+
+
+def test_civil_war_imperial_victory_only_once():
+    """Test that Imperial victory reaction only fires once"""
+    print("\n=== Testing Civil War: Loss Reaction Fires Once ===")
+    
+    campaign_state = {
+        "companions": {
+            "active_companions": []
+        },
+        "whiterun_control": "imperial",
+        "windhelm_heard_whiterun_loss": True
+    }
+    
+    events = windhelm_location_triggers("windhelm", campaign_state)
+    
+    # Should have basic windhelm description but not the loss reaction event
+    assert len(events) > 0, "Expected at least one event"
+    assert not any("hush has fallen" in event for event in events), "Should not trigger loss reaction twice"
+    print(f"✓ Loss reaction only fires once: {events}")
+
+
+def test_civil_war_battle_for_windhelm():
+    """Test that Battle for Windhelm siege triggers appropriately"""
+    print("\n=== Testing Civil War: Battle for Windhelm Siege ===")
+    
+    campaign_state = {
+        "companions": {
+            "active_companions": []
+        },
+        "battle_for_windhelm_started": True
+    }
+    
+    events = windhelm_location_triggers("windhelm", campaign_state)
+    
+    assert len(events) > 0, "Expected at least one event"
+    assert any("Imperials are at the gates" in event or "siege" in event.lower() for event in events), "Expected siege alert"
+    assert any("barricades" in event.lower() for event in events), "Expected description of fortifications"
+    assert campaign_state.get("windhelm_siege_alert") == True, "Expected flag to be set"
+    print(f"✓ Battle for Windhelm siege works: {events}")
+
+
+def test_civil_war_battle_for_windhelm_only_once():
+    """Test that Battle for Windhelm siege alert only fires once"""
+    print("\n=== Testing Civil War: Siege Alert Fires Once ===")
+    
+    campaign_state = {
+        "companions": {
+            "active_companions": []
+        },
+        "battle_for_windhelm_started": True,
+        "windhelm_siege_alert": True
+    }
+    
+    events = windhelm_location_triggers("windhelm", campaign_state)
+    
+    # Should have basic description but not the siege alert
+    assert len(events) > 0, "Expected at least one event"
+    assert not any("Alarms ring out" in event for event in events), "Should not trigger siege alert twice"
+    print(f"✓ Siege alert only fires once: {events}")
+
+
+def test_civil_war_season_unending_truce():
+    """Test that Season Unending truce triggers appropriate events"""
+    print("\n=== Testing Civil War: Season Unending Truce ===")
+    
+    campaign_state = {
+        "companions": {
+            "active_companions": []
+        },
+        "truce_active": True
+    }
+    
+    events = windhelm_location_triggers("windhelm", campaign_state)
+    
+    assert len(events) > 0, "Expected at least one event"
+    assert any("truce" in event.lower() or "ceasefire" in event.lower() for event in events), "Expected truce mention"
+    assert any("Imperial emissaries" in event or "uneasy peace" in event for event in events), "Expected description of tense peace"
+    assert campaign_state.get("windhelm_truce_noticed") == True, "Expected flag to be set"
+    print(f"✓ Season Unending truce works: {events}")
+
+
+def test_civil_war_truce_only_once():
+    """Test that truce event only fires once"""
+    print("\n=== Testing Civil War: Truce Event Fires Once ===")
+    
+    campaign_state = {
+        "companions": {
+            "active_companions": []
+        },
+        "truce_active": True,
+        "windhelm_truce_noticed": True
+    }
+    
+    events = windhelm_location_triggers("windhelm", campaign_state)
+    
+    # Should have basic description but not the truce event
+    assert len(events) > 0, "Expected at least one event"
+    assert not any("uneasy peace has settled" in event for event in events), "Should not trigger truce event twice"
+    print(f"✓ Truce event only fires once: {events}")
+
+
+def test_civil_war_no_flags():
+    """Test that civil war triggers don't fire without appropriate flags"""
+    print("\n=== Testing Civil War: No Triggers Without Flags ===")
+    
+    campaign_state = {
+        "companions": {
+            "active_companions": []
+        }
+    }
+    
+    events = windhelm_location_triggers("windhelm", campaign_state)
+    
+    # Should have basic windhelm description but no civil war events
+    assert len(events) > 0, "Expected at least one event"
+    assert not any("Victory for Ulfric" in event for event in events), "Should not trigger victory without flag"
+    assert not any("hush has fallen" in event for event in events), "Should not trigger loss without flag"
+    assert not any("Imperials are at the gates" in event for event in events), "Should not trigger siege without flag"
+    assert not any("Imperial emissaries" in event for event in events), "Should not trigger truce without flag"
+    print(f"✓ No civil war triggers without appropriate flags: {events}")
+
+
+def test_civil_war_multiple_events():
+    """Test that multiple civil war events can be queued if appropriate"""
+    print("\n=== Testing Civil War: Multiple Events ===")
+    
+    campaign_state = {
+        "companions": {
+            "active_companions": []
+        },
+        "whiterun_control": "stormcloak",
+        "truce_active": True
+    }
+    
+    events = windhelm_location_triggers("windhelm", campaign_state)
+    
+    # Should have both victory celebration and truce event
+    assert len(events) >= 3, "Expected at least 3 events (basic + victory + truce)"
+    assert any("Victory for Ulfric" in event for event in events), "Expected victory celebration"
+    assert any("truce" in event.lower() or "Imperial emissaries" in event for event in events), "Expected truce event"
+    print(f"✓ Multiple civil war events can fire: {events}")
+
+
 def run_all_tests():
     """Run all test functions"""
     print("=" * 60)
@@ -306,7 +508,17 @@ def run_all_tests():
         test_companion_uthgerd_commentary,
         test_empty_companions,
         test_missing_campaign_state,
-        test_candlehearth_hall_trigger
+        test_candlehearth_hall_trigger,
+        test_civil_war_stormcloak_victory,
+        test_civil_war_stormcloak_victory_only_once,
+        test_civil_war_imperial_victory,
+        test_civil_war_imperial_victory_only_once,
+        test_civil_war_battle_for_windhelm,
+        test_civil_war_battle_for_windhelm_only_once,
+        test_civil_war_season_unending_truce,
+        test_civil_war_truce_only_once,
+        test_civil_war_no_flags,
+        test_civil_war_multiple_events
     ]
     
     passed = 0
