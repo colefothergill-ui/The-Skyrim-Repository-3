@@ -7,35 +7,7 @@ It provides contextual events, NPC interactions, and companion commentary
 specific to Whiterun Hold.
 """
 
-
-def _is_companion_present(active_companions, companion_name):
-    """
-    Check if a specific companion is present in the active companions list.
-    
-    Args:
-        active_companions: List of active companions (can be strings or dicts)
-        companion_name: Name of companion to check for (case-insensitive)
-    
-    Returns:
-        bool: True if companion is present, False otherwise
-    """
-    companion_name_lower = companion_name.lower()
-    
-    for companion in active_companions:
-        if isinstance(companion, dict):
-            # Check dictionary companions by name or npc_id/id field
-            comp_name = str(companion.get("name", "")).lower()
-            comp_id = str(companion.get("npc_id", companion.get("id", ""))).lower()
-            # Use startswith to allow variations like "Lydia" or "Lydia (Housecarl)"
-            if comp_name.startswith(companion_name_lower) or comp_id.startswith(companion_name_lower):
-                return True
-        else:
-            # Check string companions
-            # Use startswith to allow variations like "Lydia" or "Lydia the Housecarl"
-            if str(companion).lower().startswith(companion_name_lower):
-                return True
-    
-    return False
+from .trigger_utils import is_companion_present
 
 
 def whiterun_location_triggers(loc, campaign_state):
@@ -71,7 +43,7 @@ def whiterun_location_triggers(loc, campaign_state):
     # Companion commentary (placeholder logic for Whiterun-based companions)
     active_companions = campaign_state.get("companions", {}).get("active_companions", [])
     # If Lydia (Housecarl of Whiterun) is in the party and we're in Whiterun, she may comment on being home.
-    if _is_companion_present(active_companions, "lydia") and loc_lower.startswith("whiterun"):
+    if is_companion_present(active_companions, "lydia") and loc_lower.startswith("whiterun"):
         events.append('Lydia smiles fondly as she looks around. "It\'s good to be back in Whiterun, my Thane," she says softly.')
     # (Additional companion triggers can be added similarly for other Whiterun natives, e.g., if Aela is a follower, etc.)
     
