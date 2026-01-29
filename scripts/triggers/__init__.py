@@ -6,5 +6,6 @@ This module contains location-based triggers for various regions in Skyrim.
 """
 
 from .whiterun_triggers import whiterun_location_triggers
+from .windhelm_triggers import windhelm_location_triggers
 
-__all__ = ['whiterun_location_triggers']
+__all__ = ['whiterun_location_triggers', 'windhelm_location_triggers']
