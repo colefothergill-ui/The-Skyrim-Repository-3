@@ -615,6 +615,7 @@ NPC attitudes:
     def tri_check_result(self, successes):
         """
         Determine outcome narrative for a Tri-Check (3-roll challenge) based on successes.
+        
         Args:
             successes (int): Number of successful checks out of 3 (0-3).
         """
