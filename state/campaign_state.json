@@ -3,8 +3,8 @@
   "campaign_name": "The Elder Scrolls: Skyrim - Fate Core Campaign",
   "started_date": "4E 201, 17th of Last Seed",
   "current_act": 1,
-  "active_pc": null,
-  "active_pc_id": null,
+  "active_pc": "Khagar Yal",
+  "active_pc_id": "pc_khagar_yal",
   "session_zero_completed": true,
   "session_count": 0,
   "last_updated": "2026-01-29 03:33:30",
@@ -48,7 +48,7 @@
     ]
   },
   "branching_decisions": {
-    "civil_war_stance": null,
+    "civil_war_stance": "stormcloak",
     "jarl_balgruuf_support": null,
     "thalmor_embassy_approach": null,
     "talos_worship_stance": null,

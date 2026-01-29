@@ -1,0 +1,87 @@
+{
+  "description": "Resolve Session 0 continuity conflicts (Khagar Yal activation, Whiterun battle timing, Stormcloak trust baseline, disable mismatched Whiterun jobs gate).",
+  "patches": [
+    {
+      "file": "state/campaign_state.json",
+      "ops": [
+        {
+          "op": "replace",
+          "path": "/active_pc",
+          "value": "Khagar Yal"
+        },
+        {
+          "op": "replace",
+          "path": "/active_pc_id",
+          "value": "pc_khagar_yal"
+        },
+        {
+          "op": "replace",
+          "path": "/branching_decisions/civil_war_stance",
+          "value": "stormcloak"
+        }
+      ]
+    },
+    {
+      "file": "data/clocks/civil_war_clocks.json",
+      "ops": [
+        {
+          "op": "replace",
+          "path": "/civil_war_clocks/clocks/battle_of_whiterun_countdown/current_progress",
+          "value": 6
+        },
+        {
+          "op": "replace",
+          "path": "/civil_war_clocks/major_battles/battle_of_whiterun/status",
+          "value": "approaching"
+        }
+      ]
+    },
+    {
+      "file": "data/clocks/faction_trust_clocks.json",
+      "ops": [
+        {
+          "op": "replace",
+          "path": "/faction_trust_clocks/clocks/stormcloak_rebellion_trust/current_trust",
+          "value": 3
+        },
+        {
+          "op": "replace",
+          "path": "/faction_trust_clocks/clocks/stormcloak_rebellion_trust/trust_level",
+          "value": "Ally"
+        }
+      ]
+    },
+    {
+      "file": "data/clocks/whiterun_jobs.json",
+      "ops": [
+        {
+          "op": "replace",
+          "path": "/whiterun_jobs/clocks/guild_foothold_whiterun/gate/condition",
+          "value": "state.branching_decisions.civil_war_entry_contact == 'Ralof' || state.civil_war_state.player_alliance == 'stormcloak'"
+        },
+        {
+          "op": "replace",
+          "path": "/whiterun_jobs/clocks/guild_foothold_whiterun/gate/note",
+          "value": "Olfrid will not fully open the Whiterun door until you prove your alignment during the Battle of Whiterun\u2014specifically by fighting alongside Ralof (or formally allying with the Stormcloaks)."
+        },
+        {
+          "op": "replace",
+          "path": "/whiterun_jobs/clocks/guild_foothold_whiterun/advancement_triggers",
+          "value": [
+            "Build relationships with corrupt guards (+1)",
+            "Complete jobs for Battle-Born contacts (+1)",
+            "Earn Olfrid's endorsement by aiding Ralof during the Battle of Whiterun (+1; unlock cap)",
+            "Establish reliable fence relationship (+1)",
+            "Secure safe house location (+1)"
+          ]
+        },
+        {
+          "op": "replace",
+          "path": "/whiterun_jobs/last_updated",
+          "value": "2026-01-29 (Session 0) \u2014 gate aligned to Stormcloak/Ralof continuity"
+        }
+      ]
+    }
+  ],
+  "commit_message": "Fix Session 0 continuity: set active PC to Khagar, correct Whiterun battle timing, seed Stormcloak trust, align Whiterun jobs gate to Ralof"
+}

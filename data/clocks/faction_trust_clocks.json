@@ -60,9 +60,9 @@
       },
       "stormcloak_rebellion_trust": {
         "faction": "Stormcloak Rebellion",
-        "current_trust": 0,
+        "current_trust": 3,
         "max_trust": 10,
-        "trust_level": "Stranger",
+        "trust_level": "Ally",
         "advancement_triggers": {
           "join_stormcloaks": "+3 (Joining the Stormcloaks quest)",
           "major_battle_victory": "+2 per victory",

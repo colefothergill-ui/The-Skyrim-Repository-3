@@ -1,7 +1,7 @@
 {
   "whiterun_jobs": {
     "description": "Track Thieves Guild operations and jobs in Whiterun",
-    "last_updated": "2026-01-27 (Session 2 mid) — gate condition met via Hadvar contact during Battle of Whiterun",
+    "last_updated": "2026-01-29 (Session 0) \u2014 gate aligned to Stormcloak/Ralof continuity",
     "clocks": {
       "guild_foothold_whiterun": {
         "name": "Guild Foothold in Whiterun",
@@ -12,8 +12,7 @@
         "advancement_triggers": [
           "Build relationships with corrupt guards (+1)",
           "Complete jobs for Battle-Born contacts (+1)",
-          "Earn Olfrid's endorsement by aiding Hadvar during the Battle of Whiterun (+1; unlock cap)",
-          "Earn Olfrid’s endorsement by aiding Hadvar during the Battle of Whiterun (+1; unlock cap)",
+          "Earn Olfrid's endorsement by aiding Ralof during the Battle of Whiterun (+1; unlock cap)",
           "Establish reliable fence relationship (+1)",
           "Secure safe house location (+1)"
         ],
@@ -25,8 +24,8 @@
         "gate": {
           "type": "conditional_progress_cap",
           "cap_until_condition_met": 3,
-          "condition": "state.branching_decisions.civil_war_entry_contact == 'hadvar' || state.civil_war_state.player_alliance == 'imperial'",
-          "note": "Olfrid will not fully open the Whiterun door until you prove your alignment during the Battle of Whiterun—specifically by fighting alongside Hadvar (or formally allying with the Empire)."
+          "condition": "state.branching_decisions.civil_war_entry_contact == 'Ralof' || state.civil_war_state.player_alliance == 'stormcloak'",
+          "note": "Olfrid will not fully open the Whiterun door until you prove your alignment during the Battle of Whiterun\u2014specifically by fighting alongside Ralof (or formally allying with the Stormcloaks)."
         }
       },
       "battleborn_strongbox": {
