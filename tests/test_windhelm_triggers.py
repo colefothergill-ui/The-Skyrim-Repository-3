@@ -285,7 +285,7 @@ def test_no_state_pollution():
     campaign_state = {}
     
     # Visit only one location
-    events = windhelm_location_triggers("windhelm_palace_of_the_kings", campaign_state)
+    windhelm_location_triggers("windhelm_palace_of_the_kings", campaign_state)
     
     # Only palace flag should be set
     assert campaign_state.get("windhelm_palace_intro_done"), "Expected palace flag"

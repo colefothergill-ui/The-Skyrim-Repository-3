@@ -55,7 +55,7 @@ def windhelm_location_triggers(player_location, campaign_state):
         # Windhelm Docks – descriptive trigger
         if "docks" in loc_normalized or ("harbor" in loc_normalized and "windhelm" in loc_normalized):
             if not campaign_state.get("windhelm_docks_intro_done"):
-                events.append("The wind bites harder as you make your way to the Windhelm docks. Ice floes drift along the River Yorgrim as it meets the sea. Argonian dockworkers lug crates from a moored ship, their breath visible in the frigid air. A pair of East Empire Company mercantile flags hang limply on the warehouse, though business is slow – rumors of pirates on the trade routes abound. You sense that life here on the docks is as harsh as the cold itself, especially for those not welcome behind Windhelm's walls.")
+                events.append("The wind bites harder as you make your way to the Windhelm docks. Ice floes drift along the White River as it meets the sea. Argonian dockworkers lug crates from a moored ship, their breath visible in the frigid air. A pair of East Empire Company mercantile flags hang limply on the warehouse, though business is slow – rumors of pirates on the trade routes abound. You sense that life here on the docks is as harsh as the cold itself, especially for those not welcome behind Windhelm's walls.")
                 campaign_state["windhelm_docks_intro_done"] = True
             else:
                 events.append("Down at the Windhelm docks, the river's icy expanse reflects a gray sky. Workers, mostly Argonians, move methodically unloading goods. A Nord overseer eyes them from a distance. The creaking of wooden hulls and the clink of chains are the dock's constant refrain, underscoring the isolation of this frozen port.")
