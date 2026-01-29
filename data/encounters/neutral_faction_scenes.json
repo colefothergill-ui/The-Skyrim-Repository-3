@@ -421,6 +421,21 @@
           "outcome": "Farkas grunts about needing more brave souls. Aela still offers the PC a chance to prove themselves at Jorrvaskr."
         }
       },
+      "faction_adaptation": {
+        "imperial_aligned": {
+          "aela_comment": "You fight with discipline. Good. The Companions respect strength, not politics.",
+          "note": "Companions are neutral but appreciate martial skill regardless of allegiance"
+        },
+        "stormcloak_aligned": {
+          "aela_comment": "A true Nord warrior. The Companions have always stood for Skyrim's honor.",
+          "note": "Slight cultural affinity, +5 reputation bonus for Nord traditions",
+          "farkas_comment": "Good to see someone who fights for what they believe in."
+        },
+        "neutral": {
+          "aela_comment": "Smart. The Companions don't take sides in politics. We fight for honor, not banners.",
+          "note": "Perfect alignment with Companions' philosophy, +10 reputation bonus for staying neutral"
+        }
+      },
       "progression_encounters": [
         {
           "name": "Proving Honor",
@@ -443,7 +458,7 @@
           "trigger": "Late Companions questline (Act III)",
           "description": "After a great loss, undertake the final missions to avenge Kodlak and cure the Circle's lycanthropy curse.",
           "reputation_gain": 50,
-          "reward": "Kodlak's spirit laid to rest, player can cure their beast blood if desired. Companion faction fully allied."
+          "reward": "Kodlak's spirit laid to rest, player can cure their beast blood if desired. Companions faction fully allied."
         }
       ]
     }
