@@ -612,57 +612,6 @@ NPC attitudes:
             print("• Create relationship clocks for ongoing developments")
             print("• Make relationship changes feel earned through roleplay")
     
-    def check_major_canon_divergence(self, event_desc):
-        """
-        Check if a described event breaks Tier-1 Elder Scrolls canon, and recommend Dragonbreak if so.
-        Args:
-            event_desc (str): Description of the event or player action.
-        Returns:
-            bool: True if canon divergence detected, False otherwise.
-        """
-        # Keywords for essential NPCs that should trigger a Dragonbreak
-        essential_characters = ["Ulfric Stormcloak", "General Tullius", "Jarl Elisif"]
-        # Major cities that cannot be destroyed
-        major_cities = ["Whiterun", "Solitude"]
-        # Action keywords that indicate a major canon divergence
-        harmful_actions = ["kill", "killed", "dead", "assassinate", "assassinated", "murder", "murdered", "die", "died", "death"]
-        destruction_actions = ["destroy", "destroyed", "destruction", "razed", "burned down"]
-        
-        canon_conflict = False
-        event_lower = event_desc.lower()
-        
-        # Check for essential character deaths/harm
-        for character in essential_characters:
-            if character.lower() in event_lower:
-                for action in harmful_actions:
-                    if action in event_lower:
-                        canon_conflict = True
-                        break
-                if canon_conflict:
-                    break
-        
-        # Check for major city destruction
-        if not canon_conflict:
-            for city in major_cities:
-                if city.lower() in event_lower:
-                    for action in destruction_actions:
-                        if action in event_lower:
-                            canon_conflict = True
-                            break
-                    if canon_conflict:
-                        break
-        
-        if canon_conflict:
-            print("\n⚠️  **Major Canon Divergence Detected!**")
-            print("The described event contradicts established core canon (e.g. an essential character's premature death).")
-            print("Recommendation: Invoke the **Dragonbreak protocol** to accommodate this branch of reality.")
-            print("– Log this in `dragonbreak_log.md` and update `world_state.json` with parallel timeline details.")
-            print("– Narratively, NPCs may have conflicting memories of this event. Proceed with caution to preserve immersion.")
-        else:
-            print("No Tier-1 canon conflicts detected in this event.")
-        
-        return canon_conflict
-    
     def tri_check_result(self, successes):
         """
         Determine outcome narrative for a Tri-Check (3-roll challenge) based on successes.
@@ -689,6 +638,85 @@ NPC attitudes:
             # 0 successes – failure that still moves the story forward
             print("✘ **Failure (0/3)**: You do not succeed, but the story moves forward with consequences.")
             print("Narrative: The attempt fails or causes a serious setback. The party must deal with fallout, but the GM should ensure this propels the story (not a dead end).")
+    
+    def review_companion_loyalty(self):
+        """
+        Review active companions' loyalty and suggest narrative consequences or unlocks.
+        """
+        campaign_state = self.load_json(self.state_dir / "campaign_state.json")
+        if not campaign_state or "companions" not in campaign_state:
+            print("No companions data found in campaign state.")
+            return
+        active_comps = campaign_state["companions"].get("active_companions", [])
+        if not active_comps:
+            print("No active companions in party.")
+            return
+
+        print("\n" + "="*70)
+        print("COMPANION LOYALTY REVIEW")
+        print("="*70)
+        for comp in active_comps:
+            name = comp.get("name", "Unknown")
+            loyalty = comp.get("loyalty", 0)
+            npc_id = comp.get("npc_id")
+            
+            # Skip companions with missing npc_id
+            if not npc_id:
+                print(f"\n{name} – Loyalty {loyalty}/100.")
+                print("⚠️  Warning: No NPC ID found for this companion. Cannot load detailed information.")
+                continue
+            
+            # Load companion's full stat sheet for thresholds and quests
+            # Try both npc_id.json and search by ID in files
+            stat = self.load_json(self.npc_stat_sheets_dir / f"{npc_id}.json")
+            if not stat and self.npc_stat_sheets_dir.exists():
+                # If file not found by npc_id, search all stat sheets for matching ID
+                for stat_file in self.npc_stat_sheets_dir.glob("*.json"):
+                    try:
+                        with open(stat_file, 'r') as f:
+                            stat_sheet = json.load(f)
+                        if stat_sheet.get('id') == npc_id:
+                            stat = stat_sheet
+                            break
+                    except (json.JSONDecodeError, IOError):
+                        continue
+            
+            threshold_desc = None
+            if stat and "companion_mechanics" in stat:
+                thresholds = stat["companion_mechanics"].get("loyalty_thresholds", {})
+                # Determine which threshold bracket the loyalty falls into
+                if loyalty >= 80 and "80+" in thresholds:
+                    threshold_desc = thresholds["80+"]
+                elif loyalty >= 60 and "60-79" in thresholds:
+                    threshold_desc = thresholds["60-79"]
+                elif loyalty >= 40 and "40-59" in thresholds:
+                    threshold_desc = thresholds["40-59"]
+                elif loyalty >= 20 and "20-39" in thresholds:
+                    threshold_desc = thresholds["20-39"]
+                elif "0-19" in thresholds:
+                    threshold_desc = thresholds["0-19"]
+            
+            # Print status
+            status_line = f"{name} – Loyalty {loyalty}/100."
+            if threshold_desc:
+                status_line += f" Status: {threshold_desc}"
+            print("\n" + status_line)
+            
+            # Warn if stat sheet not found
+            if not stat:
+                print(f"⚠️  Warning: Stat sheet not found for {name} ({npc_id}). Detailed information unavailable.")
+            
+            # Warnings or events based on loyalty
+            if loyalty <= 20:
+                print("⚠️  Low loyalty! This companion may refuse orders or leave the party soon.")
+            elif loyalty >= 80:
+                print("🤝 High loyalty! This companion is deeply bonded and may even sacrifice themselves for the party.")
+            # Check for companion-specific quests unlocked by loyalty
+            if stat and "companion_mechanics" in stat:
+                for quest in stat["companion_mechanics"].get("companion_quests", []):
+                    req = quest.get("loyalty_required", 0)
+                    if loyalty >= req:
+                        print(f"📜 Quest Unlocked: **{quest['name']}** – {quest['description']} (Reward: {quest.get('reward', 'N/A')})")
 
 
 def main():
@@ -708,7 +736,7 @@ def main():
     print("8. Inject NPC Stats to Combat")
     print("9. Get NPC Relationship Advice")
     print("10. Tri-Check System Resolution")
-    print("11. Check Major Canon Divergence")
+    print("11. Review Companion Loyalty")
     print("12. Exit")
     
     while True:
@@ -764,8 +792,7 @@ def main():
                 print("Invalid input. Please enter a number between 0 and 3")
         
         elif choice == "11":
-            event_desc = input("Event description: ").strip()
-            tools.check_major_canon_divergence(event_desc)
+            tools.review_companion_loyalty()
         
         elif choice == "12":
             print("Goodbye!")
