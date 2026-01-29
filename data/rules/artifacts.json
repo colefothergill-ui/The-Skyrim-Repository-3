@@ -225,6 +225,26 @@
       },
       "requirements": "Block skill",
       "story_impact": "One of the best defensive items against mages. Highly valued by warriors facing spellcasters."
+    },
+    {
+      "name": "Spear of Bitter Mercy",
+      "category": "Daedric Artifact",
+      "origin": "Daedric Prince Hircine",
+      "location": "Custom: Gifted to Khagar Yal (campaign start) — dormant and awakening",
+      "description": "A spear that hums with the Huntsman's will. It embodies the moment prey's struggle ends—mercy, delivered with finality.",
+      "mechanical_stats": {
+        "weapon_rating": 3,
+        "base_bonus": "+2 to Fight when wielding (when the spear's aspect is relevant)",
+        "aspect": "The New Moon (New Cycle)",
+        "special_ability": {
+          "name": "Bitter Mercy",
+          "effect": "When the spear helps you inflict a Mild Consequence, the target gains the situation aspect 'Bitter Mercy'. Until that target is taken out, your stress dealt to them counts as Weapon:1.",
+          "cost": "Narrative permission (spear must be the vector of the consequence).",
+          "limitation": "Level 1 dormant—full awakening tracked by clock."
+        }
+      },
+      "corruption_risk": "Daedric influence. The spear can be compelled to demand worthy prey, risky timing, or merciless escalation.",
+      "story_impact": "Marks the wielder as Hircine-touched. Hunters fear/respect; Thalmor categorize as an anomaly; Companions take interest."
     }
   ],
   "standard_enchantments": {

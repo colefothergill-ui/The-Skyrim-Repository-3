@@ -1,31 +1,55 @@
 {
   "pc_extras_clocks": {
-    "description": "PC-bound progression clocks for Khagar Yal (Werebear mastery + Spear awakening).",
-    "last_updated": "2026-01-29",
+    "description": "Clocks tied to PC extras, artifact awakening, and persistent consequences created mid-session.",
+    "last_updated": "2026-01-29 16:30:00",
     "clocks": {
-      "spear_of_bitter_mercy_awakening": {
-        "name": "Spear of Bitter Mercy — Awakening",
-        "segments": 6,
-        "filled": 0,
-        "current_level": 1,
-        "level_name": "The New Moon (New Cycle)",
-        "tick_guidance": [
-          "+2: Take Out a named/elite foe deemed worthy prey",
-          "+1–2: Complete a hunt objective aligned with the Code of Hircine",
-          "+1: Choose restraint over slaughter when prey is unworthy"
+      "khagar_bitter_mercy_awakening": {
+        "name": "Bitter Mercy Awakening",
+        "description": "Tracks the Spear of Bitter Mercy waking up as Khagar proves worth through hunts and consequences inflicted.",
+        "current_progress": 1,
+        "total_segments": 6,
+        "advancement_triggers": [
+          "Inflict a consequence with Bitter Mercy (+1)",
+          "Take out a worthy named foe in a hunt context (+1)",
+          "Accept a compel driven by Hircine / the Spear (+1)",
+          "Spare or 'end mercifully' a worthy prey via concession (+1)"
         ],
-        "level_up_rule": "At 6/6, advance to Level 2 (Waxing Crescent) and reset filled to 0."
+        "unlocks": {
+          "2": "Level 2: Add once-per-scene 'Huntsman's Sting' (declare truth about prey's weakness if you have their scent/trace).",
+          "4": "Level 3: Bitter Mercy aspect begins with +1 free invoke at scene start when you declare a hunt.",
+          "6": "Level 4: Weapon rating increases by +1 in hunts OR upgrade Bitter Mercy to Moderate Consequence trigger (choose one)."
+        }
       },
-      "werebear_mastery": {
-        "name": "Blood of the Werebear — Mastery",
-        "segments": 6,
-        "filled": 0,
-        "tick_guidance": [
-          "+1: Transform and maintain control under pressure",
-          "+1: Reject an unworthy hunt despite advantage",
-          "+2: Survive a scene where silver/fire threatens the beast"
+
+      "legate_rikke_sanies_lupinus_incubation": {
+        "name": "Rikke — Sanies Lupinus Incubation",
+        "description": "Tracks infection progression after Khagar's bite to Rikke's hand during her concession escape.",
+        "current_progress": 1,
+        "total_segments": 4,
+        "story_hooks": [
+          "1/4: Fever dreams + wound won't heal cleanly; paranoia spikes.",
+          "2/4: Heightened senses + aggression; secrecy increases; investigates 'what bit me.'",
+          "3/4: First partial shift under stress; Thalmor attention risk rises sharply.",
+          "4/4: Full crisis: Rikke must choose suppression, cure-hunt, or embrace (GM fork)."
+        ]
+      },
+
+      "thalmor_scent_scry_escalation": {
+        "name": "Thalmor — Scent-Scry Escalation",
+        "description": "Daedric artifact pulses + predator rites create 'anomalies' that can be triangulated by Thalmor diviners over time.",
+        "current_progress": 1,
+        "total_segments": 6,
+        "advancement_triggers": [
+          "Use Bitter Mercy in a high-profile scene (+1)",
+          "Public beast-form incident (+2)",
+          "Named Imperial survives and reports 'the monster' (+1)",
+          "Thalmor agent witnesses a hunt rite (+2)"
         ],
-        "payoff": "At 6/6, unlock one refinement (chosen later): longer duration, better control, or a new beast-form stunt."
+        "setback_triggers": [
+          "Cover tracks / frame others successfully (-1)",
+          "Kill or misdirect a Thalmor informant (-1 to -2)"
+        ],
+        "completion_effect": "A Thalmor operative cell is dispatched with a tailored counter-plan (silver, fire, propaganda)."
       }
     }
   }
