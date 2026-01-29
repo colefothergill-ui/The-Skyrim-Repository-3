@@ -35,13 +35,28 @@ def whiterun_location_triggers(loc, campaign_state):
         events.append("You ascend to the Cloud District. Dragonsreach looms above, its ancient Nordic architecture a testament to Whiterun's storied past.")
     
     # General Whiterun entrance
-    elif loc_lower.startswith("whiterun") or "whiterun" in loc_lower:
+    elif loc_lower.startswith("whiterun"):
         events.append("The gates of Whiterun stand before you. Guards watch from the walls as merchants and travelers pass through the ancient stone gateway.")
     
     # Companion commentary (placeholder logic for Whiterun-based companions)
     active_companions = campaign_state.get("companions", {}).get("active_companions", [])
     # If Lydia (Housecarl of Whiterun) is in the party and we're in Whiterun, she may comment on being home.
-    if any(companion for companion in active_companions if str(companion).lower().startswith("lydia")) and loc_lower.startswith("whiterun"):
+    lydia_present = False
+    for companion in active_companions:
+        # Handle both string companions and dictionary companions
+        if isinstance(companion, dict):
+            companion_name = companion.get("name", "").lower()
+            companion_id = companion.get("id", "").lower()
+            if companion_name.startswith("lydia") or companion_id.startswith("lydia"):
+                lydia_present = True
+                break
+        else:
+            # Handle string companions
+            if str(companion).lower().startswith("lydia"):
+                lydia_present = True
+                break
+    
+    if lydia_present and loc_lower.startswith("whiterun"):
         events.append('Lydia smiles fondly as she looks around. "It\'s good to be back in Whiterun, my Thane," she says softly.')
     # (Additional companion triggers can be added similarly for other Whiterun natives, e.g., if Aela is a follower, etc.)
     

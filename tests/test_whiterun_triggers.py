@@ -236,9 +236,11 @@ def test_complex_companion_objects():
     
     events = whiterun_location_triggers("whiterun", campaign_state)
     
-    # The function converts companion to string, so it should work with dict objects too
-    # when the string representation starts with the companion info
-    print(f"✓ Function handles complex companion objects (events: {len(events)})")
+    # The function should properly detect Lydia from dictionary companions
+    assert len(events) > 0, "Expected events when Lydia dict is present"
+    lydia_event = [e for e in events if "Lydia" in e and "Thane" in e]
+    assert len(lydia_event) > 0, "Expected Lydia commentary with dictionary companion"
+    print(f"✓ Function handles complex companion objects correctly")
 
 
 def run_all_tests():

@@ -179,7 +179,7 @@ for event in events:
 
 ## Companion Data Structure
 
-The system expects companions in one of two formats:
+The system supports companions in two formats:
 
 ### Simple Format (Strings)
 ```python
@@ -189,6 +189,8 @@ campaign_state = {
     }
 }
 ```
+
+In this format, companion names are checked directly against the string.
 
 ### Complex Format (Objects)
 ```python
@@ -210,4 +212,4 @@ campaign_state = {
 }
 ```
 
-Both formats are supported through the `str()` conversion in the companion check.
+In this format, the function checks both the `name` and `id` fields of the companion dictionary. Both formats are fully supported and will correctly trigger companion commentary.
