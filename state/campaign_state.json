@@ -75,18 +75,7 @@
     }
   ],
   "companions": {
-    "active_companions": [
-      {
-        "name": "Hadvar",
-        "npc_id": "npc_stat_hadvar",
-        "loyalty": 75
-      },
-      {
-        "name": "Ralof",
-        "npc_id": "npc_stat_ralof",
-        "loyalty": 25
-      }
-    ],
+    "active_companions": [],
     "available_companions": [],
     "dismissed_companions": [],
     "companion_relationships": {},
