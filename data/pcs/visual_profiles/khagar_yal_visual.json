@@ -1,0 +1,19 @@
+{
+  "pc_id": "pc_khagar_yal",
+  "portrait": {
+    "path": "docs/assets/pcs/khagar_yal.jpg",
+    "credit": "Player-provided art"
+  },
+  "trigger_outputs": {
+    "First Impression": "short",
+    "Zone-In": "detailed",
+    "Combat": "combat",
+    "Hircine": "hircine"
+  },
+  "appearance": {
+    "short": "Khagar Yal is a towering Orsimer war-chief with long dark hair tied back from a brutal, noble face—prominent tusks, scar-hardened features, and wolf-gold eyes that feel like they're already measuring your weight as prey. Fur-trimmed plate and Stormcloak-blue cloth mark him as both warrior and omen. A long spear rests in his grip like a judge's sentence.",
+    "detailed": "Broad-shouldered and built like a siege engine, Khagar Yal carries himself with the calm of a predator that doesn't need to hurry. His long black hair is pulled back, exposing a rugged, dignified Orsimer visage—tusks bared beneath a stern mouth, cheekbones cut sharp, and golden-yellow eyes that glint with something not entirely mortal. Heavy, rune-etched plate is layered with fur at the shoulders and hem, Stormcloak-blue cloth hanging from his waist like a banner claimed in blood. In his hands: a long spear of pale metal and cold-blue edge-light—too refined to be mere smithcraft, too hungry to be only steel.",
+    "combat": "In motion, Khagar fights like a closing trap—spearpoint herding space, boots biting snow and stone, armor fur rippling with each breath. His eyes burn wolf-gold under the aurora, and every feint looks like the beginning of an execution. When he smiles, it's never joy—only certainty.",
+    "hircine": "Near moonlight, the air around Khagar feels tighter, like the world is holding its breath. The spear's glow deepens to a cold-blue hum, and his gaze shifts—less man, more hunt. You get the sense the difference between 'ally' and 'prey' is a line he can redraw whenever the Huntsman whispers."
+  }
+}

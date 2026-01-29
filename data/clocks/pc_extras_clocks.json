@@ -1,0 +1,32 @@
+{
+  "pc_extras_clocks": {
+    "description": "PC-bound progression clocks for Khagar Yal (Werebear mastery + Spear awakening).",
+    "last_updated": "2026-01-29",
+    "clocks": {
+      "spear_of_bitter_mercy_awakening": {
+        "name": "Spear of Bitter Mercy — Awakening",
+        "segments": 6,
+        "filled": 0,
+        "current_level": 1,
+        "level_name": "The New Moon (New Cycle)",
+        "tick_guidance": [
+          "+2: Take Out a named/elite foe deemed worthy prey",
+          "+1–2: Complete a hunt objective aligned with the Code of Hircine",
+          "+1: Choose restraint over slaughter when prey is unworthy"
+        ],
+        "level_up_rule": "At 6/6, advance to Level 2 (Waxing Crescent) and reset filled to 0."
+      },
+      "werebear_mastery": {
+        "name": "Blood of the Werebear — Mastery",
+        "segments": 6,
+        "filled": 0,
+        "tick_guidance": [
+          "+1: Transform and maintain control under pressure",
+          "+1: Reject an unworthy hunt despite advantage",
+          "+2: Survive a scene where silver/fire threatens the beast"
+        ],
+        "payoff": "At 6/6, unlock one refinement (chosen later): longer duration, better control, or a new beast-form stunt."
+      }
+    }
+  }
+}

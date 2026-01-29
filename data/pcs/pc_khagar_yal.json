@@ -4,6 +4,7 @@
   "player": "Cole",
   "race": "Orc",
   "standing_stone": "The Lord Stone",
+  "visual_profile_ref": "data/pcs/visual_profiles/khagar_yal_visual.json",
   "level": 1,
   "aspects": {
     "high_concept": "Crun Voshu Kala\u2019s (Heart Worthy Stronghold) Warchief - The Great Beast; Khagar Yal.",
@@ -68,12 +69,71 @@
     "Warchief\u2019s Wisdom: Because Khagar Yal has had many years leading his Clan, he has learned to have an integral sense when speaking to someone\u2019s heart and employing his insight. He can use Empathy in place of Rapport, and Once Per Scene may Create Advantage gaining a +2 bonus to the roll when discerning someone\u2019s heart. Learning one of the following deep seated truths of their character, Their Intent, Their Pain ( a personal loss ), Their Struggle. On SWS he learns two.",
     "Supernatural Regeneration: Because of Khagar Yal\u2019s Lycanthropy, his body regenerates wounds far faster than most. Allowing him to use Physique for his Defense rolls, and Once per session he may reduce up to a set number of stress equal to his Physique, or choose to reduce a Physical Consequence down by one or to none. Severe to Moderate to Mild to None."
   ],
-  "refresh": 3,
-  "fate_points": 3,
+  "refresh": 1,
+  "fate_points": 1,
   "equipment": {
-    "weapons": [],
+    "weapons": [
+      {
+        "name": "Spear of Bitter Mercy",
+        "type": "Daedric Artifact (Hircine) — Spear",
+        "awakening_level": 1,
+        "aspect": "The New Moon (New Cycle)",
+        "weapon_rating": 2,
+        "traits": [
+          "Bitter Mercy: When your spear attack forces a target to absorb harm by taking a Mild Consequence, place the situational aspect 'Bitter Mercy' on them with 1 free invoke. While it exists, your spear attacks vs that target gain Weapon:1. Ends when the target is Taken Out/Concedes or the Mild Consequence clears."
+        ],
+        "notes": "Dormant. Awakens via worthy prey and Code-of-Hircine-aligned hunts."
+      }
+    ],
     "armor": [],
     "items": []
+  },
+  "extras": {
+    "lycanthropy_werebear": {
+      "type": "Extra",
+      "cost_refresh": 1,
+      "extra_aspect": "Marked by Hircine — Blood of the Werebear",
+      "transformation": {
+        "free_uses_per_session": 1,
+        "additional_use_cost": "1 Fate Point",
+        "duration": "One scene",
+        "benefits": [
+          "In werebear form: unarmed attacks are Weapon:2",
+          "In werebear form: Armor:1 vs physical attacks",
+          "May Overcome with Physique when brute force is valid"
+        ],
+        "limits": [
+          "Cannot use weapons (including Spear of Bitter Mercy) or fine tools while transformed",
+          "Cannot use Crafts while transformed; communication is primal/intimidating"
+        ],
+        "vulnerabilities": [
+          "Silver ignores Armor:1 and disables regeneration for 2 exchanges",
+          "Fire disables regeneration for 2 exchanges"
+        ],
+        "control_hook": "When you take a Consequence in werebear form, GM may compel 'The Beast Snaps the Leash' (lose precision for 1 exchange: must Attack or smash an obstacle). Refuse by paying 1 Fate Point or accept a Boost against you like 'Blood-Frenzy Echo'."
+      }
+    },
+    "daedric_artifact_spear_of_bitter_mercy": {
+      "type": "Extra",
+      "cost_refresh": 1,
+      "awakening": {
+        "current_level": 1,
+        "level_name": "The New Moon (New Cycle)",
+        "progress_clock_ref": "data/clocks/pc_extras_clocks.json#/pc_extras_clocks/clocks/spear_of_bitter_mercy_awakening"
+      },
+      "stunts": [
+        "Pack Tactics (Spear): Once per scene, if Khagar and at least one ally/companion are in the same zone, he may Create Advantage with Crafts at +2, choosing: 'Flanked by the Spear', 'Coordinated Strike', or 'Boxed-In'. On success: 2 free invokes (party can use). On success with style: 3 free invokes, and each ally in the zone gains a Boost 'In Sync' (one-time +2 on their next Attack)."
+      ]
+    }
+  },
+  "refresh_spend_log": {
+    "base_refresh": 3,
+    "spent_refresh": 2,
+    "remaining_refresh": 1,
+    "spent_on": [
+      "Extra: Lycanthropy (Werebear Transformation)",
+      "Extra: Daedric Artifact (Spear of Bitter Mercy, Awakening Level 1)"
+    ]
   },
   "gold": 100,
   "experience": 0,
