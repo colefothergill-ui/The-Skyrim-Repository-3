@@ -629,9 +629,16 @@ NPC attitudes:
         print("COMPANION LOYALTY REVIEW")
         print("="*70)
         for comp in active_comps:
-            name = comp.get("name")
+            name = comp.get("name", "Unknown")
             loyalty = comp.get("loyalty", 0)
             npc_id = comp.get("npc_id")
+            
+            # Skip companions with missing npc_id
+            if not npc_id:
+                print(f"\n{name} – Loyalty {loyalty}/100.")
+                print("⚠️  Warning: No NPC ID found for this companion. Cannot load detailed information.")
+                continue
+            
             # Load companion's full stat sheet for thresholds and quests
             # Try both npc_id.json and search by ID in files
             stat = self.load_json(self.npc_stat_sheets_dir / f"{npc_id}.json")
@@ -661,11 +668,17 @@ NPC attitudes:
                     threshold_desc = thresholds["20-39"]
                 elif "0-19" in thresholds:
                     threshold_desc = thresholds["0-19"]
+            
             # Print status
             status_line = f"{name} – Loyalty {loyalty}/100."
             if threshold_desc:
                 status_line += f" Status: {threshold_desc}"
             print("\n" + status_line)
+            
+            # Warn if stat sheet not found
+            if not stat:
+                print(f"⚠️  Warning: Stat sheet not found for {name} ({npc_id}). Detailed information unavailable.")
+            
             # Warnings or events based on loyalty
             if loyalty <= 20:
                 print("⚠️  Low loyalty! This companion may refuse orders or leave the party soon.")
