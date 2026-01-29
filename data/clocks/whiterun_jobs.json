@@ -24,7 +24,7 @@
         "gate": {
           "type": "conditional_progress_cap",
           "cap_until_condition_met": 3,
-          "condition": "state.branching_decisions.civil_war_entry_contact == 'ralof' || state.civil_war_state.player_alliance == 'stormcloak'",
+          "condition": "state.branching_decisions.civil_war_entry_contact == 'Ralof' || state.civil_war_state.player_alliance == 'stormcloak'",
           "note": "Olfrid will not fully open the Whiterun door until you prove your alignment during the Battle of Whiterun\u2014specifically by fighting alongside Ralof (or formally allying with the Stormcloaks)."
         }
       },
