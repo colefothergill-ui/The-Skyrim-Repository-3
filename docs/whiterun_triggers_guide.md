@@ -96,13 +96,15 @@ To add commentary for additional companions, follow the pattern established for 
 # In whiterun_triggers.py, after the Lydia check:
 
 # Check for Aela (Companion member from Jorrvaskr)
-if any(companion for companion in active_companions if str(companion).lower().startswith("aela")) and loc_lower.startswith("whiterun"):
+if _is_companion_present(active_companions, "aela") and loc_lower.startswith("whiterun"):
     events.append('Aela stretches and grins. "Good to be back at Jorrvaskr. The road is fine, but nothing beats a warm meal and mead with the Companions."')
 
 # Check for Farkas (Another Companion member)
-if any(companion for companion in active_companions if str(companion).lower().startswith("farkas")) and loc_lower.startswith("whiterun"):
+if _is_companion_present(active_companions, "farkas") and loc_lower.startswith("whiterun"):
     events.append('Farkas looks around with a contented smile. "Home. Good to be home."')
 ```
+
+Note: The `_is_companion_present()` helper function handles both string and dictionary companion formats automatically.
 
 ### Adding New Locations
 
@@ -120,7 +122,7 @@ For more specific companion reactions:
 
 ```python
 # Lydia commenting specifically in the Cloud District
-if "cloud" in loc_lower and any(companion for companion in active_companions if str(companion).lower().startswith("lydia")):
+if "cloud" in loc_lower and _is_companion_present(active_companions, "lydia"):
     events.append('Lydia looks up at Dragonsreach. "I served here before becoming your Housecarl. Many memories in these halls."')
 ```
 
