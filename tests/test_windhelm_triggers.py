@@ -168,7 +168,7 @@ def test_case_insensitive_location():
 
 
 def test_palace_location_variants():
-    """Test that Palace location triggers work with variants"""
+    """Test that Palace location triggers work with variants including comma format"""
     print("\n=== Testing Palace Location Variants ===")
     
     campaign_state = {}
@@ -178,9 +178,33 @@ def test_palace_location_variants():
     events2 = windhelm_location_triggers("Palace of the Kings", campaign_state)
     campaign_state["stormcloak_recruit_offer_seen"] = False
     events3 = windhelm_location_triggers("PALACE OF THE KINGS", campaign_state)
+    campaign_state["stormcloak_recruit_offer_seen"] = False
+    # Test actual format used in data files
+    events4 = windhelm_location_triggers("Palace of the Kings, Windhelm", campaign_state)
+    campaign_state["stormcloak_recruit_offer_seen"] = False
+    events5 = windhelm_location_triggers("Windhelm, Palace of the Kings", campaign_state)
     
-    assert all(len(events) > 0 for events in [events1, events2, events3]), "Expected recruitment for all Palace variants"
-    print(f"✓ Palace location variants work")
+    assert all(len(events) > 0 for events in [events1, events2, events3, events4, events5]), "Expected recruitment for all Palace variants"
+    print(f"✓ Palace location variants work (including comma formats)")
+
+
+def test_palace_does_not_trigger_gate_messages():
+    """Test that entering Palace with comma format doesn't trigger gate welcome/warning"""
+    print("\n=== Testing Palace Doesn't Trigger Gate Messages ===")
+    
+    # Test Stormcloak member entering Palace shouldn't get gate welcome
+    campaign_state = {"stormcloaks_joined": True}
+    events = windhelm_location_triggers("Palace of the Kings, Windhelm", campaign_state)
+    assert not any("gates of Windhelm" in event for event in events), "Palace entry should not trigger gate welcome"
+    assert not campaign_state.get("windhelm_stormcloak_welcome_done"), "Gate welcome flag should not be set at Palace"
+    
+    # Test Imperial member entering Palace shouldn't get gate warning
+    campaign_state = {"imperial_legion_joined": True}
+    events = windhelm_location_triggers("Windhelm, Palace of the Kings", campaign_state)
+    assert not any("Mind yourself, Imperial" in event for event in events), "Palace entry should not trigger gate warning"
+    assert not campaign_state.get("windhelm_imperial_warning_done"), "Gate warning flag should not be set at Palace"
+    
+    print(f"✓ Palace entry doesn't trigger gate messages")
 
 
 def run_all_tests():
@@ -200,7 +224,8 @@ def run_all_tests():
         test_no_recruitment_if_imperial,
         test_neutral_player,
         test_case_insensitive_location,
-        test_palace_location_variants
+        test_palace_location_variants,
+        test_palace_does_not_trigger_gate_messages
     ]
     
     passed = 0

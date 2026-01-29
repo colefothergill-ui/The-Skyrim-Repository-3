@@ -2,7 +2,7 @@
   "name": "Brunwulf Free-Winter",
   "id": "npc_stat_brunwulf_freewinter",
   "type": "Nord Veteran and Windhelm Citizen",
-  "category": "Ally NPC",
+  "category": "Friendly NPC",
   "location": "Windhelm (Palace or City)",
   "faction": "Windhelm (Imperial Sympathizer)",
   "role": "Former Legionnaire, Advocate for Dunmer and the disenfranchised",
