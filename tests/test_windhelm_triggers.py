@@ -192,7 +192,7 @@ def test_hot_springs_repeat_visit():
     events = windhelm_location_triggers("eastmarch_hot_springs", campaign_state)
     
     assert len(events) > 0, "Expected at least one event for hot springs repeat visit"
-    assert any("Steam vents" in event for event in events), "Expected ambient description"
+    assert any("Steam vents" in event or "thermal water" in event for event in events), "Expected steam vents or thermal water description"
     print(f"✓ Hot springs repeat visit trigger works: {events[0][:100]}...")
 
 

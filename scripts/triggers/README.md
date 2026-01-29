@@ -65,7 +65,7 @@ Additional trigger modules can be added for other holds and locations:
 - `dawnstar_triggers.py` - Dawnstar and the Pale
 - `falkreath_triggers.py` - Falkreath Hold
 - `morthal_triggers.py` - Morthal and Hjaalmarch
-- `wilderness_triggers.py` - Roads, forests, and wilderness areas
+- `wilderness_triggers.py` - Roads, forests, and wilderness areas.
 
 ## Testing
 
