@@ -7,28 +7,7 @@ It provides descriptive events for entering key areas of Riften (districts, temp
 It also includes triggers to initiate Thieves Guild recruitment when appropriate.
 """
 
-def _is_companion_present(active_companions, companion_name):
-    """
-    Check if a specific companion is present in the active companions list.
-    
-    Args:
-        active_companions: List of active companions (strings or dicts with 'name' or 'id')
-        companion_name: Name (or id) of companion to check for (case-insensitive)
-    
-    Returns:
-        bool: True if the companion is present, False otherwise
-    """
-    comp_check = companion_name.lower()
-    for comp in active_companions:
-        if isinstance(comp, dict):
-            name = str(comp.get("name", "")).lower()
-            cid = str(comp.get("npc_id", comp.get("id", ""))).lower()
-            if name.startswith(comp_check) or cid.startswith(comp_check):
-                return True
-        else:
-            if str(comp).lower().startswith(comp_check):
-                return True
-    return False
+from .trigger_utils import is_companion_present
 
 def rift_location_triggers(loc, campaign_state):
     """
@@ -76,7 +55,7 @@ def rift_location_triggers(loc, campaign_state):
 
     # Companion commentary for Riften-specific companions
     active_companions = campaign_state.get("companions", {}).get("active_companions", [])
-    if _is_companion_present(active_companions, "iona") and loc_lower.startswith("riften"):
+    if is_companion_present(active_companions, "iona") and loc_lower.startswith("riften"):
         events.append('Iona adjusts her stance and rests a hand on her sword hilt as she surveys Riften. "As your housecarl, my Thane, I\'ll be keeping a close eye. Riften\'s streets can be as treacherous as its wilderness," she says, her voice low but resolute.')
     # (Additional companion triggers can be added for other Riften natives, e.g., Mjoll the Lioness if she is a follower, commenting on the corruption she despises.)
 
