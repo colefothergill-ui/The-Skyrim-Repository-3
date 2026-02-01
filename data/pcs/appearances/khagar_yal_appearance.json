@@ -1,0 +1,47 @@
+{
+  "pc_id": "pc_khagar_yal",
+  "name": "Khagar Yal",
+  "race": "Orsimer",
+  "recognition_tags": [
+    "towering_orsimer",
+    "snow_sabre_cat_headdress",
+    "stormcloak_blue_cloth",
+    "fur_mantle",
+    "tusked_warchief",
+    "rune_lit_spear",
+    "cold_blue_aura",
+    "antler_crossguard",
+    "daedric_weapon_vibe"
+  ],
+  "visual_profile": {
+    "silhouette": "A hulking orc war-chief wrapped in a snowy sabre cat pelt, crowned by the cat's head like a trophy-helm.",
+    "headgear": "Snowy sabre cat pelt headdress (cat skull/head shape over brow, white fur with dark spots).",
+    "face": "Brutal-noble Orsimer features, prominent tusks, stern mouth, predatory gaze.",
+    "armor": "Heavy Nordic plate with fur trim; Stormcloak-blue cloth panels and knotwork detailing.",
+    "weapon": "A long rune-lit spear with a cold-blue/teal glow, antler-like crossguard, and small charm trinkets hanging from the grip.",
+    "aura": "Quietly mythic; weapon-light feels wrong to ignore."
+  },
+  "first_impression_lines": {
+    "neutral": [
+      "Your eyes catch on the sabre-cat pelt first—then the tusks—then the spear glowing like winter lightning.",
+      "An orc in Nordic plate and Stormcloak-blue cloth, wearing a snow sabre cat like a crown. Nobody forgets that silhouette.",
+      "He looks like a war-story that learned how to walk: fur, steel, and a spear that hums with cold light.",
+      "The spear's runes blink faintly. It's the kind of weapon that makes people speak softer without knowing why.",
+      "A towering Orsimer, draped in snow-pelt and battle-iron—calm as a predator that already chose the outcome."
+    ],
+    "positive": [
+      "By Shor… that's a *warchief*. If he's with us, the gods are leaning our way today.",
+      "Stormcloak-blue on his cloth, a sabre-cat on his shoulders, and a spear like a winter star—good. We need legends.",
+      "He carries himself like a shield-wall made flesh. You feel safer… and also slightly judged.",
+      "That spear isn't just steel. If he says the breach holds, the breach holds.",
+      "The sabre-cat helm is a trophy, sure—but it's also a promise: the hunt is already decided."
+    ],
+    "negative": [
+      "That spear is wrong. Too bright. Too hungry. Keep your distance—nothing good follows a weapon like that.",
+      "An orc wearing a sabre cat's head like a crown… and carrying glowing runes? That's not a soldier. That's an omen.",
+      "He looks like the last thing you see right before your prayers stop working.",
+      "Stormcloak-blue cloth or not, the Daedra stink clings to that weapon-light. I want no part of it.",
+      "That gaze isn't 'hello.' It's 'measuring.' Like you're deciding whether you're prey without voting on it."
+    ]
+  }
+}
