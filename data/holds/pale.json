@@ -49,7 +49,7 @@
     },
     {
       "name": "Quicksilver & Iron-Breaker Mines",
-      "description": "Dawnstar's twin mines sit on opposite ends of town. **Quicksilver Mine**, with its silvery veins, lies to the west, while **Iron-Breaker Mine** (rich in iron ore) sits to the east. These mines provide most locals with work and the hold with trade metal. A friendly rivalry (and occasional disputes) exists between the two mining crews and their owners. The constant clink of pickaxes echoes in the frosty air, and caravans of ore regularly depart for smelters. Rumor has it that one mine's owner once hired the Dark Brotherhood to solve a business rivalry – a chilling reminder of how high the stakes are in this hard land."
+      "description": "Dawnstar's twin mines sit on opposite ends of town. Quicksilver Mine, with its silvery veins, lies to the west, while Iron-Breaker Mine (rich in iron ore) sits to the east. These mines provide most locals with work and the hold with trade metal. A friendly rivalry (and occasional disputes) exists between the two mining crews and their owners. The constant clink of pickaxes echoes in the frosty air, and caravans of ore regularly depart for smelters. Rumor has it that one mine's owner once hired the Dark Brotherhood to solve a business rivalry – a chilling reminder of how high the stakes are in this hard land."
     }
   ],
   "local_quest_hooks": [
@@ -63,13 +63,13 @@
       "id": "pale_giant_slayer",
       "quest": "Jarl's Bounty: Giant Problem",
       "giver": "Jarl Skald the Elder",
-      "description": "Jarl Skald, proud and prickly, occasionally offers a bounty on a giant threatening the hold. Once the nightmare crisis is resolved and the party has proven themselves, Skald will gruffly assign them to **Kill a Giant** that has been terrorizing travelers (in a location like Blizzard Rest or another giant camp in The Pale). Completing this task could earn the Jarl's favor; Skald hints that successful heroes might even be named Thane of the Pale as a reward. (If Brina Merilis is Jarl, she offers a similar bounty to prove one's loyalty to the new regime.)"
+      "description": "Jarl Skald, proud and prickly, occasionally offers a bounty on a giant threatening the hold. Once the nightmare crisis is resolved and the party has proven themselves, Skald will gruffly assign them to kill a giant that has been terrorizing travelers (in a location like Blizzard Rest or another giant camp in The Pale). Completing this task could earn the Jarl's favor; Skald hints that successful heroes might even be named Thane of the Pale as a reward. (If Brina Merilis is Jarl, she offers a similar bounty to prove one's loyalty to the new regime.)"
     },
     {
       "id": "pale_void_salts",
       "quest": "Salty Sea-Dogs (Fine-Cut Void Salts)",
       "giver": "Captain Wayfinder",
-      "description": "Captain Wayfinder, a young and inexperienced Nord ship captain docked at Dawnstar's harbor, is seeking an adventurer's help with a special errand. He inherited the ship *Sea Squall* and hopes to improve its performance. Wayfinder asks the party to retrieve **Fine-Cut Void Salts** – a rare refined alchemical substance – to coat his ship's hull. The quest sends the party to find these void salts (location varies). Upon delivery, Wayfinder rewards them with gold. It's a simple fetch quest but gives insight into Dawnstar's maritime life and Wayfinder's aspirations."
+      "description": "Captain Wayfinder, a young and inexperienced Nord ship captain docked at Dawnstar's harbor, is seeking an adventurer's help with a special errand. He inherited the ship *Sea Squall* and hopes to improve its performance. Wayfinder asks the party to retrieve Fine-Cut Void Salts – a rare refined alchemical substance – to coat his ship's hull. The quest sends the party to find these void salts (location varies). Upon delivery, Wayfinder rewards them with gold. It's a simple fetch quest but gives insight into Dawnstar's maritime life and Wayfinder's aspirations."
     }
   ]
 }
