@@ -33,13 +33,22 @@ def hjaalmarch_location_triggers(loc, campaign_state):
         events.append("At the edge of Morthal, the village gives way to the open marsh. Wooden boardwalks slick with moss pass by a few lonely houses. One is Falion's, the resident mage, set apart from the others and faintly aglow with candlelight. The fog here is thick; reeds rustle with unseen movement. It's hard to tell if the uneasy feeling creeping up your spine is from the chill in the air or something lurking in the bog.")
     
     # Quest hook: Laid to Rest (vampire investigation in Morthal)
-    if ("burned" in loc_lower or "graveyard" in loc_lower) and "morthal" in loc_lower:
-        if not is_quest_active(campaign_state, "laid_to_rest"):
+    if "morthal" in loc_lower:
+        is_burned = "burned" in loc_lower
+        is_graveyard = "graveyard" in loc_lower
+        if (is_burned or is_graveyard) and not is_quest_active(campaign_state, "laid_to_rest"):
             if is_night_time(campaign_state):
-                events.append("Among the charred remains of the burned house, a pale spectral figure of a little girl appears for just a moment. Her whisper carries on the fog: 'Play with me...' before she fades into the darkness. The air grows unnaturally cold.")
-                events.append("Suddenly, a woman's anguished cry shatters the silence. From behind a crooked tombstone rushes a frenzied figure—it's Laelette, a missing Morthal resident, now a feral vampire thrall! Her eyes glow with bloodlust as she attacks, defending some terrible secret.")
+                if is_burned:
+                    events.append("Among the charred remains of the burned house, a pale spectral figure of a little girl appears for just a moment. Her whisper carries on the fog: 'Play with me...' before she fades into the darkness. The air grows unnaturally cold.")
+                    events.append("Suddenly, a woman's anguished cry shatters the silence. From the shadows near the ruined house rushes a frenzied figure—it's Laelette, a missing Morthal resident, now a feral vampire thrall! Her eyes glow with bloodlust as she attacks, defending some terrible secret.")
+                elif is_graveyard:
+                    events.append("In Morthal's small graveyard, mist coils around crooked tombstones and a few leaning wooden markers. A pale spectral figure of a little girl appears for just a moment atop a fresh mound. Her whisper carries on the fog: 'Play with me...' before she fades into the darkness. The air grows unnaturally cold.")
+                    events.append("Suddenly, a woman's anguished cry shatters the silence. From behind a crooked tombstone rushes a frenzied figure—it's Laelette, a missing Morthal resident, now a feral vampire thrall! Her eyes glow with bloodlust as she attacks, defending some terrible secret.")
             else:
-                events.append("During the day, villagers give the blackened ruins of Hroggar's old house a wide berth. Two women gossip quietly as they hurry past: 'First the fire, now Hroggar shacks up with Alva? I tell you, something's not right.' 'And poor Helgi... some nights I swear I hear a child laughing near those ruins.' They cross themselves and quicken their pace.")
+                if is_burned:
+                    events.append("During the day, villagers give the blackened ruins of Hroggar's old house a wide berth. Two women gossip quietly as they hurry past: 'First the fire, now Hroggar shacks up with Alva? I tell you, something's not right.' 'And poor Helgi... some nights I swear I hear a child laughing near those ruins.' They cross themselves and quicken their pace.")
+                elif is_graveyard:
+                    events.append("During the day, Morthal's graveyard sits quiet at the edge of the marsh. A thin, stooped caretaker tends to a few fresh graves while villagers hurry past on the road, careful not to linger. You overhear a hushed remark: 'Poor Helgi... they say sometimes you can still hear a child laughing among those stones at night.' The speaker quickly changes the subject and walks on.")
     elif "movarth" in loc_lower:
         if is_quest_active(campaign_state, "laid_to_rest"):
             events.append("Torches in hand, you descend into Movarth's Lair. The cave is deathly quiet—too quiet. The stench of dried blood hits you as your light reveals desiccated skeevers and an overturned wooden cart. From deeper within, a silky male voice echoes off the tunnel walls: 'Ahh... fresh blood.' The master vampire is aware of your intrusion, and his brood no doubt lies in ambush.")
@@ -60,13 +69,13 @@ def hjaalmarch_location_triggers(loc, campaign_state):
     
     # Civil War impact triggers (Jarl change if hold switches sides)
     if "morthal" in loc_lower:
-        # Imperial reconquest of Hjaalmarch (Idgrod restored) - check this first
-        if campaign_state.get("civil_war_phase") == "imperial_victory" and campaign_state.get("jarl_hjaalmarch") != "idgrod" and not campaign_state.get("morthal_imperial_restored"):
-            events.append("Morthal has quietly returned to Imperial control. Jarl Idgrod Ravencrone sits once again in Highmoon Hall, her gaze as distant as ever, but there's a slight relief among the Imperial loyalists in town. A few more Legion guards now stand at the sparse wooden barricades, their red dragon sigils barely visible in the fog. Life in Morthal continues much as it always has—slow and cautious—but under the surface, people gossip about the futility of these power swaps.")
-            campaign_state["morthal_imperial_restored"] = True
-        # Stormcloak takeover of Hjaalmarch
-        elif campaign_state.get("jarl_hjaalmarch") == "sorli" and not campaign_state.get("morthal_stormcloak_banner"):
+        # Stormcloak takeover of Hjaalmarch - check this first
+        if campaign_state.get("jarl_hjaalmarch") == "sorli" and not campaign_state.get("morthal_stormcloak_banner"):
             events.append("The atmosphere in Morthal has shifted subtly after the Stormcloaks' takeover. The blue bear banners of Windhelm now hang limp in the mist. Jarl Sorli the Builder, a commoner-turned-Jarl, governs with a practical hand from Highmoon Hall. Many townsfolk carry on as before, indifferent to the new regime, but there's a sense of wary optimism among some that the hold is now free of Imperial influence.")
             campaign_state["morthal_stormcloak_banner"] = True
+        # Imperial reconquest of Hjaalmarch (Idgrod restored)
+        elif campaign_state.get("civil_war_phase") == "imperial_victory" and campaign_state.get("jarl_hjaalmarch") != "idgrod" and not campaign_state.get("morthal_imperial_restored"):
+            events.append("Morthal has quietly returned to Imperial control. Jarl Idgrod Ravencrone sits once again in Highmoon Hall, her gaze as distant as ever, but there's a slight relief among the Imperial loyalists in town. A few more Legion guards now stand at the sparse wooden barricades, their red dragon sigils barely visible in the fog. Life in Morthal continues much as it always has—slow and cautious—but under the surface, people gossip about the futility of these power swaps.")
+            campaign_state["morthal_imperial_restored"] = True
     
     return events

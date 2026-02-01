@@ -131,6 +131,52 @@ def test_laid_to_rest_day_burned_house():
     print(f"✓ Laid to Rest day trigger works: {len(events)} event(s)")
 
 
+def test_laid_to_rest_night_graveyard():
+    """Test Laid to Rest quest hook at night near graveyard"""
+    print("\n=== Testing Laid to Rest (Night, Graveyard) ===")
+    
+    campaign_state = {
+        "companions": {
+            "active_companions": []
+        },
+        "time_of_day": "night",
+        "quests": {
+            "active": [],
+            "completed": []
+        }
+    }
+    
+    events = hjaalmarch_location_triggers("morthal_graveyard", campaign_state)
+    
+    assert len(events) > 0, "Expected events for graveyard at night"
+    # Should trigger ghost appearance in graveyard and vampire attack
+    assert any("graveyard" in event.lower() and ("girl" in event.lower() or "mound" in event.lower()) for event in events), "Expected graveyard ghost appearance"
+    assert any("laelette" in event.lower() or "vampire" in event.lower() for event in events), "Expected vampire attack"
+    print(f"✓ Laid to Rest night graveyard trigger works: {len(events)} event(s)")
+
+
+def test_laid_to_rest_day_graveyard():
+    """Test Laid to Rest quest hook during day near graveyard"""
+    print("\n=== Testing Laid to Rest (Day, Graveyard) ===")
+    
+    campaign_state = {
+        "companions": {
+            "active_companions": []
+        },
+        "time_of_day": "day",
+        "quests": {
+            "active": [],
+            "completed": []
+        }
+    }
+    
+    events = hjaalmarch_location_triggers("morthal_graveyard", campaign_state)
+    
+    assert len(events) > 0, "Expected events for graveyard during day"
+    assert any("graveyard" in event.lower() and ("caretaker" in event.lower() or "helgi" in event.lower()) for event in events), "Expected day graveyard description"
+    print(f"✓ Laid to Rest day graveyard trigger works: {len(events)} event(s)")
+
+
 def test_movarth_lair_quest_active():
     """Test Movarth's Lair trigger when quest is active"""
     print("\n=== Testing Movarth's Lair (Quest Active) ===")
@@ -302,7 +348,8 @@ def test_imperial_restoration():
             "active_companions": []
         },
         "civil_war_phase": "imperial_victory",
-        "jarl_hjaalmarch": "sorli"  # Not Idgrod, so should trigger restoration
+        "jarl_hjaalmarch": "sorli",  # Not Idgrod, so should trigger restoration
+        "morthal_stormcloak_banner": True  # Already saw Stormcloak takeover, now seeing restoration
     }
     
     events = hjaalmarch_location_triggers("morthal", campaign_state)
@@ -400,6 +447,8 @@ def run_all_tests():
         test_general_morthal_entrance,
         test_laid_to_rest_night_burned_house,
         test_laid_to_rest_day_burned_house,
+        test_laid_to_rest_night_graveyard,
+        test_laid_to_rest_day_graveyard,
         test_movarth_lair_quest_active,
         test_movarth_lair_quest_not_active,
         test_falion_ritual_night,
