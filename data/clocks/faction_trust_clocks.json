@@ -78,7 +78,7 @@
       },
       "stormcloak_rebellion_trust": {
         "faction": "Stormcloak Rebellion",
-        "current_trust": 4,
+        "current_trust": 5,
         "max_trust": 10,
         "trust_level": "Ally",
         "advancement_triggers": {

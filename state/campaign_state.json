@@ -147,7 +147,7 @@
         "npc_id": "ralof",
         "name": "Ralof",
         "status": "active",
-        "loyalty": 65,
+        "loyalty": 70,
         "location": "Breach line (holding wedge while duel begins)",
         "recruitment_trigger": "Stormcloak recruitment",
         "faction_affinity": "stormcloaks",
