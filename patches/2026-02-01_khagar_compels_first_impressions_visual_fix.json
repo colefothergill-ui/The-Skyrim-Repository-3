@@ -7,7 +7,7 @@
       {
         "op": "replace",
         "path": "/first_impressions_block",
-        "description": "Fixed first impressions to iterate scene_npcs dict structure with buckets (friendly, hostile, enemies) and map each to appropriate disposition (friendly, hostile, neutral)."
+        "description": "Fixed first impressions to iterate scene_npcs dict structure with buckets (friendly, hostile, enemies) and map each to appropriate disposition (positive, negative, neutral) matching appearance file keys."
       }
     ],
     "scripts/pc_visual_manager.py": [
@@ -58,11 +58,11 @@
     ]
   },
   "code_changes": {
-    "story_manager.py": "Fixed scene_npcs iteration to properly handle dict structure with friendly/hostile/enemies buckets, mapping each to correct disposition for first impressions.",
+    "story_manager.py": "Fixed scene_npcs iteration to properly handle dict structure with friendly/hostile/enemies buckets, mapping each to correct disposition (positive/negative/neutral) for first impressions.",
     "pc_visual_manager.py": "Added resilient visual_profile_ref loading with fallback support for slug-only references, trying multiple candidate paths."
   },
   "rationale": {
-    "first_impressions_fix": "The original code iterated scene_npcs as if it were a list, but get_scene_npcs() returns a dict with buckets. This caused first impressions to never trigger. Fixed by iterating each bucket and mapping to appropriate disposition.",
+    "first_impressions_fix": "The original code iterated scene_npcs as if it were a list, but get_scene_npcs() returns a dict with buckets. This caused first impressions to never trigger. Fixed by iterating each bucket and mapping to appropriate disposition (friendly→positive, hostile→negative, enemies→neutral) to match appearance file keys.",
     "visual_profile_resilience": "Some PC sheets use simple slugs (e.g., 'khagar_yal_visual') while others use full paths. Added fallback logic to try multiple candidate paths for better compatibility.",
     "path_consistency": "Updated all portrait references from .jpg to .png for consistency across PC sheet, visual profile, and actual asset file."
   },

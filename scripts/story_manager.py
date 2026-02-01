@@ -518,8 +518,8 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
         if appearance_path and Path(appearance_path).exists():
             # scene_npcs is a dict of buckets -> list[dict]
             for bucket_name, bucket_disposition in (
-                ("friendly", "friendly"),
-                ("hostile", "hostile"),
+                ("friendly", "positive"),
+                ("hostile", "negative"),
                 ("enemies", "neutral"),
             ):
                 for npc in (scene_npcs.get(bucket_name, []) or []):
@@ -542,8 +542,10 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
                             npc.setdefault("gm_barks", [])
                             npc["gm_barks"].append(line)
                     except Exception as e:
+                        # Log full error for debugging, show simple message to users
+                        print(f"First impression error for {npc_id} in {bucket_name}: {e}", file=sys.stderr)
                         npc.setdefault("gm_barks", [])
-                        npc["gm_barks"].append(f"(First impression error for {npc_id} in {bucket_name}: {e})")
+                        npc["gm_barks"].append("(First impression unavailable)")
         
         # Build scene response
         scene_setup = {

@@ -69,8 +69,8 @@ def main():
         else:
             candidates.append(repo_root / "data" / "pcs" / "visual_profiles" / f"{slug}.json")
             candidates.append(repo_root / "data" / "pcs" / "visual_profiles" / f"{slug}_visual.json")
-            # Only remove 'pc_' prefix if it appears at the start of the slug.
-            # This prevents incorrect replacements in slugs like "epic_character" → "ei_character"
+            # Only remove 'pc_' when it is a leading prefix on the slug (e.g., "pc_khagar_yal" → "khagar_yal").
+            # This avoids altering slugs where "pc" appears later, such as "epic_character".
             if slug.startswith('pc_'):
                 candidates.append(repo_root / "data" / "pcs" / "visual_profiles" / f"{slug[3:]}_visual.json")
 
