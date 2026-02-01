@@ -36,7 +36,7 @@ def markarth_location_triggers(loc, campaign_state):
         events.append("The warmth of the Silver-Blood Inn envelops you as you step inside from Markarth's stone streets. A fire crackles in the hearth, and the smell of juniper berry mead mixes with roasting meat. Patrons pause to glance your way – miners, merchants, and off-duty guards. Overhead, you notice the carved emblem of a ram's head, symbol of the Reach, and quietly recall that this cozy tavern is owned by the most powerful family in the city.")
 
     # General Markarth entrance (if none of the specific districts matched, but still Markarth)
-    elif loc_lower.startswith("markarth"):
+    elif loc_lower.startswith("markarth") and not events:
         events.append("You pass through Markarth's massive stone gates, entering a city carved into the very cliffs. Waterfalls crash down alongside Dwemer aqueducts, and the chatter of miners and merchants fills the air. Above, the imposing facade of Understone Keep watches over the tiers of stone buildings. Markarth feels at once majestic and uneasy – guards in crimson armor stand vigilant, and you can't shake the sense that unseen eyes are following your steps.")
 
     # Reach Wilderness – Major location triggers
@@ -59,7 +59,7 @@ def markarth_location_triggers(loc, campaign_state):
 
     # Quest Hook: Nepos's House (Forsworn Conspiracy)
     if "nepos" in loc_lower:
-        events.append("Nepos's house is quiet and dimly lit, the fire in the hearth casting long shadows. Nepos – a frail old man with surprisingly sharp eyes – sits in a carved chair, watching you intently. The air feels thick with secrets. You notice subtle signs of wealth and reach influence here: fine silverware, a hint of rich Reach spice in the air. Something about this residence feels off, as if danger lurks just beneath the polite veneer. (You have a sense that Nepos knows far more about the recent troubles in Markarth than he lets on.)")
+        events.append("Nepos's house is quiet and dimly lit, the fire in the hearth casting long shadows. Nepos – a frail old man with surprisingly sharp eyes – sits in a carved chair, watching you intently. The air feels thick with secrets. You notice subtle signs of wealth and Reach influence here: fine silverware, a hint of rich Reach spice in the air. Something about this residence feels off, as if danger lurks just beneath the polite veneer. (You have a sense that Nepos knows far more about the recent troubles in Markarth than he lets on.)")
         # Note: This narrative foreshadows the quest "The Forsworn Conspiracy" where Nepos the Nose is more than he appears.
 
     # Quest Hook: Cidhna Mine (No One Escapes Cidhna Mine)
