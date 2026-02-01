@@ -6,7 +6,7 @@
       "imperial_military_dominance": {
         "name": "Imperial Military Dominance",
         "description": "Imperial Legion's progress toward winning the civil war through military victories",
-        "current_progress": 3,
+        "current_progress": 2,
         "total_segments": 10,
         "completion_effect": "Imperial Legion wins the civil war decisively",
         "advancement_triggers": [
@@ -24,7 +24,7 @@
       "stormcloak_rebellion_momentum": {
         "name": "Stormcloak Rebellion Momentum",
         "description": "Stormcloak forces' progress toward independence and military victory",
-        "current_progress": 4,
+        "current_progress": 5,
         "total_segments": 10,
         "completion_effect": "Stormcloaks win the civil war and Skyrim gains independence",
         "advancement_triggers": [

@@ -1,0 +1,31 @@
+{
+  "patch_id": "2026-02-01_end_session_protocol",
+  "scope": [
+    "continuity_cleanup",
+    "end_session_updates"
+  ],
+  "primary_fix": {
+    "issue": "Aldrin-era Thieves Guild / Whiterun job clocks contaminating Khagar Yal continuity",
+    "resolution": [
+      "Reset Thieves Guild trust to 0 (Uninvolved)",
+      "Reset Whiterun TG job clocks to 0 and mark inactive_for_khagar_yal"
+    ]
+  },
+  "session_summary": {
+    "title": "Battle of Whiterun — Gates & the Duel",
+    "canon_events": [
+      "Imperial chain of command shattered (horn/signaller + conducting officer neutralized)",
+      "Hadvar duel terms honored; wounded node allowed retreat",
+      "Hadvar taken out alive; fate ceded to Ralof (pending decision)"
+    ],
+    "mechanics": {
+      "fate_points_end": 1,
+      "bitter_mercy_awakening": "6/6",
+      "unlock": "Apex Predator (free stunt tied to Bitter Mercy)",
+      "battle_modifiers_added": [
+        "Chain of Command Severed (1 free invoke)",
+        "Word Kept at the Gate (1 free invoke)"
+      ]
+    }
+  }
+}
