@@ -1,12 +1,12 @@
 {
   "whiterun_jobs": {
     "description": "Track Thieves Guild operations and jobs in Whiterun",
-    "last_updated": "2026-01-29 (Session 0) \u2014 gate aligned to Stormcloak/Ralof continuity",
+    "last_updated": "2026-02-01 (Continuity Fix — Aldrin/Aldric Whiterun jobs reset for Khagar Yal)",
     "clocks": {
       "guild_foothold_whiterun": {
         "name": "Guild Foothold in Whiterun",
         "description": "Establishing a permanent Thieves Guild presence in Whiterun",
-        "current": 5,
+        "current": 0,
         "max": 5,
         "completion_effect": "Permanent Thieves Guild operations established in Whiterun with local fence and safe house access",
         "advancement_triggers": [
@@ -25,13 +25,13 @@
           "type": "conditional_progress_cap",
           "cap_until_condition_met": 3,
           "condition": "state.branching_decisions.civil_war_entry_contact == 'Ralof' || state.civil_war_state.player_alliance == 'stormcloak'",
-          "note": "Olfrid will not fully open the Whiterun door until you prove your alignment during the Battle of Whiterun\u2014specifically by fighting alongside Ralof (or formally allying with the Stormcloaks)."
+          "note": "Olfrid will not fully open the Whiterun door until you prove your alignment during the Battle of Whiterun—specifically by fighting alongside Ralof (or formally allying with the Stormcloaks)."
         }
       },
       "battleborn_strongbox": {
         "name": "Battle-Born Strongbox Job",
         "description": "Retrieve the iron-banded strongbox from Battle-Born Manor for Olfrid",
-        "current": 3,
+        "current": 0,
         "max": 3,
         "completion_effect": "Job completed, payment received (250 gold + intel), Guild reputation with Whiterun contacts increased",
         "phases": [
