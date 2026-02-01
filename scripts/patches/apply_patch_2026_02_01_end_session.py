@@ -1,6 +1,5 @@
 import json
 from pathlib import Path
-from datetime import datetime
 
 REPO = Path(__file__).resolve().parents[2]  # repo root
 STAMP = "2026-02-01 (Session End Protocol)"
@@ -35,11 +34,18 @@ def main():
     hadvar        = load_json(p_hadvar)
 
     # -------------------------
+    # CHECK IF PATCH ALREADY APPLIED (idempotency check)
+    # -------------------------
+    if campaign.get("last_updated") == STAMP:
+        print(f"\n[INFO] Patch already applied (last_updated = {STAMP}). Skipping to avoid duplicate updates.")
+        return
+
+    # -------------------------
     # 1) CONTINUITY FIX: Thieves Guild bleedover → reset to 0/uninvolved
     # -------------------------
     tg = faction_trust["faction_trust_clocks"]["clocks"]["thieves_guild_trust"]
     tg["current_trust"] = 0
-    tg["trust_level"] = "Uninvolved"
+    tg["trust_level"] = "Stranger"
     note = "Continuity correction (2026-02-01): Aldrin-era Thieves Guild progress removed; Khagar Yal has no TG affiliation."
     tg["notes"] = (tg.get("notes","").strip() + (" " if tg.get("notes","").strip() else "") + note).strip()
 
@@ -123,27 +129,31 @@ def main():
         stunts.append(apex)
 
     # -------------------------
-    # 6) CIVIL WAR CLOCKS: Stormcloak momentum +1; Imperial dominance -1
+    # 6) CIVIL WAR CLOCKS: Set explicit target values (idempotent)
     # -------------------------
     cw = civil_war["civil_war_clocks"]["clocks"]
+    # Target: Stormcloak momentum = 5 (from original 4)
     cw["stormcloak_rebellion_momentum"]["current_progress"] = clamp(
-        cw["stormcloak_rebellion_momentum"]["current_progress"] + 1, 0, cw["stormcloak_rebellion_momentum"]["total_segments"]
+        5, 0, cw["stormcloak_rebellion_momentum"]["total_segments"]
     )
+    # Target: Imperial dominance = 2 (from original 3)
     cw["imperial_military_dominance"]["current_progress"] = clamp(
-        cw["imperial_military_dominance"]["current_progress"] - 1, 0, cw["imperial_military_dominance"]["total_segments"]
+        2, 0, cw["imperial_military_dominance"]["total_segments"]
     )
 
     # -------------------------
-    # 7) FACTION TRUST: Stormcloaks +1 (battlefield results + officer hunt)
+    # 7) FACTION TRUST: Set explicit target value (idempotent)
     # -------------------------
     sc = faction_trust["faction_trust_clocks"]["clocks"]["stormcloak_rebellion_trust"]
-    sc["current_trust"] = clamp(sc["current_trust"] + 1, 0, sc["max_trust"])
+    # Target: Stormcloaks = 5 (from original 3)
+    sc["current_trust"] = clamp(5, 0, sc["max_trust"])
     sc["trust_level"] = sc.get("trust_level","Ally")  # keep label stable; numeric drives unlocks
 
     # -------------------------
-    # 8) CAMPAIGN STATE: advance session_count (next session), set next scene + objective, flags, modifiers
+    # 8) CAMPAIGN STATE: set target session_count, scene + objective, flags, modifiers
     # -------------------------
-    campaign["session_count"] = int(campaign.get("session_count", 0)) + 1
+    # Target session count: 2 (idempotent)
+    campaign["session_count"] = 2
     campaign["last_updated"] = STAMP
     campaign["current_scene_id"] = "A1-S03-WHITERUN-GATES-AFTERMATH"
     campaign["current_objective"] = "Resolve Hadvar's fate with Ralof, then decide whether to press into Whiterun or consolidate the breach."
@@ -192,12 +202,28 @@ def main():
     if line not in wc["major_choices"]:
         wc["major_choices"].append(line)
 
-    # Ralof loyalty +3
+    # Ralof loyalty: set explicit target value and sync with companion_relationships (idempotent)
+    target_loyalty = 70  # Target: 70 (from original 62)
+    session_note = (
+        "Session 2: Khagar fought in sync with Ralof, then honored Ralof's history with Hadvar by giving him the final call."
+    )
+    ralof_loyalty = None
     for comp in campaign.get("companions", {}).get("active_companions", []):
         if comp.get("name") == "Ralof":
-            comp["loyalty"] = clamp(int(comp.get("loyalty", 0)) + 3, 0, 100)
-            comp["notes"] = (comp.get("notes","").strip() + (" " if comp.get("notes","").strip() else "") +
-                             "Session 2: Khagar fought in sync with Ralof, then honored Ralof's history with Hadvar by giving him the final call.").strip()
+            # Set to target value
+            comp["loyalty"] = clamp(target_loyalty, 0, 100)
+            ralof_loyalty = comp["loyalty"]
+            
+            # Add note if not already present (idempotent)
+            notes = comp.get("notes", "").strip()
+            if session_note not in notes:
+                comp["notes"] = (notes + (" " if notes else "") + session_note).strip()
+
+    # Keep companion_relationships entry for Ralof in sync with active companion loyalty
+    if ralof_loyalty is not None:
+        companions_root = campaign.setdefault("companions", {})
+        relationships = companions_root.setdefault("companion_relationships", {})
+        relationships["ralof"] = ralof_loyalty
 
     # -------------------------
     # 9) HADVAR NPC SHEET: mark taken out alive + injuries (for continuity)
