@@ -1,0 +1,35 @@
+{
+  "description": "Continuity sync: Battle of Whiterun breach → Hadvar duel setup; align export+repo with chat-canon (session 02).",
+  "targets": ["repo", "export"],
+  "notes": [
+    "Updates scene/location/objective to A1-S03 Hadvar duel.",
+    "Ticks clocks: Battle of Whiterun 8/8; Bitter Mercy 5/6; Scent-Scry 3/6; Guild foothold 5/5.",
+    "Records Hadvar severe consequence; records Ralof stress."
+  ],
+  "files": {
+    "state/campaign_state.json": [
+      { "op": "replace", "path": "/current_scene_id", "value": "A1-S03-WHITERUN-INNER-APPROACHES-HADVAR-DUEL" },
+      { "op": "replace", "path": "/current_location", "value": "Whiterun — Inner Approaches (Gate Road / Wounded Lane)" },
+      { "op": "replace", "path": "/current_objective", "value": "Permit wounded retreat under oath; duel Hadvar for blood price or withdrawal; keep Stormcloak breach stabilized." }
+    ],
+    "data/clocks/civil_war_clocks.json": [
+      { "op": "replace", "path": "/civil_war_clocks/clocks/battle_of_whiterun_countdown/current_progress", "value": 8 }
+    ],
+    "data/clocks/pc_extras_clocks.json": [
+      { "op": "replace", "path": "/pc_extras_clocks/clocks/khagar_bitter_mercy_awakening/current_progress", "value": 5 },
+      { "op": "replace", "path": "/pc_extras_clocks/clocks/thalmor_scent_scry_escalation/current_progress", "value": 3 }
+    ],
+    "data/clocks/whiterun_jobs.json": [
+      { "op": "replace", "path": "/whiterun_jobs/clocks/guild_foothold_whiterun/current", "value": 5 }
+    ],
+    "data/npc_stat_sheets/hadvar.json": [
+      { "op": "replace", "path": "/consequences/severe", "value": "Cracked Shield Arm (conceded reserve knot to protect wounded)" }
+    ],
+    "data/npc_stat_sheets/ralof.json": [
+      { "op": "replace", "path": "/stress/physical", "value": [false, true, false] }
+    ],
+    "data/pcs/pc_khagar_yal.json": [
+      { "op": "replace", "path": "/fate_points", "value": 2 }
+    ]
+  }
+}

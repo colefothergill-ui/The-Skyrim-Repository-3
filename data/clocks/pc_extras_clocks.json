@@ -6,7 +6,7 @@
       "khagar_bitter_mercy_awakening": {
         "name": "Bitter Mercy Awakening",
         "description": "Tracks the Spear of Bitter Mercy waking up as Khagar proves worth through hunts and consequences inflicted.",
-        "current_progress": 1,
+        "current_progress": 5,
         "total_segments": 6,
         "advancement_triggers": [
           "Inflict a consequence with Bitter Mercy (+1)",
@@ -37,7 +37,7 @@
       "thalmor_scent_scry_escalation": {
         "name": "Thalmor — Scent-Scry Escalation",
         "description": "Daedric artifact pulses + predator rites create 'anomalies' that can be triangulated by Thalmor diviners over time.",
-        "current_progress": 1,
+        "current_progress": 3,
         "total_segments": 6,
         "advancement_triggers": [
           "Use Bitter Mercy in a high-profile scene (+1)",
