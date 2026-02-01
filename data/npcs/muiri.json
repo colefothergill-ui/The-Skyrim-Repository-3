@@ -14,7 +14,7 @@
     ]
   },
   "skills": {
-    "Great": ["Crafts"], 
+    "Great": ["Crafts"],
     "Good": ["Stealth", "Empathy"],
     "Fair": ["Deceive", "Notice", "Lore"],
     "Average": ["Rapport", "Will", "Resources", "Fight"]
