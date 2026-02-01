@@ -523,6 +523,9 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
             ):
                 for npc in (scene_npcs.get(bucket_name, []) or []):
                     if not isinstance(npc, dict):
+                        # Log data quality issue for debugging
+                        import sys
+                        print(f"Warning: Non-dict item found in {bucket_name} bucket: {type(npc).__name__}", file=sys.stderr)
                         continue
                     npc_id = npc.get("id") or npc.get("npc_id")
                     if not npc_id:

@@ -69,7 +69,9 @@ def main():
         else:
             candidates.append(repo_root / "data" / "pcs" / "visual_profiles" / f"{slug}.json")
             candidates.append(repo_root / "data" / "pcs" / "visual_profiles" / f"{slug}_visual.json")
-            candidates.append(repo_root / "data" / "pcs" / "visual_profiles" / f"{slug.replace('pc_', '')}_visual.json")
+            # Only remove 'pc_' if it's at the start
+            if slug.startswith('pc_'):
+                candidates.append(repo_root / "data" / "pcs" / "visual_profiles" / f"{slug[3:]}_visual.json")
 
         for c in candidates:
             if c.exists():
