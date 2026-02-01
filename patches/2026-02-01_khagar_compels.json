@@ -1,0 +1,12 @@
+{
+  "patch_id": "2026-02-01_khagar_compels",
+  "description": "Adds a structured compel library for Khagar Yal's Trouble (The Code of Hircine) and normalizes Trouble text (no trailing period).",
+  "targets": ["repo"],
+  "files": {
+    "data/pcs/pc_khagar_yal.json": [
+      { "op": "replace", "path": "/aspects/trouble", "value": "The Code of Hircine" },
+      { "op": "add", "path": "/aspects/compel_library", "value": "(SEE_INLINE_PC_JSON_VALUE)" }
+    ]
+  },
+  "commit_message": "Add Khagar Trouble compel library + normalize Trouble text"
+}

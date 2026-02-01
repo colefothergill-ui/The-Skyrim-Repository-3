@@ -434,6 +434,45 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
         self.save_campaign_state(state)
         return consequences
     
+    def _load_active_pc(self):
+        """Load the active PC file from campaign state (if available)."""
+        state = self.load_campaign_state() or {}
+        pc_id = state.get("active_pc_id") or state.get("active_pc")
+
+        if isinstance(pc_id, str) and pc_id:
+            # Normalize common forms
+            if not pc_id.startswith("pc_"):
+                pc_id = f"pc_{pc_id}"
+            pc_path = self.data_dir / "pcs" / f"{pc_id}.json"
+            if pc_path.exists():
+                with open(pc_path, "r", encoding="utf-8") as f:
+                    return json.load(f)
+        return None
+
+    def _get_pc_compel_hooks(self, max_items=5):
+        """
+        Return structured compel hooks (usually Trouble-based) for GM prompts.
+        
+        Returns:
+            List of dict, each containing keys like 'id', 'title', 'when', 
+            'compel_hit', 'suggested_scene_aspect', 'tags', and optionally 
+            'exception_tags'. Returns empty list if no hooks are found.
+        """
+        pc = self._load_active_pc()
+        if not isinstance(pc, dict):
+            return []
+
+        aspects = pc.get("aspects", {})
+        if not isinstance(aspects, dict):
+            return []
+
+        lib = aspects.get("compel_library", {})
+        if isinstance(lib, dict):
+            ideas = lib.get("ideas", [])
+            if isinstance(ideas, list) and ideas:
+                return ideas[:max_items]
+        return []
+    
     def trigger_scene_event(self, scene_data):
         """
         Trigger a scene event and apply appropriate NPCs/enemies
@@ -498,6 +537,10 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
             'description': self._generate_scene_description(location, scene_type),
             'mechanical_notes': self._get_mechanical_notes(scene_type)
         }
+        
+        pc_compels = self._get_pc_compel_hooks(max_items=5)
+        if pc_compels:
+            scene_setup["pc_compel_hooks"] = pc_compels
         
         return scene_setup
     
@@ -1758,6 +1801,13 @@ def main():
                 print("\nMechanical Notes:")
                 for note in scene_setup['mechanical_notes']:
                     print(f"  - {note}")
+            if scene_setup.get("pc_compel_hooks"):
+                print("\nPC Compel Hooks:")
+                for c in scene_setup["pc_compel_hooks"]:
+                    if isinstance(c, dict):
+                        title = c.get("title", c.get("id", "Compel"))
+                        when = c.get("when", "")
+                        print(f"  - {title}: {when}")
         
         elif choice == "11":
             enemy_type = input("Enemy type (dragon/thalmor/bandit/etc): ").strip()

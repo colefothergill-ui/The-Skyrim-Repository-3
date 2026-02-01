@@ -13,12 +13,69 @@
   },
   "aspects": {
     "high_concept": "Crun Voshu Kala's (Heart Worthy Stronghold) Warchief - The Great Beast; Khagar Yal.",
-    "trouble": "The Code of Hircine.",
+    "trouble": "The Code of Hircine",
     "other_aspects": [
       "The Stag of Eastmarch. (Title)",
       "Bond of Bear and Stag (Tie to Ulfric Stormcloak).",
       "The Thrill of the Hunt. (Vengeful Active Hunt Impose on Ambassador Elenwen)."
-    ]
+    ],
+    "compel_library": {
+      "source": "player",
+      "last_updated": "2026-02-01",
+      "default_fp_award": 1,
+      "scope": "trouble",
+      "trouble_name": "The Code of Hircine",
+      "exceptions": [
+        {
+          "tag": "no_mercy_thalmor",
+          "description": "If the target is Thalmor (or directly complicit in the slaughter of Khagar's clan/pack), the Code does not require mercy, sport, or restraint."
+        }
+      ],
+      "ideas": [
+        {
+          "id": "HIRCINE-1",
+          "title": "Worthy Prey, Risky Honor",
+          "when": "Khagar respects a foe enough to endanger himself for a better hunt/duel/chase.",
+          "compel_hit": "He gives the opponent an opening: refuses the safe kill, accepts disadvantageous terms, enters a duel, or pushes forward without tactical caution.",
+          "suggested_scene_aspect": "Honor-Bound Exposure",
+          "tags": ["honor", "duel", "risk", "hunt"]
+        },
+        {
+          "id": "HIRCINE-2",
+          "title": "No Point Crushing the Helpless",
+          "when": "A target cannot meaningfully threaten Khagar physically or socially.",
+          "compel_hit": "Khagar refuses to kill/harm/maim/capture them, even if it complicates the mission or costs leverage.",
+          "suggested_scene_aspect": "Spared Because You Were Unworthy",
+          "tags": ["mercy", "predator_logic", "restraint"]
+        },
+        {
+          "id": "HIRCINE-3",
+          "title": "Let Them Run",
+          "when": "Khagar has the advantage and the prey is cornered — and the thrill of the hunt calls.",
+          "compel_hit": "He allows escape, gives them a head start, or chooses to mark/track rather than finish now (except Thalmor/Elenwen).",
+          "exception_tags": ["no_mercy_thalmor"],
+          "suggested_scene_aspect": "A Head Start Granted",
+          "tags": ["hunt", "pursuit", "restraint", "sportsmanlike"]
+        },
+        {
+          "id": "HIRCINE-4",
+          "title": "Do Not Poison the Ecosystem",
+          "when": "A plan would deliberately damage the natural ecosystem — or a functional 'battle ecosystem' that serves a purpose.",
+          "compel_hit": "Khagar refuses sabotage-by-scorch: no needless burning, poisoning, collapsing infrastructure, or ruining a living balance just to win faster.",
+          "suggested_scene_aspect": "Victory Without Blight",
+          "tags": ["nature", "balance", "restraint", "strategy"]
+        },
+        {
+          "id": "HIRCINE-5",
+          "title": "Crun Agra's Code",
+          "when": "A hunter shows real strength and seeks alpha-guidance — but only if they *ask* or clearly defer.",
+          "compel_hit": "Khagar withholds guidance unless asked, tests them instead, or forces a lesson the hard way. (Does not apply to strangers: he'll talk straight to their face.)",
+          "suggested_scene_aspect": "Leadership Must Be Earned",
+          "tags": ["alpha", "mentor", "pride", "tribal_code"]
+        }
+      ],
+      "gm_usage_note": "These are Compel hooks for Fate-style Trouble pressure. Offer when it complicates success, costs time, or creates danger. If the Compel creates major fallout, consider stacking or escalating rather than inflating FP by default."
+    }
   },
   "skills": {
     "Great (+4)": [

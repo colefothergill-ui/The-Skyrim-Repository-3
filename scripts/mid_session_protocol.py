@@ -450,6 +450,45 @@ def main() -> int:
         [f"{k}={v}" for k, v in sorted(eff.get("effective", {}).items()) if k in ("Fight", "Athletics", "Stealth", "Rapport", "Will", "Lore", "Notice")]
     ))
 
+    # PC aspects + compel hooks (GM aid)
+    aspects = pc.get("aspects", {})
+    if isinstance(aspects, dict):
+        print("-" * 78)
+        print("PC Aspects:")
+        hc = aspects.get("high_concept")
+        tr = aspects.get("trouble")
+        if hc:
+            print(f" - High Concept: {hc}")
+        if tr:
+            print(f" - Trouble: {tr}")
+
+        oa = aspects.get("other_aspects", [])
+        if isinstance(oa, list) and oa:
+            for a in oa[:6]:
+                if isinstance(a, str):
+                    print(f" - Aspect: {a}")
+
+        lib = aspects.get("compel_library", {})
+        if isinstance(lib, dict):
+            ideas = lib.get("ideas", [])
+            if isinstance(ideas, list) and ideas:
+                print("-" * 78)
+                print("PC Compel Hooks (Trouble):")
+                for i, idea in enumerate(ideas[:5], start=1):
+                    title = idea.get("title") or idea.get("id") or "Compel"
+                    when = idea.get("when", "").strip()
+                    line = f" {i}) {title}"
+                    if when:
+                        line += f" — {when}"
+                    print(line)
+
+                ex = lib.get("exceptions", [])
+                if isinstance(ex, list) and ex:
+                    print(" Exceptions:")
+                    for e in ex[:3]:
+                        if isinstance(e, dict):
+                            print(f"  - {e.get('tag','exception')}: {e.get('description','')}")
+
     # Trust dynamics
     rels = summarize_relationships(state)
     if rels:
