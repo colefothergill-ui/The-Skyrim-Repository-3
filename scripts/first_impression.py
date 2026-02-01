@@ -131,13 +131,14 @@ def maybe_first_impression(state_path, appearance_path, npc_id, disposition="neu
     return line
 
 
-def auto_first_impression(repo_root, npc_id, disposition=None, force=False, quiet=False):
+def auto_first_impression(repo_root, npc_id, disposition=None, force=False, quiet=False, trigger=None):
     """
     Convenience wrapper for the repo:
     - Reads state/campaign_state.json to find active PC
     - Finds PC appearance bark file
     - Infers disposition (unless explicitly provided)
     - Writes state.npc_first_impressions and returns the bark line
+    - trigger parameter is accepted for compatibility but not used
     """
     repo_root = Path(repo_root).resolve()
     state_path = repo_root / "state" / "campaign_state.json"
