@@ -5,9 +5,9 @@
   "race": "Orc",
   "standing_stone": "The Lord Stone",
   "level": 1,
-  "visual_profile_ref": "khagar_yal_visual",
+  "visual_profile_ref": "data/pcs/visual_profiles/khagar_yal_visual.json",
   "appearance": {
-    "art_path": "docs/assets/pcs/khagar_yal.jpg",
+    "art_path": "docs/assets/pcs/khagar_yal.png",
     "short_description": "A towering Orsimer warchief wrapped in fur-lined mail and Stormcloak colors, moving like a predator that learned politics by eating it.",
     "long_description": "Khagar Yal is a massive, broad-shouldered Orc with ruggedly noble features—tusks proud rather than grotesque, posture straight like a bannerpole, and golden-yellow eyes that burn with that 'wolfish' lycanthrope sheen when the hunt is on. His gear is practical-but-mythic: fur-lined mail, weather-stained leathers, and the red-blue Stormcloak palette worked into straps and cloth. He carries himself like a clan-leader who's done the math on violence and still chose it—measured until the moment he isn't."
   },
