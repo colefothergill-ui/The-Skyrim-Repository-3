@@ -80,7 +80,7 @@
       "name": "Daedric Artifact: Spear of Bitter Mercy (Level 4 - Awakened)",
       "refresh_cost": 1,
       "reference_rules_path": "data/rules/artifacts.json",
-      "aspect": "The Full Moon (End Cycle): The Spear hums with the will of the Huntsman's favored Hunter—Now full awakened, and teeming with the glorious majesty of Hircine! (NOTE: New Quest Available - GM is to initiate Hircine-flavored encounter after the Battle of Whiterun's full completion.) [Level 3: When you declare a hunt, this aspect begins the scene with +1 free invoke.]",
+      "aspect": "The Full Moon (End Cycle): The Spear hums with the will of the Huntsman's favored Hunter—Now fully awakened, and teeming with the glorious majesty of Hircine! (NOTE: New Quest Available - GM is to initiate Hircine-flavored encounter after the Battle of Whiterun's full completion.) [Level 3: When you declare a hunt, this aspect begins the scene with +1 free invoke.]",
       "traits": [
         "Bitter Mercy: When Bitter Mercy helps you inflict a Mild Consequence on a target, that target gains the situation aspect 'Bitter Mercy'. Until that creature is taken out, your stress dealt to that creature counts as Weapon:1 (stacking with other weapon ratings only if explicitly allowed by the current scene)."
       ],
