@@ -92,13 +92,13 @@
   },
 
   "refresh": 1,
-  "fate_points": 2,
+  "fate_points": 1,
 
   "fate_point_ledger": [
-    { "type": "refresh_reset", "delta": 0, "note": "Refresh reduced to 1 due to extras purchases; session start FP set to 1." },
-    { "type": "compel_award", "delta": 1, "note": "Self-compel via Trouble: The Code of Hircine during predator-rite escalation." },
+    { "type": "refresh_reset", "delta": 1, "note": "Refresh reduced to 1 due to extras purchases; session start FP set to 1." },
+    { "type": "compel_award", "delta": 2, "note": "Self-compel via Trouble: The Code of Hircine — offered Hadvar a healing elixir + honorable duel terms (earned +2 FP)." },
     { "type": "invoke_spend", "delta": -1, "note": "Invoked High Concept in the Rikke clash to press the 'apex predator' read." },
-    { "type": "compel_award", "delta": 1, "note": "Compel: Code of Hircine—respected Hadvar as worthy prey; allowed wounded retreat and offered honor duel terms." }
+    { "type": "invoke_spend", "delta": -1, "note": "Invoked Trouble: The Code of Hircine to allow Hadvar honorable retreat (respected as worthy prey)." }
   ],
 
   "equipment": {

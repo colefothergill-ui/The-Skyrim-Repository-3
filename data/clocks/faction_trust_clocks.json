@@ -1,7 +1,7 @@
 {
   "faction_trust_clocks": {
     "description": "Track party standing and trust with all major factions in Skyrim",
-    "last_updated": "4E 201, 17th of Last Seed",
+    "last_updated": "2026-02-01 (Continuity Fix — Khagar Yal: reset Thieves Guild trust)",
     "trust_scale": {
       "0-2": {
         "level": "Stranger",
@@ -121,9 +121,9 @@
       },
       "thieves_guild_trust": {
         "faction": "Thieves Guild",
-        "current_trust": 2,
+        "current_trust": 0,
         "max_trust": 10,
-        "trust_level": "Member",
+        "trust_level": "Stranger",
         "advancement_triggers": {
           "join_guild": "+2",
           "complete_major_heist": "+2",
