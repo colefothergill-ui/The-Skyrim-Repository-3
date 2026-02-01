@@ -20,7 +20,11 @@ from triggers.falkreath_triggers import (
     trigger_dark_brotherhood_contact,
     scene_astrid_abduction,
     trigger_sanctuary_discovery,
-    trigger_sanctuary_entry
+    trigger_sanctuary_entry,
+    trigger_sinding_jail_encounter,
+    scene_bloated_mans_grotto,
+    scene_moonlight_kill_sinding,
+    scene_moonlight_spare_sinding
 )
 
 
@@ -235,6 +239,116 @@ def test_scene_functions_with_none_state():
         raise AssertionError(f"Scene functions should handle None state: {e}")
 
 
+def test_sinding_jail_encounter():
+    """Test Sinding's jail encounter trigger"""
+    print("\n=== Testing Sinding Jail Encounter ===")
+    
+    campaign_state = {}
+    trigger_sinding_jail_encounter(campaign_state)
+    
+    assert campaign_state.get('ill_met_moonlight_started') is True, "Expected ill_met_moonlight_started flag to be set"
+    print("✓ Sinding jail encounter trigger works")
+    
+    # Test that it doesn't trigger again
+    campaign_state_copy = campaign_state.copy()
+    trigger_sinding_jail_encounter(campaign_state)
+    assert campaign_state == campaign_state_copy, "Encounter should not trigger twice"
+    print("✓ Encounter correctly does not trigger twice")
+
+
+def test_bloated_mans_grotto():
+    """Test Bloated Man's Grotto scene"""
+    print("\n=== Testing Bloated Man's Grotto Scene ===")
+    
+    campaign_state = {'ill_met_moonlight_started': True}
+    scene_bloated_mans_grotto(campaign_state)
+    
+    assert campaign_state.get('bloated_mans_grotto_encountered') is True, "Expected grotto encountered flag"
+    print("✓ Bloated Man's Grotto scene works")
+
+
+def test_bloated_mans_grotto_no_start():
+    """Test that grotto scene doesn't trigger without quest start"""
+    print("\n=== Testing Grotto Scene (No Quest Start) ===")
+    
+    campaign_state = {}
+    scene_bloated_mans_grotto(campaign_state)
+    
+    assert campaign_state.get('bloated_mans_grotto_encountered') is not True, "Grotto should not trigger without quest start"
+    print("✓ Grotto scene correctly doesn't trigger without quest start")
+
+
+def test_moonlight_kill_sinding():
+    """Test killing Sinding outcome"""
+    print("\n=== Testing Kill Sinding Outcome ===")
+    
+    campaign_state = {'ill_met_moonlight_started': True}
+    scene_moonlight_kill_sinding(campaign_state)
+    
+    assert campaign_state.get('ill_met_moonlight_completed') is True, "Expected quest completed flag"
+    assert campaign_state.get('ill_met_moonlight_outcome') == 'sinding_killed', "Expected outcome to be sinding_killed"
+    assert campaign_state.get('artifact_saviors_hide_obtained') is True, "Expected Savior's Hide obtained flag"
+    print("✓ Kill Sinding outcome works and grants Savior's Hide")
+
+
+def test_moonlight_spare_sinding():
+    """Test sparing Sinding outcome"""
+    print("\n=== Testing Spare Sinding Outcome ===")
+    
+    campaign_state = {'ill_met_moonlight_started': True}
+    scene_moonlight_spare_sinding(campaign_state)
+    
+    assert campaign_state.get('ill_met_moonlight_completed') is True, "Expected quest completed flag"
+    assert campaign_state.get('ill_met_moonlight_outcome') == 'sinding_spared', "Expected outcome to be sinding_spared"
+    assert campaign_state.get('artifact_ring_of_hircine_obtained') is True, "Expected Ring of Hircine obtained flag"
+    print("✓ Spare Sinding outcome works and grants Ring of Hircine")
+
+
+def test_moonlight_outcomes_not_both():
+    """Test that both outcomes cannot be achieved simultaneously"""
+    print("\n=== Testing Mutually Exclusive Outcomes ===")
+    
+    campaign_state = {'ill_met_moonlight_started': True}
+    
+    # Complete with kill outcome
+    scene_moonlight_kill_sinding(campaign_state)
+    assert campaign_state.get('ill_met_moonlight_completed') is True
+    
+    # Try to complete with spare outcome (should not work as quest is already completed)
+    campaign_state_copy = campaign_state.copy()
+    scene_moonlight_spare_sinding(campaign_state)
+    
+    # The spare function should not change anything because quest is already completed
+    assert campaign_state.get('ill_met_moonlight_outcome') == 'sinding_killed', "Outcome should remain sinding_killed"
+    assert campaign_state.get('artifact_ring_of_hircine_obtained') is not True, "Should not get Ring if already completed quest"
+    print("✓ Quest outcomes are mutually exclusive")
+
+
+def test_moonlight_quest_sequence():
+    """Test the full quest sequence"""
+    print("\n=== Testing Full Moonlight Quest Sequence ===")
+    
+    campaign_state = {}
+    
+    # Step 1: Jail encounter
+    trigger_sinding_jail_encounter(campaign_state)
+    assert campaign_state.get('ill_met_moonlight_started') is True
+    print("  ✓ Step 1: Quest started at jail")
+    
+    # Step 2: Grotto scene
+    scene_bloated_mans_grotto(campaign_state)
+    assert campaign_state.get('bloated_mans_grotto_encountered') is True
+    print("  ✓ Step 2: Grotto encounter triggered")
+    
+    # Step 3: Resolution (spare path)
+    scene_moonlight_spare_sinding(campaign_state)
+    assert campaign_state.get('ill_met_moonlight_completed') is True
+    assert campaign_state.get('artifact_ring_of_hircine_obtained') is True
+    print("  ✓ Step 3: Quest resolved with spare outcome")
+    
+    print("✓ Full quest sequence works correctly")
+
+
 def run_all_tests():
     """Run all tests"""
     print("=" * 60)
@@ -258,6 +372,13 @@ def run_all_tests():
         test_sanctuary_entry,
         test_sanctuary_entry_no_member,
         test_scene_functions_with_none_state,
+        test_sinding_jail_encounter,
+        test_bloated_mans_grotto,
+        test_bloated_mans_grotto_no_start,
+        test_moonlight_kill_sinding,
+        test_moonlight_spare_sinding,
+        test_moonlight_outcomes_not_both,
+        test_moonlight_quest_sequence,
     ]
     
     passed = 0
