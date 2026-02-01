@@ -21,7 +21,11 @@ from triggers.falkreath_triggers import (
     trigger_dark_brotherhood_contact,
     scene_astrid_abduction,
     trigger_sanctuary_discovery,
-    trigger_sanctuary_entry
+    trigger_sanctuary_entry,
+    trigger_sinding_jail_encounter,
+    scene_bloated_mans_grotto,
+    scene_moonlight_kill_sinding,
+    scene_moonlight_spare_sinding
 )
 
 
@@ -160,6 +164,35 @@ def demo_dark_brotherhood_sequence():
     print(f"Entered Sanctuary: {campaign_state.get('dark_brotherhood_sanctuary_entered')}")
 
 
+def demo_ill_met_by_moonlight():
+    """Demonstrate Ill Met by Moonlight quest sequence"""
+    print("\n" + "=" * 70)
+    print("ILL MET BY MOONLIGHT (HIRCINE'S QUEST) DEMO")
+    print("=" * 70)
+    
+    campaign_state = {}
+    
+    print("\n--- Step 1: Meeting Sinding in Falkreath Jail ---")
+    trigger_sinding_jail_encounter(campaign_state)
+    print(f"Quest started: {campaign_state.get('ill_met_moonlight_started')}")
+    
+    print("\n--- Step 2: Confrontation at Bloated Man's Grotto ---")
+    scene_bloated_mans_grotto(campaign_state)
+    print(f"Grotto encountered: {campaign_state.get('bloated_mans_grotto_encountered')}")
+    
+    print("\n--- Branching Path A: Spare Sinding ---")
+    campaign_state_spare = campaign_state.copy()
+    scene_moonlight_spare_sinding(campaign_state_spare)
+    print(f"Quest completed (spare): {campaign_state_spare.get('ill_met_moonlight_completed')}")
+    print(f"Ring of Hircine obtained: {campaign_state_spare.get('artifact_ring_of_hircine_obtained')}")
+    
+    print("\n--- Branching Path B: Kill Sinding ---")
+    campaign_state_kill = campaign_state.copy()
+    scene_moonlight_kill_sinding(campaign_state_kill)
+    print(f"Quest completed (kill): {campaign_state_kill.get('ill_met_moonlight_completed')}")
+    print(f"Savior's Hide obtained: {campaign_state_kill.get('artifact_saviors_hide_obtained')}")
+
+
 def main():
     """Run all demos"""
     print("\n" + "=" * 70)
@@ -174,6 +207,7 @@ def main():
     demo_scene_triggers()
     demo_quest_triggers()
     demo_dark_brotherhood_sequence()
+    demo_ill_met_by_moonlight()
     
     print("\n" + "=" * 70)
     print("DEMO COMPLETE")

@@ -70,6 +70,12 @@
       "quest": "Runil's Request",
       "giver": "Runil (Priest of Arkay)",
       "description": "Runil, keeper of Falkreath's graveyard, lost his personal journal in a nearby dungeon (likely south of town). He asks the adventurers to retrieve it. While simple, this quest offers insight into Runil's past (a former soldier haunted by memories) and deepens the somber tone of Falkreath's storyline."
+    },
+    {
+      "id": "falkreath_sinding_moonlight",
+      "quest": "Ill Met By Moonlight",
+      "giver": "Sinding (cursed prisoner in Falkreath Jail)",
+      "description": "A jailed werewolf pleads for aid with a Daedric curse. Help Sinding either end his beastly curse or defy Hircine's hunt, leading to a deadly confrontation under the moon."
     }
   ]
 }

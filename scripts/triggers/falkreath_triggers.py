@@ -106,6 +106,86 @@ def trigger_sanctuary_entry(campaign_state):
         print(scene)
         campaign_state['dark_brotherhood_sanctuary_entered'] = True
 
+def trigger_sinding_jail_encounter(campaign_state):
+    """
+    Event trigger: Sinding's jail encounter - the cursed werewolf begs for help.
+    Should be called when the party visits the Falkreath Jail or interacts with Sinding's cell.
+    This initiates the "Ill Met by Moonlight" quest.
+    """
+    if not campaign_state.get('ill_met_moonlight_started'):
+        dialogue = ("From the dimness of Falkreath's jail, a ragged Nord prisoner approaches the bars. "
+                    "His eyes reflect desperation. 'Please... you have to listen,' he whispers. "
+                    "'My name is Sinding. I... I have a curse – I'm a werewolf. Hircine's Ring did this to me. "
+                    "I never wanted to hurt anyone, but when the blood moon rose, I couldn't control it.' "
+                    "He pauses, guilt written across his face. 'I killed someone. An innocent. "
+                    "I'm locked up, but it won't stop Hircine's hunt. His hunters… they're coming for me. "
+                    "There's only one way out – either I cure this curse or face Hircine's judgment. "
+                    "Help me, and I'll guide you. If you're willing, meet me beneath the moon… "
+                    "I know a place I can hide – Bloated Man's Grotto.'")
+        print(dialogue)
+        campaign_state['ill_met_moonlight_started'] = True
+
+def scene_bloated_mans_grotto(campaign_state):
+    """
+    Scene trigger: The confrontation at Bloated Man's Grotto.
+    Should be called when the party arrives at the grotto after meeting Sinding.
+    Presents the choice to kill or spare Sinding.
+    """
+    if campaign_state.get('ill_met_moonlight_started') and not campaign_state.get('ill_met_moonlight_completed'):
+        scene = ("The forest opens into a moonlit grotto. Bloodstains and fallen hunters litter the ground. "
+                 "On a rocky ledge, a hulking werewolf snarls – it's Sinding, in beast form, wounded but alive. "
+                 "His eyes flicker with recognition when you arrive. From deeper in the grotto, you hear voices and footfalls – "
+                 "Hircine's hunters are closing in. In a growling voice that cracks with sorrow, Sinding speaks: "
+                 "'You came… I didn't think you would. I can smell them – Hircine's pack. They won't stop until I'm dead. I can't run anymore.' "
+                 "Sinding – this tragic beast – looks at you with pleading eyes. Do you put him down, ending his curse on Hircine's terms, "
+                 "or do you stand with him against the hunters, defying the Daedric Prince?")
+        print(scene)
+        campaign_state['bloated_mans_grotto_encountered'] = True
+
+def scene_moonlight_kill_sinding(campaign_state):
+    """
+    Scene trigger: Player chooses to kill Sinding and receives Savior's Hide.
+    Hircine appears and rewards the party for honoring the hunt.
+    """
+    if campaign_state.get('ill_met_moonlight_started') and not campaign_state.get('ill_met_moonlight_completed'):
+        outcome = ("Sinding's body collapses to the ground, reverting to a lifeless human form. "
+                   "As the echoes of battle fade, a hazy mist gathers over the corpse. "
+                   "Emerging from the mist is the spectral figure of a tall huntsman clad in deer skull and leathers – Hircine's apparition. "
+                   "The Daedric Prince's voice reverberates softly: 'The prey is slain. You have done well, mortal.' "
+                   "He reaches down, peeling the hide from Sinding's body with unnatural ease. "
+                   "In an instant, the bloody pelt transforms into a cured, hooded leather armor – Hircine's boon made manifest. "
+                   "'Take this, the Savior's Hide,' Hircine intones. The armor still smells of a wild beast and ozone. "
+                   "'You honored the Hunt, and so I honor you. Those who share the beast blood will find this hide especially potent.'")
+        print(outcome)
+        campaign_state['ill_met_moonlight_completed'] = True
+        campaign_state['ill_met_moonlight_outcome'] = 'sinding_killed'
+        campaign_state['artifact_saviors_hide_obtained'] = True
+        # Note: GM should add Savior's Hide to party inventory
+
+def scene_moonlight_spare_sinding(campaign_state):
+    """
+    Scene trigger: Player chooses to spare Sinding and help him defeat the hunters.
+    Hircine appears and rewards the party with the Ring of Hircine.
+    """
+    if campaign_state.get('ill_met_moonlight_started') and not campaign_state.get('ill_met_moonlight_completed'):
+        outcome = ("The last of Hircine's hunters falls, their blood darkening the grassy floor of the grotto. "
+                   "Sinding's massive form, still trembling from rage and injury, lets out a long, hollow howl – "
+                   "not of victory, but of release. As you catch your breath, a swirl of mist and leaves coalesces behind you. "
+                   "Hircine manifests, this time as an ethereal stag-headed figure. The Daedric Prince surveys the scene – "
+                   "both hunter and prey still live. A low chuckle echoes: "
+                   "'Not the outcome I foresaw… yet the Bloodmoon has been honored all the same.' "
+                   "Hircine approaches Sinding, who bows his head in submission, then turns to you. "
+                   "'Mercy… or merely a different kind of hunt? No matter. You've shown cunning and mercy in equal measure.' "
+                   "With a clawed hand, Hircine produces a plain-looking ring that glimmers with otherworldly light. "
+                   "'Take my Ring, mortal. May it give you mastery over the beast blood. "
+                   "Know that this gift binds you to the Hunt – the ring hungers, as do all predators.'")
+        print(outcome)
+        campaign_state['ill_met_moonlight_completed'] = True
+        campaign_state['ill_met_moonlight_outcome'] = 'sinding_spared'
+        campaign_state['artifact_ring_of_hircine_obtained'] = True
+        # Note: GM should add Ring of Hircine to party inventory
+        # Note: Sinding remains alive, living as a werewolf in the grotto or departing Skyrim
+
 # End of Falkreath triggers script.
 # These functions can be invoked by the game master or automated engine when appropriate conditions are met, 
 # ensuring ChatGPT 5.2 is prompted with the correct narrative scenes or quest hook dialogues.

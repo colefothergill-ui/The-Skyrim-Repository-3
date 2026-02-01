@@ -166,6 +166,28 @@
       "story_impact": "Mark of Hircine's favor. Hunters and werewolves respect this."
     },
     {
+      "name": "Ring of Hircine",
+      "category": "Daedric Artifact",
+      "origin": "Daedric Prince Hircine",
+      "location": "Ill Met by Moonlight quest (spare Sinding)",
+      "description": "A Daedric ring that grants its wearer greater control over lycanthropy, allowing transformation at will.",
+      "mechanical_stats": {
+        "armor_rating": 0,
+        "base_bonus": "Ring slot",
+        "aspect": "Hircine's Ring-Bearer",
+        "special_ability": {
+          "name": "Master the Beast",
+          "effect": "If the wearer is a lycanthrope, they can transform into beast form at will outside of full moons. The transformation lasts as long as desired and can be controlled. Non-lycanthropes gain +1 to Physique when facing beasts or werewolves.",
+          "cost": "Free action for lycanthropes, once per session",
+          "limitation": "Primary benefit only applies to lycanthropes"
+        }
+      },
+      "requirements": "None, but most powerful for lycanthropes",
+      "lycanthropy_synergy": "Allows complete control over werewolf transformations - can transform at will and maintain control",
+      "corruption_risk": "The ring hungers for the hunt. Can be compelled to seek worthy prey or engage in risky hunts.",
+      "story_impact": "Mark of Hircine's favor. Werewolves recognize the ring's power. Can be given to Companion werewolves as a gift."
+    },
+    {
       "name": "The Masque of Clavicus Vile",
       "category": "Daedric Artifact",
       "origin": "Daedric Prince Clavicus Vile",
