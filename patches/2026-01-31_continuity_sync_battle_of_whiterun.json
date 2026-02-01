@@ -4,7 +4,7 @@
   "notes": [
     "Updates scene/location/objective to A1-S03 Hadvar duel.",
     "Ticks clocks: Battle of Whiterun 8/8; Bitter Mercy 5/6; Scent-Scry 3/6; Guild foothold 5/5.",
-    "Fixes Ralof npc_id mismatch; records Hadvar severe consequence; records Ralof stress."
+    "Records Hadvar severe consequence; records Ralof stress."
   ],
   "files": {
     "state/campaign_state.json": [
