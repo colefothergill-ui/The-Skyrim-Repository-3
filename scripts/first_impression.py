@@ -171,7 +171,7 @@ def main():
     ap = argparse.ArgumentParser(description="Record/emit NPC first-impression bark for the active PC.")
     ap.add_argument("--repo", default=".", help="Repo root (default: .)")
     ap.add_argument("--npc", required=True, help="NPC id (e.g., hadvar, ralof, elenwen)")
-    ap.add_argument("--disposition", default=None, choices=[None, "neutral", "positive", "negative"], help="Override inferred disposition bucket.")
+    ap.add_argument("--disposition", default=None, choices=["neutral", "positive", "negative"], help="Override inferred disposition bucket.")
     ap.add_argument("--force", action="store_true", help="Overwrite existing impression if already recorded.")
     ap.add_argument("--quiet", action="store_true", help="Suppress console output.")
     args = ap.parse_args()

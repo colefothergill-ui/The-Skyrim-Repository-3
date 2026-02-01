@@ -172,5 +172,25 @@
     }
   ],
   "starting_narrative": "The party arrives in Whiterun as supporters of the Stormcloak Rebellion. Ralof, a Stormcloak soldier who recruited them to the cause, accompanies the party. Jarl Balgruuf has sided with the Empire, making Whiterun a target for liberation. The party joins Galmar Stone-Fist in preparing to assault the city and free it from Imperial control. The Battle of Whiterun is imminent, and Skyrim's future hangs in the balance.",
-  "faction_relationships": {}
+  "faction_relationships": {},
+  "npc_first_impressions": {
+    "test_cli_npc": {
+      "pc_khagar_yal": {
+        "timestamp": "2026-02-01T12:44:40.996885",
+        "disposition": "neutral",
+        "line": "An orc in Nordic plate and Stormcloak-blue cloth, wearing a snow sabre cat like a crown. Nobody forgets that silhouette.",
+        "recognition_tags": [
+          "towering_orsimer",
+          "snow_sabrecat_headdress",
+          "stormcloak_blue_cloth",
+          "fur_mantle",
+          "tusked_warchief",
+          "rune_lit_spear",
+          "cold_blue_aura",
+          "antler_crossguard",
+          "daedric_weapon_vibe"
+        ]
+      }
+    }
+  }
 }
