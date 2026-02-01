@@ -118,7 +118,7 @@
     ],
     "items": [
       { "name": "Dispatch Case (Imperial)", "notes": "Captured from Rikke's perimeter knot; grants Battle of Whiterun advantage in state/campaign_state.json." },
-      { "name": "Stronghold Crimson Healing Elixir (spent)", "notes": "Improvised potent draught crafted by Khagar; tossed to Hadvar as part of honor duel terms; expended." },
+      { "name": "Stronghold Crimson Healing Elixir (spent)", "notes": "Improvised potent draught crafted by Khagar; tossed to Hadvar as part of honor duel terms." },
       { "name": "Imperial Officer Heart (trophy)", "notes": "Taken from conducting officer during breach to shatter cohesion and feed Bitter Mercy's awakening." }
     ]
   },

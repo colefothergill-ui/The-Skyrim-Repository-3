@@ -136,7 +136,7 @@
         "location": "Breach line (holding wedge while duel begins)",
         "recruitment_trigger": "Stormcloak recruitment",
         "faction_affinity": "stormcloaks",
-        "notes": "Holding breach while Khagar duels Hadvar; took 2-shift hit (stress 2). | Took 2 physical stress while cutting runner lane; stabilized breach per Khagar order."
+        "notes": "Holding breach while Khagar duels Hadvar; took 2 physical stress while cutting runner lane, stabilized breach per Khagar order."
       }
     ],
     "available_companions": [],
