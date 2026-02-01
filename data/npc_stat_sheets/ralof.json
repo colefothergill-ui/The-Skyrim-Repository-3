@@ -26,7 +26,7 @@
     "Unbreakable Spirit: Once per session, automatically succeed on a Will roll to resist intimidation or continue fighting"
   ],
   "stress": {
-    "physical": [false, false, false],
+    "physical": [false, true, false],
     "mental": [false, false, false]
   },
   "consequences": {

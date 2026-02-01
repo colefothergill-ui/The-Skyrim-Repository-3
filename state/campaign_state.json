@@ -7,26 +7,38 @@
   "active_pc_id": "pc_khagar_yal",
   "session_zero_completed": true,
   "session_count": 1,
-  "last_updated": "2026-01-29 16:30:00",
+  "last_updated": "2026-01-31 22:10:00",
   "starting_location": "Whiterun",
 
-  "current_scene_id": "A1-S01-WHITERUN-PERIMETER-RIKKE-KNOT",
-  "current_location": "Whiterun Hold — Imperial perimeter camp (outer ring, command-tent knot)",
+  "current_scene_id": "A1-S03-WHITERUN-INNER-APPROACHES-HADVAR-DUEL",
+  "current_location": "Whiterun — Inner Approaches (Gate Road / Wounded Lane)",
   "active_hold": "Whiterun",
-  "current_objective": "Disrupt Imperial command cohesion before the Battle of Whiterun; extract intel; keep the alarm contained.",
-  "current_npcs": ["npc_stat_ralof", "npc_stat_legate_rikke"],
+  "current_objective": "Permit wounded retreat under oath; duel Hadvar for blood price or withdrawal; keep Stormcloak breach stabilized.",
+  "current_npcs": ["Hadvar", "Ralof", "Legate Rikke", "Galmar Stonefist"],
 
   "scene_flags": {
     "herbal_scent_ritual_completed": true,
     "dispatch_case_captured": true,
     "pack_tactics_used_this_scene": true,
     "legate_rikke_conceded_and_escaped": true,
-    "legate_rikke_sanies_lupinus_exposure": true
+    "legate_rikke_sanies_lupinus_exposure": true,
+    "imperial_conducting_officer_killed": true,
+    "imperial_horn_silenced": true,
+    "imperial_chain_of_command_shattered": true,
+    "reserve_knot_breached": true,
+    "hadvar_reserve_knot_engaged": true,
+    "hadvar_retreat_ordered_for_wounded": true,
+    "hadvar_duel_terms_offered": true,
+    "hadvar_duel_terms_accepted": true,
+    "hadvar_elixir_given": true,
+    "khagar_scent_locked_on_hadvar": true,
+    "khagar_wild_hunt_mark_on_hadvar": true,
+    "warchiefs_wisdom_read_on_hadvar": true
   },
 
   "civil_war_state": {
     "player_alliance": "stormcloak",
-    "battle_of_whiterun_status": "approaching",
+    "battle_of_whiterun_status": "active",
     "imperial_victories": 0,
     "stormcloak_victories": 0,
     "key_battles_completed": [],
@@ -37,8 +49,8 @@
     "battle_of_whiterun_modifiers": [
       {
         "aspect": "Imperial Counterplan Compromised",
-        "free_invokes": 2,
-        "source": "Captured dispatch case from Legate Rikke's command knot (pre-battle perimeter).",
+        "free_invokes": 0,
+        "source": "Captured dispatch case from Legate Rikke's command knot (pre-battle perimeter). (spent during gate-breach command decapitation)",
         "expires": "End of Battle of Whiterun"
       }
     ]
@@ -78,26 +90,33 @@
     "jarl_balgruuf_support": null,
     "thalmor_embassy_approach": null,
     "talos_worship_stance": null,
-    "civil_war_entry_contact": "Ralof"
+    "civil_war_entry_contact": "Ralof",
+    "battle_of_whiterun_choice": "assault_with_stormcloaks"
   },
 
   "world_consequences": {
     "towns_affected": [],
-    "npcs_killed": [],
+    "npcs_killed": [
+      "Imperial Conducting Officer (gate breach)",
+      "Imperial Horn Wielder (gate breach)"
+    ],
     "npcs_befriended": [],
     "major_choices": [
       "Engaged and defeated Legate Rikke's perimeter knot via coordinated strike; forced her concession (she escaped).",
       "Captured dispatch case: gained Battle of Whiterun tactical advantage.",
-      "Inflicted Sanies Lupinus exposure via bite to Rikke's hand during breakaway."
+      "Inflicted Sanies Lupinus exposure via bite to Rikke's hand during breakaway.",
+      "At the gate-breach, killed the conducting officer and seized his heart as trophy; used decapitation to shatter troop cohesion.",
+      "Ralof eliminated the horn wielder; Imperial withdrawal signaling disrupted.",
+      "Hadvar took a severe injury while rallying the reserve knot; ordered wounded retreat and accepted an honor duel to buy them time."
     ]
   },
 
   "active_story_arcs": [
     {
       "arc_name": "Civil War",
-      "status": "brewing",
-      "progress": 0,
-      "next_milestone": "Battle of Whiterun fires; use the captured advantage decisively"
+      "status": "active",
+      "progress": 1,
+      "next_milestone": "Duel Hadvar; stabilize breach; decide blood price vs withdrawal"
     },
     {
       "arc_name": "Thalmor Conspiracy",
@@ -110,14 +129,14 @@
   "companions": {
     "active_companions": [
       {
-        "npc_id": "npc_stat_ralof",
+        "npc_id": "ralof",
         "name": "Ralof",
         "status": "active",
         "loyalty": 62,
-        "location": "With party",
+        "location": "Breach line (holding wedge while duel begins)",
         "recruitment_trigger": "Stormcloak recruitment",
         "faction_affinity": "stormcloaks",
-        "notes": "Raised loyalty during the perimeter strike planning and execution."
+        "notes": "Holding breach while Khagar duels Hadvar; took 2-shift hit (stress 2). | Took 2 physical stress while cutting runner lane; stabilized breach per Khagar order."
       }
     ],
     "available_companions": [],

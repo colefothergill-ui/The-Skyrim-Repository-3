@@ -6,7 +6,7 @@
       "guild_foothold_whiterun": {
         "name": "Guild Foothold in Whiterun",
         "description": "Establishing a permanent Thieves Guild presence in Whiterun",
-        "current": 4,
+        "current": 5,
         "max": 5,
         "completion_effect": "Permanent Thieves Guild operations established in Whiterun with local fence and safe house access",
         "advancement_triggers": [

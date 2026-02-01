@@ -32,11 +32,11 @@
   "consequences": {
     "mild": null,
     "moderate": null,
-    "severe": null
+    "severe": "Cracked Shield Arm (conceded reserve knot to protect wounded)"
   },
   "refresh": 3,
   "armor": 1,
-  "notes": "Hadvar is a professional Imperial soldier who recruits promising warriors to the Legion cause. Unlike many Imperials, he shows compassion and pragmatism, willing to help civilians regardless of their allegiance. As Alvor's nephew, he has connections in Riverwood. He's conflicted about the civil war but believes the Empire provides stability that Skyrim needs. His combat style focuses on defensive tactics and protecting allies.",
+  "notes": "Hadvar is a professional Imperial soldier who recruits promising warriors to the Legion cause. Unlike many Imperials, he shows compassion and pragmatism, willing to help civilians regardless of their allegiance. As Alvor's nephew, he has connections in Riverwood. He's conflicted about the civil war but believes the Empire provides stability that Skyrim needs. His combat style focuses on defensive tactics and protecting allies. Accepted Khagar's duel terms to allow wounded retreat; drank Stronghold healing draught before duel.",
   "combat_tactics": "Hadvar fights defensively, prioritizing protection of allies over aggressive offense. He uses his shield effectively and coordinates with party members. In battle, he'll position himself between enemies and weaker party members, using his Imperial Training to hold the line.",
   "scene_triggers": ["Imperial recruitment", "Riverwood arrival", "Early Act 1 quests", "Whiterun defense preparations", "Battle of Whiterun (Imperial side)"],
   "act_context": ["Act 1", "Act 2"],
