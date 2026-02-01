@@ -315,7 +315,6 @@ def test_moonlight_outcomes_not_both():
     assert campaign_state.get('ill_met_moonlight_completed') is True
     
     # Try to complete with spare outcome (should not work as quest is already completed)
-    campaign_state_copy = campaign_state.copy()
     scene_moonlight_spare_sinding(campaign_state)
     
     # The spare function should not change anything because quest is already completed
