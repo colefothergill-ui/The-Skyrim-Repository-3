@@ -58,6 +58,33 @@ def main():
         return
 
     vp_path = repo_root / vp_ref
+
+    # Backwards-compatible fallback:
+    # Some PC sheets store a simple slug like "khagar_yal_visual" instead of a full path.
+    if not vp_path.exists():
+        slug = str(vp_ref).strip()
+        candidates = []
+        if slug.endswith(".json"):
+            candidates.append(repo_root / "data" / "pcs" / "visual_profiles" / slug)
+        else:
+            candidates.append(repo_root / "data" / "pcs" / "visual_profiles" / f"{slug}.json")
+            candidates.append(repo_root / "data" / "pcs" / "visual_profiles" / f"{slug}_visual.json")
+            # Only remove 'pc_' when it is a leading prefix on the slug (e.g., "pc_khagar_yal" → "khagar_yal").
+            # This avoids altering slugs where "pc" appears later, such as "epic_character".
+            if slug.startswith('pc_'):
+                candidates.append(repo_root / "data" / "pcs" / "visual_profiles" / f"{slug[3:]}_visual.json")
+
+        for c in candidates:
+            if c.exists():
+                vp_path = c
+                break
+
+    if not vp_path.exists():
+        raise FileNotFoundError(
+            f"PC visual profile missing. Ref='{vp_ref}'. Tried '{repo_root / vp_ref}' "
+            f"and fallback under data/pcs/visual_profiles."
+        )
+
     vp = load_json(vp_path)
 
     trigger = (args.trigger or "").strip()

@@ -172,5 +172,133 @@
     }
   ],
   "starting_narrative": "The party arrives in Whiterun as supporters of the Stormcloak Rebellion. Ralof, a Stormcloak soldier who recruited them to the cause, accompanies the party. Jarl Balgruuf has sided with the Empire, making Whiterun a target for liberation. The party joins Galmar Stone-Fist in preparing to assault the city and free it from Imperial control. The Battle of Whiterun is imminent, and Skyrim's future hangs in the balance.",
-  "faction_relationships": {}
+  "faction_relationships": {},
+  "npc_first_impressions": {
+    "npc_stat_whiterun_guard": {
+      "pc_khagar_yal": {
+        "timestamp": "2026-02-01T14:05:40.977788",
+        "disposition": "friendly",
+        "line": "A towering Orsimer, draped in snow-pelt and battle-iron—calm as a predator that already chose the outcome.",
+        "recognition_tags": [
+          "towering_orsimer",
+          "snow_sabre_cat_headdress",
+          "stormcloak_blue_cloth",
+          "fur_mantle",
+          "tusked_warchief",
+          "rune_lit_spear",
+          "cold_blue_aura",
+          "antler_crossguard",
+          "daedric_weapon_vibe"
+        ]
+      }
+    },
+    "npc_stat_companion_member": {
+      "pc_khagar_yal": {
+        "timestamp": "2026-02-01T14:05:40.978278",
+        "disposition": "friendly",
+        "line": "An orc in Nordic plate and Stormcloak-blue cloth, wearing a snow sabre cat like a crown. Nobody forgets that silhouette.",
+        "recognition_tags": [
+          "towering_orsimer",
+          "snow_sabre_cat_headdress",
+          "stormcloak_blue_cloth",
+          "fur_mantle",
+          "tusked_warchief",
+          "rune_lit_spear",
+          "cold_blue_aura",
+          "antler_crossguard",
+          "daedric_weapon_vibe"
+        ]
+      }
+    },
+    "npc_stat_brunwulf_freewinter": {
+      "pc_khagar_yal": {
+        "timestamp": "2026-02-01T14:05:47.942840",
+        "disposition": "friendly",
+        "line": "The spear's runes blink faintly. It's the kind of weapon that makes people speak softer without knowing why.",
+        "recognition_tags": [
+          "towering_orsimer",
+          "snow_sabre_cat_headdress",
+          "stormcloak_blue_cloth",
+          "fur_mantle",
+          "tusked_warchief",
+          "rune_lit_spear",
+          "cold_blue_aura",
+          "antler_crossguard",
+          "daedric_weapon_vibe"
+        ]
+      }
+    },
+    "npc_stat_galmar_stonefist": {
+      "pc_khagar_yal": {
+        "timestamp": "2026-02-01T14:05:47.943477",
+        "disposition": "hostile",
+        "line": "Your eyes catch on the sabre-cat pelt first—then the tusks—then the spear glowing like winter lightning.",
+        "recognition_tags": [
+          "towering_orsimer",
+          "snow_sabre_cat_headdress",
+          "stormcloak_blue_cloth",
+          "fur_mantle",
+          "tusked_warchief",
+          "rune_lit_spear",
+          "cold_blue_aura",
+          "antler_crossguard",
+          "daedric_weapon_vibe"
+        ]
+      }
+    },
+    "npc_stat_thalmor_justiciar": {
+      "pc_khagar_yal": {
+        "timestamp": "2026-02-01T14:05:47.946661",
+        "disposition": "hostile",
+        "line": "He looks like a war-story that learned how to walk: fur, steel, and a spear that hums with cold light.",
+        "recognition_tags": [
+          "towering_orsimer",
+          "snow_sabre_cat_headdress",
+          "stormcloak_blue_cloth",
+          "fur_mantle",
+          "tusked_warchief",
+          "rune_lit_spear",
+          "cold_blue_aura",
+          "antler_crossguard",
+          "daedric_weapon_vibe"
+        ]
+      }
+    },
+    "enemy_bandit_marauder": {
+      "pc_khagar_yal": {
+        "timestamp": "2026-02-01T14:05:47.947157",
+        "disposition": "neutral",
+        "line": "The spear's runes blink faintly. It's the kind of weapon that makes people speak softer without knowing why.",
+        "recognition_tags": [
+          "towering_orsimer",
+          "snow_sabre_cat_headdress",
+          "stormcloak_blue_cloth",
+          "fur_mantle",
+          "tusked_warchief",
+          "rune_lit_spear",
+          "cold_blue_aura",
+          "antler_crossguard",
+          "daedric_weapon_vibe"
+        ]
+      }
+    },
+    "npc_stat_wolf": {
+      "pc_khagar_yal": {
+        "timestamp": "2026-02-01T14:05:47.947620",
+        "disposition": "neutral",
+        "line": "The spear's runes blink faintly. It's the kind of weapon that makes people speak softer without knowing why.",
+        "recognition_tags": [
+          "towering_orsimer",
+          "snow_sabre_cat_headdress",
+          "stormcloak_blue_cloth",
+          "fur_mantle",
+          "tusked_warchief",
+          "rune_lit_spear",
+          "cold_blue_aura",
+          "antler_crossguard",
+          "daedric_weapon_vibe"
+        ]
+      }
+    }
+  }
 }

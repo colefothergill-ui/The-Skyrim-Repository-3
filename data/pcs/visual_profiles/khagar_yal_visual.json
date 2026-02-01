@@ -1,7 +1,7 @@
 {
   "pc_id": "pc_khagar_yal",
   "portrait": {
-    "path": "docs/assets/pcs/khagar_yal.jpg",
+    "path": "docs/assets/pcs/khagar_yal.png",
     "credit": "Player-provided art"
   },
   "trigger_outputs": {

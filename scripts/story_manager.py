@@ -13,6 +13,7 @@ This script manages:
 
 import json
 import os
+import sys
 from pathlib import Path
 from datetime import datetime
 from utils import location_matches
@@ -515,19 +516,36 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
         
         # Only attempt first impressions if appearance file exists
         if appearance_path and Path(appearance_path).exists():
-            for npc in scene_npcs:
-                npc_id = npc.get("id") or npc.get("npc_id")
-                if not npc_id:
-                    continue
-                # Default disposition; GM may override per faction/context
-                try:
-                    impression = maybe_first_impression(state_path, appearance_path, npc_id, disposition="neutral")
-                    if impression:
+            # scene_npcs is a dict of buckets -> list[dict]
+            for bucket_name, bucket_disposition in (
+                ("friendly", "positive"),
+                ("hostile", "negative"),
+                ("enemies", "neutral"),
+            ):
+                for npc in (scene_npcs.get(bucket_name, []) or []):
+                    if not isinstance(npc, dict):
+                        # Log data quality issue for debugging
+                        print(f"Warning: Non-dict item found in {bucket_name} bucket: {type(npc).__name__}", file=sys.stderr)
+                        continue
+                    npc_id = npc.get("id") or npc.get("npc_id")
+                    if not npc_id:
+                        continue
+
+                    try:
+                        line = maybe_first_impression(
+                            state_path,
+                            appearance_path,
+                            npc_id,
+                            disposition=bucket_disposition
+                        )
+                        if line:
+                            npc.setdefault("gm_barks", [])
+                            npc["gm_barks"].append(line)
+                    except Exception as e:
+                        # Log full error for debugging, show simple message to users
+                        print(f"First impression error for {npc_id} in {bucket_name}: {e}", file=sys.stderr)
                         npc.setdefault("gm_barks", [])
-                        npc["gm_barks"].append(impression)
-                except (FileNotFoundError, json.JSONDecodeError, KeyError, ValueError):
-                    # Silently skip if state doesn't exist or has invalid data
-                    pass
+                        npc["gm_barks"].append("(First impression unavailable)")
         
         # Build scene response
         scene_setup = {

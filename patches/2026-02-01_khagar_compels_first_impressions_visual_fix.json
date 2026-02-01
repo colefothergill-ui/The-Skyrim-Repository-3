@@ -1,0 +1,70 @@
+{
+  "patch_id": "2026-02-01_khagar_compels_first_impressions_visual_fix",
+  "description": "Comprehensive fix including: (1) First impressions now properly iterate scene_npcs dict buckets (friendly/hostile/enemies) with correct disposition mapping, (2) visual_profile_ref made resilient with slug fallback support, (3) Khagar's visual_profile_ref updated to full path, (4) portrait paths updated from .jpg to .png, (5) compel library already integrated, (6) placeholder portrait asset added.",
+  "targets": ["repo"],
+  "files": {
+    "scripts/story_manager.py": [
+      {
+        "op": "replace",
+        "path": "/first_impressions_block",
+        "description": "Fixed first impressions to iterate scene_npcs dict structure with buckets (friendly, hostile, enemies) and map each to appropriate disposition (positive, negative, neutral) matching appearance file keys."
+      }
+    ],
+    "scripts/pc_visual_manager.py": [
+      {
+        "op": "add",
+        "path": "/visual_profile_loading",
+        "description": "Added backward-compatible fallback for visual_profile_ref. Now supports both full paths and simple slugs with multiple candidate path attempts."
+      }
+    ],
+    "data/pcs/pc_khagar_yal.json": [
+      {
+        "op": "replace",
+        "path": "/visual_profile_ref",
+        "value": "data/pcs/visual_profiles/khagar_yal_visual.json",
+        "old_value": "khagar_yal_visual"
+      },
+      {
+        "op": "replace",
+        "path": "/appearance/art_path",
+        "value": "docs/assets/pcs/khagar_yal.png",
+        "old_value": "docs/assets/pcs/khagar_yal.jpg"
+      },
+      {
+        "op": "verify",
+        "path": "/aspects/trouble",
+        "value": "The Code of Hircine",
+        "description": "Trouble already set correctly"
+      },
+      {
+        "op": "verify",
+        "path": "/aspects/compel_library",
+        "description": "Compel library with 5 compels + Thalmor exception already present"
+      }
+    ],
+    "data/pcs/visual_profiles/khagar_yal_visual.json": [
+      {
+        "op": "replace",
+        "path": "/portrait/path",
+        "value": "docs/assets/pcs/khagar_yal.png",
+        "old_value": "docs/assets/pcs/khagar_yal.jpg"
+      }
+    ],
+    "docs/assets/pcs/khagar_yal.png": [
+      {
+        "op": "add",
+        "description": "Added placeholder portrait asset (400x400 PNG)"
+      }
+    ]
+  },
+  "code_changes": {
+    "story_manager.py": "Fixed scene_npcs iteration to properly handle dict structure with friendly/hostile/enemies buckets, mapping each to correct disposition (positive/negative/neutral) for first impressions.",
+    "pc_visual_manager.py": "Added resilient visual_profile_ref loading with fallback support for slug-only references, trying multiple candidate paths."
+  },
+  "rationale": {
+    "first_impressions_fix": "The original code iterated scene_npcs as if it were a list, but get_scene_npcs() returns a dict with buckets. This caused first impressions to never trigger. Fixed by iterating each bucket and mapping to appropriate disposition (friendly→positive, hostile→negative, enemies→neutral) to match appearance file keys.",
+    "visual_profile_resilience": "Some PC sheets use simple slugs (e.g., 'khagar_yal_visual') while others use full paths. Added fallback logic to try multiple candidate paths for better compatibility.",
+    "path_consistency": "Updated all portrait references from .jpg to .png for consistency across PC sheet, visual profile, and actual asset file."
+  },
+  "commit_message": "Fix Khagar compel library + first impressions + visual profile refs"
+}
