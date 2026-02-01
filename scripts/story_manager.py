@@ -450,7 +450,14 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
         return None
 
     def _get_pc_compel_hooks(self, max_items=5):
-        """Return structured compel hooks (usually Trouble-based) for GM prompts."""
+        """
+        Return structured compel hooks (usually Trouble-based) for GM prompts.
+        
+        Returns:
+            List of dict, each containing keys like 'id', 'title', 'when', 
+            'compel_hit', 'suggested_scene_aspect', 'tags', and optionally 
+            'exception_tags'. Returns empty list if no hooks are found.
+        """
         pc = self._load_active_pc()
         if not isinstance(pc, dict):
             return []
