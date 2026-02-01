@@ -26,7 +26,9 @@
           "cap_until_condition_met": 3,
           "condition": "state.branching_decisions.civil_war_entry_contact == 'Ralof' || state.civil_war_state.player_alliance == 'stormcloak'",
           "note": "Olfrid will not fully open the Whiterun door until you prove your alignment during the Battle of Whiterun—specifically by fighting alongside Ralof (or formally allying with the Stormcloaks)."
-        }
+        },
+        "status": "inactive_for_khagar_yal",
+        "continuity_note": "Retired: this clock belonged to Aldrin/Thieves Guild story. Keep as optional module, but it is NOT active for Khagar Yal."
       },
       "battleborn_strongbox": {
         "name": "Battle-Born Strongbox Job",
@@ -39,7 +41,9 @@
           "Phase 1: Locate and breach the concealed wall safe",
           "Phase 2: Extract strongbox from manor grounds",
           "Phase 3: Deliver to Olfrid or arrange hand-off"
-        ]
+        ],
+        "status": "inactive_for_khagar_yal",
+        "continuity_note": "Retired: this clock belonged to Aldrin/Thieves Guild story. Keep as optional module, but it is NOT active for Khagar Yal."
       }
     }
   }

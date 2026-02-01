@@ -17,10 +17,9 @@
         "unlocks": {
           "2": "Level 2: Add once-per-scene 'Huntsman's Sting' (declare truth about prey's weakness if you have their scent/trace).",
           "4": "Level 3: Bitter Mercy aspect begins with +1 free invoke at scene start when you declare a hunt.",
-          "6": "Level 4: Unlock free stunt 'Apex Predator' — while wielding Bitter Mercy, gain +1 to Defend vs Fight/Shoot attacks from bears, wolves, frostbite spiders, sabre cats, and lycanthropes; and gain +1 to Attack (Fight/Shoot) against those targets when using Bitter Mercy."
+          "6": "Level 4 (Awakening 6): Apex Predator (free stunt tied to Bitter Mercy) + clarify Bitter Mercy synergy as Weapon:+1 vs 'Bitter Mercy' marked prey (max Weapon:3 total)."
         }
       },
-
       "legate_rikke_sanies_lupinus_incubation": {
         "name": "Rikke — Sanies Lupinus Incubation",
         "description": "Tracks infection progression after Khagar's bite to Rikke's hand during her concession escape.",
@@ -33,11 +32,10 @@
           "4/4: Full crisis: Rikke must choose suppression, cure-hunt, or embrace (GM fork)."
         ]
       },
-
       "thalmor_scent_scry_escalation": {
         "name": "Thalmor — Scent-Scry Escalation",
         "description": "Daedric artifact pulses + predator rites create 'anomalies' that can be triangulated by Thalmor diviners over time.",
-        "current_progress": 3,
+        "current_progress": 4,
         "total_segments": 6,
         "advancement_triggers": [
           "Use Bitter Mercy in a high-profile scene (+1)",

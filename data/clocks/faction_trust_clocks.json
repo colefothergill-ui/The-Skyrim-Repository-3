@@ -50,17 +50,35 @@
           "fail_critical_mission": "-1"
         },
         "trust_benefits": {
-          "3": ["Imperial Legion membership", "Access to Imperial camps", "Purchase Imperial gear"],
-          "5": ["Command small units in battle", "Intel on Stormcloak movements", "Safe passage in Imperial holds"],
-          "7": ["Tactical planning meetings", "Legate Rikke's confidence", "Imperial reinforcements on call"],
-          "9": ["Influence General Tullius", "Command major operations", "Imperial Hero status"]
+          "3": [
+            "Imperial Legion membership",
+            "Access to Imperial camps",
+            "Purchase Imperial gear"
+          ],
+          "5": [
+            "Command small units in battle",
+            "Intel on Stormcloak movements",
+            "Safe passage in Imperial holds"
+          ],
+          "7": [
+            "Tactical planning meetings",
+            "Legate Rikke's confidence",
+            "Imperial reinforcements on call"
+          ],
+          "9": [
+            "Influence General Tullius",
+            "Command major operations",
+            "Imperial Hero status"
+          ]
         },
-        "incompatible_with": ["stormcloaks"],
+        "incompatible_with": [
+          "stormcloaks"
+        ],
         "notes": "Cannot have high trust with both Imperial Legion and Stormcloaks simultaneously"
       },
       "stormcloak_rebellion_trust": {
         "faction": "Stormcloak Rebellion",
-        "current_trust": 3,
+        "current_trust": 5,
         "max_trust": 10,
         "trust_level": "Ally",
         "advancement_triggers": {
@@ -79,12 +97,30 @@
           "cooperate_with_thalmor": "-5"
         },
         "trust_benefits": {
-          "3": ["Stormcloak membership", "Access to Stormcloak camps", "Ulfric's ear (occasionally)"],
-          "5": ["Galmar's respect", "Lead raids", "Safe passage in Stormcloak holds"],
-          "7": ["Strategic planning role", "Command significant forces", "Inner circle access"],
-          "9": ["Influence Ulfric's decisions", "Hero of the Rebellion status", "Thane of Windhelm"]
+          "3": [
+            "Stormcloak membership",
+            "Access to Stormcloak camps",
+            "Ulfric's ear (occasionally)"
+          ],
+          "5": [
+            "Galmar's respect",
+            "Lead raids",
+            "Safe passage in Stormcloak holds"
+          ],
+          "7": [
+            "Strategic planning role",
+            "Command significant forces",
+            "Inner circle access"
+          ],
+          "9": [
+            "Influence Ulfric's decisions",
+            "Hero of the Rebellion status",
+            "Thane of Windhelm"
+          ]
         },
-        "incompatible_with": ["imperial_legion"],
+        "incompatible_with": [
+          "imperial_legion"
+        ],
         "notes": "Stormcloaks value Nord heritage and Talos worship. Non-Nords may face initial suspicion."
       },
       "companions_trust": {
@@ -108,10 +144,26 @@
           "criminal_behavior_in_whiterun": "-1"
         },
         "trust_benefits": {
-          "2": ["Join the Companions", "Sleep in Jorrvaskr", "Training from members"],
-          "4": ["Inner Circle potential", "Beast blood offered", "Companion backup in Whiterun"],
-          "6": ["Werewolf form mastery", "Vilkas/Farkas as close allies", "Radiant contract access"],
-          "9": ["Harbinger candidacy", "Reform the Companions", "Legend status"]
+          "2": [
+            "Join the Companions",
+            "Sleep in Jorrvaskr",
+            "Training from members"
+          ],
+          "4": [
+            "Inner Circle potential",
+            "Beast blood offered",
+            "Companion backup in Whiterun"
+          ],
+          "6": [
+            "Werewolf form mastery",
+            "Vilkas/Farkas as close allies",
+            "Radiant contract access"
+          ],
+          "9": [
+            "Harbinger candidacy",
+            "Reform the Companions",
+            "Legend status"
+          ]
         },
         "special_mechanics": {
           "beast_blood": "Major choice at trust 4-5. Accepting grants immediate +3, refusing causes -1.",
@@ -140,16 +192,33 @@
           "work_with_guards_against_guild": "-4"
         },
         "trust_benefits": {
-          "2": ["Guild membership", "Fence access", "Ragged Flagon sanctuary"],
-          "4": ["Special equipment", "Multiple city fences", "Intel network"],
-          "6": ["City influence jobs", "Guild backup for heists", "Nocturnal's minor blessings"],
-          "9": ["Guild Master authority", "All cities under influence", "Nocturnal's Luck blessing"]
+          "2": [
+            "Guild membership",
+            "Fence access",
+            "Ragged Flagon sanctuary"
+          ],
+          "4": [
+            "Special equipment",
+            "Multiple city fences",
+            "Intel network"
+          ],
+          "6": [
+            "City influence jobs",
+            "Guild backup for heists",
+            "Nocturnal's minor blessings"
+          ],
+          "9": [
+            "Guild Master authority",
+            "All cities under influence",
+            "Nocturnal's Luck blessing"
+          ]
         },
         "special_mechanics": {
           "city_influence": "Must complete city influence jobs to reach max trust",
           "skeleton_key": "Keeping Skeleton Key blocks max trust with Nocturnal/Guild",
           "merchant_connections": "High trust enables special trade deals across Skyrim"
-        }
+        },
+        "notes": "Continuity correction (2026-02-01): Aldrin-era Thieves Guild progress removed; Khagar Yal has no TG affiliation."
       },
       "college_of_winterhold_trust": {
         "faction": "College of Winterhold",
@@ -171,10 +240,26 @@
           "steal_from_arcanaeum": "-2"
         },
         "trust_benefits": {
-          "2": ["College membership", "Arcanaeum access", "Basic spell training"],
-          "4": ["Advanced spell training", "Enchanting/alchemy facilities", "Expert mage mentors"],
-          "6": ["Master spells", "Faculty respect", "Research collaborations"],
-          "9": ["Arch-Mage authority", "College resources at command", "Legendary arcane knowledge"]
+          "2": [
+            "College membership",
+            "Arcanaeum access",
+            "Basic spell training"
+          ],
+          "4": [
+            "Advanced spell training",
+            "Enchanting/alchemy facilities",
+            "Expert mage mentors"
+          ],
+          "6": [
+            "Master spells",
+            "Faculty respect",
+            "Research collaborations"
+          ],
+          "9": [
+            "Arch-Mage authority",
+            "College resources at command",
+            "Legendary arcane knowledge"
+          ]
         },
         "special_mechanics": {
           "magic_required": "Must demonstrate magical ability to join",
@@ -201,12 +286,30 @@
           "aggressive_use_of_shouts": "-1"
         },
         "trust_benefits": {
-          "3": ["Extended Thu'um training", "Word Wall locations", "Arngeir's counsel"],
-          "5": ["Advanced shout knowledge", "Paarthurnax meetings", "Throat of the World sanctuary"],
-          "7": ["Master of the Voice status", "All shout words taught", "Greybeard backing"],
-          "9": ["True Voice master", "Paarthurnax's deepest teachings", "Peace through the Voice"]
+          "3": [
+            "Extended Thu'um training",
+            "Word Wall locations",
+            "Arngeir's counsel"
+          ],
+          "5": [
+            "Advanced shout knowledge",
+            "Paarthurnax meetings",
+            "Throat of the World sanctuary"
+          ],
+          "7": [
+            "Master of the Voice status",
+            "All shout words taught",
+            "Greybeard backing"
+          ],
+          "9": [
+            "True Voice master",
+            "Paarthurnax's deepest teachings",
+            "Peace through the Voice"
+          ]
         },
-        "incompatible_with": ["blades_paarthurnax_conflict"],
+        "incompatible_with": [
+          "blades_paarthurnax_conflict"
+        ],
         "special_mechanics": {
           "paarthurnax_choice": "Killing Paarthurnax destroys all trust permanently",
           "philosophy_matters": "Greybeards care how you use the Voice, not just that you have it",
@@ -234,12 +337,30 @@
           "fail_to_hunt_dragons": "-1"
         },
         "trust_benefits": {
-          "2": ["Blades training", "Delphine/Esbern as allies", "Dragon hunting intel"],
-          "4": ["Sky Haven Temple access", "Dragonbane sword", "Blade armor"],
-          "6": ["Recruit Blades followers", "Dragon hunting parties", "Ancient Blades knowledge"],
-          "9": ["Reform the Blades", "Dragonslayer Legion", "Legendary Blade status"]
+          "2": [
+            "Blades training",
+            "Delphine/Esbern as allies",
+            "Dragon hunting intel"
+          ],
+          "4": [
+            "Sky Haven Temple access",
+            "Dragonbane sword",
+            "Blade armor"
+          ],
+          "6": [
+            "Recruit Blades followers",
+            "Dragon hunting parties",
+            "Ancient Blades knowledge"
+          ],
+          "9": [
+            "Reform the Blades",
+            "Dragonslayer Legion",
+            "Legendary Blade status"
+          ]
         },
-        "incompatible_with": ["greybeards_if_paarthurnax_lives"],
+        "incompatible_with": [
+          "greybeards_if_paarthurnax_lives"
+        ],
         "special_mechanics": {
           "paarthurnax_ultimatum": "Blades refuse to fully help until Paarthurnax dies",
           "rebuilding_order": "High trust means rebuilding this ancient order",
@@ -266,10 +387,26 @@
           "fail_to_defend_from_dragons": "-2"
         },
         "trust_benefits": {
-          "2": ["Welcome in Whiterun", "Dragonsreach access", "Jarl's gratitude"],
-          "4": ["Thane of Whiterun", "Housecarl Lydia", "Breezehome purchase"],
-          "6": ["Balgruuf's confidence", "Whiterun guard support", "Political influence"],
-          "9": ["Balgruuf's inner circle", "Whiterun mobilizes for party", "Hero of Whiterun"]
+          "2": [
+            "Welcome in Whiterun",
+            "Dragonsreach access",
+            "Jarl's gratitude"
+          ],
+          "4": [
+            "Thane of Whiterun",
+            "Housecarl Lydia",
+            "Breezehome purchase"
+          ],
+          "6": [
+            "Balgruuf's confidence",
+            "Whiterun guard support",
+            "Political influence"
+          ],
+          "9": [
+            "Balgruuf's inner circle",
+            "Whiterun mobilizes for party",
+            "Hero of Whiterun"
+          ]
         },
         "special_mechanics": {
           "neutrality_tension": "Balgruuf tries to stay neutral but is pressured",
@@ -296,10 +433,26 @@
           "kill_brotherhood_members": "-3"
         },
         "trust_benefits": {
-          "3": ["Brotherhood membership", "Sanctuary access", "Assassination contracts"],
-          "5": ["Dark Brotherhood armor", "Spectral Assassin", "Shadowy contacts"],
-          "7": ["Major contract access", "Brotherhood backing", "Listener candidate"],
-          "9": ["Listener authority", "Night Mother's chosen", "Command the Brotherhood"]
+          "3": [
+            "Brotherhood membership",
+            "Sanctuary access",
+            "Assassination contracts"
+          ],
+          "5": [
+            "Dark Brotherhood armor",
+            "Spectral Assassin",
+            "Shadowy contacts"
+          ],
+          "7": [
+            "Major contract access",
+            "Brotherhood backing",
+            "Listener candidate"
+          ],
+          "9": [
+            "Listener authority",
+            "Night Mother's chosen",
+            "Command the Brotherhood"
+          ]
         },
         "special_mechanics": {
           "optional_destruction": "Can destroy Brotherhood instead of joining",
