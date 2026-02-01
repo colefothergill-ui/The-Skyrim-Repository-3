@@ -6,7 +6,7 @@
       "khagar_bitter_mercy_awakening": {
         "name": "Bitter Mercy Awakening",
         "description": "Tracks the Spear of Bitter Mercy waking up as Khagar proves worth through hunts and consequences inflicted.",
-        "current_progress": 5,
+        "current_progress": 6,
         "total_segments": 6,
         "advancement_triggers": [
           "Inflict a consequence with Bitter Mercy (+1)",
@@ -17,7 +17,7 @@
         "unlocks": {
           "2": "Level 2: Add once-per-scene 'Huntsman's Sting' (declare truth about prey's weakness if you have their scent/trace).",
           "4": "Level 3: Bitter Mercy aspect begins with +1 free invoke at scene start when you declare a hunt.",
-          "6": "Level 4: Weapon rating increases by +1 in hunts OR upgrade Bitter Mercy to Moderate Consequence trigger (choose one)."
+          "6": "Level 4: Unlock free stunt 'Apex Predator' — while wielding Bitter Mercy, gain +1 to Defend vs Fight/Shoot attacks from bears, wolves, frostbite spiders, sabre cats, and lycanthropes; and gain +1 to Attack (Fight/Shoot) against those targets when using Bitter Mercy."
         }
       },
 

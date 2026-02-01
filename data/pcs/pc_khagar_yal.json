@@ -85,7 +85,8 @@
         "Bitter Mercy: When Bitter Mercy helps you inflict a Mild Consequence on a target, that target gains the situation aspect 'Bitter Mercy'. Until that creature is taken out, your stress dealt to that creature counts as Weapon:1 (stacking with other weapon ratings only if explicitly allowed by the current scene)."
       ],
       "stunts": [
-        "Pack Tactics: When within the same zone as at least one companion in your party, once per scene you may Create an Advantage with Crafts at +2. On success, place one of: 'Flanked by the Spear', 'Coordinated Strike', or 'Boxed-In'. This advantage starts with 3 free invokes usable by you or your companions. On Success With Style, you and your companions also gain +2 to your next Attack roll this scene."
+        "Pack Tactics: When within the same zone as at least one companion in your party, once per scene you may Create an Advantage with Crafts at +2. On success, place one of: 'Flanked by the Spear', 'Coordinated Strike', or 'Boxed-In'. This advantage starts with 3 free invokes usable by you or your companions. On Success With Style, you and your companions also gain +2 to your next Attack roll this scene.",
+        "Apex Predator: While Khagar Yal is wielding Bitter Mercy, he gains +1 to Defend against Fight or Shoot attacks made by bears, wolves, frostbite spiders, sabre cats, and lycanthropes. When Khagar attacks any of those targets using Bitter Mercy, he gains +1 to Attack (Fight or Shoot)."
       ],
       "awakening_note": "This artifact is intentionally dormant at Level 1. Use the Bitter Mercy Awakening clock in data/clocks/pc_extras_clocks.json to unlock higher tiers."
     }
