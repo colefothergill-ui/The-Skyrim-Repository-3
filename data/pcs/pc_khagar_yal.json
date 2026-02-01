@@ -103,8 +103,7 @@
       "stunts": [
         "Pack Tactics: When within the same zone as at least one companion in your party, once per scene you may Create an Advantage with Crafts at +2. On success, place one of: 'Flanked by the Spear', 'Coordinated Strike', or 'Boxed-In'. This advantage starts with 3 free invokes usable by you or your companions. On Success With Style, you and your companions also gain +2 to your next Attack roll this scene.",
         "Huntsman's Sting (Level 2): Once per scene, if you have the scent or trace of your prey, you may declare a truth about their weakness. This creates an aspect with one free invoke that reflects a vulnerability or tactical disadvantage of the target.",
-        "Apex Predator: While Khagar Yal is wielding Bitter Mercy, he gains +1 to Defend against Fight or Shoot attacks made by bears, wolves, frostbite spiders, sabre cats, and lycanthropes. When Khagar attacks any of those targets using Bitter Mercy, he gains +1 to Attack (Fight or Shoot).",
-        "Apex Predator (Bitter Mercy): While wielding Bitter Mercy, wildlife predators (bears, wolves, frostbite spiders, sabre cats) and other lycanthropes suffer -1 on Fight or Shoot attack rolls made against Khagar Yal. When Khagar Yal attacks one of those creatures with Bitter Mercy, he gains +1 to the Fight or Shoot attack roll."
+        "Apex Predator: While Khagar Yal is wielding Bitter Mercy, he gains +1 to Defend against Fight or Shoot attacks made by bears, wolves, frostbite spiders, sabre cats, and lycanthropes. When Khagar attacks any of those targets using Bitter Mercy, he gains +1 to Attack (Fight or Shoot)."
       ],
       "awakening_note": "This artifact has reached Level 4 (fully awakened). All unlocks from the Bitter Mercy Awakening clock in data/clocks/pc_extras_clocks.json are now active."
     }

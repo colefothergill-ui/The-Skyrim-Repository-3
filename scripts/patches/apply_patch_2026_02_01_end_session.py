@@ -118,7 +118,8 @@ def main():
         "When Khagar Yal attacks one of those creatures with Bitter Mercy, he gains +1 to the Fight or Shoot attack roll."
     )
     stunts = bm_extra.setdefault("stunts", [])
-    if apex not in stunts:
+    # Check if any stunt already contains "Apex Predator" to avoid duplicates
+    if not any("Apex Predator" in s for s in stunts):
         stunts.append(apex)
 
     # -------------------------
