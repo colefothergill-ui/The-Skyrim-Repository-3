@@ -13,6 +13,7 @@ This script manages:
 
 import json
 import os
+import sys
 from pathlib import Path
 from datetime import datetime
 from utils import location_matches
@@ -524,7 +525,6 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
                 for npc in (scene_npcs.get(bucket_name, []) or []):
                     if not isinstance(npc, dict):
                         # Log data quality issue for debugging
-                        import sys
                         print(f"Warning: Non-dict item found in {bucket_name} bucket: {type(npc).__name__}", file=sys.stderr)
                         continue
                     npc_id = npc.get("id") or npc.get("npc_id")
@@ -543,7 +543,7 @@ Schemes Discovered: {len(state['thalmor_arc']['thalmor_schemes_discovered'])}
                             npc["gm_barks"].append(line)
                     except Exception as e:
                         npc.setdefault("gm_barks", [])
-                        npc["gm_barks"].append(f"(First impression error: {e})")
+                        npc["gm_barks"].append(f"(First impression error for {npc_id} in {bucket_name}: {e})")
         
         # Build scene response
         scene_setup = {
