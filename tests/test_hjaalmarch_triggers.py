@@ -212,7 +212,7 @@ def test_falion_ritual_not_at_night():
     
     events = hjaalmarch_location_triggers("morthal", campaign_state)
     
-    # Should not mention ritual at night
+    # Should not mention ritual during day
     falion_ritual_events = [e for e in events if "falion" in e.lower() and "ritual" in e.lower() and "soul gem" in e.lower()]
     assert len(falion_ritual_events) == 0, "Falion's ritual should not trigger during day"
     print(f"✓ Falion's ritual correctly doesn't trigger during day")

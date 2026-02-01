@@ -56,7 +56,7 @@ def hjaalmarch_location_triggers(loc, campaign_state):
     
     # Companion commentary for any Morthal-native follower (e.g., Benor)
     if is_companion_present(active_companions, "benor") and "morthal" in loc_lower:
-        events.append('Benor scans the dimly lit village and grips his weapon hilt. "Not much has changed," he mutters. "Morthal may be quiet, but don\'t let your guard down. These marshes breed odd troubles."')
+        events.append("Benor scans the dimly lit village and grips his weapon hilt. \"Not much has changed,\" he mutters. \"Morthal may be quiet, but don't let your guard down. These marshes breed odd troubles.\"")
     
     # Civil War impact triggers (Jarl change if hold switches sides)
     if "morthal" in loc_lower:
