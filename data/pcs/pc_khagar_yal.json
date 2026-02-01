@@ -77,17 +77,20 @@
     },
 
     "daedric_artifact_bitter_mercy": {
-      "name": "Daedric Artifact: Spear of Bitter Mercy (Level 1)",
+      "name": "Daedric Artifact: Spear of Bitter Mercy (Level 4 - Awakened)",
       "refresh_cost": 1,
       "reference_rules_path": "data/rules/artifacts.json",
-      "aspect": "The New Moon (New Cycle): The Spear hums with the will of the Huntsman—dormant, craving worthy prey.",
+      "aspect": "The Full Moon (End Cycle): The Spear hums with the will of the Huntsman's favored hunter—now fully awakened, and teeming with the glorious majesty of Hircine! [Level 3: When you declare a hunt, this aspect begins the scene with +1 free invoke.]",
+      "gm_notes": "New Quest Available - GM is to initiate Hircine-flavored encounter after the Battle of Whiterun's full completion.",
       "traits": [
         "Bitter Mercy: When Bitter Mercy helps you inflict a Mild Consequence on a target, that target gains the situation aspect 'Bitter Mercy'. Until that creature is taken out, your stress dealt to that creature counts as Weapon:1 (stacking with other weapon ratings only if explicitly allowed by the current scene)."
       ],
       "stunts": [
-        "Pack Tactics: When within the same zone as at least one companion in your party, once per scene you may Create an Advantage with Crafts at +2. On success, place one of: 'Flanked by the Spear', 'Coordinated Strike', or 'Boxed-In'. This advantage starts with 3 free invokes usable by you or your companions. On Success With Style, you and your companions also gain +2 to your next Attack roll this scene."
+        "Pack Tactics: When within the same zone as at least one companion in your party, once per scene you may Create an Advantage with Crafts at +2. On success, place one of: 'Flanked by the Spear', 'Coordinated Strike', or 'Boxed-In'. This advantage starts with 3 free invokes usable by you or your companions. On Success With Style, you and your companions also gain +2 to your next Attack roll this scene.",
+        "Huntsman's Sting (Level 2): Once per scene, if you have the scent or trace of your prey, you may declare a truth about their weakness. This creates an aspect with one free invoke that reflects a vulnerability or tactical disadvantage of the target.",
+        "Apex Predator: While Khagar Yal is wielding Bitter Mercy, he gains +1 to Defend against Fight or Shoot attacks made by bears, wolves, frostbite spiders, sabre cats, and lycanthropes. When Khagar attacks any of those targets using Bitter Mercy, he gains +1 to Attack (Fight or Shoot)."
       ],
-      "awakening_note": "This artifact is intentionally dormant at Level 1. Use the Bitter Mercy Awakening clock in data/clocks/pc_extras_clocks.json to unlock higher tiers."
+      "awakening_note": "This artifact has reached Level 4 (fully awakened). All unlocks from the Bitter Mercy Awakening clock in data/clocks/pc_extras_clocks.json are now active."
     }
   },
 
