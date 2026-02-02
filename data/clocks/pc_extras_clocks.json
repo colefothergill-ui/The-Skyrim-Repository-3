@@ -1,7 +1,7 @@
 {
   "pc_extras_clocks": {
     "description": "Clocks tied to PC extras, artifact awakening, and persistent consequences created mid-session.",
-    "last_updated": "2026-01-29 16:30:00",
+    "last_updated": "2026-02-01 (Session 02 End Protocol)",
     "clocks": {
       "khagar_bitter_mercy_awakening": {
         "name": "Bitter Mercy Awakening",
@@ -35,8 +35,9 @@
       "thalmor_scent_scry_escalation": {
         "name": "Thalmor — Scent-Scry Escalation",
         "description": "Daedric artifact pulses + predator rites create 'anomalies' that can be triangulated by Thalmor diviners over time.",
-        "current_progress": 4,
+        "current_progress": 6,
         "total_segments": 6,
+        "completed": true,
         "advancement_triggers": [
           "Use Bitter Mercy in a high-profile scene (+1)",
           "Public beast-form incident (+2)",
@@ -47,7 +48,97 @@
           "Cover tracks / frame others successfully (-1)",
           "Kill or misdirect a Thalmor informant (-1 to -2)"
         ],
-        "completion_effect": "A Thalmor operative cell is dispatched with a tailored counter-plan (silver, fire, propaganda)."
+        "completion_effect": "A Thalmor operative cell is dispatched with a tailored counter-plan (silver, fire, propaganda).",
+        "completion_note": "Completed during Session 02: Khagar's public werebear transformation in Cloud District triggered Thalmor divination escalation."
+      },
+      "galmar_resentment": {
+        "name": "Galmar's Resentment",
+        "description": "Internal hardliner friction within Stormcloak command; Galmar resents 'mercy' choices and Khagar's influence.",
+        "current_progress": 2,
+        "total_segments": 4,
+        "advancement_triggers": [
+          "Spare/capture enemies Galmar wanted executed (+1)",
+          "Overrule Galmar's tactical calls (+1)",
+          "Public disagreement with hardliner stance (+1)"
+        ],
+        "story_hooks": [
+          "2/4: Galmar mutters complaints; tension building",
+          "3/4: Open confrontation; demands explanation",
+          "4/4: Crisis point - Galmar challenges authority or demands removal"
+        ]
+      },
+      "khagar_werebear_evolution": {
+        "name": "Khagar — Werebear Evolution",
+        "description": "Khagar's lycanthropy evolves through use, control, and Hircine's favor.",
+        "current_progress": 1,
+        "total_segments": 4,
+        "advancement_triggers": [
+          "Public transformation with narrative weight (+1)",
+          "Feed Hircine's hunger via worthy hunt (+1)",
+          "Master new aspect of beast-form (+1)"
+        ],
+        "unlocks": {
+          "2": "Enhanced senses persist in humanoid form",
+          "3": "Voluntary transformation control (no stress cost)",
+          "4": "Primal Avatar - full mastery + new stunt option"
+        }
+      },
+      "whiterun_witnesses_huntress_targeted": {
+        "name": "Whiterun Witnesses: The Huntress Targeted",
+        "description": "Civilians and guards witnessed Khagar engage Aela the Huntress; rumors spread about the confrontation.",
+        "current_progress": 1,
+        "total_segments": 4,
+        "story_hooks": [
+          "1/4: Witnesses spread rumors; 'He fought Aela'",
+          "2/4: Companions hear; questions about confrontation",
+          "3/4: Aela's reputation tied to outcome; polarizes Companions",
+          "4/4: Companions demand explanation or issue challenge"
+        ]
+      },
+      "whiterun_civilians_protected": {
+        "name": "Whiterun Civilians: 'He Protected Us'",
+        "description": "Khagar established evacuation corridor to Temple of Kynareth; civilians remember mercy during siege.",
+        "current_progress": 1,
+        "total_segments": 4,
+        "advancement_triggers": [
+          "Direct civilian protection actions (+1)",
+          "Public acts of restraint vs collateral (+1)",
+          "Danica Pure-Spring acknowledges aid (+1)"
+        ],
+        "story_hooks": [
+          "1/4: Gratitude whispered; counterweight to beast fears",
+          "2/4: Witnesses speak openly; 'not just a monster'",
+          "3/4: Danica offers sanctuary/support",
+          "4/4: Whiterun civilians become allies despite occupation"
+        ]
+      },
+      "companions_notice_bitter_mercy": {
+        "name": "Companions Notice: Bitter Mercy",
+        "description": "Companions are aware Khagar has Aela's bow Bitter Mercy; implications for honor and standing.",
+        "current_progress": 1,
+        "total_segments": 4,
+        "story_hooks": [
+          "1/4: Companions hear Aela's bow was taken",
+          "2/4: Inner Circle asks questions; tension rises",
+          "3/4: Formal challenge or demand for explanation",
+          "4/4: Resolution required - return, keep, or contest"
+        ]
+      },
+      "aela_hunt_debt": {
+        "name": "Aela — Hunt-Debt",
+        "description": "Aela the Huntress owes Khagar a Hunt-debt after conceding and being released under oath.",
+        "current_progress": 1,
+        "total_segments": 3,
+        "advancement_triggers": [
+          "Call in debt for aid (+1)",
+          "Aela honors debt voluntarily (+1)",
+          "Bitter Mercy returned (+1)"
+        ],
+        "story_hooks": [
+          "1/3: Debt acknowledged; Aela withdrawn to Jorrvaskr",
+          "2/3: Debt called or honored; major assistance",
+          "3/3: Debt fulfilled - new relationship dynamic established"
+        ]
       }
     }
   }

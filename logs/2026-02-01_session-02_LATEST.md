@@ -23,3 +23,39 @@
 ## Next Session Start Hook
 - Ralof decides Hadvar's fate: execute / capture / ransom / release / recruit.
 - Decide: press into Whiterun or consolidate the breach.
+
+---
+
+## Session Continuation Addendum (Canon) — Breachrun to Dragonsreach
+
+### Major Events (Canon)
+1. **Ralof's call**: Hadvar was Taken Out alive; Khagar ceded the final decision to Ralof; Ralof chose **custody** over execution.
+2. **Galmar checked**: Galmar pressed for a "clean kill," but Ralof held the line with Khagar's backing; internal hardliner resentment begins.
+3. **Hadvar secured**: Hadvar bound and moved behind Stormcloak lines under Ralof's assigned watchers.
+4. **City push begins**: Khagar pressed into Whiterun's districts toward Dragonsreach.
+5. **Aela encountered**: Aela the Huntress engaged as rooftop archer; Khagar's hunt compelled.
+6. **Aela concedes / Hunt-debt**: Aela conceded before being Taken Out; Bitter Mercy recovered; Khagar released her under oath to withdraw to Jorrvaskr and stay out of the skirmish. Aela owes a Hunt-debt.
+7. **Civilians redirected**: Evacuation corridor established toward the Temple of Kynareth, reducing collateral and clearing lanes.
+8. **Side-stair flank**: Flank guards eliminated; main stair defense collapsed from above.
+9. **Public werebear incident**: Khagar transformed publicly during the Cloud District push; Thalmor divination pressure completes escalation.
+10. **Session end position**: Dragonsreach approach secured; Stormcloaks hold Cloud District lanes; Khagar and Ralof regroup at the walkway.
+
+### Mechanical Summary (End of Session)
+- Fate Points (end): **3**
+- Ralof Loyalty: **80/100** (Major Trust Tick)
+- Stormcloak Rebellion Trust: **6/10**
+- Thalmor Intelligence Network: **7/8**
+- Thalmor — Scent-Scry Escalation: **6/6 (COMPLETE)** → Operative cell dispatched (silver/fire/propaganda)
+- New clocks: Galmar's Resentment (2/4), Khagar—Werebear Evolution (1/4), Whiterun Witnesses: Huntress Targeted (1/4), Whiterun Civilians: "He Protected Us" (1/4), Companions Notice: Bitter Mercy (1/4), Aela—Hunt-Debt (1/3)
+
+### Narrative Benefits / Consequences
+- **Benefit:** Hadvar alive = leverage/intel potential; moral spine strengthens Ralof's leadership.
+- **Benefit:** Civilian corridor improves Whiterun perception (counterweight to beast rumors).
+- **Consequence:** Galmar internal friction rising; Companions notice Bitter Mercy; Thalmor counter-hunt machine spins up due to public beast-form anomaly.
+
+### Next Session Start Hook
+At the Dragonsreach approach, decide the play:
+- **Parley at the doors** (Ralof speaks, Khagar looms),
+- **Breach** (physics and fear),
+- **Leverage** (Hadvar alive, corridor goodwill, Aela hunt-debt),
+while preparing for **Thalmor counter-operations** and internal Stormcloak hardliner backlash.
