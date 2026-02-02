@@ -1,0 +1,34 @@
+{
+  "patch_id": "2026-02-01_session-02_end_protocol",
+  "timestamp_utc": "2026-02-01T06:00:00Z",
+  "summary": "End of Session 02: Hadvar captured alive under Ralof custody; Aela encounter resolved via concession + Hunt-debt; civilians evacuated toward Temple of Kynareth; stair defenses collapsed; Khagar public werebear incident completes Thalmor Scent-Scry escalation; session ends at Dragonsreach approach.",
+  "files_touched": [
+    "state/campaign_state.json",
+    "logs/2026-02-01_session-02_LATEST.md",
+    "data/pcs/pc_khagar_yal.json",
+    "data/clocks/thalmor_influence_clocks.json",
+    "data/clocks/pc_extras_clocks.json",
+    "data/clocks/faction_trust_clocks.json",
+    "data/npcs/aela_the_huntress.json"
+  ],
+  "canonical_decisions": [
+    "Hadvar Taken Out alive; final call given to Ralof; Ralof chose custody over execution.",
+    "Aela conceded before being Taken Out; Aela's Hunting Bow recovered; Aela released under oath to withdraw to Jorrvaskr; Hunt-debt established.",
+    "Civilian evacuation corridor established toward Temple of Kynareth.",
+    "Khagar transformed publicly into werebear during Cloud District push (Thalmor diviners escalate)."
+  ],
+  "clocks": {
+    "thalmor_intelligence_network": { "from": 6, "to": 7, "total": 8 },
+    "thalmor_scent_scry_escalation": { "from": 4, "to": 6, "total": 6, "completed": true },
+    "galmar_resentment": { "from": 0, "to": 2, "total": 4, "new": true },
+    "khagar_werebear_evolution": { "from": 0, "to": 1, "total": 4, "new": true },
+    "whiterun_witnesses_huntress_targeted": { "from": 0, "to": 1, "total": 4, "new": true },
+    "whiterun_civilians_protected": { "from": 0, "to": 1, "total": 4, "new": true },
+    "companions_notice_bitter_mercy": { "from": 0, "to": 1, "total": 4, "new": true },
+    "aela_hunt_debt": { "from": 0, "to": 1, "total": 3, "new": true }
+  },
+  "trust": {
+    "ralof_loyalty": { "from": 70, "to": 80 },
+    "stormcloak_rebellion_trust": { "from": 5, "to": 6 }
+  }
+}

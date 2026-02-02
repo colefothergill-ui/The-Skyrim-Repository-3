@@ -1,7 +1,7 @@
 {
   "pc_extras_clocks": {
     "description": "Clocks tied to PC extras, artifact awakening, and persistent consequences created mid-session.",
-    "last_updated": "2026-01-29 16:30:00",
+    "last_updated": "2026-02-01",
     "clocks": {
       "khagar_bitter_mercy_awakening": {
         "name": "Bitter Mercy Awakening",
@@ -35,8 +35,9 @@
       "thalmor_scent_scry_escalation": {
         "name": "Thalmor — Scent-Scry Escalation",
         "description": "Daedric artifact pulses + predator rites create 'anomalies' that can be triangulated by Thalmor diviners over time.",
-        "current_progress": 4,
+        "current_progress": 6,
         "total_segments": 6,
+        "completed": true,
         "advancement_triggers": [
           "Use Bitter Mercy in a high-profile scene (+1)",
           "Public beast-form incident (+2)",
@@ -48,6 +49,66 @@
           "Kill or misdirect a Thalmor informant (-1 to -2)"
         ],
         "completion_effect": "A Thalmor operative cell is dispatched with a tailored counter-plan (silver, fire, propaganda)."
+      },
+      "khagar_werebear_evolution": {
+        "name": "Khagar — Werebear Evolution",
+        "description": "Tracks growth and refinement of Khagar's werebear form. Tick primarily when he transforms (max +1 per scene for transforming). At milestones, unlock a minor refinement or a full upgrade stunt.",
+        "current_progress": 1,
+        "total_segments": 4,
+        "advancement_triggers": [
+          "Transform into werebear (+1, max once per scene)",
+          "Win a major fight/scene while transformed (+1, GM discretion)",
+          "Accept a compel that pushes the beast-form risk (+1)"
+        ],
+        "unlocks": {
+          "2": "Minor Refinement: choose one small beast-form benefit (e.g., +1 to Athletics Overcome while transformed, or reduce collateral once/scene).",
+          "4": "Major Upgrade: add a new werebear stunt/refinement (player chooses; must be repo-patched)."
+        }
+      },
+      "galmar_resentment": {
+        "name": "Galmar's Resentment",
+        "description": "Tracks hardliner backlash as Khagar empowers Ralof and complicates 'clean victories' (Hadvar alive, Companion hunt-debt, civilian corridor).",
+        "current_progress": 2,
+        "total_segments": 4,
+        "completion_effect": "Galmar forces a loyalty test or undermines Khagar/Ralof publicly (fork).",
+        "advancement_triggers": [
+          "Refuse hardliner execution / preserve prisoners (+1)",
+          "Publicly check Galmar or redirect command (+1)",
+          "Show mercy that creates leverage (+1)"
+        ]
+      },
+      "whiterun_witnesses_huntress_targeted": {
+        "name": "Whiterun Witnesses: The Huntress Targeted",
+        "description": "Rumors spread that the Warchief targeted a Companion during the battle (witnesses, rooftop archers, civilians).",
+        "current_progress": 1,
+        "total_segments": 4,
+        "completion_effect": "The rumor becomes politically actionable: Balgruuf/Irileth/Companions/Thalmor leverage it."
+      },
+      "whiterun_civilians_protected": {
+        "name": "Whiterun Civilians: \"He Protected Us\"",
+        "description": "Tracks goodwill earned by redirecting civilians to safety (Temple of Kynareth corridor).",
+        "current_progress": 1,
+        "total_segments": 4,
+        "completion_effect": "Civilians speak in Khagar's favor at a critical political moment (Dragonsreach leverage)."
+      },
+      "companions_notice_bitter_mercy": {
+        "name": "Companions Notice: Bitter Mercy",
+        "description": "The Companions become aware of the Spear of Bitter Mercy's presence and its tie to the Hunt (Hircine).",
+        "current_progress": 1,
+        "total_segments": 4,
+        "completion_effect": "The Companions intervene directly (offer, warning, confrontation, or contract)."
+      },
+      "aela_hunt_debt": {
+        "name": "Aela — Hunt-Debt",
+        "description": "Aela owes Khagar a Hunt-debt after conceding and being released under oath to withdraw (stay out of the skirmish).",
+        "current_progress": 1,
+        "total_segments": 3,
+        "completion_effect": "Aela repays the debt: intel, training, ally action, or a formal Hunt challenge on agreed terms.",
+        "advancement_triggers": [
+          "Khagar honors the release terms / does not pursue her into Jorrvaskr (+1)",
+          "Aela provides assistance or proof of withdrawal (+1)",
+          "Shared hunt / shared enemy (+1)"
+        ]
       }
     }
   }
