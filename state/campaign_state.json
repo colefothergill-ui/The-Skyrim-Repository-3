@@ -9,15 +9,15 @@
   "session_count": 2,
   "last_updated": "2026-02-01 (Session End Protocol)",
   "starting_location": "Whiterun",
-  "current_scene_id": "A1-S03-WHITERUN-GATES-AFTERMATH",
-  "current_location": "Whiterun — Inner Approaches (Gate Road / Wounded Lane)",
+  "current_scene_id": "A1-S04-DRAGONSREACH-APPROACH",
+  "current_location": "Whiterun — Cloud District walkway / Dragonsreach approach",
   "active_hold": "Whiterun",
-  "current_objective": "Resolve Hadvar's fate with Ralof, then decide whether to press into Whiterun or consolidate the breach.",
+  "current_objective": "Force Balgruuf's decision at Dragonsreach (parley / breach / leverage)",
   "current_npcs": [
-    "Hadvar",
     "Ralof",
-    "Legate Rikke",
-    "Galmar Stonefist"
+    "Jarl Balgruuf",
+    "Galmar Stonefist",
+    "Aela the Huntress"
   ],
   "scene_flags": {
     "herbal_scent_ritual_completed": true,
@@ -40,7 +40,24 @@
     "hadvar_duel_in_progress": false,
     "hadvar_duel_concluded": true,
     "hadvar_taken_out_alive": true,
-    "hadvar_fate_pending": true
+    "hadvar_fate_pending": false,
+    "hadvar_custody_ralof": true,
+    "ralof_chose_custody_over_execution": true,
+    "galmar_execution_request_denied": true,
+    "khagar_pressed_into_whiterun": true,
+    "aela_huntress_engaged": true,
+    "aela_conceded_before_takeout": true,
+    "aelas_bow_recovered": true,
+    "aela_oath_to_withdraw": true,
+    "aela_hunt_debt_established": true,
+    "civilian_evacuation_corridor_established": true,
+    "evacuation_to_temple_of_kynareth": true,
+    "side_stair_flank_cleared": true,
+    "main_stair_defense_collapsed": true,
+    "khagar_public_werebear_transformation": true,
+    "thalmor_divination_escalation_complete": true,
+    "cloud_district_secured": true,
+    "dragonsreach_approach_reached": true
   },
   "civil_war_state": {
     "player_alliance": "stormcloak",
@@ -124,7 +141,14 @@
       "At the gate-breach, killed the conducting officer and seized his heart as trophy; used decapitation to shatter troop cohesion.",
       "Ralof eliminated the horn wielder; Imperial withdrawal signaling disrupted.",
       "Hadvar took a severe injury while rallying the reserve knot; ordered wounded retreat and accepted an honor duel to buy them time.",
-      "Hadvar was Taken Out in honorable single combat at Whiterun's gates; Khagar allowed the node's wounded retreat and ceded Hadvar's fate to Ralof (pending decision)."
+      "Hadvar was Taken Out in honorable single combat at Whiterun's gates; Khagar allowed the node's wounded retreat and ceded Hadvar's fate to Ralof (pending decision).",
+      "Ralof chose custody over execution for Hadvar, asserting command against Galmar's pressure for a 'clean kill'; Hadvar secured behind Stormcloak lines under Ralof's watchers.",
+      "Khagar pressed into Whiterun toward Dragonsreach; encountered Aela the Huntress as rooftop archer; hunt compelled.",
+      "Aela conceded before being Taken Out; Aela's Hunting Bow recovered; Aela released under oath to withdraw to Jorrvaskr and stay out of skirmish; Hunt-debt established.",
+      "Established civilian evacuation corridor toward Temple of Kynareth, reducing collateral and clearing lanes.",
+      "Side-stair flank cleared; main stair defense collapsed from above.",
+      "Khagar transformed publicly into werebear during Cloud District push; Thalmor divination pressure completes escalation (operative cell dispatched).",
+      "Session end: Dragonsreach approach secured; Stormcloaks hold Cloud District; Khagar and Ralof regroup at walkway."
     ]
   },
   "active_story_arcs": [
@@ -132,13 +156,13 @@
       "arc_name": "Civil War",
       "status": "active",
       "progress": 1,
-      "next_milestone": "Duel Hadvar; stabilize breach; decide blood price vs withdrawal"
+      "next_milestone": "Force Balgruuf's decision at Dragonsreach (parley / breach / leverage)"
     },
     {
       "arc_name": "Thalmor Conspiracy",
       "status": "hidden",
       "progress": 0,
-      "next_milestone": "Thalmor begin to notice anomalies: daedric artifacts + unusual predator rites"
+      "next_milestone": "Thalmor operative cell dispatched (silver/fire/propaganda); counter-hunt machine spins up"
     }
   ],
   "companions": {
@@ -147,17 +171,17 @@
         "npc_id": "ralof",
         "name": "Ralof",
         "status": "active",
-        "loyalty": 70,
-        "location": "Breach line (holding wedge while duel begins)",
+        "loyalty": 80,
+        "location": "Dragonsreach approach (with Khagar)",
         "recruitment_trigger": "Stormcloak recruitment",
         "faction_affinity": "stormcloaks",
-        "notes": "Holding breach while Khagar duels Hadvar; took 2 physical stress while cutting runner lane, stabilized breach per Khagar order. Session 2: Khagar fought in sync with Ralof, then honored Ralof's history with Hadvar by giving him the final call."
+        "notes": "Holding breach while Khagar duels Hadvar; took 2 physical stress while cutting runner lane, stabilized breach per Khagar order. Session 2: Khagar fought in sync with Ralof, then honored Ralof's history with Hadvar by giving him the final call. Ralof chose custody over execution, asserting command against Galmar's pressure. Rejoined Khagar at Dragonsreach approach."
       }
     ],
     "available_companions": [],
     "dismissed_companions": [],
     "companion_relationships": {
-      "ralof": 70
+      "ralof": 80
     },
     "notes": "Companion loyalty ranges from 0-100."
   },

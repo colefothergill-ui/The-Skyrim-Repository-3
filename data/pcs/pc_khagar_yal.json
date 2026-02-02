@@ -166,7 +166,7 @@
     }
   },
   "refresh": 1,
-  "fate_points": 1,
+  "fate_points": 3,
   "fate_point_ledger": [
     {
       "type": "refresh_reset",
@@ -222,6 +222,10 @@
       {
         "name": "Imperial Officer Heart (trophy)",
         "notes": "Taken from conducting officer during breach to shatter cohesion and feed Bitter Mercy's awakening."
+      },
+      {
+        "name": "Aela's Hunting Bow (unique)",
+        "notes": "Aela the Huntress's legendary bow; recovered during Cloud District encounter after Aela's concession; symbolizes Hunt-debt."
       }
     ]
   },
