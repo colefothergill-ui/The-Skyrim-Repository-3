@@ -143,13 +143,13 @@
       "arc_name": "Civil War",
       "status": "active",
       "progress": 1,
-      "next_milestone": "Duel Hadvar; stabilize breach; decide blood price vs withdrawal"
+      "next_milestone": "Force Balgruuf's decision at Dragonsreach (parley / breach / leverage)"
     },
     {
       "arc_name": "Thalmor Conspiracy",
       "status": "hidden",
       "progress": 0,
-      "next_milestone": "Thalmor begin to notice anomalies: daedric artifacts + unusual predator rites"
+      "next_milestone": "Thalmor operative cell dispatched (silver/fire/propaganda); counter-hunt machine spins up"
     }
   ],
   "companions": {

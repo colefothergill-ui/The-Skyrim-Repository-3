@@ -37,6 +37,7 @@
         "description": "Daedric artifact pulses + predator rites create 'anomalies' that can be triangulated by Thalmor diviners over time.",
         "current_progress": 6,
         "total_segments": 6,
+        "completed": true,
         "advancement_triggers": [
           "Use Bitter Mercy in a high-profile scene (+1)",
           "Public beast-form incident (+2)",

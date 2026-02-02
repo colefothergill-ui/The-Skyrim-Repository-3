@@ -82,6 +82,21 @@
     ]
   },
   "loyalty": 50,
+  "hunt_debt": {
+    "status": "active",
+    "owed_to": "Khagar Yal",
+    "origin": "Session 02, Battle of Whiterun: Aela engaged Khagar as rooftop archer during Cloud District push; conceded before being Taken Out; released under oath to withdraw to Jorrvaskr and stay out of skirmish.",
+    "terms": "Aela owes a Hunt-debt to Khagar; Aela's Hunting Bow (unique) held as symbolic collateral.",
+    "narrative_weight": "Major - this debt can be called for significant aid or resolved through return of her bow and mutual respect.",
+    "clock_reference": "data/clocks/pc_extras_clocks.json - aela_hunt_debt (1/3)"
+  },
+  "current_status_session_02": {
+    "location": "Jorrvaskr (withdrawn per oath)",
+    "combat_status": "not_engaged",
+    "relationship_to_khagar": "Hunt-debt (respectful tension)",
+    "aelas_bow_status": "held_by_khagar",
+    "companions_awareness": "Partially aware; rumors spreading"
+  },
   "companion_status": {
     "available": "after_joining_companions",
     "current_status": "ready",

@@ -1,7 +1,7 @@
 {
   "faction_trust_clocks": {
     "description": "Track party standing and trust with all major factions in Skyrim",
-    "last_updated": "2026-02-01 (Continuity Fix — Khagar Yal: reset Thieves Guild trust)",
+    "last_updated": "2026-02-01 (Session 02 End Protocol)",
     "trust_scale": {
       "0-2": {
         "level": "Stranger",
@@ -78,7 +78,7 @@
       },
       "stormcloak_rebellion_trust": {
         "faction": "Stormcloak Rebellion",
-        "current_trust": 5,
+        "current_trust": 6,
         "max_trust": 10,
         "trust_level": "Ally",
         "advancement_triggers": {
