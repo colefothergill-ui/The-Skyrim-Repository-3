@@ -9,15 +9,14 @@
   "session_count": 2,
   "last_updated": "2026-02-01 (Session End Protocol)",
   "starting_location": "Whiterun",
-  "current_scene_id": "A1-S03-WHITERUN-GATES-AFTERMATH",
-  "current_location": "Whiterun — Inner Approaches (Gate Road / Wounded Lane)",
+  "current_scene_id": "A1-S04-WHITERUN-BREACHRUN-TO-DRAGONSREACH",
+  "current_location": "Whiterun — Cloud District (Dragonsreach Approach / Walkway)",
   "active_hold": "Whiterun",
-  "current_objective": "Resolve Hadvar's fate with Ralof, then decide whether to press into Whiterun or consolidate the breach.",
+  "current_objective": "Force Balgruuf's decision at Dragonsreach (parley/breach/leverage). Manage Hadvar custody, Aela hunt-debt, Galmar friction, and Thalmor escalation.",
   "current_npcs": [
-    "Hadvar",
-    "Ralof",
-    "Legate Rikke",
-    "Galmar Stonefist"
+    "ralof",
+    "hadvar",
+    "aela_the_huntress"
   ],
   "scene_flags": {
     "herbal_scent_ritual_completed": true,
@@ -40,7 +39,15 @@
     "hadvar_duel_in_progress": false,
     "hadvar_duel_concluded": true,
     "hadvar_taken_out_alive": true,
-    "hadvar_fate_pending": true
+    "hadvar_fate_pending": false,
+    "hadvar_in_custody": true,
+    "hadvar_escorted_behind_lines": true,
+    "aela_encounter_resolved_by_concession": true,
+    "aela_withdrew_to_jorvaskr": true,
+    "civilian_evacuation_corridor_kynareth": true,
+    "outer_stair_knot_taken_out": true,
+    "khagar_public_werebear_incident": true,
+    "thalmor_scent_scry_escalation_completed": true
   },
   "civil_war_state": {
     "player_alliance": "stormcloak",
@@ -124,7 +131,11 @@
       "At the gate-breach, killed the conducting officer and seized his heart as trophy; used decapitation to shatter troop cohesion.",
       "Ralof eliminated the horn wielder; Imperial withdrawal signaling disrupted.",
       "Hadvar took a severe injury while rallying the reserve knot; ordered wounded retreat and accepted an honor duel to buy them time.",
-      "Hadvar was Taken Out in honorable single combat at Whiterun's gates; Khagar allowed the node's wounded retreat and ceded Hadvar's fate to Ralof (pending decision)."
+      "Hadvar was Taken Out in honorable single combat at Whiterun's gates; Khagar allowed the node's wounded retreat and ceded Hadvar's fate to Ralof (pending decision).",
+      "Hadvar Taken Out alive at the breach aftermath; Ralof chose custody; execution refused despite hardliner pressure.",
+      "Aela the Huntress conceded during rooftop engagement; Bitter Mercy recovered; Aela released under oath to withdraw to Jorrvaskr; Hunt-debt established.",
+      "Civilian evacuation corridor created toward the Temple of Kynareth during the push to Dragonsreach.",
+      "Khagar used public werebear transformation during Cloud District advance; Thalmor divination escalation completed."
     ]
   },
   "active_story_arcs": [
@@ -147,17 +158,17 @@
         "npc_id": "ralof",
         "name": "Ralof",
         "status": "active",
-        "loyalty": 70,
-        "location": "Breach line (holding wedge while duel begins)",
+        "loyalty": 80,
+        "location": "Dragonsreach approach (Cloud District walkway)",
         "recruitment_trigger": "Stormcloak recruitment",
         "faction_affinity": "stormcloaks",
-        "notes": "Holding breach while Khagar duels Hadvar; took 2 physical stress while cutting runner lane, stabilized breach per Khagar order. Session 2: Khagar fought in sync with Ralof, then honored Ralof's history with Hadvar by giving him the final call."
+        "notes": "Holding breach while Khagar duels Hadvar; took 2 physical stress while cutting runner lane, stabilized breach per Khagar order. Session 2: Khagar fought in sync with Ralof, then honored Ralof's history with Hadvar by giving him the final call. | Major trust: Ralof asserted command over Galmar with Khagar backing; chose custody for Hadvar."
       }
     ],
     "available_companions": [],
     "dismissed_companions": [],
     "companion_relationships": {
-      "ralof": 70
+      "ralof": 80
     },
     "notes": "Companion loyalty ranges from 0-100."
   },
@@ -298,6 +309,14 @@
           "antler_crossguard",
           "daedric_weapon_vibe"
         ]
+      }
+    },
+    "aela_the_huntress": {
+      "pc_khagar_yal": {
+        "timestamp": "2026-02-01T00:00:00Z",
+        "disposition": "wary-respect",
+        "line": "Aela watches the spear before she watches the orc—like she recognizes the Hunt in the metal.",
+        "recognition_tags": ["companions", "archer", "hircine_blessing", "huntsman_vibe", "bitter_mercy_recognition"]
       }
     }
   }

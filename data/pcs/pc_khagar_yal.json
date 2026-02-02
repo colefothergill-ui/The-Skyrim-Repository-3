@@ -166,7 +166,7 @@
     }
   },
   "refresh": 1,
-  "fate_points": 1,
+  "fate_points": 3,
   "fate_point_ledger": [
     {
       "type": "refresh_reset",
@@ -193,6 +193,30 @@
       "delta": -1,
       "note": "Spent FP: Invoked 'Stag of Eastmarch' to land the decisive social blow during the Hadvar duel.",
       "timestamp": "2026-02-01T00:00:00Z"
+    },
+    {
+      "type": "compel_award",
+      "delta": 1,
+      "timestamp": "2026-02-01T00:00:00Z",
+      "note": "Compel accepted: Khagar would only offer counsel to Ralof if Ralof asked directly (respect/pack code)."
+    },
+    {
+      "type": "compel_award",
+      "delta": 1,
+      "timestamp": "2026-02-01T00:00:00Z",
+      "note": "Compel accepted: No Point Crushing the Helpless — honored the Taken Out state and preserved leverage."
+    },
+    {
+      "type": "compel_award",
+      "delta": 1,
+      "timestamp": "2026-02-01T00:00:00Z",
+      "note": "Compel accepted: Worthy Prey, Risky Honor — prioritized the hunt (Aela encounter) during the city push."
+    },
+    {
+      "type": "invoke_spend",
+      "delta": -1,
+      "timestamp": "2026-02-01T00:00:00Z",
+      "note": "Spent FP to invoke High Concept during the Aela engagement to force a decisive advantage."
     }
   ],
   "equipment": {
