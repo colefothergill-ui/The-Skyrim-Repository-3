@@ -34,7 +34,7 @@
 3. **Hadvar secured**: Hadvar bound and moved behind Stormcloak lines under Ralof's assigned watchers.
 4. **City push begins**: Khagar pressed into Whiterun's districts toward Dragonsreach.
 5. **Aela encountered**: Aela the Huntress engaged as rooftop archer; Khagar's hunt compelled.
-6. **Aela concedes / Hunt-debt**: Aela conceded before being Taken Out; Bitter Mercy recovered; Khagar released her under oath to withdraw to Jorrvaskr and stay out of the skirmish. Aela owes a Hunt-debt.
+6. **Aela concedes / Hunt-debt**: Aela conceded before being Taken Out; Aela's Hunting Bow recovered; Khagar released her under oath to withdraw to Jorrvaskr and stay out of the skirmish. Aela owes a Hunt-debt.
 7. **Civilians redirected**: Evacuation corridor established toward the Temple of Kynareth, reducing collateral and clearing lanes.
 8. **Side-stair flank**: Flank guards eliminated; main stair defense collapsed from above.
 9. **Public werebear incident**: Khagar transformed publicly during the Cloud District push; Thalmor divination pressure completes escalation.
@@ -46,12 +46,12 @@
 - Stormcloak Rebellion Trust: **6/10**
 - Thalmor Intelligence Network: **7/8**
 - Thalmor — Scent-Scry Escalation: **6/6 (COMPLETE)** → Operative cell dispatched (silver/fire/propaganda)
-- New clocks: Galmar's Resentment (2/4), Khagar—Werebear Evolution (1/4), Whiterun Witnesses: Huntress Targeted (1/4), Whiterun Civilians: "He Protected Us" (1/4), Companions Notice: Bitter Mercy (1/4), Aela—Hunt-Debt (1/3)
+- New clocks: Galmar's Resentment (2/4), Khagar—Werebear Evolution (1/4), Whiterun Witnesses: Huntress Targeted (1/4), Whiterun Civilians: "He Protected Us" (1/4), Companions Notice: Aela's Bow (1/4), Aela—Hunt-Debt (1/3)
 
 ### Narrative Benefits / Consequences
 - **Benefit:** Hadvar alive = leverage/intel potential; moral spine strengthens Ralof's leadership.
 - **Benefit:** Civilian corridor improves Whiterun perception (counterweight to beast rumors).
-- **Consequence:** Galmar internal friction rising; Companions notice Bitter Mercy; Thalmor counter-hunt machine spins up due to public beast-form anomaly.
+- **Consequence:** Galmar internal friction rising; Companions notice Aela's bow; Thalmor counter-hunt machine spins up due to public beast-form anomaly.
 
 ### Next Session Start Hook
 At the Dragonsreach approach, decide the play:

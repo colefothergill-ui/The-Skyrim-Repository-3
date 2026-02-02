@@ -112,9 +112,9 @@
           "4/4: Whiterun civilians become allies despite occupation"
         ]
       },
-      "companions_notice_bitter_mercy": {
-        "name": "Companions Notice: Bitter Mercy",
-        "description": "Companions are aware Khagar has Aela's bow Bitter Mercy; implications for honor and standing.",
+      "companions_notice_aelas_bow": {
+        "name": "Companions Notice: Aela's Bow",
+        "description": "Companions are aware Khagar has Aela's Hunting Bow; implications for honor and standing.",
         "current_progress": 1,
         "total_segments": 4,
         "story_hooks": [
@@ -132,7 +132,7 @@
         "advancement_triggers": [
           "Call in debt for aid (+1)",
           "Aela honors debt voluntarily (+1)",
-          "Bitter Mercy returned (+1)"
+          "Aela's Hunting Bow returned (+1)"
         ],
         "story_hooks": [
           "1/3: Debt acknowledged; Aela withdrawn to Jorrvaskr",
