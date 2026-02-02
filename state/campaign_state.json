@@ -9,15 +9,14 @@
   "session_count": 2,
   "last_updated": "2026-02-01 (Session End Protocol)",
   "starting_location": "Whiterun",
-  "current_scene_id": "A1-S04-DRAGONSREACH-APPROACH",
-  "current_location": "Whiterun — Cloud District walkway / Dragonsreach approach",
+  "current_scene_id": "A1-S04-WHITERUN-BREACHRUN-TO-DRAGONSREACH",
+  "current_location": "Whiterun — Cloud District (Dragonsreach Approach / Walkway)",
   "active_hold": "Whiterun",
-  "current_objective": "Force Balgruuf's decision at Dragonsreach (parley / breach / leverage)",
+  "current_objective": "Force Balgruuf's decision at Dragonsreach (parley/breach/leverage). Manage Hadvar custody, Aela hunt-debt, Galmar friction, and Thalmor escalation.",
   "current_npcs": [
-    "Ralof",
-    "Jarl Balgruuf",
-    "Galmar Stonefist",
-    "Aela the Huntress"
+    "ralof",
+    "hadvar",
+    "aela_the_huntress"
   ],
   "scene_flags": {
     "herbal_scent_ritual_completed": true,
@@ -41,23 +40,14 @@
     "hadvar_duel_concluded": true,
     "hadvar_taken_out_alive": true,
     "hadvar_fate_pending": false,
-    "hadvar_custody_ralof": true,
-    "ralof_chose_custody_over_execution": true,
-    "galmar_execution_request_denied": true,
-    "khagar_pressed_into_whiterun": true,
-    "aela_huntress_engaged": true,
-    "aela_conceded_before_takeout": true,
-    "aelas_bow_recovered": true,
-    "aela_oath_to_withdraw": true,
-    "aela_hunt_debt_established": true,
-    "civilian_evacuation_corridor_established": true,
-    "evacuation_to_temple_of_kynareth": true,
-    "side_stair_flank_cleared": true,
-    "main_stair_defense_collapsed": true,
-    "khagar_public_werebear_transformation": true,
-    "thalmor_divination_escalation_complete": true,
-    "cloud_district_secured": true,
-    "dragonsreach_approach_reached": true
+    "hadvar_in_custody": true,
+    "hadvar_escorted_behind_lines": true,
+    "aela_encounter_resolved_by_concession": true,
+    "aela_withdrew_to_jorvaskr": true,
+    "civilian_evacuation_corridor_kynareth": true,
+    "outer_stair_knot_taken_out": true,
+    "khagar_public_werebear_incident": true,
+    "thalmor_scent_scry_escalation_completed": true
   },
   "civil_war_state": {
     "player_alliance": "stormcloak",
@@ -142,13 +132,10 @@
       "Ralof eliminated the horn wielder; Imperial withdrawal signaling disrupted.",
       "Hadvar took a severe injury while rallying the reserve knot; ordered wounded retreat and accepted an honor duel to buy them time.",
       "Hadvar was Taken Out in honorable single combat at Whiterun's gates; Khagar allowed the node's wounded retreat and ceded Hadvar's fate to Ralof (pending decision).",
-      "Ralof chose custody over execution for Hadvar, asserting command against Galmar's pressure for a 'clean kill'; Hadvar secured behind Stormcloak lines under Ralof's watchers.",
-      "Khagar pressed into Whiterun toward Dragonsreach; encountered Aela the Huntress as rooftop archer; hunt compelled.",
-      "Aela conceded before being Taken Out; Aela's Hunting Bow recovered; Aela released under oath to withdraw to Jorrvaskr and stay out of skirmish; Hunt-debt established.",
-      "Established civilian evacuation corridor toward Temple of Kynareth, reducing collateral and clearing lanes.",
-      "Side-stair flank cleared; main stair defense collapsed from above.",
-      "Khagar transformed publicly into werebear during Cloud District push; Thalmor divination pressure completes escalation (operative cell dispatched).",
-      "Session end: Dragonsreach approach secured; Stormcloaks hold Cloud District; Khagar and Ralof regroup at walkway."
+      "Hadvar Taken Out alive at the breach aftermath; Ralof chose custody; execution refused despite hardliner pressure.",
+      "Aela the Huntress conceded during rooftop engagement; Bitter Mercy recovered; Aela released under oath to withdraw to Jorrvaskr; Hunt-debt established.",
+      "Civilian evacuation corridor created toward the Temple of Kynareth during the push to Dragonsreach.",
+      "Khagar used public werebear transformation during Cloud District advance; Thalmor divination escalation completed."
     ]
   },
   "active_story_arcs": [
@@ -172,10 +159,10 @@
         "name": "Ralof",
         "status": "active",
         "loyalty": 80,
-        "location": "Dragonsreach approach (with Khagar)",
+        "location": "Dragonsreach approach (Cloud District walkway)",
         "recruitment_trigger": "Stormcloak recruitment",
         "faction_affinity": "stormcloaks",
-        "notes": "Holding breach while Khagar duels Hadvar; took 2 physical stress while cutting runner lane, stabilized breach per Khagar order. Session 2: Khagar fought in sync with Ralof, then honored Ralof's history with Hadvar by giving him the final call. Ralof chose custody over execution, asserting command against Galmar's pressure. Rejoined Khagar at Dragonsreach approach."
+        "notes": "Holding breach while Khagar duels Hadvar; took 2 physical stress while cutting runner lane, stabilized breach per Khagar order. Session 2: Khagar fought in sync with Ralof, then honored Ralof's history with Hadvar by giving him the final call. | Major trust: Ralof asserted command over Galmar with Khagar backing; chose custody for Hadvar."
       }
     ],
     "available_companions": [],
@@ -322,6 +309,14 @@
           "antler_crossguard",
           "daedric_weapon_vibe"
         ]
+      }
+    },
+    "aela_the_huntress": {
+      "pc_khagar_yal": {
+        "timestamp": "2026-02-01T00:00:00Z",
+        "disposition": "wary-respect",
+        "line": "Aela watches the spear before she watches the orc—like she recognizes the Hunt in the metal.",
+        "recognition_tags": ["companions", "archer", "hircine_blessing", "huntsman_vibe", "bitter_mercy_recognition"]
       }
     }
   }

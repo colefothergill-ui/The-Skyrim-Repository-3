@@ -1,7 +1,7 @@
 {
   "thalmor_influence_clocks": {
     "description": "Track Thalmor schemes and influence operations across Skyrim",
-    "last_updated": "4E 201, 17th of Last Seed",
+    "last_updated": "2026-02-01",
     "clocks": {
       "thalmor_influence_skyrim": {
         "name": "Thalmor Influence in Skyrim",
