@@ -31,7 +31,7 @@
     "clocks": {
       "imperial_legion_trust": {
         "faction": "Imperial Legion",
-        "current_trust": 0,
+        "current_trust": 2,
         "max_trust": 10,
         "trust_level": "Stranger",
         "advancement_triggers": {

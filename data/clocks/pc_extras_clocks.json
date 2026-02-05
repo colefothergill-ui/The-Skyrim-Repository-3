@@ -109,6 +109,36 @@
           "Aela provides assistance or proof of withdrawal (+1)",
           "Shared hunt / shared enemy (+1)"
         ]
+      },
+      "insaerndel_thalmor_search_clock": {
+        "name": "Insaerndel — Thalmor Search Clock",
+        "description": "Tracks Thalmor investigation heat on Insaerndel following the elimination of their Whiterun handler and node neutralization.",
+        "current_progress": 1,
+        "total_segments": 8,
+        "advancement_triggers": [
+          "Thalmor discover handler was eliminated (+2)",
+          "Witnesses place Insaerndel at scene (+1)",
+          "Thalmor connect evidence to specific operative (+2)",
+          "Additional Thalmor operations disrupted (+1)"
+        ],
+        "setback_triggers": [
+          "Successfully frame another party (-1)",
+          "Destroy evidence thoroughly (-1)",
+          "Eliminate witnesses (-1)"
+        ]
+      },
+      "whiterun_alley_bodies_discovered": {
+        "name": "Whiterun Alley Bodies Discovered",
+        "description": "How fast bodies behind the Bannered Mare are discovered and correctly attributed.",
+        "current_progress": 0,
+        "total_segments": 4,
+        "completion_effect": "Bodies discovered and attributed; political and factional consequences triggered.",
+        "advancement_triggers": [
+          "Time passes without cleanup (+1)",
+          "Witnesses emerge (+1)",
+          "Investigation launched (+1)",
+          "Evidence links to specific party (+1)"
+        ]
       }
     }
   }

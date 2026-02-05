@@ -1,0 +1,145 @@
+{
+  "patch_id": "2026-02-04_session-01_end_state",
+  "timestamp_utc": "2026-02-04T00:00:00Z",
+  "summary": "End of Session 01 (Insaerndel): Battle-Born Arcana deal secured; Thalmor ledger routed to Irileth; Western Gate held; Thalmor Whiterun node neutralized; Guild foothold at 4/5",
+  "files_touched": [
+    "state/campaign_state_insaerndel.json",
+    "logs/2026-02-04_session-01_LATEST.md",
+    "logs/dragonbreak_log.md",
+    "data/pcs/pc_insaerndel.json",
+    "data/clocks/whiterun_jobs.json",
+    "data/clocks/pc_extras_clocks.json",
+    "data/clocks/faction_trust_clocks.json",
+    "data/clocks/thalmor_influence_clocks.json"
+  ],
+  "canonical_decisions": [
+    "Battle-Born Arcana deal signed with Olfrid Battle-Born for 3,000g contract",
+    "Sealed Writ of Privilege received from House Battle-Born",
+    "Battle-Born evacuation route secured through Temple of Kyne",
+    "Thalmor ledger successfully routed to Commander Irileth via guard chain-of-command",
+    "Western Gate stabilized; Stormcloak assault elements neutralized",
+    "Thalmor handler and escorts eliminated behind Bannered Mare",
+    "Thalmor Whiterun intelligence node neutralized; evidence burned",
+    "Greymane frame-job witnessed ('For Greymane' illusion)",
+    "Western parapet flank secured; Stormcloak sergeant and climbers eliminated",
+    "Compel 'No Witnesses' accepted for Thalmor elimination"
+  ],
+  "scene_position": {
+    "scene_id": "A1-S4",
+    "location": "Whiterun — Western Barricade Parapet",
+    "objective": "Secure Imperial win in Battle of Whiterun; ensure Hadvar survives; trigger Greymane investigation fallout; protect Battle-Born Arcana foothold"
+  },
+  "civil_war_state": {
+    "whiterun_control": "imperial",
+    "battle_of_whiterun_status": "imperial_advantage"
+  },
+  "scene_flags_added": [
+    "battleborn_arcana_deal_signed",
+    "battleborn_writ_of_privilege_received",
+    "contract_olfrid_3000g_active",
+    "battleborn_evac_route_temple_of_kyne_secured",
+    "ledger_routed_to_irileth_via_guard_chain",
+    "western_gate_stabilized",
+    "stormcloak_survivor_arrow_to_knee",
+    "bannered_mare_handler_eliminated",
+    "thalmor_whiterun_node_neutralized",
+    "greymane_framejob_active",
+    "for_greymane_illusion_witnessed",
+    "parapet_flank_climbers_neutralized",
+    "stormcloak_sergeant_taken_out",
+    "compel_no_witnesses_accepted"
+  ],
+  "npcs_killed": [
+    "thalmor_ledger_clerk_handler",
+    "thalmor_escort_1",
+    "thalmor_escort_2",
+    "stormcloak_west_gate_spearman",
+    "stormcloak_west_gate_charger",
+    "stormcloak_west_parapet_sergeant"
+  ],
+  "npc_first_impressions_added": {
+    "commander_caius_whiterun_guard": {
+      "pc": "pc_insaerndel",
+      "disposition": "professional",
+      "note": "Recognized Insaerndel; accepted ledger handoff via chain-of-command under siege conditions"
+    }
+  },
+  "pc_state": {
+    "pc_id": "pc_insaerndel",
+    "fate_points": 4,
+    "inventory_added": [
+      "Sealed Writ of Privilege (House Battle-Born)",
+      "Silver Ring of Authority (Thalmor handler token)",
+      "Seal kit (wax + stamp plates)",
+      "Torn routing slip (single lead fragment)"
+    ],
+    "contracts_active": [
+      {
+        "contractor": "Olfrid Battle-Born",
+        "amount": "3,000g",
+        "status": "active",
+        "notes": "Payment pending delivery after battle stabilization"
+      }
+    ]
+  },
+  "clocks": {
+    "whiterun_jobs": {
+      "guild_foothold_whiterun": {
+        "from": 0,
+        "to": 4,
+        "total": 5,
+        "note": "One step from completion; Battle-Born deal and Imperial defense efforts"
+      },
+      "battleborn_quiet_inquiry": {
+        "from": 0,
+        "to": 3,
+        "total": 6,
+        "note": "New clock tracking Battle-Born discrete operations"
+      }
+    },
+    "pc_extras_clocks": {
+      "insaerndel_thalmor_search_clock": {
+        "from": 0,
+        "to": 1,
+        "total": 8,
+        "note": "Minimal heat; evidence destroyed, witnesses eliminated"
+      },
+      "whiterun_alley_bodies_discovered": {
+        "from": 0,
+        "to": 0,
+        "total": 4,
+        "note": "New clock; bodies not yet discovered"
+      }
+    },
+    "faction_trust_clocks": {
+      "imperial_legion_trust": {
+        "from": 0,
+        "to": 2,
+        "total": 10,
+        "note": "Ledger delivery and western gate defense earned trust"
+      }
+    },
+    "thalmor_influence_clocks": {
+      "thalmor_manipulation_whiterun": {
+        "from": "N/A",
+        "to": 0,
+        "total": 8,
+        "note": "New clock; Whiterun node neutralized via handler elimination and evidence burn"
+      }
+    }
+  },
+  "authoritative_clock_values": {
+    "whiterun_jobs.guild_foothold_whiterun": "4/5",
+    "whiterun_jobs.battleborn_quiet_inquiry": "3/6",
+    "pc_extras_clocks.insaerndel_thalmor_search_clock": "1/8",
+    "pc_extras_clocks.whiterun_alley_bodies_discovered": "0/4",
+    "faction_trust_clocks.imperial_legion_trust": "2/10",
+    "thalmor_influence_clocks.thalmor_manipulation_whiterun": "0/8"
+  },
+  "gm_notes": {
+    "continuity": "This patch represents a parallel campaign timeline with Insaerndel (Thieves Guild operative) during the Battle of Whiterun. Uses separate state file (campaign_state_insaerndel.json) to avoid conflicts with Khagar Yal's Stormcloak campaign.",
+    "dragonbreak": "Documented in logs/dragonbreak_log.md as 'Battle of Whiterun — Parallel Timelines'. Both campaigns are canonical but maintain separate state.",
+    "conflicts_resolved": "Originally mixed both campaigns in single campaign_state.json; now uses campaign_state.json (Khagar/Stormcloak) and campaign_state_insaerndel.json (Insaerndel/Imperial) for clean separation.",
+    "next_session": "Battle aftermath; contract delivery to Olfrid; potential Greymane investigation complications; bodies behind Bannered Mare may be discovered"
+  }
+}
