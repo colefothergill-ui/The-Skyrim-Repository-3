@@ -1,0 +1,183 @@
+{
+  "campaign_id": "skyrim_fate_core_002_insaerndel",
+  "campaign_name": "The Elder Scrolls: Skyrim - Fate Core Campaign (Insaerndel Timeline)",
+  "started_date": "4E 201, 17th of Last Seed",
+  "current_act": 1,
+  "active_pc": "Insaerndel",
+  "active_pc_id": "pc_insaerndel",
+  "session_zero_completed": true,
+  "session_count": 1,
+  "last_updated": "2026-02-04 (Session 01 End Protocol)",
+  "starting_location": "Whiterun",
+  "current_scene_id": "A1-S4",
+  "current_location": "Whiterun — Western Barricade Parapet",
+  "active_hold": "Whiterun",
+  "current_objective": "Secure Imperial win in Battle of Whiterun; ensure Hadvar survives; trigger Greymane investigation fallout; protect Battle-Born Arcana foothold.",
+  "current_npcs": [
+    "olfrid_battleborn",
+    "commander_caius",
+    "irileth"
+  ],
+  "scene_flags": {
+    "battleborn_arcana_deal_signed": true,
+    "battleborn_writ_of_privilege_received": true,
+    "contract_olfrid_3000g_active": true,
+    "battleborn_evac_route_temple_of_kyne_secured": true,
+    "ledger_routed_to_irileth_via_guard_chain": true,
+    "western_gate_stabilized": true,
+    "stormcloak_survivor_arrow_to_knee": true,
+    "bannered_mare_handler_eliminated": true,
+    "thalmor_whiterun_node_neutralized": true,
+    "greymane_framejob_active": true,
+    "for_greymane_illusion_witnessed": true,
+    "parapet_flank_climbers_neutralized": true,
+    "stormcloak_sergeant_taken_out": true,
+    "compel_no_witnesses_accepted": true
+  },
+  "civil_war_state": {
+    "player_alliance": "imperial",
+    "whiterun_control": "imperial",
+    "battle_of_whiterun_status": "imperial_advantage",
+    "imperial_victories": 0,
+    "stormcloak_victories": 0,
+    "key_battles_completed": [],
+    "faction_relationship": {
+      "imperial_legion": 2,
+      "stormcloaks": -5,
+      "thieves_guild": 4
+    },
+    "battle_of_whiterun_modifiers": [
+      {
+        "aspect": "Thalmor Intelligence Node Neutralized",
+        "free_invokes": 1,
+        "source": "Insaerndel eliminated Thalmor handler and escorts; burned evidence; disrupted Whiterun intelligence operations.",
+        "expires": "End of Battle of Whiterun"
+      },
+      {
+        "aspect": "Battle-Born Accord",
+        "free_invokes": 1,
+        "source": "Secured contract with Olfrid Battle-Born; Writ of Privilege obtained; evacuation route established.",
+        "expires": "Until contract fulfilled or Battle-Born alliance broken",
+        "note": "Thieves Guild foothold leverage + Imperial defense support."
+      }
+    ]
+  },
+  "main_quest_state": {
+    "post_alduin_timeline": true,
+    "dragon_crisis_resolved": true,
+    "blades_status": "reformed",
+    "greybeards_relations": "respectful",
+    "timeline_notes": "Campaign occurs after Alduin's defeat. Dragon crisis has ended, focus is on civil war and Thalmor conspiracy."
+  },
+  "thalmor_arc": {
+    "thalmor_awareness_of_party": "low",
+    "embassy_infiltrated": false,
+    "elenwen_disposition": "neutral",
+    "thalmor_schemes_discovered": [
+      "whiterun_intelligence_node"
+    ],
+    "active_plots": [
+      {
+        "plot_id": "undermine_empire",
+        "description": "Thalmor seeks to prolong civil war to weaken both sides",
+        "progress": 0,
+        "clock_segments": 8,
+        "note": "Whiterun node neutralized; progress setback"
+      },
+      {
+        "plot_id": "eliminate_talos_worship",
+        "description": "Continue persecution of Talos worshippers",
+        "progress": 0,
+        "clock_segments": 10
+      }
+    ]
+  },
+  "branching_decisions": {
+    "civil_war_stance": "imperial",
+    "jarl_balgruuf_support": "imperial",
+    "thalmor_embassy_approach": null,
+    "talos_worship_stance": null,
+    "civil_war_entry_contact": "Thieves Guild / Battle-Born",
+    "battle_of_whiterun_choice": "defend_with_imperials"
+  },
+  "world_consequences": {
+    "towns_affected": [],
+    "npcs_killed": [
+      "thalmor_ledger_clerk_handler",
+      "thalmor_escort_1",
+      "thalmor_escort_2",
+      "stormcloak_west_gate_spearman",
+      "stormcloak_west_gate_charger",
+      "stormcloak_west_parapet_sergeant"
+    ],
+    "npcs_befriended": [
+      "Olfrid Battle-Born"
+    ],
+    "major_choices": [
+      "Established Thieves Guild contract with House Battle-Born for 3,000g payment.",
+      "Received sealed Writ of Privilege from Olfrid Battle-Born, formalizing access and support.",
+      "Secured Battle-Born family evacuation route through Temple of Kyne.",
+      "Captured Thalmor ledger and successfully routed to Commander Irileth via guard chain-of-command.",
+      "Defended western gate; neutralized Stormcloak assault elements including spearman, charger, and sergeant.",
+      "Eliminated Thalmor handler and escorts behind Bannered Mare; burned evidence to neutralize intelligence node.",
+      "Witnessed 'For Greymane' illusion during Thalmor operation, creating political complication.",
+      "Accepted compel 'No Witnesses' for Thalmor elimination.",
+      "Secured western parapet; neutralized Stormcloak flanking attempt."
+    ]
+  },
+  "active_story_arcs": [
+    {
+      "arc_name": "Civil War (Imperial Defense)",
+      "status": "active",
+      "progress": 1,
+      "next_milestone": "Complete Battle of Whiterun defense; deliver contract results to Olfrid"
+    },
+    {
+      "arc_name": "Thieves Guild Foothold",
+      "status": "active",
+      "progress": 4,
+      "next_milestone": "Complete final task to establish permanent Guild presence (4/5)"
+    },
+    {
+      "arc_name": "Thalmor Conspiracy",
+      "status": "active",
+      "progress": 1,
+      "next_milestone": "Manage fallout from Whiterun node neutralization; track Thalmor search (1/8)"
+    }
+  ],
+  "companions": {
+    "active_companions": [],
+    "available_companions": [],
+    "dismissed_companions": [],
+    "companion_relationships": {},
+    "notes": "Insaerndel operates solo as Thieves Guild operative."
+  },
+  "player_characters": [
+    {
+      "id": "pc_insaerndel",
+      "name": "Insaerndel",
+      "player": "Player",
+      "race": "High Elf (Altmer)",
+      "standing_stone": "The Shadow Stone",
+      "faction_alignment": "imperial",
+      "guild_affiliation": "thieves_guild"
+    }
+  ],
+  "starting_narrative": "Insaerndel, a Thieves Guild operative, arrives in Whiterun with a mission to establish a permanent Guild foothold. As the Battle of Whiterun erupts with Stormcloak forces assaulting the city, Insaerndel leverages the chaos to secure contracts with House Battle-Born and neutralize Thalmor intelligence operations, all while defending the western gate for the Imperials.",
+  "faction_relationships": {
+    "thieves_guild": 4,
+    "imperial_legion": 2,
+    "battle_born_house": 3
+  },
+  "npc_first_impressions": {
+    "commander_caius_whiterun_guard": {
+      "pc_insaerndel": {
+        "timestamp": "2026-02-04T00:00:00Z",
+        "disposition": "professional",
+        "line": "Recognized Insaerndel under siege conditions; accepted ledger handoff via chain-of-command; acknowledged information warfare value.",
+        "recognition_tags": ["whiterun_guard", "imperial_legion", "chain_of_command", "intelligence_handoff"]
+      }
+    }
+  },
+  "dragonbreak_note": "This campaign represents a parallel timeline to the Khagar Yal (Stormcloak) campaign. Both occur during the Battle of Whiterun but from opposing perspectives. See logs/dragonbreak_log.md for documentation of this timeline split."
+}

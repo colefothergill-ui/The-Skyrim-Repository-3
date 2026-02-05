@@ -56,7 +56,7 @@
 
 ### Whiterun Jobs
 - **Guild Foothold in Whiterun:** 4/5
-- **Battle-Born Quiet Inquiry:** 3/[total]
+- **Battle-Born Quiet Inquiry:** 3/6
 
 ### PC Extras
 - **Insaerndel Thalmor Search Clock:** 1/8

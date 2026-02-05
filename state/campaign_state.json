@@ -9,10 +9,10 @@
   "session_count": 2,
   "last_updated": "2026-02-01 (Session End Protocol)",
   "starting_location": "Whiterun",
-  "current_scene_id": "A1-S4",
-  "current_location": "Whiterun — Western Barricade Parapet",
+  "current_scene_id": "A1-S04-WHITERUN-BREACHRUN-TO-DRAGONSREACH",
+  "current_location": "Whiterun — Cloud District (Dragonsreach Approach / Walkway)",
   "active_hold": "Whiterun",
-  "current_objective": "Secure Imperial win in Battle of Whiterun; ensure Hadvar survives; trigger Greymane investigation fallout; protect Battle-Born Arcana foothold.",
+  "current_objective": "Force Balgruuf's decision at Dragonsreach (parley/breach/leverage). Manage Hadvar custody, Aela hunt-debt, Galmar friction, and Thalmor escalation.",
   "current_npcs": [
     "ralof",
     "hadvar",
@@ -47,26 +47,11 @@
     "civilian_evacuation_corridor_kynareth": true,
     "outer_stair_knot_taken_out": true,
     "khagar_public_werebear_incident": true,
-    "thalmor_scent_scry_escalation_completed": true,
-    "battleborn_arcana_deal_signed": true,
-    "battleborn_writ_of_privilege_received": true,
-    "contract_olfrid_3000g_active": true,
-    "battleborn_evac_route_temple_of_kyne_secured": true,
-    "ledger_routed_to_irileth_via_guard_chain": true,
-    "western_gate_stabilized": true,
-    "stormcloak_survivor_arrow_to_knee": true,
-    "bannered_mare_handler_eliminated": true,
-    "thalmor_whiterun_node_neutralized": true,
-    "greymane_framejob_active": true,
-    "for_greymane_illusion_witnessed": true,
-    "parapet_flank_climbers_neutralized": true,
-    "stormcloak_sergeant_taken_out": true,
-    "compel_no_witnesses_accepted": true
+    "thalmor_scent_scry_escalation_completed": true
   },
   "civil_war_state": {
     "player_alliance": "stormcloak",
-    "whiterun_control": "imperial",
-    "battle_of_whiterun_status": "imperial_advantage",
+    "battle_of_whiterun_status": "active",
     "imperial_victories": 0,
     "stormcloak_victories": 0,
     "key_battles_completed": [],
@@ -136,13 +121,7 @@
     "towns_affected": [],
     "npcs_killed": [
       "Imperial Conducting Officer (gate breach)",
-      "Imperial Horn Wielder (gate breach)",
-      "thalmor_ledger_clerk_handler",
-      "thalmor_escort_1",
-      "thalmor_escort_2",
-      "stormcloak_west_gate_spearman",
-      "stormcloak_west_gate_charger",
-      "stormcloak_west_parapet_sergeant"
+      "Imperial Horn Wielder (gate breach)"
     ],
     "npcs_befriended": [],
     "major_choices": [
@@ -338,14 +317,6 @@
         "disposition": "wary-respect",
         "line": "Aela watches the spear before she watches the orc—like she recognizes the Hunt in the metal.",
         "recognition_tags": ["companions", "archer", "hircine_blessing", "huntsman_vibe", "bitter_mercy_recognition"]
-      }
-    },
-    "commander_caius_whiterun_guard": {
-      "pc_insaerndel": {
-        "timestamp": "2026-02-04T00:00:00Z",
-        "disposition": "professional",
-        "line": "Recognized Insaerndel under siege conditions; accepted ledger handoff via chain-of-command; acknowledged information warfare value.",
-        "recognition_tags": ["whiterun_guard", "imperial_legion", "chain_of_command", "intelligence_handoff"]
       }
     }
   }

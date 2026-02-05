@@ -10,7 +10,41 @@ A Dragonbreak is a narrative tool used when player actions irrevocably diverge f
 
 ## Active Dragonbreaks
 
-*No active Dragonbreaks at campaign start*
+## Dragonbreak: Battle of Whiterun — Parallel Timelines
+
+**Date**: 17th of Last Seed, 4E 201  
+**Session**: Session 01 (Insaerndel) / Session 02 (Khagar Yal)  
+**Cause**: Two player characters experience the Battle of Whiterun from opposing sides simultaneously  
+**Canon Conflict**: A single battle cannot have two different outcomes, yet both campaigns are canonical
+
+**Parallel Timelines**:
+- **Timeline A (Khagar Yal - Stormcloak)**: Orsimer Warchief leads Stormcloak assault on Whiterun gates; defeats Hadvar in honorable combat; pushes toward Dragonsreach; public werebear transformation completes Thalmor scent-scry escalation
+- **Timeline B (Insaerndel - Imperial)**: Thieves Guild operative defends western gate for Imperials; secures Battle-Born contract; neutralizes Thalmor intelligence node; routes captured ledger to Irileth
+
+**Resolution Strategy**: 
+Both timelines proceed independently with separate state files:
+- `state/campaign_state.json` — Khagar Yal (Stormcloak perspective)
+- `state/campaign_state_insaerndel.json` — Insaerndel (Imperial perspective)
+
+**Affected Elements**:
+- **NPCs**: Hadvar (captured in Timeline A, fighting in Timeline B), Olfrid Battle-Born (contacted in Timeline B), Commander Caius (Timeline B)
+- **Factions**: Stormcloaks (advancing in Timeline A), Imperial Legion (defending in Timeline B), Thieves Guild (establishing foothold in Timeline B)
+- **Locations**: Whiterun western gate, western barricade parapet
+- **Key Events**: Thalmor node status (active in Timeline A, neutralized in Timeline B)
+
+**Narrative Impact**: 
+- Each timeline maintains internal consistency
+- Clock systems (Guild foothold, faction trust, Thalmor operations) track independently
+- Future sessions will continue separate timelines unless explicitly merged
+- NPCs may have different fates in each timeline
+
+**World Aspect Created**: "The Battle Has Two Truths"
+
+**Status**: Active — Parallel campaigns ongoing
+
+---
+
+*No other active Dragonbreaks*
 
 ---
 

@@ -3,8 +3,9 @@
   "timestamp_utc": "2026-02-04T00:00:00Z",
   "summary": "End of Session 01 (Insaerndel): Battle-Born Arcana deal secured; Thalmor ledger routed to Irileth; Western Gate held; Thalmor Whiterun node neutralized; Guild foothold at 4/5",
   "files_touched": [
-    "state/campaign_state.json",
+    "state/campaign_state_insaerndel.json",
     "logs/2026-02-04_session-01_LATEST.md",
+    "logs/dragonbreak_log.md",
     "data/pcs/pc_insaerndel.json",
     "data/clocks/whiterun_jobs.json",
     "data/clocks/pc_extras_clocks.json",
@@ -136,8 +137,9 @@
     "thalmor_influence_clocks.thalmor_manipulation_whiterun": "0/8"
   },
   "gm_notes": {
-    "continuity": "This patch represents a parallel campaign timeline with Insaerndel (Thieves Guild operative) during the Battle of Whiterun, distinct from Khagar Yal's Stormcloak campaign.",
-    "conflicts": "If merging with Khagar campaign, note that: (1) Insaerndel works for Imperial/Battle-Born interests, (2) Whiterun control is 'imperial' here vs 'contested' in Khagar timeline, (3) Thalmor node status differs between campaigns",
+    "continuity": "This patch represents a parallel campaign timeline with Insaerndel (Thieves Guild operative) during the Battle of Whiterun. Uses separate state file (campaign_state_insaerndel.json) to avoid conflicts with Khagar Yal's Stormcloak campaign.",
+    "dragonbreak": "Documented in logs/dragonbreak_log.md as 'Battle of Whiterun — Parallel Timelines'. Both campaigns are canonical but maintain separate state.",
+    "conflicts_resolved": "Originally mixed both campaigns in single campaign_state.json; now uses campaign_state.json (Khagar/Stormcloak) and campaign_state_insaerndel.json (Insaerndel/Imperial) for clean separation.",
     "next_session": "Battle aftermath; contract delivery to Olfrid; potential Greymane investigation complications; bodies behind Bannered Mare may be discovered"
   }
 }
