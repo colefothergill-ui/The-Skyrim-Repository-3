@@ -1,12 +1,12 @@
 {
   "whiterun_jobs": {
     "description": "Track Thieves Guild operations and jobs in Whiterun",
-    "last_updated": "2026-02-01 (Continuity Fix — Aldrin/Aldric Whiterun jobs reset for Khagar Yal)",
+    "last_updated": "2026-02-04 (Session 01 End — Insaerndel Battle-Born accord)",
     "clocks": {
       "guild_foothold_whiterun": {
         "name": "Guild Foothold in Whiterun",
         "description": "Establishing a permanent Thieves Guild presence in Whiterun",
-        "current": 0,
+        "current": 4,
         "max": 5,
         "completion_effect": "Permanent Thieves Guild operations established in Whiterun with local fence and safe house access",
         "advancement_triggers": [
@@ -24,11 +24,30 @@
         "gate": {
           "type": "conditional_progress_cap",
           "cap_until_condition_met": 3,
-          "condition": "state.branching_decisions.civil_war_entry_contact == 'Ralof' || state.civil_war_state.player_alliance == 'stormcloak'",
-          "note": "Olfrid will not fully open the Whiterun door until you prove your alignment during the Battle of Whiterun—specifically by fighting alongside Ralof (or formally allying with the Stormcloaks)."
+          "condition": "state.civil_war_state.whiterun_control == 'imperial' || state.scene_flags.western_gate_stabilized",
+          "note": "Olfrid will not fully open the Whiterun door until Imperial control is secured—specifically by defending the western gate and ensuring Battle-Born interests are protected."
         },
-        "status": "inactive_for_khagar_yal",
-        "continuity_note": "Retired: this clock belonged to Aldrin/Thieves Guild story. Keep as optional module, but it is NOT active for Khagar Yal."
+        "status": "active_for_insaerndel",
+        "continuity_note": "Updated for Insaerndel campaign; gate condition references Imperial control and western_gate_stabilized flag."
+      },
+      "battleborn_quiet_inquiry": {
+        "name": "Battle-Born Quiet Inquiry",
+        "description": "Investigating and managing discrete operations with House Battle-Born",
+        "current": 3,
+        "max": 6,
+        "completion_effect": "Full Battle-Born family trust; access to sensitive information and assets",
+        "advancement_triggers": [
+          "Complete discrete tasks for Olfrid (+1)",
+          "Protect Battle-Born interests during conflict (+1)",
+          "Deliver valuable intelligence (+1)",
+          "Establish evacuation routes and contingencies (+1)"
+        ],
+        "setback_triggers": [
+          "Operations become public (-1)",
+          "Battle-Born interests compromised (-2)",
+          "Competing factions discover alliance (-1)"
+        ],
+        "status": "active_for_insaerndel"
       },
       "battleborn_strongbox": {
         "name": "Battle-Born Strongbox Job",

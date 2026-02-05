@@ -121,6 +121,26 @@
           "Dragons don't distinguish between factions"
         ]
       },
+      "thalmor_manipulation_whiterun": {
+        "name": "Thalmor Manipulation - Whiterun",
+        "description": "Thalmor intelligence and influence operations in Whiterun. Node neutralized via handler elimination and evidence destruction.",
+        "current_progress": 0,
+        "total_segments": 8,
+        "completion_effect": "Thalmor re-establish intelligence presence in Whiterun with new handlers and safe houses",
+        "advancement_triggers": [
+          "New handlers assigned to Whiterun (+2)",
+          "New safe houses established (+1)",
+          "Asset recruitment in Whiterun (+1)",
+          "Intelligence network rebuilt (+2)"
+        ],
+        "setback_triggers": [
+          "Handler eliminated (-2)",
+          "Evidence destroyed (-2)",
+          "Assets exposed (-1)",
+          "Imperial cooperation blocks operations (-1)"
+        ],
+        "note": "Whiterun node neutralized during Session 01 (Insaerndel) via handler elimination + evidence burn. Progress reset to 0."
+      },
       "ulfric_manipulation": {
         "name": "Ulfric Manipulation",
         "description": "Thalmor's covert influence over Ulfric Stormcloak to prolong civil war",

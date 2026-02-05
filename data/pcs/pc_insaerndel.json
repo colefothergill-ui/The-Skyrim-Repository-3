@@ -1,0 +1,45 @@
+{
+  "name": "Insaerndel",
+  "id": "pc_insaerndel",
+  "player": "Player",
+  "race": "Unknown",
+  "faction_alignment": "imperial",
+  "guild_affiliation": "thieves_guild",
+  "level": 1,
+  "fate_points": 4,
+  "aspects": {
+    "high_concept": "Thieves Guild Operative in Whiterun",
+    "trouble": "To be determined",
+    "other_aspects": []
+  },
+  "skills": {},
+  "stunts": [],
+  "stress": {
+    "physical": [false, false, false],
+    "mental": [false, false, false]
+  },
+  "consequences": {
+    "mild": null,
+    "moderate": null,
+    "severe": null
+  },
+  "refresh": 3,
+  "inventory": [
+    "Sealed Writ of Privilege (House Battle-Born)",
+    "Silver Ring of Authority (Thalmor handler token)",
+    "Seal kit (wax + stamp plates)",
+    "Torn routing slip (single lead fragment)"
+  ],
+  "contracts": [
+    {
+      "contractor": "Olfrid Battle-Born",
+      "amount": "3,000g",
+      "status": "active",
+      "notes": "Payment pending delivery after battle stabilization"
+    }
+  ],
+  "gold": 0,
+  "relationships": {},
+  "quests": [],
+  "notes": "Insaerndel is a Thieves Guild operative working to establish a foothold in Whiterun during the Battle of Whiterun. Has successfully negotiated with House Battle-Born and neutralized the Thalmor intelligence node in the city."
+}
