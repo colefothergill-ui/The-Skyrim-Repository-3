@@ -1,323 +1,89 @@
 {
-  "campaign_id": "skyrim_fate_core_001",
-  "campaign_name": "The Elder Scrolls: Skyrim - Fate Core Campaign",
-  "started_date": "4E 201, 17th of Last Seed",
-  "current_act": 1,
-  "active_pc": "Khagar Yal",
-  "active_pc_id": "pc_khagar_yal",
-  "session_zero_completed": true,
-  "session_count": 2,
-  "last_updated": "2026-02-01 (Session End Protocol)",
-  "starting_location": "Whiterun",
-  "current_scene_id": "A1-S04-WHITERUN-BREACHRUN-TO-DRAGONSREACH",
-  "current_location": "Whiterun — Cloud District (Dragonsreach Approach / Walkway)",
+  "campaign_id": "skyrim_fate_core",
+  "campaign_name": "Skyrim: Civil War and Hidden Hands",
+  "created_at": "2026-02-20",
+  "current_act": "Act I",
+  "current_scene_id": null,
   "active_hold": "Whiterun",
-  "current_objective": "Force Balgruuf's decision at Dragonsreach (parley/breach/leverage). Manage Hadvar custody, Aela hunt-debt, Galmar friction, and Thalmor escalation.",
-  "current_npcs": [
-    "ralof",
-    "hadvar",
-    "aela_the_huntress"
-  ],
-  "scene_flags": {
-    "herbal_scent_ritual_completed": true,
-    "dispatch_case_captured": true,
-    "pack_tactics_used_this_scene": true,
-    "legate_rikke_conceded_and_escaped": true,
-    "legate_rikke_sanies_lupinus_exposure": true,
-    "imperial_conducting_officer_killed": true,
-    "imperial_horn_silenced": true,
-    "imperial_chain_of_command_shattered": true,
-    "reserve_knot_breached": true,
-    "hadvar_reserve_knot_engaged": true,
-    "hadvar_retreat_ordered_for_wounded": true,
-    "hadvar_duel_terms_offered": true,
-    "hadvar_duel_terms_accepted": true,
-    "hadvar_elixir_given": true,
-    "khagar_scent_locked_on_hadvar": true,
-    "khagar_wild_hunt_mark_on_hadvar": true,
-    "warchiefs_wisdom_read_on_hadvar": true,
-    "hadvar_duel_in_progress": false,
-    "hadvar_duel_concluded": true,
-    "hadvar_taken_out_alive": true,
-    "hadvar_fate_pending": false,
-    "hadvar_in_custody": true,
-    "hadvar_escorted_behind_lines": true,
-    "aela_encounter_resolved_by_concession": true,
-    "aela_withdrew_to_jorvaskr": true,
-    "civilian_evacuation_corridor_kynareth": true,
-    "outer_stair_knot_taken_out": true,
-    "khagar_public_werebear_incident": true,
-    "thalmor_scent_scry_escalation_completed": true
+  "session_zero_completed": true,
+  "session_count": 0,
+  "active_pc_id": "pc_elitrof_whitemane",
+  "pcs": {
+    "pc_elitrof_whitemane": {
+      "name": "Elitrof Whitemane",
+      "player": "Cole",
+      "race": "Nord",
+      "standing_stone": "The Lord Stone",
+      "faction_alignment": "neutral"
+    }
+  },
+  "npc_first_impressions": {},
+  "faction_trust": {},
+  "active_quests": [],
+  "completed_quests": [],
+  "quest_state": {
+    "main": {
+      "current": "battle_of_whiterun",
+      "status": "locked"
+    },
+    "civil_war": {
+      "current": "battle_of_whiterun",
+      "status": "locked"
+    },
+    "companions": {
+      "current": "take_up_arms",
+      "status": "available"
+    }
   },
   "civil_war_state": {
-    "player_alliance": "stormcloak",
-    "battle_of_whiterun_status": "active",
-    "imperial_victories": 0,
-    "stormcloak_victories": 0,
-    "key_battles_completed": [],
-    "faction_relationship": {
-      "imperial_legion": -18,
-      "stormcloaks": 30
-    },
-    "battle_of_whiterun_modifiers": [
-      {
-        "aspect": "Imperial Counterplan Compromised",
-        "free_invokes": 0,
-        "source": "Captured dispatch case from Legate Rikke's command knot (pre-battle perimeter). (spent during gate-breach command decapitation)",
-        "expires": "End of Battle of Whiterun"
-      },
-      {
-        "aspect": "Chain of Command Severed",
-        "free_invokes": 1,
-        "source": "Khagar and Ralof neutralized the horn signaller and the line-conducting officer during the gate breach.",
-        "expires": "End of Battle of Whiterun",
-        "note": "Represents ongoing Imperial confusion at the gates/backline."
-      },
-      {
-        "aspect": "Word Kept at the Gate",
-        "free_invokes": 1,
-        "source": "Khagar honored the duel terms, allowed wounded to retreat, and ceded Hadvar's fate to Ralof.",
-        "expires": "End of Battle of Whiterun",
-        "note": "Social + tactical leverage: hesitation, parley openings, and reduced panic among noncombatants."
-      }
-    ]
-  },
-  "main_quest_state": {
-    "post_alduin_timeline": true,
-    "dragon_crisis_resolved": true,
-    "blades_status": "reformed",
-    "greybeards_relations": "respectful",
-    "timeline_notes": "Campaign occurs after Alduin's defeat. Dragon crisis has ended, focus is on civil war and Thalmor conspiracy."
-  },
-  "thalmor_arc": {
-    "thalmor_awareness_of_party": "low",
-    "embassy_infiltrated": false,
-    "elenwen_disposition": "neutral",
-    "thalmor_schemes_discovered": [],
-    "active_plots": [
-      {
-        "plot_id": "undermine_empire",
-        "description": "Thalmor seeks to prolong civil war to weaken both sides",
-        "progress": 0,
-        "clock_segments": 8
-      },
-      {
-        "plot_id": "eliminate_talos_worship",
-        "description": "Continue persecution of Talos worshippers",
-        "progress": 0,
-        "clock_segments": 10
-      }
-    ]
+    "player_alliance": "neutral",
+    "battle_of_whiterun_status": "approaching",
+    "battle_of_whiterun_stage": 0,
+    "battle_of_whiterun_faction": null,
+    "battle_of_whiterun_companion": null,
+    "battle_of_whiterun_last_stage_completed": 0,
+    "whiterun_control": "neutral",
+    "hadvar_ralof_rivalry_clock": {
+      "current": 0,
+      "max": 6,
+      "notes": "Ticks during set-pieces; resolves into outcomes."
+    }
   },
   "branching_decisions": {
-    "civil_war_stance": "stormcloak",
-    "jarl_balgruuf_support": null,
-    "thalmor_embassy_approach": null,
-    "talos_worship_stance": null,
-    "civil_war_entry_contact": "Ralof",
-    "battle_of_whiterun_choice": "assault_with_stormcloaks"
+    "neutral_subfaction": "companions"
   },
-  "world_consequences": {
-    "towns_affected": [],
-    "npcs_killed": [
-      "Imperial Conducting Officer (gate breach)",
-      "Imperial Horn Wielder (gate breach)"
-    ],
-    "npcs_befriended": [],
-    "major_choices": [
-      "Engaged and defeated Legate Rikke's perimeter knot via coordinated strike; forced her concession (she escaped).",
-      "Captured dispatch case: gained Battle of Whiterun tactical advantage.",
-      "Inflicted Sanies Lupinus exposure via bite to Rikke's hand during breakaway.",
-      "At the gate-breach, killed the conducting officer and seized his heart as trophy; used decapitation to shatter troop cohesion.",
-      "Ralof eliminated the horn wielder; Imperial withdrawal signaling disrupted.",
-      "Hadvar took a severe injury while rallying the reserve knot; ordered wounded retreat and accepted an honor duel to buy them time.",
-      "Hadvar was Taken Out in honorable single combat at Whiterun's gates; Khagar allowed the node's wounded retreat and ceded Hadvar's fate to Ralof (pending decision).",
-      "Hadvar Taken Out alive at the breach aftermath; Ralof chose custody; execution refused despite hardliner pressure.",
-      "Aela the Huntress conceded during rooftop engagement; Bitter Mercy recovered; Aela released under oath to withdraw to Jorrvaskr; Hunt-debt established.",
-      "Civilian evacuation corridor created toward the Temple of Kynareth during the push to Dragonsreach.",
-      "Khagar used public werebear transformation during Cloud District advance; Thalmor divination escalation completed."
-    ]
-  },
-  "active_story_arcs": [
-    {
-      "arc_name": "Civil War",
-      "status": "active",
-      "progress": 1,
-      "next_milestone": "Force Balgruuf's decision at Dragonsreach (parley / breach / leverage)"
+  "relationship_inference": {},
+  "scene_flags": {},
+  "clocks": {
+    "thuum_elemental_fury_mastery": {
+      "name": "Elemental Fury Mastery",
+      "current_progress": 0,
+      "total_segments": 8,
+      "segments": [
+        "Su",
+        "Grah",
+        "Dun",
+        "Focus",
+        "Flow",
+        "Tempo",
+        "Edge",
+        "Mastery"
+      ]
     },
-    {
-      "arc_name": "Thalmor Conspiracy",
-      "status": "hidden",
-      "progress": 0,
-      "next_milestone": "Thalmor operative cell dispatched (silver/fire/propaganda); counter-hunt machine spins up"
-    }
-  ],
-  "companions": {
-    "active_companions": [
-      {
-        "npc_id": "ralof",
-        "name": "Ralof",
-        "status": "active",
-        "loyalty": 80,
-        "location": "Dragonsreach approach (Cloud District walkway)",
-        "recruitment_trigger": "Stormcloak recruitment",
-        "faction_affinity": "stormcloaks",
-        "notes": "Holding breach while Khagar duels Hadvar; took 2 physical stress while cutting runner lane, stabilized breach per Khagar order. Session 2: Khagar fought in sync with Ralof, then honored Ralof's history with Hadvar by giving him the final call. | Major trust: Ralof asserted command over Galmar with Khagar backing; chose custody for Hadvar."
-      }
-    ],
-    "available_companions": [],
-    "dismissed_companions": [],
-    "companion_relationships": {
-      "ralof": 80
-    },
-    "notes": "Companion loyalty ranges from 0-100."
-  },
-  "player_characters": [
-    {
-      "id": "pc_khagar_yal",
-      "name": "Khagar Yal",
-      "player": "Cole",
-      "race": "Orc",
-      "standing_stone": "The Lord Stone",
-      "faction_alignment": "stormcloak"
-    }
-  ],
-  "starting_narrative": "The party arrives in Whiterun as supporters of the Stormcloak Rebellion. Ralof, a Stormcloak soldier who recruited them to the cause, accompanies the party. Jarl Balgruuf has sided with the Empire, making Whiterun a target for liberation. The party joins Galmar Stone-Fist in preparing to assault the city and free it from Imperial control. The Battle of Whiterun is imminent, and Skyrim's future hangs in the balance.",
-  "faction_relationships": {},
-  "npc_first_impressions": {
-    "npc_stat_whiterun_guard": {
-      "pc_khagar_yal": {
-        "timestamp": "2026-02-01T14:05:40.977788",
-        "disposition": "friendly",
-        "line": "A towering Orsimer, draped in snow-pelt and battle-iron—calm as a predator that already chose the outcome.",
-        "recognition_tags": [
-          "towering_orsimer",
-          "snow_sabre_cat_headdress",
-          "stormcloak_blue_cloth",
-          "fur_mantle",
-          "tusked_warchief",
-          "rune_lit_spear",
-          "cold_blue_aura",
-          "antler_crossguard",
-          "daedric_weapon_vibe"
-        ]
-      }
-    },
-    "npc_stat_companion_member": {
-      "pc_khagar_yal": {
-        "timestamp": "2026-02-01T14:05:40.978278",
-        "disposition": "friendly",
-        "line": "An orc in Nordic plate and Stormcloak-blue cloth, wearing a snow sabre cat like a crown. Nobody forgets that silhouette.",
-        "recognition_tags": [
-          "towering_orsimer",
-          "snow_sabre_cat_headdress",
-          "stormcloak_blue_cloth",
-          "fur_mantle",
-          "tusked_warchief",
-          "rune_lit_spear",
-          "cold_blue_aura",
-          "antler_crossguard",
-          "daedric_weapon_vibe"
-        ]
-      }
-    },
-    "npc_stat_brunwulf_freewinter": {
-      "pc_khagar_yal": {
-        "timestamp": "2026-02-01T14:05:47.942840",
-        "disposition": "friendly",
-        "line": "The spear's runes blink faintly. It's the kind of weapon that makes people speak softer without knowing why.",
-        "recognition_tags": [
-          "towering_orsimer",
-          "snow_sabre_cat_headdress",
-          "stormcloak_blue_cloth",
-          "fur_mantle",
-          "tusked_warchief",
-          "rune_lit_spear",
-          "cold_blue_aura",
-          "antler_crossguard",
-          "daedric_weapon_vibe"
-        ]
-      }
-    },
-    "npc_stat_galmar_stonefist": {
-      "pc_khagar_yal": {
-        "timestamp": "2026-02-01T14:05:47.943477",
-        "disposition": "hostile",
-        "line": "Your eyes catch on the sabre-cat pelt first—then the tusks—then the spear glowing like winter lightning.",
-        "recognition_tags": [
-          "towering_orsimer",
-          "snow_sabre_cat_headdress",
-          "stormcloak_blue_cloth",
-          "fur_mantle",
-          "tusked_warchief",
-          "rune_lit_spear",
-          "cold_blue_aura",
-          "antler_crossguard",
-          "daedric_weapon_vibe"
-        ]
-      }
-    },
-    "npc_stat_thalmor_justiciar": {
-      "pc_khagar_yal": {
-        "timestamp": "2026-02-01T14:05:47.946661",
-        "disposition": "hostile",
-        "line": "He looks like a war-story that learned how to walk: fur, steel, and a spear that hums with cold light.",
-        "recognition_tags": [
-          "towering_orsimer",
-          "snow_sabre_cat_headdress",
-          "stormcloak_blue_cloth",
-          "fur_mantle",
-          "tusked_warchief",
-          "rune_lit_spear",
-          "cold_blue_aura",
-          "antler_crossguard",
-          "daedric_weapon_vibe"
-        ]
-      }
-    },
-    "enemy_bandit_marauder": {
-      "pc_khagar_yal": {
-        "timestamp": "2026-02-01T14:05:47.947157",
-        "disposition": "neutral",
-        "line": "The spear's runes blink faintly. It's the kind of weapon that makes people speak softer without knowing why.",
-        "recognition_tags": [
-          "towering_orsimer",
-          "snow_sabre_cat_headdress",
-          "stormcloak_blue_cloth",
-          "fur_mantle",
-          "tusked_warchief",
-          "rune_lit_spear",
-          "cold_blue_aura",
-          "antler_crossguard",
-          "daedric_weapon_vibe"
-        ]
-      }
-    },
-    "npc_stat_wolf": {
-      "pc_khagar_yal": {
-        "timestamp": "2026-02-01T14:05:47.947620",
-        "disposition": "neutral",
-        "line": "The spear's runes blink faintly. It's the kind of weapon that makes people speak softer without knowing why.",
-        "recognition_tags": [
-          "towering_orsimer",
-          "snow_sabre_cat_headdress",
-          "stormcloak_blue_cloth",
-          "fur_mantle",
-          "tusked_warchief",
-          "rune_lit_spear",
-          "cold_blue_aura",
-          "antler_crossguard",
-          "daedric_weapon_vibe"
-        ]
-      }
-    },
-    "aela_the_huntress": {
-      "pc_khagar_yal": {
-        "timestamp": "2026-02-01T00:00:00Z",
-        "disposition": "wary-respect",
-        "line": "Aela watches the spear before she watches the orc—like she recognizes the Hunt in the metal.",
-        "recognition_tags": ["companions", "archer", "hircine_blessing", "huntsman_vibe", "bitter_mercy_recognition"]
-      }
+    "battle_of_whiterun_countdown": {
+      "name": "Battle of Whiterun Countdown",
+      "current_progress": 0,
+      "total_segments": 8,
+      "segments": [
+        "Rumors",
+        "Ultimatum",
+        "Supply Lines",
+        "Reinforcements",
+        "Evacuation",
+        "Sabotage",
+        "March",
+        "Battle"
+      ]
     }
   }
 }
